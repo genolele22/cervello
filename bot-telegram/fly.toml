@@ -1,0 +1,17 @@
+# fly.toml per cervello-bot
+app = 'cervello-bot'
+primary_region = 'fra'
+
+[build]
+
+[env]
+  DATA_DIR = "/data"
+
+[[mounts]]
+  source = "cervello_data"
+  destination = "/data"
+
+[[vm]]
+  memory = '256mb'
+  cpu_kind = 'shared'
+  cpus = 1

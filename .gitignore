@@ -1,0 +1,10 @@
+# Segreti — mai nel repo
+.env
+.env.*
+*.env
+
+# Ambienti Python
+venv/
+.venv/
+__pycache__/
+*.pyc

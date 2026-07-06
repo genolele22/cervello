@@ -1,0 +1,186 @@
+🧠 SECONDO CERVELLO — MANUALE OPERATIVO
+Aggiornato: 14 maggio 2026
+─────────────────────────────────────
+
+⚙️ COSA GIRA IN AUTOMATICO
+
+Ogni mattina alle 7:30 (cron):
+• briefing.sh legge task-pendenti.md
+• Claude genera il piano del giorno ordinato per priorità
+• Il briefing arriva su Telegram
+• Log in ~/cervello/07-log/cron.log
+
+Bot Telegram (cervello-bot) — sempre attivo:
+• Scrivi qualsiasi cosa → salvato in task-pendenti.md
+• /briefing → mostra tutti i task in corso
+• /id → mostra il tuo chat ID
+
+─────────────────────────────────────
+
+📁 DOVE SONO LE COSE
+
+~/cervello/
+  00-identita/         → chi sei, obiettivi, identità
+  01-mercato/          → The Raven (strategia mercato)
+  02-operativo/        → task pendenti, task completati, note giornaliere
+  03-voce-e-stile/     → stile #succedonocose (6 puntate analizzate)
+  04-archivio-fonti/   → 10 guide su AI, prompt, skill
+  05-prompt-library/   → template CRAFT, template 6 campi Panucci
+  06-skills/           → skill attive (briefing, genera-storia, pipeline, routine)
+  07-log/              → cron.log, sessions.log
+
+─────────────────────────────────────
+
+📋 OPERATIVITÀ QUOTIDIANA
+
+AGGIUNGERE UN TASK:
+→ Scrivi su Telegram (bot lo salva in automatico)
+→ Oppure: apri ~/cervello/02-operativo/task-pendenti.md
+
+SEGNARE UN TASK FATTO:
+→ Sposta la riga in task-completati.md
+→ Cambia [ ] con [x]
+
+RIGENERARE IL BRIEFING A MANO:
+→ bash ~/scripts/briefing.sh
+
+BRIEFING NON ARRIVATO?
+→ cat ~/cervello/07-log/cron.log (vedi cosa è successo)
+→ bash ~/scripts/briefing.sh (rigenerazione manuale)
+
+─────────────────────────────────────
+
+🤖 COME APRIRE CLAUDE CODE
+
+Apri SEMPRE dalla cartella del progetto su cui lavori.
+Il file ~/.claude/CLAUDE.md viene letto automaticamente ogni sessione.
+
+Secondo cervello:
+→ cd ~/cervello → claude
+
+The Raven:
+→ cd ~/progetti/the-raven → claude
+→ Legge CLAUDE.md + MEMORY.md in automatico
+
+VVF-ferie-bot:
+→ cd ~/vvf-ferie-bot → claude
+
+─────────────────────────────────────
+
+🎯 LE SKILL — QUANDO USARLE
+
+GENERA-STORIA (The Raven)
+→ Quando lavori su the-raven.it
+→ Ti ricorda le decisioni già prese (legge MEMORY.md)
+→ ATTENZIONE: se tocchi trigger/generate-story.ts
+   esegui npx trigger.dev@latest deploy dopo ogni modifica
+
+PIPELINE-NEWSLETTER (#succedonocose)
+→ Quando hai una bozza da far leggere a Claude
+→ Dà feedback su ritmo, registro, finale
+→ NON riscrive, NON riformula — solo feedback
+→ Usa 03-voce-e-stile/succedonocose.md come metro
+
+MORNING-ROUTINE
+→ Se il briefing delle 7:30 non è arrivato
+→ Esegue tutta la sequenza a mano
+
+BRIEFING-MATTUTINO
+→ Automatico via cron, non serve invocarla
+→ Documentazione del workflow
+
+─────────────────────────────────────
+
+📚 LE GUIDE — QUANDO LEGGERLE
+
+Cartella: ~/cervello/04-archivio-fonti/guide-ai/
+
+Prima di costruire una nuova skill:
+→ skill_claude_avanzato_vignali.md
+
+Per scrivere prompt complessi su Opus 4.7:
+→ modulo9_prompting_opus47.md (template 6 campi)
+→ guida_prompt_engineering_2026.md (formula CRAFT)
+
+Per capire come orchestrare agenti:
+→ agenti_ai_vignali.md
+
+Per hook, MCP, pattern sessioni lunghe:
+→ claude_code_avanzato_crostini.md
+
+Per connettere Gmail, Calendar, Zapier:
+→ connettori_api_mcp_fantucchio.md
+
+─────────────────────────────────────
+
+🔧 SE QUALCOSA SI ROMPE
+
+Briefing non arriva:
+1. cat ~/cervello/07-log/cron.log → leggi l'errore
+2. bash ~/scripts/briefing.sh → test manuale
+3. Se fallisce ancora: /home/genolele22/.local/bin/claude --version
+   (verifica che claude sia ancora nel path)
+
+Bot Telegram non risponde:
+1. systemctl status cervello-bot
+2. Se inactive: sudo systemctl start cervello-bot
+3. Se fallisce: journalctl -u cervello-bot -n 30 --no-pager
+
+─────────────────────────────────────
+
+🗂️ PROGETTI — STATO ATTUALE
+
+THE RAVEN ★ priorità massima
+  Live su the-raven.it
+  Racconto attivo, Romanzo disabilitato
+  Score qualità storie: 6.5/10 (target: 7.5-8.5)
+  Decisioni architettura: ~/progetti/the-raven/MEMORY.md
+  ⚠ DA FARE: decidere modello di business
+
+#SUCCEDONOCOSE ★ priorità alta
+  Substack, attiva
+  Stile documentato: 03-voce-e-stile/succedonocose.md
+  Skill feedback: pipeline-newsletter
+
+ASD FIGHT IN PROGRESS
+  Contabilità e admin da automatizzare
+  Nessuno strumento ancora costruito
+
+VVF-FERIE-BOT
+  Codice completo (commit 97c0af4)
+  Bloccato: 3 variabili d'ambiente mancanti su Fly.io
+  → SMTP_HOST (hostname server Zimbra VVF)
+  → CAPOTURNO_EMAIL
+  → ENCRYPTION_KEY
+
+─────────────────────────────────────
+
+🚫 REGOLE FERREE (applicate dagli hook)
+
+Claude Code NON fa mai senza conferma esplicita:
+  ✗ rm -rf (bloccato automaticamente)
+  ✗ Scritture su file .env (bloccato automaticamente)
+  ✗ git push su main/master
+  ✗ Scrivere testo creativo al posto tuo
+  ✗ Riformulare frasi di #succedonocose
+
+─────────────────────────────────────
+
+💡 SUGGERIMENTI D'USO
+
+Per sessioni produttive:
+• Definisci UN obiettivo stretto per sessione
+• Massimo 5-10 turni operativi, poi /clear
+• Prima di chiudere: aggiorna task-pendenti.md
+
+Per The Raven:
+• Aggiorna MEMORY.md quando prendi una decisione
+  formato: - [YYYY-MM-DD] Decisione: cosa e perché
+
+Per #succedonocose:
+• Dai a Claude la bozza, non il brief
+• Aspetta il feedback, poi decidi tu cosa fare
+• Non chiedere riscritture — non le fa (e non le vuoi)
+
+─────────────────────────────────────
+Fine manuale — ~/cervello/MANUALE_OPERATIVO.txt

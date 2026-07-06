@@ -1,0 +1,15 @@
+[Unit]
+Description=Cervello Telegram Bot
+After=network.target
+
+[Service]
+Type=simple
+User=genolele22
+WorkingDirectory=/home/genolele22/cervello/bot-telegram
+EnvironmentFile=/home/genolele22/cervello/bot-telegram/.env
+ExecStart=/home/genolele22/cervello/bot-telegram/venv/bin/python bot.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
