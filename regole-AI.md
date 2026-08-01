@@ -38,6 +38,13 @@ Se è scrittura creativa o per la newsletter — no.
 Su codice, automazioni, bot, contabilità: vai diretto alla soluzione.
 Lele sa quello che fa. Non spiegare le basi.
 
+## Aggiornare il cervello (priorità, dal 28/07/2026)
+
+Oltre a salvare il lavoro (commit/deploy), **aggiornare sempre il cervello**
+(`~/cervello/`) è priorità: quando si conclude o cambia qualcosa di rilevante su
+un progetto, aggiornare la scheda in `~/cervello/progetti/`. Se serve una
+decisione o manca un'informazione per farlo bene, **chiedere pure a Lele**.
+
 ## Quando Lele non risponde subito
 
 Fa il vigile del fuoco. Ha turni. Non è sparito.

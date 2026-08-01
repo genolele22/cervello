@@ -2,3 +2,54 @@
 SessionEnd hook [node "${CLAUDE_PLUGIN_ROOT}/hooks/session-end-cleanup.mjs"] failed: /bin/sh: 1: node: not found
 
 [Thu May 14 03:57:06 PM CEST 2026] Briefing creato: /home/genolele22/cervello/02-operativo/note-giornaliere/2026-05-14.md
+SessionEnd hook [node "${CLAUDE_PLUGIN_ROOT}/hooks/session-end-cleanup.mjs"] failed: /bin/sh: 1: node: not found
+
+[Wed Jul  8 10:44:16 AM CEST 2026] Briefing creato: /home/genolele22/cervello/02-operativo/note-giornaliere/2026-07-08.md
+SessionEnd hook [node "${CLAUDE_PLUGIN_ROOT}/hooks/session-end-cleanup.mjs"] failed: /bin/sh: 1: node: not found
+
+[Sun Jul 12 10:08:40 AM CEST 2026] Briefing creato: /home/genolele22/cervello/02-operativo/note-giornaliere/2026-07-12.md
+SessionEnd hook [node "${CLAUDE_PLUGIN_ROOT}/hooks/session-end-cleanup.mjs"] failed: /bin/sh: 1: node: not found
+
+[Mon Jul 13 09:28:25 PM CEST 2026] Briefing creato: /home/genolele22/cervello/02-operativo/note-giornaliere/2026-07-13.md
+SessionEnd hook [node "${CLAUDE_PLUGIN_ROOT}/hooks/session-end-cleanup.mjs"] failed: /bin/sh: 1: node: not found
+
+[Tue Jul 14 05:36:37 PM CEST 2026] Briefing creato: /home/genolele22/cervello/02-operativo/note-giornaliere/2026-07-14.md
+SessionEnd hook [node "${CLAUDE_PLUGIN_ROOT}/hooks/session-end-cleanup.mjs"] failed: /bin/sh: 1: node: not found
+
+[Wed Jul 15 01:25:55 PM CEST 2026] Briefing creato: /home/genolele22/cervello/02-operativo/note-giornaliere/2026-07-15.md
+SessionEnd hook [node "${CLAUDE_PLUGIN_ROOT}/hooks/session-end-cleanup.mjs"] failed: /bin/sh: 1: node: not found
+
+[Fri Jul 17 04:00:58 PM CEST 2026] Briefing creato: /home/genolele22/cervello/02-operativo/note-giornaliere/2026-07-17.md
+SessionEnd hook [node "${CLAUDE_PLUGIN_ROOT}/hooks/session-end-cleanup.mjs"] failed: /bin/sh: 1: node: not found
+
+[Sat Jul 18 05:31:35 PM CEST 2026] Briefing creato: /home/genolele22/cervello/02-operativo/note-giornaliere/2026-07-18.md
+SessionEnd hook [node "${CLAUDE_PLUGIN_ROOT}/hooks/session-end-cleanup.mjs"] failed: /bin/sh: 1: node: not found
+
+[Sun Jul 19 01:44:22 PM CEST 2026] Briefing creato: /home/genolele22/cervello/02-operativo/note-giornaliere/2026-07-19.md
+SessionEnd hook [node "${CLAUDE_PLUGIN_ROOT}/hooks/session-end-cleanup.mjs"] failed: /bin/sh: 1: node: not found
+
+[Mon Jul 20 07:31:27 AM CEST 2026] Briefing creato: /home/genolele22/cervello/02-operativo/note-giornaliere/2026-07-20.md
+SessionEnd hook [node "${CLAUDE_PLUGIN_ROOT}/hooks/session-end-cleanup.mjs"] failed: /bin/sh: 1: node: not found
+
+[Tue Jul 21 07:30:25 AM CEST 2026] Briefing creato: /home/genolele22/cervello/02-operativo/note-giornaliere/2026-07-21.md
+SessionEnd hook [node "${CLAUDE_PLUGIN_ROOT}/hooks/session-end-cleanup.mjs"] failed: /bin/sh: 1: node: not found
+
+[Wed Jul 22 03:13:46 PM CEST 2026] Briefing creato: /home/genolele22/cervello/02-operativo/note-giornaliere/2026-07-22.md
+SessionEnd hook [node "${CLAUDE_PLUGIN_ROOT}/hooks/session-end-cleanup.mjs"] failed: /bin/sh: 1: node: not found
+
+[Thu Jul 23 07:30:23 AM CEST 2026] Briefing creato: /home/genolele22/cervello/02-operativo/note-giornaliere/2026-07-23.md
+SessionEnd hook [node "${CLAUDE_PLUGIN_ROOT}/hooks/session-end-cleanup.mjs"] failed: /bin/sh: 1: node: not found
+
+[Tue Jul 28 05:32:19 PM CEST 2026] Briefing creato: /home/genolele22/cervello/02-operativo/note-giornaliere/2026-07-28.md
+SessionEnd hook [node "${CLAUDE_PLUGIN_ROOT}/hooks/session-end-cleanup.mjs"] failed: /bin/sh: 1: node: not found
+
+[Wed Jul 29 07:30:30 AM CEST 2026] Briefing creato: /home/genolele22/cervello/02-operativo/note-giornaliere/2026-07-29.md
+SessionEnd hook [node "${CLAUDE_PLUGIN_ROOT}/hooks/session-end-cleanup.mjs"] failed: /bin/sh: 1: node: not found
+
+[Thu Jul 30 10:18:52 AM CEST 2026] Briefing creato: /home/genolele22/cervello/02-operativo/note-giornaliere/2026-07-30.md
+SessionEnd hook [node "${CLAUDE_PLUGIN_ROOT}/hooks/session-end-cleanup.mjs"] failed: /bin/sh: 1: node: not found
+
+[Fri Jul 31 07:31:38 AM CEST 2026] Briefing creato: /home/genolele22/cervello/02-operativo/note-giornaliere/2026-07-31.md
+SessionEnd hook [node "${CLAUDE_PLUGIN_ROOT}/hooks/session-end-cleanup.mjs"] failed: /bin/sh: 1: node: not found
+
+[Sat Aug  1 07:30:19 AM CEST 2026] Briefing creato: /home/genolele22/cervello/02-operativo/note-giornaliere/2026-08-01.md

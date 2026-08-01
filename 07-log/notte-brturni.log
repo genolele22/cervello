@@ -1,0 +1,162 @@
+[Sun Jul 19 10:47:28 PM CEST 2026] inizio sessione notturna
+Sessione notturna chiusa. Working tree pulito (a parte il marker `.notte-2026-07-19`, non toccato), 7 commit locali, nessun push.
+
+**Fatto (6 task, 54→74 test verdi, tutti committati):**
+1. Consumabili attivi (cura/trappola/diversivo) in resolve.ts
+2. Politiche spettro avenger/underdog + A/B kingmaking riconfermato (~zero effetto causale)
+3. Report bilanciamento in markdown (`npm run sim -- --report <path>`)
+4. Tuning shadow: 35.6%→24.6% via cap anti-camping (`CONFIG.maxConsecutiveHides`)
+5. Misura drawClash: scoperto che l'81% dei casi è un wipe multiplo (3-13 giocatori), non il "pareggio vero raro" previsto
+6. Fog of war: vista diretta implementata e testata, bot non ancora ricablati (scope tagliato deliberatamente, motivato nel report)
+
+**Non ho dichiarato chiuso il gate F1** — due questioni toccano l'equilibrio complessivo e aspettano te:
+- ambusher indietro al 12.9% (squilibrio preesistente)
+- drawClash multiplo (7.5% delle partite): accettabile o serve un altro spareggio?
+
+Tutti i dettagli, numeri e le 5 domande `[LELE]` sono in `reports/2026-07-19.md` (sezione "Sessione notturna autonoma") e in BACKLOG.md.
+SessionEnd hook [node "${CLAUDE_PLUGIN_ROOT}/hooks/session-end-cleanup.mjs"] failed: /bin/sh: 1: node: not found
+
+[Sun Jul 19 11:20:53 PM CEST 2026] fine sessione notturna (exit 0)
+[Mon Jul 20 02:37:01 AM CEST 2026] inizio sessione notturna
+Sessione notturna completata. Riepilogo:
+
+**Fatto**: unico task del backlog sbloccato e non-[LELE] disponibile — "Fog of war per i bot" (era parziale dal 19/07). Implementato `clues.ts` (indizi tracce/rumore/fumo dagli eventi dell'ultimo round) e riscritto hunter/finisher in `bots.ts` per usare solo `visiblePlayers` + indizi invece dello stato completo. 74→86 test verdi, typecheck pulito, 2 commit locali (nessun push).
+
+**Numeri** (1000 partite prima/dopo): hunter 22.3%→23.9%, shadow 24.6%→24.7%, finisher 26.0%→26.0% invariato, **ambusher 12.9%→10.9%** (già il più debole, scende ancora — non toccato). Spawn→cassa invariato (gate F1 regge).
+
+**Perché mi sono fermato qui**: tutto il resto del backlog è marcato [LELE] (nomi), [F3] (bloccato da nomi [LELE] + infra non ancora costruita), o F2 — bloccato dal gate F1 non ancora chiuso da te (CLAUDE.md vieta UI/infra prima del gate).
+
+**Domande [LELE] aperte** (dettagliate in `reports/2026-07-20.md`):
+1. Nome del gioco/azioni/oggetti (mai bloccante)
+2. drawClash multiplo (8.0% partite, quasi sempre wipe multiplo non pareggio vero) — serve un altro spareggio?
+3. `[F3]` set segnali spettro↔vivo
+4. `[F3]` "Ritrovarsi": dettagli matchmaking
+5. **Gate F1**: con ambusher al 10.9% e drawClash irrisolto, chiudo il gate così com'è o continuo il tuning (partendo da ambusher) prima di aprire F2?
+SessionEnd hook [node "${CLAUDE_PLUGIN_ROOT}/hooks/session-end-cleanup.mjs"] failed: /bin/sh: 1: node: not found
+
+[Mon Jul 20 02:48:12 AM CEST 2026] fine sessione notturna (exit 0)
+[Mon Jul 20 07:18:37 AM CEST 2026] inizio sessione notturna
+Everything is clean: 10 commits this session, working tree clean (only the pre-existing unrelated empty marker file untracked, left alone), no dev servers left running, `dist/` correctly untracked.
+
+## Riepilogo sessione
+
+Ripresa dal gate F1 chiuso (tuo ok), ho lavorato tutti gli 8 task F2 non-[LELE] dall'alto del backlog, uno alla volta con commit piccoli:
+
+1. Scaffold Next.js (`web/`, motore F1 importato come modulo locale compilato in `../dist/*.js`)
+2. Render statico SVG della mappa esagonale
+3. Render dei 24 giocatori (HP, vivo/spettro)
+4. Selezione destinazione a click + picker azione
+5. Bottone "risolvi round" (umano + 23 bot)
+6. Kill feed parziale
+7. Schermata fine partita
+8. Passata di leggibilità minima
+
+`npm run typecheck && npm test` verdi a ogni commit (86 test invariati — zero bilanciamento toccato), `next build` pulito. Verificato senza browser headless via SSR + script Node a parte che replicano la logica del componente sui moduli compilati.
+
+Resta un solo task in F2, marcato **[LELE]**: 10 partite di playtest + verdetto gate — richiede te che apri `cd web && npm run dev` in un browser. Tutto il resto del backlog è [F3] (bloccato da questo gate) o [LELE]. Report completo in `reports/2026-07-20.md`.
+SessionEnd hook [node "${CLAUDE_PLUGIN_ROOT}/hooks/session-end-cleanup.mjs"] failed: /bin/sh: 1: node: not found
+
+[Mon Jul 20 07:53:41 AM CEST 2026] fine sessione notturna (exit 0)
+[Mon Jul 20 11:04:33 AM CEST 2026] inizio sessione notturna
+You've hit your session limit · resets 12pm (Europe/Rome)
+SessionEnd hook [node "${CLAUDE_PLUGIN_ROOT}/hooks/session-end-cleanup.mjs"] failed: /bin/sh: 1: node: not found
+
+[Mon Jul 20 11:14:18 AM CEST 2026] fine sessione notturna (exit 0)
+[Mon Jul 20 01:01:59 PM CEST 2026] inizio sessione notturna
+Sessione conclusa. Tutto il lavoro non-[LELE] sbloccato dal backlog è fatto e committato in locale (nessun push), test e typecheck verdi a ogni step.
+
+**Fatto stanotte** (12 commit, `10ec7c2..HEAD`):
+- **F2.5 completo** (7 task): replay del round a passi, anteprima mossa, mappa più leggibile, layout mobile-first, pannello "cosa so", tutorial guidato, consumabili usati dai bot
+- **Defender fortifica situazionale** — con un risultato notevole: l'ipotesi scritta nella sessione interrotta ("fortifica sempre → crolla hunter") è **falsificata dai numeri**. La fortifica cala davvero (56,6% delle mosse) ma il win-rate di hunter non si muove (9,2%→9,2%): la causa vera è la logica di hunter stessa, non la frequenza della fortifica altrui
+- **Modalità corta**: verificata (non implementata, 24 giocatori è congelato in DESIGN.md) — fattibile e con bilanciamento migliore a 12 giocatori
+- **Onboarding spettri** differito alla morte
+
+104 test verdi (erano 96), typecheck e build puliti a ogni commit.
+
+Domande [LELE] aperte in `reports/2026-07-20.md`: verdetto F2 dopo F2.5 (le 10 partite), se tunare hunter, se tunare ambusher (ora il più forte, 31,2%, effetto collaterale dei consumabili), e la decisione sulla modalità corta. Il collo di bottiglia resta il tuo playtest — è quello che sblocca il resto.
+
+Nota a margine: per buona parte della sessione hai lavorato in parallelo sullo stesso repo (commit `56f601d` su Vercel deploy) — coesistito senza conflitti, non ho toccato i tuoi file.
+SessionEnd hook [node "${CLAUDE_PLUGIN_ROOT}/hooks/session-end-cleanup.mjs"] failed: /bin/sh: 1: node: not found
+
+[Mon Jul 20 01:53:04 PM CEST 2026] fine sessione notturna (exit 0)
+[Mon Jul 20 05:56:22 PM CEST 2026] inizio sessione notturna
+You've hit your session limit · resets 10:40pm (Europe/Rome)
+SessionEnd hook [node "${CLAUDE_PLUGIN_ROOT}/hooks/session-end-cleanup.mjs"] failed: /bin/sh: 1: node: not found
+
+[Mon Jul 20 06:27:57 PM CEST 2026] fine sessione notturna (exit 0)
+[Mon Jul 20 10:51:07 PM CEST 2026] inizio sessione notturna
+Sessione notturna completata: 7 commit locali (nessun push), working tree pulito.
+
+**Fatto stanotte** (sezione F3 del backlog, dall'alto):
+1. Recuperato e committato `src/reconstruct.ts` (lavoro di una sessione precedente rimasto non salvato)
+2. Autenticazione — magic link via Supabase Auth
+3. Risoluzione a orari fissi 8/14/20 Europe/Rome via cron (con un bug reale di ±2h sui cambi ora legale preso dai test)
+4. Bot di riempimento — bug reale corretto: senza questo, i bot sarebbero rimasti sempre "nascosti" per mancanza di mosse
+5. Notifiche push a risoluzione avvenuta
+6. Modalità corta (12 giocatori/raggio 3) — refactor di `CONFIG` da costante globale a parametro per-partita
+
+118 → 163 test, bilanciamento in modalità lunga invariato cifra per cifra per tutta la notte. Nessun task saltato per [LELE].
+
+Due scelte tecniche fatte in autonomia (magic link e web push invece del bot Telegram di vvf, perché quel codice vive in un altro progetto a cui non ho accesso) — dettagli e motivazioni in `reports/2026-07-20.md`. Prossimo task in cima al backlog: **Matchmaking**, che richiede anche il flusso di creazione partita (oggi assente) e alcune decisioni di design su "Ritrovarsi" che spettano a te.
+SessionEnd hook [node "${CLAUDE_PLUGIN_ROOT}/hooks/session-end-cleanup.mjs"] failed: /bin/sh: 1: node: not found
+
+[Mon Jul 20 11:47:28 PM CEST 2026] fine sessione notturna (exit 0)
+[Tue Jul 21 02:37:01 AM CEST 2026] inizio sessione notturna
+You've hit your session limit · resets 3:40am (Europe/Rome)
+SessionEnd hook [node "${CLAUDE_PLUGIN_ROOT}/hooks/session-end-cleanup.mjs"] failed: /bin/sh: 1: node: not found
+
+[Tue Jul 21 02:45:27 AM CEST 2026] fine sessione notturna (exit 0)
+[Tue Jul 21 07:34:22 AM CEST 2026] inizio sessione notturna
+Working tree clean, only the pre-existing production server on :3000 is running (untouched), no leftover verification processes.
+
+## Riepilogo sessione
+
+7 commit locali (nessun push), tutti con typecheck+test verdi:
+
+1. **Matchmaking** (trovato scritto ma non committato da una sessione precedente) — verificato e committato
+2. **"Ritrovarsi"** — regole d'invito decise da Lele (1 invito/testa, no catene, max 3/partita, spawn a distanza massima)
+3. **Rimisurato il bilanciamento** su LONG/SHORT separatamente — LONG invariato, SHORT più equilibrato (forbice 10,2 vs 22,0 punti)
+4. **Due gap scoperti implementando Ritrovarsi**, aggiunti a backlog e chiusi nella stessa notte: opt-in reciproco (`/api/contacts`) e notifica "amico ha aperto partita"
+5. Pulizia backlog (voce F1 storica duplicata)
+
+172 → 183 test, tutto verificato dal vivo con dev server su porte libere (produzione su :3000 mai toccata).
+
+Backlog ora senza righe azionabili: quello che resta è `[LELE]`, asset arte non disponibili, o esplicitamente rimandato in attesa di segnale di playtest reale. Domande aperte e dettagli completi in `reports/2026-07-21.md` — la più urgente resta sempre la stessa: il tuo playtest (verdetto F2 dopo F2.5).
+SessionEnd hook [node "${CLAUDE_PLUGIN_ROOT}/hooks/session-end-cleanup.mjs"] failed: /bin/sh: 1: node: not found
+
+[Tue Jul 21 08:02:33 AM CEST 2026] fine sessione notturna (exit 0)
+[Thu Jul 23 02:37:01 AM CEST 2026] inizio sessione notturna
+Sessione conclusa. Riepilogo:
+
+**Trovato**: dopo un audit completo delle 1238 righe di `BACKLOG.md` (non solo F3, tutto il file), non esiste nessun task azionabile da una sessione autonoma di codice stanotte. Ogni riga aperta è o `[LELE]`, o bloccata da asset esterni (sprite giocatore mai generati), o esplicitamente rinviata nel file stesso (bilanciamento da rimisurare con giocatori veri, obiettivi estetici da non fare prima che il divertimento sia dimostrato).
+
+**Fatto**:
+- Verificata baseline verde (typecheck + 209 test) prima e dopo.
+- Corrette 3 checkbox obsolete nel backlog — lavoro già completato in sessioni precedenti (21/07 e 20/07) ma mai spuntato: notifica "amico ha aperto partita" e le due voci duplicate sul verdetto del gate F2. Verificato il codice esistente prima di spuntarle, zero funzionalità nuova.
+- Report in `reports/2026-07-23.md` con l'elenco consolidato delle domande `[LELE]` aperte e un suggerimento sul prossimo sblocco a maggior leva (collegare un progetto Supabase reale, mai fatto in nessuna sessione).
+- 2 commit locali (nessun push).
+
+**Prossimo passo**: serve un input tuo — decisione su uno dei punti `[LELE]`, oppure collegare Supabase per sbloccare la verifica end-to-end di tutto il lavoro F3 già scritto.
+SessionEnd hook [node "${CLAUDE_PLUGIN_ROOT}/hooks/session-end-cleanup.mjs"] failed: /bin/sh: 1: node: not found
+
+[Thu Jul 23 02:42:14 AM CEST 2026] fine sessione notturna (exit 0)
+Already on 'combat-intenti-morra'
+[Wed Jul 29 02:37:01 AM CEST 2026] inizio sessione notturna (branch combat-intenti-morra)
+Everything committed locally on `master`, no push done. Session summary:
+
+**Epica "combattimento a intenti" chiusa stanotte.** Increment 2 (motore: matrice a intenti in `resolve.ts`, rimosse ambush/fortify), 3 (bot con intenti), 4 (bilanciamento — trovato e corretto un buco nell'AI che rendeva l'aggressione quasi morta, 2% → 15-18% win per hunter), 5 (UI: 3 tasti Affondo/Guardia/Finta + tabellina conseguenze) tutti fatti, testati (202/202 verdi, typecheck verde root+web) e mergiati in `master`. Deployato su **https://last-pact.vercel.app** (verificato 200). Report dettagliato in `reports/2026-07-29.md`, memoria di progetto aggiornata. Nessun push, nessuna domanda bloccante per Lele — solo un invito a playtestare dal vivo il nuovo combattimento quando ha tempo.
+[Wed Jul 29 03:15:59 AM CEST 2026] fine sessione notturna (exit 0)
+Already on 'master'
+[Fri Jul 31 02:37:01 AM CEST 2026] inizio sessione notturna (branch master)
+I've deployed the CHIAREZZA DEGLI ESITI epic closure to production (verified 200 on `/`, `/play`, `/profile`) and updated the backlog and project memory. Now waiting on a screenshot verification pass against production before writing the final report — will follow up shortly.
+[Fri Jul 31 02:45:57 AM CEST 2026] fine sessione notturna (exit 0)
+Already on 'master'
+[Sat Aug  1 02:37:01 AM CEST 2026] inizio sessione notturna (branch master)
+Session complete. Summary:
+
+**Trovato**: l'epica indicata come priorità ("CHIAREZZA DEGLI ESITI") era già chiusa e deployata da una sessione precedente. Scorrendo l'intero `BACKLOG.md` dall'alto, ogni altra sezione risultava anch'essa completa — restavano solo task marcati `[LELE]` o esplicitamente rimandati. Nessun task eseguibile dalla macchina.
+
+**Fatto**: ho però individuato sei epiche di fine luglio già verdi (test/typecheck) ma ferme in locale, mai portate in produzione. Verificato tutto verde (237/237 test, typecheck root+web) e deployato su `https://last-pact.vercel.app` — `/`, `/play`, `/profile` rispondono 200. Aggiornati `BACKLOG.md` (sei sezioni ora "CHIUSA e LIVE"), `reports/2026-08-01.md` e `~/cervello/progetti/gioco-mobile.md`. Commit locale fatto, nessun push.
+
+**Prossimo passo**: il backlog non ha più lavoro macchina in coda — serve un playtest di Lele sul pacchetto ora live per tarare i valori 🧪 lasciati aperti nei report precedenti, o una nuova priorità.
+[Sat Aug  1 02:43:03 AM CEST 2026] fine sessione notturna (exit 0)

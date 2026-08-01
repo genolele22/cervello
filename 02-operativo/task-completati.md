@@ -20,3 +20,9 @@ Formato: `- [x] testo — data-aggiunta → data-completato`
 - [x] Creare MANUALE_OPERATIVO.txt — 14/05/2026 → 14/05/2026
 - [x] vvf-ferie-bot: configurare env Fly.io (tutti e 9 i secret deployati) — 07/05/2026 → verificato 14/05/2026
 - [x] vvf-ferie-bot: test reale SMTP con credenziali vigilfuoco.it — funziona — 07/05/2026 → 14/05/2026
+- [x] vvf: multi-turno Fase 1 (bot+gestionale indipendenti A/B/C/D) — 06/07/2026 → 16/07/2026
+- [x] vvf: Foglio/ODT generati dal DB — 06/07/2026 → 15/07/2026
+- [x] vvf: deploy fix outbox_drain del bot (incluso nei deploy multi-turno) — 06/07/2026 → 16/07/2026
+- [x] vvf: card/menu tasto destro su foglio/nuovo.php — 25/06/2026 → 13/07/2026
+- [x] vvf: stile patenti foglio/ODT per turno (colore/numero/entrambi + tinte, pagina admin per turno) — 19/07/2026 → 19/07/2026
+- [x] vvf: BACKUP DB notturno (bot Fly → volume + Google Drive, notifica Telegram) — primo backup riuscito 19/07/2026 → 19/07/2026
