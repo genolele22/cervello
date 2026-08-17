@@ -1,6 +1,6 @@
 # Task pendenti
 
-Aggiornato: 2026-08-16. Priorità dichiarate: finire vvf → gestionale ASD → app tempo libero → basso + inglese.
+Aggiornato: 2026-08-17. Priorità dichiarate: finire vvf → gestionale ASD → app tempo libero → basso + inglese.
 
 ## 0. ⚠️ Sicurezza — da fare appena possibile, precede il resto
 - [x] **Revocare il token GitHub esposto in chiaro** — fatto 16/08: token revocato (verificato con chiamata API → 401), the-raven passato a SSH (chiave ed25519 nuova su ~/.ssh, aggiunta su GitHub)
@@ -14,7 +14,6 @@ Aggiornato: 2026-08-16. Priorità dichiarate: finire vvf → gestionale ASD → 
 - [ ] ODT — oltre 5 malati spariscono dalla lista: soluzione proposta scartata da Lele il 17/08, da ripensare
 - [ ] Push su GitHub dei commit (per ora solo locali)
 - [ ] Anagrafica turno C (l'unico turno senza dati completi)
-- [ ] Diagnosi Volpara/Zollo/Pedemonte sempre nei Disponibili (turno A) — SOSPESA su richiesta, analisi pronta, tre fix proposti, in attesa di ok
 - [ ] Rimuovere le 15 funzioni morte del bot (lista pronta, serve ok)
 - [ ] Guardare nel pannello TiDB Cloud la retention dei backup automatici serverless (livello extra oltre al nostro)
 - [ ] Bonifica drift salti sui fogli di luglio pregressi (si sta sanando da sola col passare dei giorni)
@@ -27,7 +26,7 @@ LIVE su https://last-pact.vercel.app. Molto più avanti di quanto dicesse questa
 - [ ] [LELE] Nomi (Diversivo, giocatori), tono testi, restyling arte, statistiche per personaggio — non bloccanti
 
 ## 2. Gestionale ASD Fight in Progress — "The Crew" (scheda: ~/cervello/progetti/fight-in-progress.md)
-LIVE su thecrewgym.com (Next.js + Supabase + Stripe + Vercel). **16/08**: logbook del superadmin (13 note) triage e chiuso — consuntivo entrate risistemato (era a zero), verbali con storico, rateizzazione Kalèido, logo+colore Kalèido, bug date rate corretto, chiavi Stripe passate a live. Aperto:
+LIVE su thecrewgym.com (Next.js + Supabase + Stripe + Vercel). **17/08**: erogazioni liberali (ricevuta con dicitura fiscale, blocco contanti/CF donante — nota logbook lasciata aperta di proposito, la controlla Lele), branding Kalèido esteso fuori dal gestionale (corsi/palinsesto pubblici, socio, istruttore), ~28 tasti Salva del gestionale ora mostrano se hanno funzionato, collaboratori possono registrare da soli un rimborso spese con foto scontrino. **16/08**: logbook del superadmin (13 note) triage e chiuso — consuntivo entrate risistemato (era a zero), verbali con storico, rateizzazione Kalèido, logo+colore Kalèido, bug date rate corretto, chiavi Stripe passate a live. Aperto:
 - [ ] Libro soci ancora sbloccabile — vedi punto 0
 - [x] STRIPE_WEBHOOK_SECRET impostato su Vercel — fatto 16/08 (chiavi live caricate: pk_live/sk_live/whsec)
 - [ ] **Test pagamento reale da 1€** per aprire Stripe al pubblico (chiavi live pronte, manca solo il test di Lele)

@@ -20,6 +20,9 @@ Sessione lunga sul gestionale, tutto deployato su Fly.io (commit locali, non pus
 - **`reset_foglio` risincronizza dall'Agenda tutti i tipi di assenza**, non solo le ferie come prima (richiesta esplicita di Lele dopo il caso Barbieri).
 - **Logbook: tasto rapido "Qui non va"** su ogni pagina del gestionale (stesso concetto di The Crew), nota + link alla pagina di origine, pagina completa invariata nelle funzioni esistenti.
 - **ODT**: controllati tutti i punti aperti nel logbook su file .odt (6 voci), sistemati colore personale esterno/specialisti, apostrofo tipografico, evidenziatore ferie estive/d'ufficio; sostituito `templates/modello.odt` con la versione B0 caricata da Lele (verificato che non cambia nulla di funzionale). Restano in sospeso: ordine nomi a volte disallineato tra gestionale e odt (serve un caso concreto da riprodurre), oltre 5 malati che spariscono dall'odt (soluzione proposta scartata da Lele, da ripensare).
+- **Colonne turni/periodo/testo per Missione/Permesso/Malattia/Infortunio nell'ODT** (chiudeva logbook #206): geometria già nel modello B0, mancava il riempimento — stessa logica a blocchi già usata per le ferie, riusata per tutti e quattro i tipi.
+- **Amministrazione "Stili & Colori"** (era "Stile Patenti", chiudeva #182): patenti rosso/blu ora a colore RGB libero invece di 3 tinte preimpostate; nuovo colore di sfondo configurabile per straordinario/ferie estive/ferie d'ufficio sull'ODT (prima fisso nel codice), con opzione "nessuna evidenziazione". Solo ODT, il foglio web resta invariato.
+- **Bug del modello B0 dopo il collaudo di Lele**: (1) un nome normale (Murru) compariva grassetto+giallo come fosse in straordinario — non un dato sbagliato, ma formattazione residua rimasta nel modello .odt da esempi mai ripuliti in LibreOffice; risolto ripulendo direttamente il file (91 stili su 270 celle), non con un patch nel codice. (2) mancavano le due righe data inizio/fine turno in intestazione: il codice le cercava per un testo d'esempio che il B0 non ha più, ora le trova per posizione. (3) sigla sede (es. "MN") incollata al nome invece che nella cella a fianco su 5 mezzi con colonna nome stretta (CENTR-OP, 1SMZ, ML-1A, GA-1NAU, ML-1NAU) — limite di larghezza nel codice troppo severo, rimosso.
 
 ## Aperto per Lele
 
@@ -28,7 +31,6 @@ Sessione lunga sul gestionale, tutto deployato su Fly.io (commit locali, non pus
 - **ODT — oltre 5 malati spariscono dalla lista**: la soluzione proposta (accodare a capo come già fatto per i mezzi) non va bene per Lele, da ripensare insieme.
 - **15 funzioni morte nel bot**: individuate, tenute finché non dai l'ok a toglierle.
 - **Anagrafica turno C**: unico turno senza dati completi.
-- **Diagnosi Volpara/Zollo/Pedemonte** (turno A, sempre fuori squadra): analisi pronta, 3 fix proposti, sospesa su tua richiesta.
 - Push su GitHub dei commit (per ora restano locali).
 
 Dettagli tecnici e cronologia delle sessioni: memoria auto-gestita del secondo cervello (progetti `vvf_*` nell'indice memoria) — non qui, questa scheda resta la vista d'insieme.
