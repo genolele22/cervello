@@ -38,6 +38,15 @@ Dossier: https://claude.ai/code/artifact/f2d4c7e1-e8e6-44c0-8e01-b1cc33193305
 
 ## 2. Gestionale ASD Fight in Progress — "The Crew" (scheda: ~/cervello/progetti/fight-in-progress.md)
 
+### 🆕 19/08 notte — archivio Drive ASD ricostruito (personale + istituzionale) + consuntivi storici caricati
+Dossier aggiornato: https://claude.ai/code/artifact/f2d4c7e1-e8e6-44c0-8e01-b1cc33193305 — memoria: `project_asd_archivio_drive.md`.
+- [x] **Consuntivi 2015-2022 caricati nel gestionale reale** come storico entrate/uscite (170 righe in `entrata_extra`/`spesa`, categorie esistenti riusate, nessuna nuova). Tornano al centesimo tranne due scostamenti nei *documenti originali stessi* (non miei): 2020 uscite 55 centesimi di refuso PDF, **2022 uscite: le 16 voci elencate non sommano al totale dichiarato dal documento, mancano quasi 3.926€ — da controllare a occhio**, non ho inventato nulla, ho inserito esattamente quello scritto
+- [x] Accesso condiviso al Drive istituzionale `fightinprogress@gmail.com` esplorato: esiste già una cartella 2024-2026 ordinata (Amministrazione, Collaboratori, Statuto, Contratti, Verbali, Prime Note) — il materiale da smistare è quasi tutto storico 2019-2022, non nel presente
+- [x] **CPI trovato**: `rinnovo cpi_febbraio 2023.docx`, riferito a SCIA 01/02/2018, campi data/firma vuoti nel testo estratto — **resta da verificare fisicamente/al Comando VVF Vercelli se è stato protocollato**, punto più urgente di tutto il dossier
+- [ ] Trovato per caso: materiale personale di Lele (cartella "casa", "og crypto", richiesta mutuo) mescolato nell'archivio storico ASD — da separare prima di condividere quel Drive con altri
+- [ ] Piano di assorbimento proposto nel dossier (sezione 11): cartella Drive unica, ramo corrente + ramo "Archivio storico 2019-2023" ripulito — **in attesa di ok di Lele**, nessun file spostato/cancellato finora
+- [ ] Libro soci: confermare quale versione è quella buona (`LIBRO SOCI DEFINITIVO.xlsx`, sincronizzato locale+Drive, sembra la fonte attuale)
+
 ### 🆕 19/08 — il gestionale diventa un prodotto vendibile: **CREW**
 Nome del prodotto deciso da Lele il 19/08: **Crew** (senza "The" — "The Crew" resta il marchio della palestra). Da applicare: `NEXT_PUBLIC_MARCHIO` è già parametrico, serve un logo neutro (oggi è ancora quello della palestra) e la registrazione del nome.
 **Canale di vendita già esistente**: un commercialista che segue ASD lo propone ai propri clienti e non solo, come prodotto finito, nella stessa forma in cui lo usa Lele. Quindi niente rete commerciale da costruire e niente assistenza di primo livello a carico di Lele.
