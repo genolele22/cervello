@@ -28,6 +28,19 @@ LIVE su https://last-pact.vercel.app. Molto più avanti di quanto dicesse questa
 - [ ] [LELE] Nomi (Diversivo, giocatori), tono testi, restyling arte, statistiche per personaggio — non bloccanti
 
 ## 2. Gestionale ASD Fight in Progress — "The Crew" (scheda: ~/cervello/progetti/fight-in-progress.md)
+
+### 🆕 19/08 — il gestionale diventa un prodotto vendibile: **CREW**
+Nome del prodotto deciso da Lele il 19/08: **Crew** (senza "The" — "The Crew" resta il marchio della palestra). Da applicare: `NEXT_PUBLIC_MARCHIO` è già parametrico, serve un logo neutro (oggi è ancora quello della palestra) e la registrazione del nome.
+**Canale di vendita già esistente**: un commercialista che segue ASD lo propone ai propri clienti e non solo, come prodotto finito, nella stessa forma in cui lo usa Lele. Quindi niente rete commerciale da costruire e niente assistenza di primo livello a carico di Lele.
+Tre documenti prodotti (artifact + PDF in `~/Downloads/gestionale-asd/`):
+- **Presentazione prodotto** (per le associazioni, la usa il commercialista) — https://claude.ai/code/artifact/1033c088-37c9-4827-a594-f751743e76f6
+- **Studio polisportiva** (sezioni con conti propri che confluiscono in un bilancio unico) — https://claude.ai/code/artifact/e206b6ad-f940-4117-b6ac-682626132627
+- **Dossier commerciale** (canale, conti, responsabilità, continuità) — https://claude.ai/code/artifact/4827db9b-d7be-4b26-a08a-97c6442cc94c
+- [ ] **Ambiente dimostrativo LIVE**: https://the-crew-demo.vercel.app — `demo@the-crew-demo.test` / `Demo-Trave-Anfora-77!Kite` (sola lettura vera, imposta dal DB su tutte le 49 tabelle; progetto Supabase `ddsjqadvumetomwjgtdg` separato dal reale)
+- [ ] **Prossimo passo deciso**: mostrare la demo al commercialista e farsi correggere da lui la sezione conformità — la sua firma su quel contenuto è ciò che rende il prodotto credibile
+- [ ] Prima di un cliente esterno (bloccanti): revisione di sicurezza indipendente, posta transazionale con dominio proprio (oggi parte da Gmail personale), monitoraggio errori, prova di ripristino cronometrata, documenti di continuità
+- [ ] Manca ancora: onboarding autonomo, import assistito, manuale utente, esportazione completa dati
+
 LIVE su thecrewgym.com (Next.js + Supabase + Stripe + Vercel). **17/08**: erogazioni liberali (ricevuta con dicitura fiscale, blocco contanti/CF donante — nota logbook lasciata aperta di proposito, la controlla Lele), branding Kalèido esteso fuori dal gestionale (corsi/palinsesto pubblici, socio, istruttore), ~28 tasti Salva del gestionale ora mostrano se hanno funzionato, collaboratori possono registrare da soli un rimborso spese con foto scontrino. **16/08**: logbook del superadmin (13 note) triage e chiuso — consuntivo entrate risistemato (era a zero), verbali con storico, rateizzazione Kalèido, logo+colore Kalèido, bug date rate corretto, chiavi Stripe passate a live. Aperto:
 - [ ] Libro soci ancora sbloccabile — vedi punto 0
 - [x] STRIPE_WEBHOOK_SECRET impostato su Vercel — fatto 16/08 (chiavi live caricate: pk_live/sk_live/whsec)
