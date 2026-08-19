@@ -27,6 +27,15 @@ LIVE su https://last-pact.vercel.app. Molto più avanti di quanto dicesse questa
 - [ ] Cron di risoluzione da rimettere quando si accende F3 (Hobby Vercel blocca cron sub-giornalieri)
 - [ ] [LELE] Nomi (Diversivo, giocatori), tono testi, restyling arte, statistiche per personaggio — non bloccanti
 
+### 🆕 19/08 sera — archivio ASD su Drive ricostruito, dossier pronto (nessuna azione presa)
+Dossier: https://claude.ai/code/artifact/f2d4c7e1-e8e6-44c0-8e01-b1cc33193305
+- [x] Confermato: i 281 verbali storici 2017-2025 erano già stati recuperati e incrociati il 14/08, non rifatto
+- [ ] **⚠️ Da controllare fisicamente, priorità sulle altre**: certificato prevenzione incendi (ultimo rinnovo indicato feb 2023) e contratto di comodato della sede
+- [ ] **CASELLARIO GIUDIZIALE.pdf ancora in `~/asd fight in progress/`**, mai spostato nel bucket protetto nonostante segnalato l'1/08
+- [ ] Trovato l'indice master che Lele aveva scritto a marzo (`CATALOGO_ASD_Fight_in_Progress.xlsx` su Drive) — checklist in gran parte ancora aperta
+- [ ] `BONIFICA_LIBRO_SOCI.xlsx` (76 decadenze, 67 CF mancanti) introvabile — da ricostruire da zero sui dati di oggi (0 decadenze mai registrate nel gestionale)
+- [ ] Aspetta ok di Lele sul piano proposto nel dossier
+
 ## 2. Gestionale ASD Fight in Progress — "The Crew" (scheda: ~/cervello/progetti/fight-in-progress.md)
 
 ### 🆕 19/08 — il gestionale diventa un prodotto vendibile: **CREW**
