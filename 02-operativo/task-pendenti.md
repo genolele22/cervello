@@ -41,6 +41,16 @@ Tre documenti prodotti (artifact + PDF in `~/Downloads/gestionale-asd/`):
 - [ ] Prima di un cliente esterno (bloccanti): revisione di sicurezza indipendente, posta transazionale con dominio proprio (oggi parte da Gmail personale), monitoraggio errori, prova di ripristino cronometrata, documenti di continuità
 - [ ] Manca ancora: onboarding autonomo, import assistito, manuale utente, esportazione completa dati
 
+### 📋 19/08 — piano pronto per le 8 note del logbook reale (non ancora eseguito)
+Piano scritto e salvato in `~/.claude/plans/async-sprouting-lake.md` (sessione Claude Code), da eseguire quando Lele dà il via. Riepilogo:
+1. **Bug**: form nuovo corso mostra tutti i 192 soci come "responsabile" invece dei soli istruttori — il fix esiste già copiato nel form di modifica, va solo allineato
+2. Aggiungere il gruppo sportivo (Kaleido ecc.) ai form corso, creazione e modifica — oggi lo schema c'è ma nessun form lo scrive. Default: scegliendo Kaleido la sala si preseleziona su "Sala corsi" ma resta modificabile (deciso con Lele, non un vincolo fisso)
+3. Orario corso: poter selezionare più giorni della settimana in un solo inserimento invece di uno alla volta
+4. Elenco corsi: raggruppare per gruppo/istruttore con due tab + sottomenu ad ancore, ordine alfabetico
+5. **Il problema trasversale**: `form-con-esito.tsx` (usato in ~24 punti di tutto il gestionale) non dice mai se un salvataggio precedente è ancora valido dopo aver toccato un campo — fix in un solo file, si propaga ovunque
+6. Erogazioni liberali: Lele ha incollato la normativa completa (art. 15 TUIR) nella nota — il modulo esiste già per l'80% (flag dedicato, blocco contanti, blocco senza CF, causale corretta), manca il numero RASD sulla ricevuta e l'indirizzo del donante non è garantito
+7. Pre-iscrizioni: **nessun codice** — il bollino "già socio" esiste già dal 13/08 e Lele ha confermato che basta, la nota si chiude soltanto
+
 - [x] **19/08 — il cliccabile si vede**: ombra leggera sui tasti (si abbassa alla pressione), link sottolineati sempre e non solo al passaggio del mouse, 4 azioni travestite da testo diventate tasti veri (Prova invio, Conferma liquidazione, Approva rimborso, Esci). Richiesta di Lele: chi è poco pratico non preme una scritta che sembra testo normale. LIVE
 - [x] **19/08 — pulizia**: 29 funzioni in file `"use server"` erano esportate pur essendo usate solo dal proprio wrapper `ConEsito`. In Next.js ogni export di un modulo "use server" è un endpoint richiamabile dal browser: erano 29 endpoint paralleli inutili, ora interni al modulo
 
