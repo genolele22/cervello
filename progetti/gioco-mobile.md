@@ -406,3 +406,18 @@ verdetti di Lele sono visivi, si verificano guardando.
 una riga ciascuno. Se lo stacco di telecamera disorienta, il ripiego
 "inquadratura ferma + faro" è già possibile senza buttare niente. Supabase
 (F3) resta l'unico gate che richiede un'azione di Lele.
+
+## Aggiornamento 19/08/2026 — sette notti ferme, in attesa di Lele
+Dal deploy del 02/08 il backlog non ha più task eseguibili dalla macchina:
+ogni checkbox aperta è `[LELE]`/idea da valutare, bilanciamento combattimento
+congelato (richiede partite umane vere, non altre simulazioni bot-vs-bot), o
+restyling grafico bloccato in assenza di asset/tool immagini. Sette sessioni
+notturne di fila (02, 07, 13, 14, 15, 16, 19/08) hanno verificato lo stesso
+stato e prodotto solo un commit di report, zero codice. Produzione ferma al
+deploy del 02/08, invariata.
+**Serve per sbloccare**: un playtest reale del pacchetto "Il round si
+racconta" (per giudicare se lo stacco di telecamera + faro rende leggibile
+il combattimento, e tarare i tre valori 🧪 lasciati aperti), oppure nuovi
+asset grafici, oppure una decisione di design esplicita. Finché non arriva
+uno di questi, le notti restano no-op — valutare se sospendere il cron fino
+al prossimo input.

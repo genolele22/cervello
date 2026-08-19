@@ -160,3 +160,84 @@ Session complete. Summary:
 
 **Prossimo passo**: il backlog non ha più lavoro macchina in coda — serve un playtest di Lele sul pacchetto ora live per tarare i valori 🧪 lasciati aperti nei report precedenti, o una nuova priorità.
 [Sat Aug  1 02:43:03 AM CEST 2026] fine sessione notturna (exit 0)
+Already on 'master'
+[Sun Aug  2 02:37:01 AM CEST 2026] inizio sessione notturna (branch master)
+Sessione notturna conclusa. Riassunto:
+
+**Stato trovato**: l'epica indicata nell'incarico ("Chiarezza degli esiti", C1-C4) risultava già completamente chiusa e deployata dal 29/07. Sopra di lei c'è un'intera pila di epiche successive, tutte già "CHIUSA e LIVE", fino a "Il round si racconta" (deploy di stanotte stessa, commit `133cb3c`), che è davvero in cima al backlog.
+
+**Scansione completa del backlog**: ogni checkbox ancora aperta è `[LELE]` (decisioni/materiale suo) o esplicitamente non-bloccante/rimandata da sessioni precedenti (tuning, obiettivi estetici, restyling — tutti gated su playtest umano o asset non ancora pronti). Niente di eseguibile stanotte senza inventare lavoro fuori backlog.
+
+**Unica correzione fatta**: una checkbox di "merge + deploy" per l'epica del combattimento a intenti era rimasta indietro — il merge era già avvenuto da tempo (verificato con git). Spuntata con nota, nessuna azione reale necessaria.
+
+**Verificato**: `npm run typecheck && npm test` root (254/254) e typecheck `web/` puliti. Nessuna modifica a codice, solo `BACKLOG.md` e `reports/2026-08-02.md`. **Nessun deploy**: zero differenze di codice da spingere (il deploy di stanotte era già stato fatto nella sessione precedente).
+
+Commit locale fatto (`45d6a76`), nessun push. Report aggiornato in `reports/2026-08-02.md`. Prossimo passo reale è il playtest umano: tutto ciò che resta dipende dal tuo giudizio sul round-racconto deployato stanotte.
+[Sun Aug  2 02:40:19 AM CEST 2026] fine sessione notturna (exit 0)
+Already on 'master'
+[Fri Aug  7 02:37:01 AM CEST 2026] inizio sessione notturna (branch master)
+**Esito sessione notturna 07/08**: nessun task eseguibile.
+
+L'epica in cima ("Il round si racconta") e quella indicata dall'incarico ("Chiarezza degli esiti") risultano entrambe già chiuse e deployate — situazione identica alla sessione del 02/08, backlog invariato nei 5 giorni intermedi (`git log` conferma nessun commit su `BACKLOG.md`/`src/`/`web/` dal 02/08). Riscansionato l'intero backlog: ogni checkbox aperta è `[LELE]`, `[F3]`/non-bloccante, o rimandata a dopo un playtest umano — niente di eseguibile senza inventare lavoro fuori backlog o toccare regole congelate.
+
+Verificato comunque `npm run typecheck && npm test` (254/254 verdi) e typecheck in `web/`: tutto pulito, nessuna modifica al codice quindi nessun deploy. Report in `reports/2026-08-07.md`, committato su master (niente push).
+
+Prossimo passo reale: il playtest umano su "il round si racconta" — nessuna domanda nuova per Lele oltre a quelle già note (giudizio sullo stacco di telecamera, nomi/lore, asset grafici).
+[Fri Aug  7 02:40:22 AM CEST 2026] fine sessione notturna (exit 0)
+Already on 'master'
+[Thu Aug 13 02:37:02 AM CEST 2026] inizio sessione notturna (branch master)
+Sessione notturna conclusa: **nessun task eseguibile**, terza notte di fila.
+
+- L'epica "Chiarezza degli esiti" (in cima secondo l'incarico) e tutte quelle sopra nel file risultano già chiuse e live da tempo — stessa situazione fotografata il 02/08 e il 07/08, backlog e codice invariati (`git log` conferma zero commit su `BACKLOG.md`/`src`/`web` in mezzo).
+- Riscansionato l'intero backlog: ogni checkbox aperta è `[LELE]`, decisione di design, bilanciamento congelato o infrastruttura F3 vietata senza via libera esplicita — niente di eseguibile senza inventare lavoro o toccare regole congelate.
+- `npm run typecheck && npm test` in root: 254/254 verdi. `npm run typecheck` in `web/`: pulito.
+- Nessun deploy (zero differenze di codice rispetto al prod live dal 02/08, come da regola).
+- Commit locale fatto (`7956149`), nessun push.
+- `~/cervello/progetti/gioco-mobile.md` non toccato: nessuna novità rilevante da registrare.
+
+Prossimo passo reale resta il playtest umano — in particolare il giudizio sul "round si racconta" deployato il 02/08.
+[Thu Aug 13 02:39:27 AM CEST 2026] fine sessione notturna (exit 0)
+Already on 'master'
+[Fri Aug 14 02:37:01 AM CEST 2026] inizio sessione notturna (branch master)
+Sessione notturna 14/08 chiusa: nessun task eseguibile.
+
+- L'epica in cima al backlog ("CHIAREZZA DEGLI ESITI") risulta già completamente chiusa da fine luglio (C1-C4 + deploy tutti fatti).
+- Riverificato l'intero `BACKLOG.md`: tutte le checkbox aperte residue sono `[LELE]`, tuning di bilanciamento congelato, o infra F3 non autorizzata — nessuna eseguibile stanotte.
+- Nessuna modifica a `src/`/`web/`/`BACKLOG.md` dal 02/08 (confermato via `git log`), quindi zero differenze rispetto al prod già live.
+- `typecheck`+`test` verdi (254/254 root, typecheck web pulito). Nessun deploy fatto (niente da spingere).
+- Commit locale creato solo per `reports/2026-08-14.md`. Nessun push.
+
+Prossimo passo reale invariato: serve un playtest umano tuo, in particolare il giudizio su "il round si racconta" (deploy 02/08) prima che ci sia altro lavoro sensato da fare.
+[Fri Aug 14 02:39:48 AM CEST 2026] fine sessione notturna (exit 0)
+Already on 'master'
+[Sat Aug 15 02:37:01 AM CEST 2026] inizio sessione notturna (branch master)
+Sessione notturna conclusa, niente da fare stanotte.
+
+**Verifica**: l'epica in cima al backlog ("CHIAREZZA DEGLI ESITI") risulta già chiusa da tempo (deploy 29/07). Sopra di lei ci sono solo epiche successive già chiuse e live (ultima: "Il round si racconta", deploy 02/08). Nessuna modifica a `BACKLOG.md`/`src/`/`web/` da 13 giorni — stessa diagnosi delle sessioni del 07/08, 13/08 e 14/08. Le 14 checkbox rimaste aperte sono tutte `[LELE]`, tuning di bilanciamento (congelato stanotte per istruzione esplicita), o restyling grafico bloccato su asset esterni.
+
+**Tecnico**: `npm run typecheck && npm test` verdi (254/254, root+web).
+
+**Deploy**: non fatto — zero differenze rispetto al prod già live dal 02/08.
+
+**Prossimo passo reale**: playtest umano di Lele su "il round si racconta" (deployato il 02/08) — tutto il resto del backlog dipende da quel giudizio.
+
+Commit locale creato (`69f6d85`), nessun push. Report in `reports/2026-08-15.md`.
+[Sat Aug 15 02:39:28 AM CEST 2026] fine sessione notturna (exit 0)
+Already on 'master'
+[Sun Aug 16 02:37:01 AM CEST 2026] inizio sessione notturna (branch master)
+Coerente con le sessioni precedenti: nessun aggiornamento a `gioco-mobile.md` visto che non c'è nulla di nuovo da riportare. Sessione conclusa.
+
+**Esito**: nessun task eseguibile. L'epica "CHIAREZZA DEGLI ESITI" in cima al backlog è già chiusa da tempo (C1-C4 + deploy del 29/07), e tutto il resto del backlog resta bloccato su decisioni [LELE], bilanciamento congelato o asset grafici mancanti — stesso quadro delle ultime 4 sessioni notturne dal 02/08. Typecheck e 254/254 test verdi, nessun deploy (niente da chiudere), commit locale fatto (`455ede8`). Report in `reports/2026-08-16.md`.
+
+**Prossimo passo**: serve input umano (playtest reale, asset grafici, o una nuova decisione di design) per sbloccare il backlog — l'ho segnalato nel report insieme al suggerimento di valutare una pausa delle sessioni notturne automatiche se il pattern continua, per evitare commit vuoti.
+[Sun Aug 16 02:39:14 AM CEST 2026] fine sessione notturna (exit 0)
+Already on 'master'
+[Wed Aug 19 02:37:01 AM CEST 2026] inizio sessione notturna (branch master)
+Sessione notturna 19/08 conclusa: nessun task eseguibile — settima notte di fila con lo stesso esito dal deploy del 02/08.
+
+**Verificato:** epica in cima "CHIAREZZA DEGLI ESITI" già chiusa (C1-C4 + deploy 29/07); tutte le checkbox aperte residue sono `[LELE]`/idee da valutare/bilanciamento congelato/restyling senza asset; typecheck e 254/254 test verdi; produzione invariata al deploy del 02/08 (niente da chiudere, niente deploy stanotte).
+
+**Fatto:** commit `6fc49a6` con solo il report (`reports/2026-08-19.md`), niente push. Aggiornato `~/cervello/progetti/gioco-mobile.md` per riflettere che il progetto è fermo da 2,5 settimane in attesa di un playtest reale, asset grafici o una decisione di design — non un problema tecnico.
+
+**Prossimo passo:** serve un tuo input (playtest del pacchetto "Il round si racconta", asset, o decisione). Confermo il consiglio già dato il 16/08: valuta se sospendere il cron notturno finché non arriva.
+[Wed Aug 19 02:40:31 AM CEST 2026] fine sessione notturna (exit 0)

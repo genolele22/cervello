@@ -1,7 +1,7 @@
 ---
-aggiornato: 2026-05-14
-stato: attivo, in produzione
-priorità: massima (obiettivo reddito 12 mesi)
+aggiornato: 2026-08-06
+stato: in pausa — rientra in priorità appena il gestionale ASD (The Crew) è operativo
+priorità: condizionata (dopo vvf e gestionale ASD)
 ---
 
 # Progetto — The Raven
@@ -76,6 +76,28 @@ Non ancora deciso. Opzioni sul tavolo:
 - **Crediti:** pacchetti pay-per-use, nessun abbonamento ricorrente
 
 Questa decisione sblocca qualsiasi lavoro su acquisizione utenti e automazioni.
+
+### Ricerca monetizzazione stile DramaBox (recap 06/08/2026, da un amico)
+
+Riferimento: DramaBox — episodi gratis + cliffhanger + sblocco a monete o abbonamento flat (~20$/sett, 70% dei ricavi), pubblicità per chi non paga. Funziona per volume enorme di episodi economici.
+
+Il mercato "DramaBox dei libri" esiste già (Webnovel, GoodNovel, Dreame, Radish) — affollato, con conglomerate cinesi e anni di catalogo. Non è spazio vuoto.
+
+Due strade indviduate:
+- **Modello A** (com'è oggi): storia privata 1:1 via wizard col Corvo, niente catalogo da monetizzare a capitolo.
+- **Modello B**: catalogo condiviso, storie a bivi scritte dal Corvo, sblocco a capitolo + abbonamento. È un prodotto diverso da quello attuale — da "crea la tua storia" a "sfoglia un catalogo e sblocca".
+
+**Differenziante identificato:** i bivi. Nessun concorrente (narrativa lineare) offre la scelta come leva di monetizzazione — un ramo gratis, uno premium. Vantaggio reale, non estetico.
+
+**Perché ora:** costo di generazione AI (~0.04€/storia) è una frazione del costo di una scuderia di autori umani — margine strutturale migliore di Webnovel/Dreame.
+
+**Nodi aperti, in ordine di urgenza:**
+1. Cold-start catalogo: generare a volume è economico, ma "economico" ≠ "abbastanza buono da trattenere un abbonato per mesi" — serve piano di QA a scala
+2. Mercato solo IT per ora — volumi ridotti rispetto a DramaBox
+3. Retention da costruire da zero (oggi: una storia, un'email, fine — manca push/"nuovo capitolo pronto")
+4. Rischio legale/IP diverso da "l'AI ti aiuta con la tua storia personale" — da verificare prima di scalare qualcosa a pagamento
+
+Nota: è materiale per riflettere, non una spec di prodotto. Nessuna decisione presa.
 
 ---
 
