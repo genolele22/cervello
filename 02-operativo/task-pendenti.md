@@ -5,8 +5,8 @@ Aggiornato: 2026-08-19. Priorità dichiarate: finire vvf → gestionale ASD → 
 ## 0. ⚠️ Sicurezza — da fare appena possibile, precede il resto
 - [x] **Revocare il token GitHub esposto in chiaro** — fatto 16/08: token revocato (verificato con chiamata API → 401), the-raven passato a SSH (chiave ed25519 nuova su ~/.ssh, aggiunta su GitHub)
 - [x] Mettere **The Crew su GitHub** — fatto 16/08: repo privato `genolele22/the-crew-gym`, push via SSH di 141 commit (branch master), tracking impostato
-- [ ] **vvf-gestionale — nessun backup remoto**: verificato 19/08, il repo non ha *nessun* `git remote` configurato — non è mai stato pushato una volta. Tutto il codice esiste solo su questo Chromebook. Da collegare a un repo GitHub (privato, come the-crew-gym) appena possibile
-- [ ] **vvf-ferie-bot — 20 commit locali indietro rispetto a `origin/main`**: verificato 19/08 (`git log origin/main..HEAD`), remote GitHub c'è già ma non è stato pushato dal 10/08. `git push` semplice quando Lele conferma
+- [ ] **vvf-gestionale — nessun backup remoto**: confermato 19/08, zero `git remote`, mai pushato una volta. **Bloccato su Lele**: crea un repo vuoto su GitHub (privato, `vvf-gestionale`, niente README/licenza) dal computer — poi io collego il remote via SSH e pusho logbook+master+scambio-salto in un minuto
+- [x] **vvf-ferie-bot — 20 commit locali indietro** — FATTO 19/08: pushati su `origin/main` via SSH (il vecchio token HTTPS nel credential store era morto — probabilmente lo stesso revocato il 16/08 e mai ripulito — sostituito con la chiave SSH già usata per the-raven/the-crew, e il token morto è stato rimosso dal credential store)
 - [ ] **The Crew — richiudere il libro soci** (`configurazione.libro_soci_modificabile` da `'si'` a `'no'`, verificato ancora `'si'` il 14/08): primo passo obbligato di `docs/PRIMA_DI_ANDARE_IN_PRODUZIONE.md`, prima del primo socio vero. Ferma da 5 giorni — **non è un flip diretto**, ha 3 code da chiudere prima (viste dal briefing del 19/08, dettagli nella sezione The Crew più sotto): Sara Lione senza riga nel libro soci, i 3 nomi multipli (serve una decisione di Lele, non indovinabile), le 19 persone senza verbale storico (decidere in blocco: refusi da unire o placeholder da lasciare)
 
 ## 1. vvf — da finire (bot + gestionale) — scheda: ~/cervello/progetti/vvf.md
@@ -18,6 +18,7 @@ Aggiornato: 2026-08-19. Priorità dichiarate: finire vvf → gestionale ASD → 
 - [ ] Rimuovere le 15 funzioni morte del bot (lista pronta, serve ok)
 - [ ] Guardare nel pannello TiDB Cloud la retention dei backup automatici serverless (livello extra oltre al nostro)
 - [ ] Bonifica drift salti sui fogli di luglio pregressi (si sta sanando da sola col passare dei giorni)
+- [ ] **Fondere vvf-ferie-bot + vvf-gestionale in un monorepo** — deciso 19/08: non urgente, farla con calma (non ora). Tecnicamente pulita: nessun branch secondario di nessuno dei due ha commit non già mergiati nel branch principale, quindi `git subtree` fonde le history senza perdite. Comporta spostare le cartelle locali (`~/vvf-ferie-bot` + `~/vvf-gestionale` → sottocartelle di `~/vvf/`) e aggiornare i riferimenti nel vault (CLAUDE.md li nomina come due path separati). Il deploy Fly.io non cambia, resta un `fly deploy` per sottocartella
 
 ## Gioco mobile «Last Pact» (scheda: ~/cervello/progetti/gioco-mobile.md — sezione era ferma a luglio, aggiornata 14/08)
 LIVE su https://last-pact.vercel.app. Molto più avanti di quanto dicesse questa lista: combattimento a intenti (poker) in produzione, "il round si racconta" (VS/telecamera/faro) LIVE dal 02/08. Aperto:
