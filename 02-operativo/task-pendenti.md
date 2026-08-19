@@ -41,6 +41,9 @@ Tre documenti prodotti (artifact + PDF in `~/Downloads/gestionale-asd/`):
 - [ ] Prima di un cliente esterno (bloccanti): revisione di sicurezza indipendente, posta transazionale con dominio proprio (oggi parte da Gmail personale), monitoraggio errori, prova di ripristino cronometrata, documenti di continuità
 - [ ] Manca ancora: onboarding autonomo, import assistito, manuale utente, esportazione completa dati
 
+- [x] **19/08 — il cliccabile si vede**: ombra leggera sui tasti (si abbassa alla pressione), link sottolineati sempre e non solo al passaggio del mouse, 4 azioni travestite da testo diventate tasti veri (Prova invio, Conferma liquidazione, Approva rimborso, Esci). Richiesta di Lele: chi è poco pratico non preme una scritta che sembra testo normale. LIVE
+- [x] **19/08 — pulizia**: 29 funzioni in file `"use server"` erano esportate pur essendo usate solo dal proprio wrapper `ConEsito`. In Next.js ogni export di un modulo "use server" è un endpoint richiamabile dal browser: erano 29 endpoint paralleli inutili, ora interni al modulo
+
 LIVE su thecrewgym.com (Next.js + Supabase + Stripe + Vercel). **17/08**: erogazioni liberali (ricevuta con dicitura fiscale, blocco contanti/CF donante — nota logbook lasciata aperta di proposito, la controlla Lele), branding Kalèido esteso fuori dal gestionale (corsi/palinsesto pubblici, socio, istruttore), ~28 tasti Salva del gestionale ora mostrano se hanno funzionato, collaboratori possono registrare da soli un rimborso spese con foto scontrino. **16/08**: logbook del superadmin (13 note) triage e chiuso — consuntivo entrate risistemato (era a zero), verbali con storico, rateizzazione Kalèido, logo+colore Kalèido, bug date rate corretto, chiavi Stripe passate a live. Aperto:
 - [ ] Libro soci ancora sbloccabile — vedi punto 0
 - [x] STRIPE_WEBHOOK_SECRET impostato su Vercel — fatto 16/08 (chiavi live caricate: pk_live/sk_live/whsec)
