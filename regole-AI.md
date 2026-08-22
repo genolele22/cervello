@@ -63,4 +63,13 @@ Alimentata dalla skill `chiudi-sessione`. Barra alta: entra solo ciò che è
 qualcosa da scoprire. Se non passa tutti e tre i criteri, non entra — questo
 file è corto apposta.
 
-_(vuota al 22/08/2026)_
+### Un match "contains" su un placeholder può collidere con dati reali
+Se il codice riconosce un placeholder/testo-campione cercando una sottostringa
+generica (es. `stripos($t, 'ore')` per beccare ", ore 8.00"), rischia di
+intercettare per errore un dato vero che contiene quella sottostringa — es. il
+cognome "MORELLO" contiene "ore" (M-**ore**-llo). Usare un confine di parola
+(`\bore\b` o simile) o legare il match alla forma esatta del placeholder
+(es. "ore" seguito da una cifra), non un "contains" nudo.
+Scoperto su: vvf-gestionale, fix ODT logbook #208 (22/08/2026) — VP Morello
+spariva dai fogli di servizio perché il suo cognome veniva scambiato per il
+testo campione della data in intestazione.

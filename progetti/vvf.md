@@ -16,10 +16,14 @@ Deciso: 22/08/2026 — vvf scende al 2° posto della classifica. Motivo dichiara
   Lele: "vvf è sostanzialmente finito e limabile in seguito, Crew serve ora e ha
   ancora margine di crescita. Non è inerzia, è una scelta."
 Prossimo passo: backup remoto **risolto il 22/08** (repo privato
-  `genolele22/vvf-gestionale`, tre branch pushati). Resta solo coda ordinaria,
-  da riprendere quando Crew lascia spazio: logbook (2 riparametrizzazioni grosse
-  + una decina di voci minori), ODT ordine nomi, ODT oltre 5 malati,
-  anagrafica turno C, rimozione delle 15 funzioni morte del bot.
+  `genolele22/vvf-gestionale`, tre branch pushati). Stesso giorno, fix ODT
+  logbook #208 (VP Morello spariva dal foglio 20/08: match testuale troppo
+  largo scambiava cognomi con "ore" nel nome per il placeholder della data)
+  — deployato, verificato in prod, nota lasciata aperta: la chiude Moli
+  quando l'ha controllata lui. Resta solo coda ordinaria, da riprendere
+  quando Crew lascia spazio: logbook (2 riparametrizzazioni grosse + una
+  decina di voci minori), ODT ordine nomi, ODT oltre 5 malati, anagrafica
+  turno C, rimozione delle 15 funzioni morte del bot.
 
 ---
 
