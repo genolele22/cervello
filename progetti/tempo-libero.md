@@ -2,6 +2,17 @@
 
 **Stato:** da progettare (idea del 2026-07-06)
 
+## Stato
+
+Stato: in pausa — ferma alla specifica, mai iniziata. Idea del 06/07, nessun
+  avanzamento in 47 giorni. 5ª in classifica.
+Deciso: forma consigliata = bot Telegram, non web app (Lele la userebbe da
+  Android). L'infrastruttura esiste già: ciclo turni in `calendar_turni.py`,
+  bot del cervello scritto, Google Calendar collegato via MCP.
+Prossimo passo: 3 decisioni tue che sbloccano tutto — forma (Telegram vs web),
+  fonte degli impegni (Google Calendar vs inserimento a mano), hosting
+  (Fly.io come vvf). Finché non arrivano non c'è niente da costruire.
+
 ## Obiettivo
 
 App che propone come usare il tempo libero in modo coerente:

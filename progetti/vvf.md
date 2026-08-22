@@ -2,12 +2,23 @@
 
 **Cos'è:** bot Telegram + gestionale web per il Comando Provinciale VVF di Genova — richieste ferie/permesso/malattia/infortunio/missione, foglio di servizio, ODT, agenda, scambio turni.
 **Stato:** LIVE, in produzione, 4 turni (A/B/C/D) sullo stesso gestionale.
-**Priorità:** massima tra i progetti di Lele — da finire.
+**Priorità:** 2ª nella classifica del 22/08/2026 (dopo ASD/Crew) — sostanzialmente finito, si lima in seguito.
 
 **Stack:** bot Python (python-telegram-bot) su Fly.io (`vvf-ferie-bot`), gestionale PHP su Fly.io (`vvf-gestionale`), DB condiviso TiDB Cloud.
 **Repo:** `/home/genolele22/vvf-ferie-bot` e `/home/genolele22/vvf-gestionale` (quest'ultimo lavora sul branch `logbook`, che di fatto è il trunk — `master` è indietro di 185 commit, da sistemare prima o poi. Nessun remote configurato su `vvf-gestionale`; `vvf-ferie-bot` ha un remote GitHub ma i commit locali non vengono pushati in automatico).
 
 **Betatester principale:** Andrea Molinari ("Moli") — segnala bug e richieste nel Logbook interno al gestionale (`/logbook`), tenuto vivo finché il bot resta in beta.
+
+## Stato
+
+Stato: in corso — di fatto in limatura, non più in costruzione
+Deciso: 22/08/2026 — vvf scende al 2° posto della classifica. Motivo dichiarato da
+  Lele: "vvf è sostanzialmente finito e limabile in seguito, Crew serve ora e ha
+  ancora margine di crescita. Non è inerzia, è una scelta."
+Prossimo passo: creare il repo GitHub vuoto `vvf-gestionale` (privato, senza
+  README) — azione di Lele, poi collego il remote via SSH e pusho in un minuto.
+  È l'unico punto con rischio reale: oggi quel codice non ha nessun backup remoto,
+  mai pushato una volta. Il resto (logbook, ODT, turno C) è coda ordinaria.
 
 ---
 

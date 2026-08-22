@@ -1,6 +1,8 @@
 # Task pendenti
 
-Aggiornato: 2026-08-19. Priorità dichiarate: finire vvf → gestionale ASD → app tempo libero → basso + inglese.
+Aggiornato: 2026-08-22. Priorità reali (confermate 22/08/2026): ASD/Crew → vvf → Last Pact → The Raven → app tempo libero → #succedonocose → automazioni.
+Motivo dell'ordine: vvf è sostanzialmente finito e limabile in seguito, Crew serve ora e ha ancora margine di crescita. Non è inerzia, è una scelta.
+Fuori classifica: rotazione chiavi The Raven (sezione 0).
 
 ## 0. ⚠️ Sicurezza — da fare appena possibile, precede il resto
 - [x] **Revocare il token GitHub esposto in chiaro** — fatto 16/08: token revocato (verificato con chiamata API → 401), the-raven passato a SSH (chiave ed25519 nuova su ~/.ssh, aggiunta su GitHub)
@@ -8,6 +10,7 @@ Aggiornato: 2026-08-19. Priorità dichiarate: finire vvf → gestionale ASD → 
 - [ ] **vvf-gestionale — nessun backup remoto**: confermato 19/08, zero `git remote`, mai pushato una volta. **Bloccato su Lele**: crea un repo vuoto su GitHub (privato, `vvf-gestionale`, niente README/licenza) dal computer — poi io collego il remote via SSH e pusho logbook+master+scambio-salto in un minuto
 - [x] **vvf-ferie-bot — 20 commit locali indietro** — FATTO 19/08: pushati su `origin/main` via SSH (il vecchio token HTTPS nel credential store era morto — probabilmente lo stesso revocato il 16/08 e mai ripulito — sostituito con la chiave SSH già usata per the-raven/the-crew, e il token morto è stato rimosso dal credential store)
 - [ ] **The Crew — richiudere il libro soci** (`configurazione.libro_soci_modificabile` da `'si'` a `'no'`, verificato ancora `'si'` il 14/08): primo passo obbligato di `docs/PRIMA_DI_ANDARE_IN_PRODUZIONE.md`, prima del primo socio vero. Ferma da 5 giorni — **non è un flip diretto**, ha 3 code da chiudere prima (viste dal briefing del 19/08, dettagli nella sezione The Crew più sotto): Sara Lione senza riga nel libro soci, i 3 nomi multipli (serve una decisione di Lele, non indovinabile), le 19 persone senza verbale storico (decidere in blocco: refusi da unire o placeholder da lasciare)
+- [ ] **Rotazione chiavi esposte The Raven** — 3 chiavi ancora in chiaro (Supabase service_role, Mistral, Gemini). **Item indipendente, fuori dalla classifica progetti**: non è legato alla pausa di The Raven, il rischio corre comunque. Da fare appena possibile. Aperto dal 06/07/2026 — 47 giorni
 
 ## 1. vvf — da finire (bot + gestionale) — scheda: ~/cervello/progetti/vvf.md
 - [x] Caricamento assenze da admin (missione/permesso/malattia/infortunio) — FATTO 17/08, chiudeva logbook #142
@@ -37,6 +40,19 @@ Dossier: https://claude.ai/code/artifact/f2d4c7e1-e8e6-44c0-8e01-b1cc33193305
 - [ ] Aspetta ok di Lele sul piano proposto nel dossier
 
 ## 2. Gestionale ASD Fight in Progress — "The Crew" (scheda: ~/cervello/progetti/fight-in-progress.md)
+
+### 🆕 20/08 sera — rateizzazione online + 2 bug ruolo istruttore + lavoro 27 chiuso + logbook Lotto A/C
+- [x] **Lavoro 27 chiuso**: variazione di un abbonamento a metà anno (Kalèido). Scelta l'opzione "chiudi e riapri" con formula prorata sui mesi rimasti (non sull'incassato — Kalèido è anno accademico, non solare). LIVE
+- [x] **Rateizzazione nell'acquisto online**, prima volta che esiste: il socio può pagare a rate su `/socio/corsi`, ma **il piano non parte finché tu non lo approvi** dalla scheda socio (badge + pulsante "Approva"). Nessun addebito automatico prima della tua approvazione
+- [ ] **Va impostato da te**: perché una tipologia offra "a rate" online serve scrivere il numero di rate in Gestionale → Tipologie → (la tipologia) → Rateizzabile → "In quante rate". **Oggi nessuna tipologia ce l'ha**, quindi tutte vendono solo a pagamento unico online — non è un bug, va acceso a mano su quelle Kalèido che vuoi vendere a rate
+- [x] **Bug reale trovato e corretto, probabilmente vecchio**: nessun pacchetto Kalèido era mai acquistabile online (il controllo richiedeva un corso collegato, che Kalèido non ha mai per progetto) — corretto
+- [x] **2 bug distinti sul ruolo istruttore, risolti**: Giulia La Rocca (collaboratore creato dopo l'accesso) e William Aliati (invito attivato dopo essere diventato collaboratore) — due cause diverse, stesso sintomo. Corretti a mano + trigger/fix strutturali, nessun altro nella stessa situazione
+- [x] **Logbook Lotto A** (5 bug piccoli: campo "Rateizzabile" doppio e morto, pulsante Disattiva alleggerito, messaggio "nessuna lezione oggi" corretto, cancellazione spese) — LIVE
+- [x] **Logbook Lotto C** (4 feature: sezione "Mai invitati" in Accessi, quota associativa a importo fisso, scelte rapide di pagamento sulla scheda socio, filtro pre-iscrizioni lavorate/da lavorare) — LIVE
+- [ ] **Lotto B sospeso su tua richiesta**: bug "Indietro" serve doppio click — confermato Chrome, manca il dispositivo per riprenderlo
+- [ ] **~130 soci storici mai invitati** ad attivare l'accesso (importati da CSV, prima che l'invito automatico esistesse): pulsante "Invita tutti" pronto in Accessi, non ancora premuto — manda 130 email in un colpo, decidi tu quando
+- [ ] RID/SEPA per la rateizzazione (alternativa alla carta): non costruito, richiede prima un'attivazione sul tuo pannello Stripe — proposta scritta solo se la chiedi
+- Grafico a cascata per Claudio (percorso pre-iscrizione→socio/tesserato→accesso), consegnato in artifact + PDF
 
 ### 🆕 19/08 notte — archivio Drive ASD ricostruito (personale + istituzionale) + consuntivi storici caricati
 Dossier aggiornato: https://claude.ai/code/artifact/f2d4c7e1-e8e6-44c0-8e01-b1cc33193305 — memoria: `project_asd_archivio_drive.md`.
@@ -101,5 +117,5 @@ LIVE su thecrewgym.com (Next.js + Supabase + Stripe + Vercel). **17/08**: erogaz
 - [ ] Inglese: decidere metodo e routine minima settimanale
 
 ## In pausa
-- The Raven: mergiare tema-carta-globale (pushato 06/07); ruotare le **3** chiavi ancora esposte (Supabase service_role, Mistral, Gemini — il GitHub PAT è stato revocato il 16/08). Aperto dal 06/07: **44 giorni**, la pausa del progetto non mette in pausa il rischio delle chiavi
+- The Raven: mergiare tema-carta-globale (pushato 06/07). Aperto dal 06/07. **La rotazione delle 3 chiavi non sta più qui**: è un item indipendente in sezione 0 — la pausa del progetto non mette in pausa il rischio
 - [ ] Modello di business per The Raven — aperto dal 05/05/2026 (3,5 mesi)

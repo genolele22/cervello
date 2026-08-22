@@ -1,6 +1,21 @@
-# Gioco mobile — br-turni (nome in codice)
+# Gioco mobile — Last Pact (ex "br-turni", nome in codice iniziale)
 
 Avviato: 19/07/2026. Obiettivo dichiarato: **fruttare su app store** (revenue-first, non hobby).
+
+## Stato
+
+Stato: bloccato — su Lele, non sul codice. LIVE su https://last-pact.vercel.app,
+  produzione ferma al deploy del 02/08. Sette sessioni notturne di fila
+  (02→19/08) hanno prodotto zero codice: il backlog non ha più task eseguibili
+  dalla macchina.
+Deciso: direzione del combattimento = **poker** (29/07). 19/08: le notti
+  automatiche sono no-op, da valutare se sospendere il cron fino al prossimo input.
+Prossimo passo: due azioni tue, in alternativa o insieme — (1) un playtest reale
+  del pacchetto "Il round si racconta", che sblocca la taratura dei 3 valori 🧪;
+  (2) creare il progetto Supabase e passarmi le chiavi, unico gate di F3
+  (multiplayer e persistenza: oggi tutto è locale su un telefono solo).
+
+---
 
 ## Cos'è
 Battle royale a turni **asincrono**: 24 giocatori, mappa esagonale, fog of war,
@@ -35,7 +50,7 @@ Sessioni notturne schedulate: implementa dal backlog, simula migliaia di
 partite, scrive report in reports/. Lele decide e playtesta al mattino.
 Da configurare quando il PC arriva.
 
-## Prossimo passo
+## Prossimo passo (19/07/2026 — storico, superato)
 F0 CHIUSA 19/07: regole v1.0 congelate in DESIGN.md (orari fissi 8/14/20,
 3 HP, spettri con cap anti-abuso, imboscata, indizi, kill feed parziale,
 casse a posizioni note, zaino 3 slot, max 3 partite). Manca solo il naming

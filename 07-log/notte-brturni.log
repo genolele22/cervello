@@ -241,3 +241,7 @@ Sessione notturna 19/08 conclusa: nessun task eseguibile — settima notte di fi
 
 **Prossimo passo:** serve un tuo input (playtest del pacchetto "Il round si racconta", asset, o decisione). Confermo il consiglio già dato il 16/08: valuta se sospendere il cron notturno finché non arriva.
 [Wed Aug 19 02:40:31 AM CEST 2026] fine sessione notturna (exit 0)
+Already on 'master'
+[Thu Aug 20 02:37:02 AM CEST 2026] inizio sessione notturna (branch master)
+You've hit your monthly spend limit · raise it at claude.ai/settings/usage?from=cc_cli_limit_message
+[Thu Aug 20 02:37:10 AM CEST 2026] fine sessione notturna (exit 0)

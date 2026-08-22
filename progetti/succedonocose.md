@@ -4,6 +4,16 @@
 **Genere:** autofiction ironica e tagliente
 **Stato:** attiva
 
+## Stato
+
+Stato: attiva — 6ª in classifica, "quando scrive". Il vault non registra
+  lavoro da mesi, ma qui non è una misura affidabile: la scrittura succede
+  su Substack e non passa da me.
+Deciso: regola ferrea confermata — l'AI non scrive per questa newsletter.
+  Legge, commenta, dà feedback. Non scrive, non riformula, non propone bozze.
+Prossimo passo: nessuno da parte mia, per definizione. Se serve, c'è la skill
+  `pipeline-newsletter` per il pre-pubblicazione.
+
 ---
 
 ## Di cosa parla

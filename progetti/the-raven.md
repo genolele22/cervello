@@ -11,6 +11,19 @@ priorità: condizionata (dopo vvf e gestionale ASD)
 **Deploy:** Vercel (auto-deploy da main)
 **Path locale:** `/home/genolele22/progetti/the-raven`
 
+## Stato
+
+Stato: in pausa — 4° in classifica. Rientra appena Crew è operativo (deciso 06/08).
+  La pausa vale per lo sviluppo, non per il rischio: 3 chiavi restano esposte.
+Deciso: 06/08/2026 — il rientro non è più a tempo indeterminato ma agganciato a
+  Crew. Modello di business ancora **non deciso** dopo 3,5 mesi (aperto dal
+  05/05): è la decisione che sblocca tutto il resto. Ipotesi sul tavolo dal 06/08:
+  catalogo a bivi con sblocco/abbonamento stile DramaBox.
+Prossimo passo: fuori classifica e subito — ruotare le 3 chiavi esposte
+  (Supabase service_role, Mistral, Gemini). Alla ripresa vera: mergiare
+  `tema-carta-globale`, poi i 3 test rimasti aperti da maggio (qualità racconto
+  betatester, under-18 per fascia d'età, abilitare Romanzo).
+
 ---
 
 ## Cos'è
@@ -49,7 +62,7 @@ The Raven è il mezzo. Il fine è la scrittura.
 
 ---
 
-## Stato attuale (maggio 2026)
+## Com'era a maggio 2026 (storico)
 
 **In produzione:**
 - Generazione storia in background (Trigger.dev, nessun timeout)

@@ -1,5 +1,14 @@
 # Progetto — Automazioni e Bot
 
+## Stato
+
+Stato: infrastruttura — ultima in classifica, non è un progetto con un fine
+  ma il contenitore dei bot e delle automazioni che girano.
+Deciso: vvf-ferie-bot ha una scheda propria (`vvf.md`) ed è uscito di fatto
+  da qui. Quello che resta di specifico: bot Telegram trading, cervello-bot
+  (`~/cervello/bot-telegram`, oggi solo `send_briefing.py`), briefing mattutino.
+Prossimo passo: nessuno aperto. Da ripulire quando capita — vedi nota sotto.
+
 ## Cosa esiste
 
 - Bot Telegram per il trading

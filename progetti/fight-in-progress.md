@@ -4,6 +4,19 @@
 **Sport:** combattimento e functional training, danza (corsi Kalèido Project)
 **Stato:** attiva ma gira poco
 
+## Stato
+
+Stato: in corso — 1° in classifica, l'unico progetto realmente in movimento
+  (sessioni ininterrotte dal 13/08). LIVE su thecrewgym.com.
+Deciso: 19/08/2026 — il gestionale non è più solo interno, diventa prodotto
+  vendibile col nome **Crew** ("The Crew" resta il marchio della palestra).
+  Canale già esistente: un commercialista che lo propone ai propri clienti,
+  quindi niente rete commerciale né assistenza di primo livello a carico di Lele.
+Prossimo passo: mostrare la demo al commercialista e farsi correggere da lui la
+  sezione conformità — la sua firma su quel contenuto è ciò che rende il prodotto
+  credibile. In parallelo: sbloccare il libro soci, fermo su 3 decisioni di Lele
+  (Sara Lione, i 3 nomi multipli, le 19 persone senza verbale storico).
+
 ---
 
 ## Gestionale — "The Crew"
@@ -46,14 +59,31 @@ Copre: libro soci (append-only, a norma), rate/incassi/ricevute (numerazione pro
 - **Bot Telegram per le notifiche** — deciso il 16/08 al posto di WhatsApp, non ancora costruito
 - 4 casi anagrafici dubbi da un vecchio import (nomi doppi/genitore-figlio poco chiari) — ancora aperti
 - 12 righe di pagamenti storici con nominativi multipli in un campo, escluse dall'import — da chiarire
-- Estendere il fix "Salva che dice se ha salvato" agli altri punti dell'app (il meccanismo esiste già, va solo applicato)
+- ~~Estendere il fix "Salva che dice se ha salvato" agli altri punti dell'app~~ — **FATTO 22/08**: popup su 33 pagine + 12 moduli che cambiano pagina
 - Decidere se mandare in blocco l'invito ad attivare l'accesso ai ~130 soci storici mai invitati, o gestirli caso per caso
 - Sara Lione risulta socia ma senza riga nel libro soci: la sua area socio dice "nessuna posizione trovata" — da sistemare, e ha anche un sospetto doppione già segnalato il 06/08
 - Bug diagnosticato non ancora corretto: nella pagina "Oggi in palestra" di un istruttore, un allievo sparisce se la tipologia del suo corso è momentaneamente non attiva, anche con iscrizione valida
 
+**20/08/2026 — rateizzazione nell'acquisto online (nuova) + 2 bug distinti sul ruolo istruttore + lavoro 27 chiuso + logbook Lotto A/C**: **il socio può ora pagare a rate su `/socio/corsi`**, ma il piano non parte da solo — Lele ha l'ultima parola, approva ogni richiesta dalla scheda socio prima che scattino gli addebiti automatici delle rate successive. Il numero di rate **lo decide Lele per tipologia** (non il socio: un ripensamento fatto lo stesso giorno, dopo la prima versione con scelta libera) — va impostato in Gestionale → Tipologie → "In quante rate": oggi nessuna tipologia ce l'ha, quindi tutte vendono ancora solo a pagamento unico online finché non lo scrive lui su quelle Kalèido che vuole vendere a rate. Nello stesso giro, **trovato e corretto un bug probabilmente vecchio**: nessun pacchetto Kalèido era mai acquistabile online (il controllo richiedeva un corso collegato, che Kalèido non ha mai per progetto).
+**Due bug distinti sul ruolo istruttore**, stesso sintomo (un socio reso collaboratore restava "socio" invece di diventare "istruttore"), cause opposte: Giulia La Rocca (il collaboratore è arrivato dopo l'accesso già esistente) e William Aliati, poche ore dopo (l'accesso è stato attivato dopo essere già diventato collaboratore). Entrambi corretti a mano e con fix strutturali, verificato che nessun altro fosse nella stessa situazione.
+**Lavoro 27 chiuso**: variazione di un abbonamento Kalèido a metà anno — scelta l'opzione "chiudi il vecchio contratto, riaprine uno per il residuo", con la differenza di prezzo prorata sui mesi rimasti (Kalèido è anno accademico ottobre-giugno, non l'anno solare).
+**Logbook, altre 9 note chiuse** (Lotto A: 5 bug piccoli — un campo "Rateizzabile" doppio e morto, pulsante Disattiva alleggerito, messaggio sbagliato su "Oggi in palestra", cancellazione spese aggiunta; Lotto C: 4 feature — sezione "Mai invitati" in Accessi per i ~130 soci storici mai invitati mai attivati [pulsante pronto, non ancora premuto], quota associativa a importo fisso, scelte rapide di pagamento sulla scheda socio, filtro pre-iscrizioni lavorate/da lavorare). **Lotto B sospeso su richiesta di Lele** (bug "Indietro serve doppio click": confermato Chrome, manca il dispositivo per riprenderlo). RID/SEPA per la rateizzazione online resta fuori, richiede un'attivazione sul pannello Stripe — proposta solo se richiesta. Consegnato anche un grafico a cascata (artifact + PDF) del percorso pre-iscrizione→socio/tesserato→primo accesso, per Claudio.
+
 **Pulizia da fare a inizio settembre** (quando Lele dà l'ok per l'uso vero, non solo collaudo): corso "TEST — Danza" e account `socio.prova@thecrew.training`, più il nuovo corso/tipologia "TEST — Pagamento 1€" (già disattivati il 18/08, non cancellabili: usati da incassi veri) — tutti dati di collaudo ancora presenti, da tirar via dal DB reale.
 
 Dettagli tecnici e cronologia sessioni: memoria auto-gestita del secondo cervello (progetto "the-crew" nell'indice memoria), non qui — questa scheda resta la vista d'insieme.
+
+**22/08/2026 — giornata piena, tutto online.** Import dello storico (102 persone: certificati medici, quote 2026, abbonamenti), poi giro di logbook con **zero note aperte a fine giornata**.
+
+**Il gestionale adesso ti dice le cose che sapeva e non diceva.** La pagina "Da fare" apre su **127 quote associative da rinnovare**, più i certificati medici in scadenza nei prossimi 30 giorni e gli abbonamenti che stanno per finire. Prima quei numeri erano nel database e non li vedeva nessuno.
+
+**L'app sul telefono adesso è un'app.** Mancava del tutto il file che dice a Chrome come comportarsi: per questo si apriva con la schermata bianca. Ora ha icona, colori del marchio e si apre direttamente dove serve a seconda di chi entra. **Chi l'aveva già aggiunta alla schermata home deve toglierla e rimetterla.**
+
+**Adesione dei minorenni a norma.** Era il buco più serio: il sistema sapeva che una domanda era per un minore ma **non registrava chi l'avesse firmata**. Ora il genitore entra in anagrafica come persona sua, collegata al figlio, e la domanda porta scritto chi ha firmato. Il genitore non diventa socio. Un genitore con due figli iscritti resta una persona sola.
+
+**Ogni salvataggio adesso lo dice, con un avviso grande.** Richiesta di Lele pensando a Claudio: prima la conferma era una riga in fondo al modulo e su pagine lunghe finiva sotto il bordo dello schermo — si premeva Salva e non si vedeva niente. Ora compare in alto, si legge, e si chiude con "Ho capito". Vale su 33 pagine più i 12 moduli che dopo il salvataggio cambiano pagina.
+
+Semplificate anche le etichette dello stato socio ("In tolleranza" → "Quota scaduta — ancora in tempo"). Gli altri termini tecnici Lele li tiene com'erano: li usa lui.
 
 ---
 

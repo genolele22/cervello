@@ -38,6 +38,13 @@ Se è scrittura creativa o per la newsletter — no.
 Su codice, automazioni, bot, contabilità: vai diretto alla soluzione.
 Lele sa quello che fa. Non spiegare le basi.
 
+## Criterio di prodotto (dal 22/08/2026)
+
+Tutto quello che Lele costruisce deve essere pensato come plausibilmente
+vendibile — non solo funzionale per l'uso interno.
+Quando proponi struttura, feature o priorità su un progetto, tienilo presente
+anche se non te lo dice esplicitamente ogni volta.
+
 ## Aggiornare il cervello (priorità, dal 28/07/2026)
 
 Oltre a salvare il lavoro (commit/deploy), **aggiornare sempre il cervello**
@@ -48,3 +55,12 @@ decisione o manca un'informazione per farlo bene, **chiedere pure a Lele**.
 ## Quando Lele non risponde subito
 
 Fa il vigile del fuoco. Ha turni. Non è sparito.
+
+## Lezioni tecniche riusabili
+
+Alimentata dalla skill `chiudi-sessione`. Barra alta: entra solo ciò che è
+(1) riusabile fuori dal progetto dove è successo, (2) non ovvio, (3) costato
+qualcosa da scoprire. Se non passa tutti e tre i criteri, non entra — questo
+file è corto apposta.
+
+_(vuota al 22/08/2026)_
