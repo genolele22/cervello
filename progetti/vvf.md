@@ -5,7 +5,7 @@
 **Priorità:** 2ª nella classifica del 22/08/2026 (dopo ASD/Crew) — sostanzialmente finito, si lima in seguito.
 
 **Stack:** bot Python (python-telegram-bot) su Fly.io (`vvf-ferie-bot`), gestionale PHP su Fly.io (`vvf-gestionale`), DB condiviso TiDB Cloud.
-**Repo:** `/home/genolele22/vvf-ferie-bot` e `/home/genolele22/vvf-gestionale` (quest'ultimo lavora sul branch `logbook`, che di fatto è il trunk — `master` è indietro di 185 commit, da sistemare prima o poi. Nessun remote configurato su `vvf-gestionale`; `vvf-ferie-bot` ha un remote GitHub ma i commit locali non vengono pushati in automatico).
+**Repo:** `/home/genolele22/vvf-ferie-bot` e `/home/genolele22/vvf-gestionale` (quest'ultimo lavora sul branch `logbook`, che di fatto è il trunk — `master` è indietro di 185 commit, da sistemare prima o poi. Dal 22/08/2026 entrambi hanno un remote GitHub privato via SSH — `genolele22/vvf-ferie-bot` e `genolele22/vvf-gestionale` — ma i commit locali **non** vengono pushati in automatico: va fatto a mano a fine sessione).
 
 **Betatester principale:** Andrea Molinari ("Moli") — segnala bug e richieste nel Logbook interno al gestionale (`/logbook`), tenuto vivo finché il bot resta in beta.
 
@@ -15,10 +15,11 @@ Stato: in corso — di fatto in limatura, non più in costruzione
 Deciso: 22/08/2026 — vvf scende al 2° posto della classifica. Motivo dichiarato da
   Lele: "vvf è sostanzialmente finito e limabile in seguito, Crew serve ora e ha
   ancora margine di crescita. Non è inerzia, è una scelta."
-Prossimo passo: creare il repo GitHub vuoto `vvf-gestionale` (privato, senza
-  README) — azione di Lele, poi collego il remote via SSH e pusho in un minuto.
-  È l'unico punto con rischio reale: oggi quel codice non ha nessun backup remoto,
-  mai pushato una volta. Il resto (logbook, ODT, turno C) è coda ordinaria.
+Prossimo passo: backup remoto **risolto il 22/08** (repo privato
+  `genolele22/vvf-gestionale`, tre branch pushati). Resta solo coda ordinaria,
+  da riprendere quando Crew lascia spazio: logbook (2 riparametrizzazioni grosse
+  + una decina di voci minori), ODT ordine nomi, ODT oltre 5 malati,
+  anagrafica turno C, rimozione delle 15 funzioni morte del bot.
 
 ---
 
@@ -42,6 +43,6 @@ Sessione lunga sul gestionale, tutto deployato su Fly.io (commit locali, non pus
 - **ODT — oltre 5 malati spariscono dalla lista**: la soluzione proposta (accodare a capo come già fatto per i mezzi) non va bene per Lele, da ripensare insieme.
 - **15 funzioni morte nel bot**: individuate, tenute finché non dai l'ok a toglierle.
 - **Anagrafica turno C**: unico turno senza dati completi.
-- Push su GitHub dei commit (per ora restano locali).
+- ~~Push su GitHub dei commit~~ — fatto il 22/08/2026, entrambi i repo hanno un remote privato.
 
 Dettagli tecnici e cronologia delle sessioni: memoria auto-gestita del secondo cervello (progetti `vvf_*` nell'indice memoria) — non qui, questa scheda resta la vista d'insieme.
