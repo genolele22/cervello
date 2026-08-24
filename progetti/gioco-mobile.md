@@ -436,3 +436,12 @@ il combattimento, e tarare i tre valori 🧪 lasciati aperti), oppure nuovi
 asset grafici, oppure una decisione di design esplicita. Finché non arriva
 uno di questi, le notti restano no-op — valutare se sospendere il cron fino
 al prossimo input.
+
+## Aggiornamento 24/08/2026 — ancora fermo, cron di fatto già in pausa
+Dopo il consiglio del 19/08 il cron non ha più prodotto commit per 20-23/08
+(solo marcatori vuoti senza report), segno che la sospensione è stata di
+fatto applicata. Stanotte la sessione è ripartita su incarico esplicito:
+stesso stato di sempre, backlog invariato dal 02/08, 254/254 test verdi,
+nessun deploy (niente da chiudere). Nessuna novità reale da riportare finché
+Lele non gioca il pacchetto deployato il 02/08 o non porta asset/decisioni
+nuove.
