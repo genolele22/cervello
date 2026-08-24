@@ -245,3 +245,15 @@ Already on 'master'
 [Thu Aug 20 02:37:02 AM CEST 2026] inizio sessione notturna (branch master)
 You've hit your monthly spend limit · raise it at claude.ai/settings/usage?from=cc_cli_limit_message
 [Thu Aug 20 02:37:10 AM CEST 2026] fine sessione notturna (exit 0)
+Already on 'master'
+[Mon Aug 24 02:37:01 AM CEST 2026] inizio sessione notturna (branch master)
+Sessione notturna conclusa, niente da fare stanotte.
+
+- L'epica "CHIAREZZA DEGLI ESITI" (C1-C4 + Chiusura) risulta già tutta chiusa da tempo (deploy 29/07), e sopra di lei nel file tutte le epiche successive sono già chiuse e live (ultima: "Il round si racconta", deploy 02/08). Backlog invariato da 22 giorni.
+- Le 14 checkbox aperte restanti sono tutte `[LELE]`, bilanciamento congelato, restyling bloccato da asset mancanti, o infra `[F3]` non autorizzata — nessuna eseguibile senza inventare lavoro o toccare regole congelate.
+- `npm run typecheck && npm test`: 254/254 verdi, root+web puliti.
+- Nessun deploy (niente da chiudere). Commit locale del report (`99a1160`), nessun push.
+- Aggiornato `~/cervello/progetti/gioco-mobile.md` (commit locale nel vault) notando che questa è l'ottava notte su nove con esito identico dal 02/08, e che il cron sembra già essersi fermato da solo per 20-23/08.
+
+Prossimo passo resta un input tuo: playtest reale del pacchetto deployato il 02/08, nuovi asset grafici, o una decisione di design — altrimenti conviene sospendere del tutto le sessioni notturne finché non arriva uno di questi.
+[Mon Aug 24 02:39:44 AM CEST 2026] fine sessione notturna (exit 0)
