@@ -104,3 +104,6 @@ SessionEnd hook [node "${CLAUDE_PLUGIN_ROOT}/hooks/session-end-cleanup.mjs"] fai
 SessionEnd hook [node "${CLAUDE_PLUGIN_ROOT}/hooks/session-end-cleanup.mjs"] failed: /bin/sh: 1: node: not found
 
 [Mon Aug 24 07:30:36 AM CEST 2026] Briefing creato: /home/genolele22/cervello/02-operativo/note-giornaliere/2026-08-24.md
+SessionEnd hook [node "${CLAUDE_PLUGIN_ROOT}/hooks/session-end-cleanup.mjs"] failed: /bin/sh: 1: node: not found
+
+[Tue Aug 25 03:31:46 PM CEST 2026] Briefing creato: /home/genolele22/cervello/02-operativo/note-giornaliere/2026-08-25.md
