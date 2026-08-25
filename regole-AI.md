@@ -73,3 +73,22 @@ cognome "MORELLO" contiene "ore" (M-**ore**-llo). Usare un confine di parola
 Scoperto su: vvf-gestionale, fix ODT logbook #208 (22/08/2026) — VP Morello
 spariva dai fogli di servizio perché il suo cognome veniva scambiato per il
 testo campione della data in intestazione.
+
+### Fly.io con auto-stop: /tmp non sopravvive tra due comandi SSH separati
+Una macchina con `min_machines_running=0` si ferma e riparte da sola tra un
+comando e l'altro. Un file caricato in `/tmp` via SFTP e poi riusato in un
+`fly ssh console` successivo a volte è già sparito, e l'errore "file non
+trovato" sembra un bug di codice quando è solo il riavvio della macchina.
+Soluzione: unire copia e uso in un solo comando/una sola invocazione SSH
+(es. un unico `php -r '...'` che fa tutto), non spezzare in due passaggi.
+Scoperto su: vvf-gestionale, sessione di test del 25/08/2026.
+
+### Un fix a cavallo di due file non va mai in prod a metà
+Se un fix cambia sia una funzione condivisa sia il suo chiamante, copiare a
+mano via SSH solo il primo file "per un test veloce" lascia la produzione in
+uno stato incoerente finché non arriva anche il secondo — anche per pochi
+minuti. Aspettare ed eseguire un deploy vero di entrambi insieme, mai un `cp`
+isolato su un file con una dipendenza diretta non ancora aggiornata altrove.
+Scoperto su: vvf-gestionale, fix logbook #223 (25/08/2026) — per alcuni
+minuti tutte le ferie approvate/rifiutate sono apparse "in attesa" in
+produzione.

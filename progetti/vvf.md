@@ -11,6 +11,23 @@
 
 ## Stato
 
+Stato: in corso — sessione lunga di limatura logbook (25/08/2026), non ferma
+  come lasciava intendere il "sostanzialmente finito" del 22/08.
+Deciso: la composizione minima di squadra (capo/autista/abilitazioni) è
+  per-turno, non globale — nuova tabella `posizione_composizione` + pagina
+  admin dedicata `composizione_squadra.php` (stesso schema di
+  `regole_squadra.php`), non più campi sull'anagrafica mezzi condivisa.
+Prossimo passo: chiuse 26 voci di logbook (bug di correttezza, agenda,
+  foglio, composizione squadra per-turno, password fureria gestibile da
+  admin con Fernet compatibile col bot). Tutto deployato e verificato nei
+  log. Restano aperte solo per scelta esplicita di Lele: #220 (restyling
+  colori ODT), #183/#207/#216 (ODT: ordine nomi, oltre 5 malati), tasto
+  "Spec." sul foglio (comportamento mai definito).
+
+---
+
+## Stato al 22/08/2026
+
 Stato: in corso — di fatto in limatura, non più in costruzione
 Deciso: 22/08/2026 — vvf scende al 2° posto della classifica. Motivo dichiarato da
   Lele: "vvf è sostanzialmente finito e limabile in seguito, Crew serve ora e ha
@@ -42,9 +59,13 @@ Sessione lunga sul gestionale, tutto deployato su Fly.io (commit locali, non pus
 
 ## Aperto per Lele
 
-- **Logbook**: restano 2 voci grosse di riparametrizzazione (pagina admin per i parametri oggi nel codice del bot, credenziali fureria gestibili da admin invece che da anagrafica vigile) più una decina di voci foglio/anagrafica non ancora affrontate — priorità da dare tu.
-- **ODT — ordine nomi disallineato**: serve un foglio concreto dove è successo per riprodurre il bug prima di intervenire.
-- **ODT — oltre 5 malati spariscono dalla lista**: la soluzione proposta (accodare a capo come già fatto per i mezzi) non va bene per Lele, da ripensare insieme.
+- ~~Logbook: 2 voci grosse di riparametrizzazione~~ — fatte il 25/08/2026
+  (composizione squadra per-turno #172/#218/#163, credenziali fureria da
+  admin #92/#136).
+- **ODT — ordine nomi disallineato**: serve un foglio concreto dove è successo per riprodurre il bug prima di intervenire. Deliberatamente saltato il 25/08 ("vai dritto alle grosse").
+- **ODT — oltre 5 malati spariscono dalla lista**: la soluzione proposta (accodare a capo come già fatto per i mezzi) non va bene per Lele, da ripensare insieme. Deliberatamente saltato il 25/08.
+- **ODT — restyling colori/stili (#220)**: rimandato il 25/08, "un'altra volta".
+- **Tasto "Spec." sul foglio (#226)**: icona e posizione fatte, comportamento al click mai definito — lasciato da parte apposta il 25/08.
 - **15 funzioni morte nel bot**: individuate, tenute finché non dai l'ok a toglierle.
 - **Anagrafica turno C**: unico turno senza dati completi.
 - ~~Push su GitHub dei commit~~ — fatto il 22/08/2026, entrambi i repo hanno un remote privato.
