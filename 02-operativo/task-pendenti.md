@@ -1,6 +1,6 @@
 # Task pendenti
 
-Aggiornato: 2026-08-22. Priorità reali (confermate 22/08/2026): ASD/Crew → vvf → Last Pact → The Raven → app tempo libero → #succedonocose → automazioni.
+Aggiornato: 2026-08-26. Priorità reali (confermate 22/08/2026): ASD/Crew → vvf → Last Pact → The Raven → app tempo libero → #succedonocose → automazioni.
 Motivo dell'ordine: vvf è sostanzialmente finito e limabile in seguito, Crew serve ora e ha ancora margine di crescita. Non è inerzia, è una scelta.
 Fuori classifica: rotazione chiavi The Raven (sezione 0).
 
@@ -14,6 +14,10 @@ Fuori classifica: rotazione chiavi The Raven (sezione 0).
 - [ ] **Rotazione chiavi esposte The Raven** — 3 chiavi ancora in chiaro (Supabase service_role, Mistral, Gemini). **Item indipendente, fuori dalla classifica progetti**: non è legato alla pausa di The Raven, il rischio corre comunque. Da fare appena possibile. Aperto dal 06/07/2026 — 47 giorni
 
 ## 1. vvf — da finire (bot + gestionale) — scheda: ~/cervello/progetti/vvf.md
+- [x] **Logbook #230 — Agenda malattia/infortunio** — FATTO 26/08, LIVE. L'Agenda di agosto apriva una sezione per ogni giorno di calendario dal 10 giugno (riposi compresi): da 82 sezioni a 16, tutte del mese e tutte turni di lavoro. Mal/inf ora hanno una riga per turno (nome, targhetta, sigla sede, periodo, n. turni, cestino)
+- [x] **Logbook #220 — Stili & Colori restyling completo** — FATTO 26/08, LIVE (delegato a un agente Opus, verificato e deployato a mano). Colori ODT disattivabili, grassetto/corsivo per straordinario e fuori sede, nuova card Colore Qualifica (Cr/Cs/Vp) attiva solo con stile «solo numero». Default = aspetto invariato: nessun turno cambia faccia da solo. **Da guardare al primo uso**: un ODT di giugno con stile storico (dev'essere identico) e uno con «solo numero» + colori qualifica
+- [ ] **#228 — data di fine malattia sbagliata** (Longo 01/09 invece di 31/08): NON è un errore di visualizzazione, è scritta così nel DB — va corretta dove la richiesta viene scritta (bot / assenze_simulate)
+- [ ] #226 — tasti del foglio (Prec./​.odt/Spec.), #229 — icona Patenti: non affrontate
 - [x] Caricamento assenze da admin (missione/permesso/malattia/infortunio) — FATTO 17/08, chiudeva logbook #142
 - [ ] Logbook: 2 voci di riparametrizzazione grosse rimaste (pagina admin parametri bot, credenziali fureria da admin) + una decina di voci foglio/anagrafica non affrontate
 - [ ] ODT — ordine nomi a volte disallineato tra gestionale e file: serve un foglio concreto dove è successo per riprodurlo (17/08)
@@ -39,6 +43,21 @@ Dossier: https://claude.ai/code/artifact/f2d4c7e1-e8e6-44c0-8e01-b1cc33193305
 - [ ] Trovato l'indice master che Lele aveva scritto a marzo (`CATALOGO_ASD_Fight_in_Progress.xlsx` su Drive) — checklist in gran parte ancora aperta
 - [ ] `BONIFICA_LIBRO_SOCI.xlsx` (76 decadenze, 67 CF mancanti) introvabile — da ricostruire da zero sui dati di oggi (0 decadenze mai registrate nel gestionale)
 - [ ] Aspetta ok di Lele sul piano proposto nel dossier
+
+### 🆕 26/08 — la valanga di mail (RISOLTO, LIVE)
+Roberta Bertelli ha ricevuto **577 copie** dello stesso invito; ~3.000 email in due giorni verso 7 persone, fino a far bloccare da Google la casella `fightinprogress@gmail.com` per limite di invio superato — cioè ferma **tutta** la posta dell'associazione, non solo le notifiche.
+Causa: il trigger della migrazione 0097 lascia passare solo il superadmin sulle UPDATE di `notifica`, ma il cron gira con la service role; e il codice **spediva prima e registrava dopo** → l'email partiva, l'esito non si riusciva a scrivere, la riga restava in coda, cinque minuti dopo si ripeteva.
+- [x] Corretto (0110 + prenotazione della riga prima dell'invio + tetto ai tentativi + voce urgente nel cruscotto) e **tetto di sicurezza** (0111): max 3 email/giorno allo stesso indirizzo, 300 complessive, su ogni strada di invio, fail-closed
+- [x] Coda ripulita: 4 annullate (avevano già attivato l'accesso), 3 partite davvero
+- [ ] **Casella iCloud di Vittoria Pizzurro piena** — va raggiunta in altro modo
+- [ ] Il tetto di 0111 non è ancora stato esercitato dal vivo (nessun traffico dopo il deploy)
+- [ ] Un errore del **mittente** (5.4.5 limite Gmail) consuma comunque un tentativo pur non essendo colpa del destinatario: se ricapita, valutare di non farlo contare
+- [ ] **Posta transazionale su dominio proprio**: finché si parte da una Gmail personale il tetto di Google resta un rischio strutturale (era già nei bloccanti pre-cliente)
+
+### 🆕 26/08 — audit da acquirente del gestionale (rapporto in `the-crew/docs/AUDIT_ACQUIRENTE_20260826.md`)
+Due rilievi grossi oltre alle mail, **non ancora affrontati**:
+- [ ] La **demo è vuota proprio nelle aree socio e collaboratore** (l'utente demo non è collegato a nessuna anagrafica): è l'ambiente con cui il commercialista dovrebbe vendere
+- [ ] Il conto della realtà: **12 accessi su 191 soci, 0 lezioni e 0 presenze da sempre** — metà del prodotto non è mai stata accesa nemmeno in casa. L'acquirente propone di far fare l'appello per una settimana vera agli 8 istruttori e guardare i numeri, prima di sviluppare altro
 
 ## 2. Gestionale ASD Fight in Progress — "The Crew" (scheda: ~/cervello/progetti/fight-in-progress.md)
 
