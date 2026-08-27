@@ -92,3 +92,31 @@ isolato su un file con una dipendenza diretta non ancora aggiornata altrove.
 Scoperto su: vvf-gestionale, fix logbook #223 (25/08/2026) — per alcuni
 minuti tutte le ferie approvate/rifiutate sono apparse "in attesa" in
 produzione.
+
+### La logica duplicata in JS ricompare finché non si genera dal PHP
+La stessa regola scritta due volte — una in PHP e una ricopiata a mano nel
+JavaScript della pagina — si disallinea da sola alla prima modifica. Non basta
+"stare attenti a tenerle uguali": va generata la versione JS **dalle costanti
+del PHP**, così esiste una sola fonte di verità. E poi va verificata su tutto
+il dominio, non su un caso: confrontare JS e PHP su tutti i 365 giorni
+dell'anno costa un minuto e chiude la questione.
+Scoperto su: vvf-gestionale, #213/#214 (27/08/2026) — `ferie_simulate.php`
+aveva una copia inline dell'ancora del ciclo turni, lo stesso difetto che a
+luglio aveva prodotto il bug della convenzione del salto. Ora
+`includes/turni_js.php` la genera da `includes/turni.php`.
+
+### Un tasto senza icona può avere l'icona giusta ma troppo nuova
+Prima di aggiungere un'icona che "manca", controllare se c'è già: le emoji
+recenti (qui 🪪, U+1FAAA) non vengono disegnate da molti browser e il tasto
+sembra vuoto. Il fix non è aggiungerne una, è sostituirla con una più vecchia
+e diffusa.
+Scoperto su: vvf-gestionale, logbook #229 (26/08/2026).
+
+### Note del logbook a gruppi: dividere per area di file, non per priorità
+Con molte note aperte, raggrupparle per **area di file** (Agenda / ODT /
+Amministrazione) e dare un gruppo per agente: così due agenti non toccano mai
+lo stesso file e possono lavorare in parallelo o sfalsati. Nel brief di ogni
+gruppo vanno messi in chiaro i precedenti che contano (il commit da imitare,
+la regola già costata un incidente, il lavoro già fatto da non rifare):
+è quello che evita che l'agente riscopra tutto da capo o riapra un bug noto.
+Scoperto su: vvf-gestionale, giro di 8 note del 26-27/08/2026.

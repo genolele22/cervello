@@ -11,6 +11,33 @@
 
 ## Stato
 
+Stato: in corso — giro di logbook a gruppi paralleli (26-27/08/2026), 8 note
+  chiuse in una notte con tre agenti Opus lanciati a 2h di distanza.
+Deciso: quando le note del logbook sono tante, si dividono **per area di file**
+  (Agenda / ODT / Amministrazione), un agente per area, sfalsati nel tempo per
+  non incrociare i limiti di token. Nessun conflitto sui file, ogni gruppo
+  chiude con commit + deploy + verifica del timestamp del deployment.
+Prossimo passo: chiuse #229 (icona Patenti: la 🪪 non veniva disegnata dal
+  browser, sostituita con 🚗), #232+#233 (Agenda: missione e permesso
+  giornaliero come riga **per turno** e non per giorno, navigazione mese
+  duplicata in fondo — deploy v235), #216+#231+#235 (ODT: asterisco sul
+  permesso orario, grassetto residuo tolto **dal modello .odt** come da
+  regola, apostrofo tipografico spostato nel punto di passaggio obbligato
+  `setText()` — deploy v236), #213+#214 (calendari di Amministrazione:
+  estetica del calendario ferie sulle assenze **senza** perdere la
+  selezionabilità di tutti i giorni solari, riga tipo che non fa più saltare
+  la pagina — deploy v237). Tutto pushato su `logbook`.
+  Sul logbook restano 4 note aperte, nessuna di questo giro.
+  Tre code corte lasciate a Lele, tutte da una riga: l'asterisco sull'ODT ce
+  l'ha il permesso orario ma **non** le visite mediche (che sul web ce l'hanno);
+  missione e permesso in Agenda hanno perso il badge "🔒 registrata"; capo e
+  vice servizio in intestazione ODT non passano dal punto dove si mette
+  l'asterisco.
+
+---
+
+## Stato al 25/08/2026
+
 Stato: in corso — sessione lunga di limatura logbook (25/08/2026), non ferma
   come lasciava intendere il "sostanzialmente finito" del 22/08.
 Deciso: la composizione minima di squadra (capo/autista/abilitazioni) è
