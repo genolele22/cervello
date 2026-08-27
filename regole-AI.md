@@ -112,6 +112,16 @@ sembra vuoto. Il fix non è aggiungerne una, è sostituirla con una più vecchia
 e diffusa.
 Scoperto su: vvf-gestionale, logbook #229 (26/08/2026).
 
+### `id` non è mai un fallback per `vigile_id`: si aggiunge l'alias esplicito
+Quando un helper condiviso legge `$a['vigile_id']` e una query diversa restituisce solo
+`v.id`, la tentazione è scrivere `$a['vigile_id'] ?? $a['id']`. È pericoloso: in altri
+array della stessa applicazione `id` è l'id della **riga** (assegnazione, richiesta), non
+del vigile — il fallback prenderebbe silenziosamente la persona sbagliata, senza errori.
+La correzione è nella query: `SELECT v.id, v.id AS vigile_id, ...`.
+Verifica che smaschera l'errore: usare un caso con **omonimi** e controllare che il segno
+segua l'id e non il cognome.
+Scoperto su: vvf-gestionale, asterisco ODT su capo/vice servizio (27/08/2026).
+
 ### Note del logbook a gruppi: dividere per area di file, non per priorità
 Con molte note aperte, raggrupparle per **area di file** (Agenda / ODT /
 Amministrazione) e dare un gruppo per agente: così due agenti non toccano mai
