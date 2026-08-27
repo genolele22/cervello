@@ -6,6 +6,25 @@ Ultimo aggiornamento: 27/08/2026.
 
 ---
 
+## 🔴 DOVE RIPRENDERE (stato al 27/08 sera)
+
+**In corso**: collegamento dell'estensione "Claude in Chrome" a questa sessione, per far pilotare Canva direttamente a Claude Code (Lele ha preso Canva Pro apposta per questo, non solo perché lo usi lui — vedi [[feedback_canva_pro_per_claude_code]] in memoria).
+
+**Stato tecnico verificato** (da documentazione ufficiale https://code.claude.com/docs/en/chrome):
+- Estensione Claude installata in Chrome con accesso completo (confermato da screenshot) — NON è un problema di installazione.
+- La CLI di Claude Code segnalava "Extension: Not detected" — causa più probabile: la sessione non era stata lanciata con il flag `--chrome`, e/o Chrome non aveva ancora ricaricato il file di configurazione nativa creato al primo tentativo.
+- Non serve la modalità sviluppatore di Chrome (non è nella documentazione).
+
+**Ultima azione data a Lele**: chiudere del tutto Chrome, uscire da Claude Code e rilanciarlo con `claude --chrome`, poi ridigitare `/chrome` — deve dire "Status: Enabled" e "Extension: Installed".
+
+**Quando riprendi da qui**:
+1. Chiedi a Lele l'esito di `/chrome` dopo il riavvio.
+2. Se connesso: prova a pilotare Canva per costruire il brand template (spec in skill §2) usando i tool `mcp__claude-in-chrome__*` — verifica con `/mcp` → `claude-in-chrome` → "View tools" se non sai i nomi esatti.
+3. Se ancora "Not detected" dopo riavvio: verifica su `chrome://extensions` che l'interruttore sia acceso (non solo installato), e considera che l'autenticazione di questa sessione potrebbe essere via API key/token invece di login pieno — in quel caso l'integrazione Chrome resta disattivata per costruzione (vedi doc ufficiale, sezione Prerequisites).
+4. Una volta collegato, il lavoro sostanziale da fare in Canva è ancora tutto da fare: nessun brand template/autofill costruito finora.
+
+---
+
 ## Inventario foto — stato reale aggiornato il 27/08/2026
 
 Ricerca iniziale (disco + Drive) risultata a vuoto — dettaglio storico in fondo al file. **27/08 sera: Lele ha caricato 15 immagini in chat**, ora salvate in modo permanente in `~/cervello/progetti/the-crew-social-foto/ricevute-27-08/`:

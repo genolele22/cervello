@@ -27,7 +27,9 @@
 
 **Combattimento**: Boxe · Bastone & Coltello · Difesa personale & Bastone da passeggio · Iaido · Kempo Kids (6–12 anni) · Pukulan Pentjak Silat Sera
 
-**Danza** (marchio Kalèido): Corso adulti Hip Hop · Hip Hop kids/teens · Hip Hop ragazzi/e · Dancehall kids/teens · Dancehall ragazzi/e · Female · Heels · Play & Dance (3–6 anni)
+**Danza — marchio Kalèido** (Aurora Denaro, Giulia Rago): Corso adulti Hip Hop · Hip Hop kids/teens · Hip Hop ragazzi/e · Dancehall kids/teens · Dancehall ragazzi/e · Female · Heels
+
+**Play & Dance (3–6 anni)** — istruttrice Sara Lione: corso diretto di The Crew, NON Kaleido (corretto il 27/08 — errore mio nella prima stesura, era stato raggruppato per sbaglio con Kaleido)
 
 **Olistico / fitness**: Tai chi - Qi gong · Yoga · Sala Pesi Open (accesso libero) · Soft Functional
 
