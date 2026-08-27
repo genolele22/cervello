@@ -8,7 +8,7 @@ Ultimo aggiornamento: 27/08/2026.
 
 ## 🟢 DOVE RIPRENDERE (stato al 27/08 sera — SBLOCCATO)
 
-**Fatto in questa sessione**: estensione Claude in Chrome collegata e funzionante (il problema precedente si è risolto da sé, non serviva altro). Costruite da zero in Canva vero due locandine (Iaido, Yoga) — vedi sezione "Metodo Canva" sotto per l'architettura, sono nettamente più curate delle due precedenti in HTML piatto (vedi [[project_crew_locandine_baseline]] in memoria). Esportate e mandate a Lele per revisione — **in attesa del suo ok prima di replicare il metodo sugli altri contenuti in coda**.
+**Fatto in questa sessione**: estensione Claude in Chrome collegata e funzionante (il problema precedente si è risolto da sé, non serviva altro). Costruite da zero in Canva vero due locandine (Iaido, Yoga) — vedi sezione "Metodo Canva" sotto per l'architettura, sono nettamente più curate delle due precedenti in HTML piatto (vedi [[project_crew_locandine_baseline]] in memoria). Due giri di correzione dopo il primo invio: (1) foto ritagliata + cerchio Ensō invece del riquadro fotografico intero, (2) logo vero del marchio al posto del badge placeholder IA + tolta la data di pubblicazione Instagram scritta per errore come orario del corso Yoga (vedi [[feedback_crew_verificare_asset_e_dati_reali]]). Versione finale mandata a Lele — **in attesa del suo ok prima di replicare il metodo sugli altri contenuti in coda**.
 
 **Design Canva (id, per riprenderli/ricopiarli)**:
 - Iaido: `DAHTgYcjQB8` — https://www.canva.com/d/j9uKkb8opc1d2Yv
