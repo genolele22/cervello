@@ -257,3 +257,17 @@ Sessione notturna conclusa, niente da fare stanotte.
 
 Prossimo passo resta un input tuo: playtest reale del pacchetto deployato il 02/08, nuovi asset grafici, o una decisione di design — altrimenti conviene sospendere del tutto le sessioni notturne finché non arriva uno di questi.
 [Mon Aug 24 02:39:44 AM CEST 2026] fine sessione notturna (exit 0)
+Already on 'master'
+[Thu Aug 27 02:37:01 AM CEST 2026] inizio sessione notturna (branch master)
+Riepilogo sessione notturna 27/08:
+
+**Verifica**: l'epica "CHIAREZZA DEGLI ESITI" indicata come priorità è già chiusa da tempo (C1-C4 + Chiusura tutti `[x]`, deploy fatto il 29/07). Sopra di lei tutte le altre epiche sono già chiuse e live (ultima "Il round si racconta", deploy 02/08). Backlog invariato dal 02/08 (verificato via git log), stesse 14 checkbox aperte già viste nelle nove sessioni precedenti — tutte `[LELE]`, tuning bilanciamento (congelato), o restyling bloccato per mancanza asset (le 32 png Gemini in root sono tutte di luglio, niente di nuovo).
+
+**Tecnico**: `npm run typecheck && npm test` → 254/254 verdi, root+web puliti.
+
+**Deploy**: non eseguito (nessuna epica da chiudere stanotte, niente da portare in prod).
+
+**Fatto**: report in `reports/2026-08-27.md`, commit locale (`b5f0add`), aggiornato `~/cervello/progetti/gioco-mobile.md`.
+
+**Nessun push.** Decima notte di fila con lo stesso esito identico — confermo la raccomandazione già data più volte: sospendere il cron finché non arriva un playtest reale del pacchetto del 02/08, nuovi asset grafici, o una decisione di design.
+[Thu Aug 27 02:39:52 AM CEST 2026] fine sessione notturna (exit 0)

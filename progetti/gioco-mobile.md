@@ -5,11 +5,11 @@ Avviato: 19/07/2026. Obiettivo dichiarato: **fruttare su app store** (revenue-fi
 ## Stato
 
 Stato: bloccato — su Lele, non sul codice. LIVE su https://last-pact.vercel.app,
-  produzione ferma al deploy del 02/08. Sette sessioni notturne di fila
-  (02→19/08) hanno prodotto zero codice: il backlog non ha più task eseguibili
-  dalla macchina.
-Deciso: direzione del combattimento = **poker** (29/07). 19/08: le notti
-  automatiche sono no-op, da valutare se sospendere il cron fino al prossimo input.
+  produzione ferma al deploy del 02/08. Dieci sessioni notturne di fila
+  (02→27/08) hanno prodotto solo commit di report: il backlog non ha più task
+  eseguibili dalla macchina.
+Deciso: direzione del combattimento = **poker** (29/07). Dal 19/08 consigliato
+  ripetutamente di sospendere il cron notturno fino al prossimo input di Lele.
 Prossimo passo: due azioni tue, in alternativa o insieme — (1) un playtest reale
   del pacchetto "Il round si racconta", che sblocca la taratura dei 3 valori 🧪;
   (2) creare il progetto Supabase e passarmi le chiavi, unico gate di F3
@@ -445,3 +445,14 @@ stesso stato di sempre, backlog invariato dal 02/08, 254/254 test verdi,
 nessun deploy (niente da chiudere). Nessuna novità reale da riportare finché
 Lele non gioca il pacchetto deployato il 02/08 o non porta asset/decisioni
 nuove.
+
+## Aggiornamento 27/08/2026 — decima notte identica, stesso stallo
+Sessione rilanciata su incarico esplicito ("epica CHIAREZZA DEGLI ESITI in
+cima, deploy automatico a chiusura"): quell'epica risulta chiusa e deployata
+dal 29/07, backlog invariato dal 02/08 (verificato via git log), 254/254
+test verdi, nessun deploy fatto (niente da chiudere). Decima sessione
+notturna di fila con lo stesso esito da inizio agosto. Lo stallo non è
+tecnico: serve uno di (1) playtest reale di Lele sul pacchetto "Il round si
+racconta" del 02/08, mai ancora giocato; (2) nuovi asset grafici; (3) una
+decisione di design nuova. Finché non arriva, ha poco senso continuare a
+far girare il cron notturno.
