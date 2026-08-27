@@ -6,24 +6,23 @@ Ultimo aggiornamento: 27/08/2026.
 
 ---
 
-## Inventario foto — stato reale verificato il 27/08/2026
+## Inventario foto — stato reale aggiornato il 27/08/2026
 
-Cercato su disco locale (repo the-crew, ~/asd fight in progress/, ~/Downloads/) e su Google Drive (ricerca full-text + cartella "SOCIAL" dedicata trovata e ispezionata). Risultato:
+Ricerca iniziale (disco + Drive) risultata a vuoto — dettaglio storico in fondo al file. **27/08 sera: Lele ha caricato 15 immagini in chat**, ora salvate in modo permanente in `~/cervello/progetti/the-crew-social-foto/ricevute-27-08/`:
 
-| Corso/istruttore | Foto descritta nel brief | Trovata? |
+| Corso/istruttore | Stato | Cosa c'è nella cartella |
 |---|---|---|
-| Iaido (Massimo Valentini) | Storica in posa con katana, già ritagliata | ❌ non trovata |
-| Yoga (Giulia La Rocca) | 7 foto candid, la migliore su roccia/lago alpino | ❌ non trovate |
-| Tai Chi (Claudio Genovesi) | 1 foto studio, sfondo vecchio logo da pulire | ❌ non trovata |
-| Bastone & Coltello (Claudio Genovesi) | Foto drammatica, riflesso in uno specchio | ❌ non trovata |
-| Sala Functional/Pesi | 11 foto miste attrezzatura | 🟡 trovate solo `bastone.jpg` e `functional.jpg` (2022, Drive) — foto singole, non il set di 11, non è chiaro se siano le stesse o più vecchie |
-| Aurora Denaro (Danza — non da usare per The Crew) | — | ✅ `denaro aurora.JPG` esiste (locale) |
+| Yoga (Giulia La Rocca) | ✅ **sbloccato** | 6 foto reali candid (roccia/lago, cresta rocciosa, due verticali in giardino, posa su cresta innevata, posizione barca al chiuso) + 1 locandina già finita nel nuovo stile Crew, con tagline e testo reali |
+| Iaido (Massimo Valentini) | 🟡 **quasi sbloccato** | 1 foto reale nuova (bianco/nero, azione, non in posa) + 2 locandine già finite (una nel nuovo stile Crew, una vecchia del dojo di Valentini — jikishinkandojo.it) con orario/telefono/testo reali. Manca solo un ritaglio pulito senza sfondo se si vuole la stessa posa in silhouette; la foto B/N regge già come "foto scenica intera" |
+| Tai Chi (Claudio Genovesi) | ❌ non ricevuta | foto ancora da rifare/procurare |
+| Bastone & Coltello (Claudio Genovesi) | ❌ non ricevuta | — |
+| Sala Functional/Pesi | ❌ non ricevuta | — |
+| Sara Lione / Play&Dance | 🟡 **da chiarire, non escludere più per Kaleido** | Bio card + volantino ricevuti. Lele ha corretto il 27/08: non è territorio Kaleido come avevo scritto (errore mio) — resta da capire cosa intende con "non mio" prima di decidere se e come usarla |
+| Silat (workshop 19/9) | ✅ dati confermati | volantino reale con Guru Michele Brocca + William Aliati, conferma data/ora/luogo già nel calendario |
 
-**Dove ho cercato**: repo `the-crew` (solo screenshot gestionale + brand kit, nessuna foto corsi/istruttori), `~/asd fight in progress/` (solo materiale Play&Dance/Kaleido), Drive full-text su nomi istruttori e discipline, cartella Drive **"SOCIAL"** (`1RPh_m5bWmO1LHqwJJ5bDiH_-8y6CHzSm`) — risultata una cartella del 2023, abbandonata: solo 7 foto generiche non etichettate (`1.jpg`...`6.jpg`, `IMG_0248.jpeg`) e sottocartelle con nomi non informativi ("Nuova cartella", "Foto Luglio"). Non sembra la fonte del materiale curato descritto nel brief.
+**Nota sui file**: sono 15, nomi originali non rinominati (mantenuti come ricevuti) — dentro la cartella si distinguono a colpo d'occhio, non li ho rietichettati uno per uno per non rischiare di scambiare una posa con un'altra a memoria.
 
-**Conclusione**: le foto reali descritte (già selezionate, con trattamento suggerito) più probabilmente sono sul telefono di Lele o restate in una sessione Canva/claude.ai precedente, non in un posto che Claude Code può raggiungere da qui.
-
-**Serve da Lele**: i file immagine reali, in un posto che io possa leggere (es. caricati in chat, o in una cartella locale/Drive che mi indichi). Senza quello, tutte le locandine restano bloccate — le didascalie no (vedi sotto).
+**Resta da procurare**: foto per Tai Chi, Bastone&Coltello, Sala Functional/Pesi — nessuna urgenza su Boxe/Difesa personale/Kempo Kids (scelta tua di saltarle per ora).
 
 ---
 
