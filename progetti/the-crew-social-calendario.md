@@ -6,22 +6,26 @@ Ultimo aggiornamento: 27/08/2026.
 
 ---
 
-## 🔴 DOVE RIPRENDERE (stato al 27/08 sera)
+## 🟢 DOVE RIPRENDERE (stato al 27/08 sera — SBLOCCATO)
 
-**In corso**: collegamento dell'estensione "Claude in Chrome" a questa sessione, per far pilotare Canva direttamente a Claude Code (Lele ha preso Canva Pro apposta per questo, non solo perché lo usi lui — vedi [[feedback_canva_pro_per_claude_code]] in memoria).
+**Fatto in questa sessione**: estensione Claude in Chrome collegata e funzionante (il problema precedente si è risolto da sé, non serviva altro). Costruite da zero in Canva vero due locandine (Iaido, Yoga) — vedi sezione "Metodo Canva" sotto per l'architettura, sono nettamente più curate delle due precedenti in HTML piatto (vedi [[project_crew_locandine_baseline]] in memoria). Esportate e mandate a Lele per revisione — **in attesa del suo ok prima di replicare il metodo sugli altri contenuti in coda**.
 
-**Stato tecnico verificato** (da documentazione ufficiale https://code.claude.com/docs/en/chrome):
-- Estensione Claude installata in Chrome con accesso completo (confermato da screenshot) — NON è un problema di installazione.
-- La CLI di Claude Code segnalava "Extension: Not detected" — causa più probabile: la sessione non era stata lanciata con il flag `--chrome`, e/o Chrome non aveva ancora ricaricato il file di configurazione nativa creato al primo tentativo.
-- Non serve la modalità sviluppatore di Chrome (non è nella documentazione).
+**Design Canva (id, per riprenderli/ricopiarli)**:
+- Iaido: `DAHTgYcjQB8` — https://www.canva.com/d/j9uKkb8opc1d2Yv
+- Yoga: `DAHTgcWpB8Q` — https://www.canva.com/d/dsRjYFySCmxC9h7
 
-**Ultima azione data a Lele**: chiudere del tutto Chrome, uscire da Claude Code e rilanciarlo con `claude --chrome`, poi ridigitare `/chrome` — deve dire "Status: Enabled" e "Extension: Installed".
+---
 
-**Quando riprendi da qui**:
-1. Chiedi a Lele l'esito di `/chrome` dopo il riavvio.
-2. Se connesso: prova a pilotare Canva per costruire il brand template (spec in skill §2) usando i tool `mcp__claude-in-chrome__*` — verifica con `/mcp` → `claude-in-chrome` → "View tools" se non sai i nomi esatti.
-3. Se ancora "Not detected" dopo riavvio: verifica su `chrome://extensions` che l'interruttore sia acceso (non solo installato), e considera che l'autenticazione di questa sessione potrebbe essere via API key/token invece di login pieno — in quel caso l'integrazione Chrome resta disattivata per costruzione (vedi doc ufficiale, sezione Prerequisites).
-4. Una volta collegato, il lavoro sostanziale da fare in Canva è ancora tutto da fare: nessun brand template/autofill costruito finora.
+## Metodo Canva — architettura verificata funzionante il 27/08/2026
+
+Aggiorna/sostituisce quanto scritto nella skill §6 (Bulk Create manuale): esiste una via molto più diretta, **niente Bulk Create, niente CSV**.
+
+1. **Foto reale → Canva**: il Canva MCP connector (`mcp__claude_ai_Canva__*`) NON accetta upload di file locali (solo URL già pubblici). Soluzione: caricarla una volta nel Chrome vero di Lele via `mcp__claude-in-chrome__file_upload` sul pannello "Carica" di Canva, poi **trascinarla (drag) dalla libreria Caricamenti sopra la foto placeholder già presente nel design** — Canva la sostituisce *in-place* nello stesso elemento (stessa posizione/ritaglio), niente da riposizionare via API.
+2. **Tutto il resto è API pura**, via `mcp__claude_ai_Canva__edit-design` (operazioni tipografiche: `replace_text`, `find_and_replace_text`, `format_text`, `position_element`, `resize_element`, `insert_shape` per barre/onde/fondo, `layer_element` per l'ordine). Serve `read-design` con `open_transaction:true` per leggere i `locator_id`, poi `edit-design` con `finalize:"commit"` a fine lavoro. **Limite noto**: `format_text` non ha un parametro font-family — il font resta quello scelto in fase di generazione, non è impostabile a piacere via API.
+3. **Per una locandina nuova sullo stesso impianto**: `copy-design` del design finito → drag della nuova foto reale nel placeholder (unico passo da browser) → `edit-design` per sostituire titolo/tagline/nome istruttore/credenziale/info pratiche (stesso schema testi di Iaido/Yoga) → `export-design` in PNG.
+4. **Punto di partenza per un design nuovo da zero** (non da duplicare): `generate-design` (Canva MCP, `design_type:"instagram_post"`) con un prompt dettagliato di brand → 3-4 candidati via `create-design-from-candidate` → `resize-design` a 1080×1080 custom → rifinire via `edit-design` come sopra. Va sempre rifinito a mano (i candidati grezzi non rispettano mai fedelmente palette/font/footer), ma dà una base tipografica migliore di partire da un rettangolo vuoto.
+
+Questo metodo **è già l'automazione**: per produrre le prossime locandine (Bastone&Coltello, Tai Chi, Sala Functional non appena arrivano le foto) basta ripetere lo stesso giro, senza che Lele tocchi Canva — l'unico suo compito resta darmi le foto reali.
 
 ---
 
