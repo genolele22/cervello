@@ -28,11 +28,14 @@ Prossimo passo: chiuse #229 (icona Patenti: la 🪪 non veniva disegnata dal
   selezionabilità di tutti i giorni solari, riga tipo che non fa più saltare
   la pagina — deploy v237). Tutto pushato su `logbook`.
   Sul logbook restano 4 note aperte, nessuna di questo giro.
-  Tre code corte lasciate a Lele, tutte da una riga: l'asterisco sull'ODT ce
-  l'ha il permesso orario ma **non** le visite mediche (che sul web ce l'hanno);
-  missione e permesso in Agenda hanno perso il badge "🔒 registrata"; capo e
-  vice servizio in intestazione ODT non passano dal punto dove si mette
-  l'asterisco.
+  Le tre code corte lasciate a Lele sono state **chiuse subito dopo (deploy
+  v238)**: asterisco ODT esteso alle visite mediche (non dentro la casella 5A,
+  che si chiama già "Visita Medica") e a capo/vice servizio in intestazione,
+  badge "🔒 registrata" rimesso su missione e permesso in Agenda.
+Deciso: **capo e vice servizio sono vigili come gli altri e vanno trattati
+  come tali sull'ODT** — il vice all'occorrenza fa il capo partenza, quindi
+  può trovarsi in permesso orario o in visita come chiunque. Vale come
+  criterio generale, non solo per l'asterisco.
 
 ---
 
