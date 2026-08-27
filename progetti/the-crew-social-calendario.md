@@ -17,7 +17,7 @@ Ricerca iniziale (disco + Drive) risultata a vuoto — dettaglio storico in fond
 | Tai Chi (Claudio Genovesi) | ❌ non ricevuta | foto ancora da rifare/procurare |
 | Bastone & Coltello (Claudio Genovesi) | ❌ non ricevuta | — |
 | Sala Functional/Pesi | ❌ non ricevuta | — |
-| Sara Lione / Play&Dance | 🟡 **da chiarire, non escludere più per Kaleido** | Bio card + volantino ricevuti. Lele ha corretto il 27/08: non è territorio Kaleido come avevo scritto (errore mio) — resta da capire cosa intende con "non mio" prima di decidere se e come usarla |
+| Sara Lione / Play&Dance | ✅ **usabile** — non è Kaleido, è di The Crew | Bio card reale + volantino ricevuti (bio: "Amo i bambini perché insieme a loro posso finalmente smettere di fingere di essere adulta"). Non ancora in coda di produzione — non l'ho aggiunta al calendario di mia iniziativa, è una decisione di priorità tua se e quando inserirla |
 | Silat (workshop 19/9) | ✅ dati confermati | volantino reale con Guru Michele Brocca + William Aliati, conferma data/ora/luogo già nel calendario |
 
 **Nota sui file**: sono 15, nomi originali non rinominati (mantenuti come ricevuti) — dentro la cartella si distinguono a colpo d'occhio, non li ho rietichettati uno per uno per non rischiare di scambiare una posa con un'altra a memoria.
@@ -32,8 +32,8 @@ Ricerca iniziale (disco + Drive) risultata a vuoto — dettaglio storico in fond
 |---|---|---|---|
 | 26/08 | Reel Silat (workshop 19/9) | ✅ pubblicato | — |
 | 30/08 | Bastone & Coltello | 🟡 didascalia pronta (sotto), locandina bloccata | foto mancante |
-| 01/09, 18:30 | Yoga | 🟡 didascalia pronta (sotto), locandina bloccata | foto mancante |
-| 04/09, 19:00 | Iaido | 🟡 didascalia pronta (sotto), locandina bloccata | foto mancante |
+| 01/09, 18:30 | Yoga | ✅ didascalia + foto pronte (sotto) | — |
+| 04/09, 19:00 | Iaido | ✅ didascalia + foto pronte (sotto) | — |
 | 08/09, 19:00 | Tai Chi | 🟡 didascalia pronta (sotto), locandina bloccata | foto mancante + foto vecchia ha difetto testa/mano da rifare comunque |
 | 11/09 | Sala Functional | 🟡 didascalia pronta (sotto), locandina bloccata | foto mancante (o da verificare se le 2 trovate in Drive bastano) |
 | in coda | Bastone & Coltello (altre), Difesa personale, Boxe, Kempo Kids | ⬜ | Boxe/Difesa personale/Kempo Kids: niente foto per scelta esplicita di Lele, non urgente |
@@ -63,32 +63,39 @@ Barra istruttore: CLAUDIO GENOVESI — "50 anni di pratica nelle arti marziali."
 ⚠️ **Riga pratica (orario) non scritta**: il calendario non indica un orario per questo corso specifico e non l'ho inventato. Confermalo tu prima di mandarlo in Canva.
 Audio suggerito: percussioni cinematiche leggere, tensione controllata (stessa categoria di Iaido — non è nel brief originale, è un'estensione ragionevole mia, correggimi se non va bene).
 
-### 2. Yoga — Giulia La Rocca (01/09, 18:30)
+### 2. Yoga — Giulia La Rocca (01/09, 18:30) — ✅ foto reale disponibile
 
-> Un respiro, un corpo, un centro.
+*Didascalia aggiornata il 27/08 con il testo reale già usato nella locandina che mi hai mandato — al posto della mia bozza precedente.*
+
+> Radicati come la montagna, fluidi come l'acqua.
 >
-> Hatha Yoga: posture, respiro, presenza. Un lavoro lento e costante, adatto a chi comincia e a chi pratica da tempo. Con Giulia La Rocca, insegnante di Hatha Yoga.
+> Hatha Yoga: postura, respiro, equilibrio. Per ogni corpo, per ogni età. Con Giulia La Rocca, insegnante di Hatha Yoga.
 >
 > 1 settembre, ore 18:30. Via Giuseppe Milano 7, Vercelli. Pre-iscrizioni aperte — link in bio. Ingresso riservato ai soci.
 >
 > #Yoga #HathaYoga #TheCrewVercelli #Vercelli #AllRounderGym
 
-Barra istruttore: GIULIA LA ROCCA — "Insegnante di Hatha Yoga" (per regola esplicita del brief, nessun numero).
-Simbolo suggerito: ॐ (come da regola) — verificalo a video prima di metterlo in Canva.
+Barra istruttore: GIULIA LA ROCCA — "Insegnante di Hatha Yoga".
+Simbolo: ॐ — già usato nella locandina reale, verificato.
+Foto: usa la meditazione su roccia/lago (già nella cartella foto) — è la stessa che hai già usato, oppure una delle altre 5 candid per varietà.
 Audio: acustico calmo, ambient natura, piano leggero.
 
-### 3. Iaido — Massimo Valentini (04/09, 19:00)
+### 3. Iaido — Massimo Valentini (04/09, 19:00) — ✅ foto reale disponibile
 
-> Una lama, un respiro, un colpo solo.
+*Didascalia aggiornata il 27/08 con i dati reali (orario, telefono, testo) presi dalle due locandine esistenti — al posto delle mie ipotesi/placeholder.*
+
+> Trova la tua concentrazione attraverso la via della spada.
 >
-> Iaido: l'arte di estrarre la katana con un solo movimento preciso. Massimo Valentini, 5° dan e oro agli Europei 2009, guida un percorso di controllo e concentrazione più che di combattimento.
+> Iaido: non solo arte marziale — meditazione in movimento, disciplina, controllo assoluto. Accessibile a tutti, uomini e donne di qualsiasi età. Con Massimo Valentini, 5° dan e oro agli Europei 2009.
 >
-> 4 settembre, ore 19:00. Via Giuseppe Milano 7, Vercelli. Pre-iscrizioni aperte — link in bio. Ingresso riservato ai soci.
+> Martedì e venerdì, 20:00–22:00. Abbigliamento sportivo, attrezzatura in comodato d'uso. Prove gratuite — tel. 339 188 1034. Via Giuseppe Milano 7, Vercelli. Ingresso riservato ai soci.
 >
 > #Iaido #ArtiMarzialiGiapponesi #TheCrewVercelli #Vercelli #AllRounderGym
 
-Barra istruttore: MASSIMO VALENTINI — "5° dan Iaido — oro Europei 2009"
-⚠️ **Simbolo/kanji sopra il titolo NON generato di proposito** — rischio di errore su un carattere CJK, verificalo da una fonte certa (es. lo stesso materiale storico della locandina di Massimo) prima di inserirlo in Canva.
+Barra istruttore: MASSIMO VALENTINI — "5° dan Iaido — oro Europei 2009".
+Simbolo: 居合道 — già usato nella locandina reale, verificato (non lo sto generando io ora, lo riprendo da lì).
+Foto: nuova foto B/N in azione (nella cartella) come alternativa/variante alla posa già usata — entrambe reali.
+Nota: la vecchia locandina del dojo di Massimo cita anche un sito e una mail separati (jikishinkandojo.it) — non li ho messi nel post di The Crew, restano il suo canale a parte.
 Audio: percussioni cinematiche leggere, tensione controllata.
 
 ### 4. Tai Chi - Qi Gong — Claudio Genovesi (08/09, 19:00)
@@ -124,7 +131,8 @@ Audio: non specificato nel brief per questa categoria, non ne ho inventato uno.
 
 ## Prossimi passi
 
-1. **Da Lele**: le foto reali (o dirmi dove sono).
-2. **Da Lele**: costruire il brand template in Canva (spec completa in skill §2) — una tantum, ~15-30 min nell'editor.
-3. **Da Claude Code, appena arrivano le foto**: verificare/correggere le didascalie sopra con eventuali dettagli mancanti (orari confermati, simboli CJK verificati), preparare la riga dati pronta per il Bulk Create.
-4. Boxe/Difesa personale/Kempo Kids restano in coda, non prioritari (nessuna foto, per scelta esplicita di Lele).
+1. **Yoga e Iaido sono pronti**: didascalia + foto reali disponibili in `the-crew-social-foto/ricevute-27-08/` — mancano solo il template Canva e il caricamento.
+2. **Da Lele**: foto per Tai Chi, Bastone&Coltello, Sala Functional (ancora mancanti).
+3. **Da Lele**: costruire il brand template in Canva (spec completa in skill §2) — una tantum, ~15-30 min nell'editor.
+4. **Da Lele**: decidere se e quando inserire Sara Lione (Hip Hop/Play&Dance) in calendario — materiale reale già disponibile, non l'ho aggiunta di mia iniziativa.
+5. Boxe/Difesa personale/Kempo Kids restano in coda, non prioritari (nessuna foto, per scelta esplicita di Lele).

@@ -88,7 +88,7 @@ Struttura dall'alto in basso:
 | Giulia La Rocca | Hatha Yoga | Nessun dato numerico distintivo verificato: restare su "Insegnante di Hatha Yoga" |
 | William Aliati | Pukulan Pentjak Silat Sera | 10 anni di pratica |
 | Aurora Denaro | Hip-Hop, Heels | Danza/Kaleido — non usare per contenuti The Crew |
-| Sara Lione | Hip Hop, Play & Dance kids | **Non è Kaleido** (corretto da Lele il 27/08 — errore mio, non ripeterlo). Status d'uso ancora da chiarire, vedi nota in the-crew-social-calendario.md |
+| Sara Lione | Hip Hop, Play & Dance kids | **Non è Kaleido, è di The Crew** (corretto da Lele il 27/08 — errore mio, non ripeterlo). Usabile come gli altri istruttori — nessuna ragione di escluderla |
 | Giulia Rago | Danza | Bio non pronta — MAI usare |
 
 ---
