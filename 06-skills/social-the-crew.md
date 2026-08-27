@@ -118,8 +118,14 @@ Verificato con ricerca web, non per sentito dire:
 
 **Architettura di conseguenza**:
 - **Claude Code fa**: calendario, didascalie, riga per riga i dati testuali pronti per l'autofill (nome corso, tagline, descrizione, nome+credenziale istruttore, riga pratica), inventario foto, blocchi.
-- **Lele fa una volta**: costruisce il brand template in Canva seguendo la spec della sezione 2 (i motivi grafici/gradienti/trattamento foto sono scelte creative che un umano fa meglio e più in fretta nell'editor vero).
-- **Lele fa ogni ciclo, ~2 minuti**: incolla i dati pronti nel Bulk Create del template già esistente. Non è automatizzabile senza Enterprise o un bridge di terze parti.
+- **Lele ha preso Canva Pro apposta perché lo usi Claude Code**, non solo per farlo lui — quindi la strada da tentare prima è il pilotaggio diretto dell'editor via browser, non delegare tutto a Lele di default.
+
+**Dipendenza operativa (verificata 27/08/2026): serve l'estensione "Claude in Chrome" collegata.**
+Senza quella, Claude Code non ha modo di operare l'editor Canva (l'API è Enterprise-only, vedi sopra) — l'unica via è pilotare il browser reale di Lele, già loggato su Canva, tramite l'estensione. Il browser headless/Playwright del sandbox non basta: può navigare pagine già autenticate ma **il sandbox blocca l'inserimento di credenziali** (email/password → token), quindi non può fare login su Canva da solo.
+
+Setup richiesto una tantum da Lele: installare/collegare l'estensione da `https://claude.ai/chrome`, restare loggato su Canva in quel profilo Chrome. Una volta collegata, Claude Code può aprire schede nel Chrome vero di Lele e provare a costruire il template/lanciare Bulk Create direttamente — visibile a lui in tempo reale, non in background invisibile, e probabilmente a tentativi con screenshot per i dettagli grafici fini (gradienti, posizionamento preciso).
+
+**Se l'estensione non è collegata**, resta il piano B: Lele costruisce il template una volta seguendo la spec sezione 2, poi incolla i dati pronti nel Bulk Create (~2 minuti a ciclo).
 
 ---
 
