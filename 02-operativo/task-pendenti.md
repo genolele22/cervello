@@ -84,6 +84,12 @@ Dossier aggiornato: https://claude.ai/code/artifact/f2d4c7e1-e8e6-44c0-8e01-b1cc
 - [ ] Piano di assorbimento proposto nel dossier (sezione 11): cartella Drive unica, ramo corrente + ramo "Archivio storico 2019-2023" ripulito — **in attesa di ok di Lele**, nessun file spostato/cancellato finora
 - [ ] Libro soci: confermare quale versione è quella buona (`LIBRO SOCI DEFINITIVO.xlsx`, sincronizzato locale+Drive, sembra la fonte attuale)
 
+### 🆕 27/08 — Social The Crew: pipeline avviata, bloccata sulle foto
+Lele passa la produzione contenuti social da manuale (SVG su claude.ai) a Claude Code + Canva Pro (trial attivo). Brief completo in `~/cervello/06-skills/social-the-crew.md`, stato/calendario in `~/cervello/progetti/the-crew-social-calendario.md`.
+- [x] 5 didascalie pronte (Bastone&Coltello, Yoga, Iaido, Tai Chi, Sala Functional), calendario e inventario foto ricostruiti
+- [ ] **Bloccante reale**: nessuna delle foto istruttori/corsi descritte nel brief è raggiungibile da qui (non su disco, non nella cartella Drive "SOCIAL" — quella è vecchia/2023, foto generiche) — servono i file veri da Lele
+- [ ] Template Canva con autofill: da costruire una tantum nell'editor (l'API di autofill è Enterprise-only, verificato — Bulk Create su Pro resta un'azione manuale in-editor)
+
 ### 🆕 19/08 — il gestionale diventa un prodotto vendibile: **CREW**
 Nome del prodotto deciso da Lele il 19/08: **Crew** (senza "The" — "The Crew" resta il marchio della palestra). Da applicare: `NEXT_PUBLIC_MARCHIO` è già parametrico, serve un logo neutro (oggi è ancora quello della palestra) e la registrazione del nome.
 **Canale di vendita già esistente**: un commercialista che segue ASD lo propone ai propri clienti e non solo, come prodotto finito, nella stessa forma in cui lo usa Lele. Quindi niente rete commerciale da costruire e niente assistenza di primo livello a carico di Lele.
