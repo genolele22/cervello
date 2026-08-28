@@ -456,3 +456,14 @@ tecnico: serve uno di (1) playtest reale di Lele sul pacchetto "Il round si
 racconta" del 02/08, mai ancora giocato; (2) nuovi asset grafici; (3) una
 decisione di design nuova. Finché non arriva, ha poco senso continuare a
 far girare il cron notturno.
+
+## Aggiornamento 28/08/2026 — undicesima notte, stesso esito
+Stesso incarico, stessa verifica, stesso risultato: epica in cima già
+chiusa dal 29/07, backlog invariato dal 02/08 (26 giorni), 254/254 test
+verdi, nessun deploy (niente da chiudere). Undicesima sessione notturna di
+fila senza una riga di codice. Il consiglio di sospendere il cron è stato
+dato il 16, 19, 24 e ora 27/08 senza essere applicato (a parte una pausa
+spontanea 20-23/08): a questo punto il cron produce solo commit di report
+identici, zero valore. Serve un'azione di Lele per sbloccare — playtest del
+pacchetto del 02/08, asset grafici, o una decisione di design — non altro
+codice.

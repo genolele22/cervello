@@ -271,3 +271,9 @@ Riepilogo sessione notturna 27/08:
 
 **Nessun push.** Decima notte di fila con lo stesso esito identico — confermo la raccomandazione già data più volte: sospendere il cron finché non arriva un playtest reale del pacchetto del 02/08, nuovi asset grafici, o una decisione di design.
 [Thu Aug 27 02:39:52 AM CEST 2026] fine sessione notturna (exit 0)
+Already on 'master'
+[Fri Aug 28 02:37:01 AM CEST 2026] inizio sessione notturna (branch master)
+**Esito sessione notturna 28/08**: nessun task eseguibile. L'epica "CHIAREZZA DEGLI ESITI" indicata come priorità risulta già chiusa dal 29/07 (C1-C4 + deploy tutti fatti), e l'intera cima reale del backlog è già chiusa e live dal 02/08. Verificate le 14 checkbox aperte rimaste (stesse di 9 sessioni precedenti): tutte `[LELE]`, bilanciamento congelato, asset grafici mancanti o infrastruttura F3 che richiede un account Supabase reale — nessuna eseguibile. `npm run typecheck && npm test` verdi (254/254). Nessun deploy (niente da chiudere). Commit locale fatto (`67b987b`), niente push.
+
+È l'**undicesima notte di fila** con lo stesso esito da inizio agosto. Ho aggiornato `reports/2026-08-28.md` e `~/cervello/progetti/gioco-mobile.md`. Il consiglio di sospendere il cron notturno è già stato dato il 16, 19, 24 e 27/08 senza essere applicato — lo ripeto: serve un tuo input (playtest del pacchetto del 02/08, asset grafici, o una decisione di design) per sbloccare, non altro codice notturno.
+[Fri Aug 28 02:40:13 AM CEST 2026] fine sessione notturna (exit 0)
