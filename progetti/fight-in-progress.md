@@ -6,16 +6,16 @@
 
 ## Stato
 
-Stato: in corso — 1° in classifica, l'unico progetto realmente in movimento
-  (sessioni ininterrotte dal 13/08). LIVE su thecrewgym.com.
-Deciso: 19/08/2026 — il gestionale non è più solo interno, diventa prodotto
-  vendibile col nome **Crew** ("The Crew" resta il marchio della palestra).
-  Canale già esistente: un commercialista che lo propone ai propri clienti,
-  quindi niente rete commerciale né assistenza di primo livello a carico di Lele.
-Prossimo passo: mostrare la demo al commercialista e farsi correggere da lui la
-  sezione conformità — la sua firma su quel contenuto è ciò che rende il prodotto
-  credibile. In parallelo: sbloccare il libro soci, fermo su 3 decisioni di Lele
-  (Sara Lione, i 3 nomi multipli, le 19 persone senza verbale storico).
+Stato: in corso — LIVE su thecrewgym.com. Dal 29/08 il consuntivo dice la verità
+  sulle uscite: prima mostrava 0 €, ora 20.304 € classificati per categoria.
+Deciso: 29/08/2026 — il mese diventa l'unità di conto dei compensi, non più il
+  periodo scelto a mano: chi si paga ogni due mesi salda due mesi aperti, e
+  pagare due volte lo stesso mese è impossibile per vincolo di database. Il bot
+  Telegram riconosce gli istruttori con un codice monouso generato da Lele, mai
+  con nome o codice fiscale — in gioco ci sono i certificati medici degli allievi.
+Prossimo passo: (Lele) identificare i 2 pagamenti Poste Italiane senza categoria
+  e controllare la regola di compenso al 30% creata per Giulia Rago; poi la demo
+  al commercialista, ferma da prima. (Macchina) auto-collegamento al bot.
 
 ---
 
@@ -90,3 +90,16 @@ Semplificate anche le etichette dello stato socio ("In tolleranza" → "Quota sc
 ## Note
 
 L'ASD non è la priorità creativa di Lele — è una responsabilità da gestire nel modo più efficiente possibile.
+
+**29/08/2026 — il consuntivo diceva il falso, il bot Telegram, i compensi per mese**:
+
+- **Il consuntivo mostrava 0 € di uscite.** Non era un errore di calcolo: l'estratto conto conteneva 20.304 € di addebiti (gennaio-luglio 2026) ma nessuno li registrava a mano come spese, e con 15-30 movimenti al mese quel passaggio non si sarebbe mai fatto. Ora **ogni addebito bancario diventa da solo una spesa** al caricamento dell'estratto conto (mig. 0112); le entrate restano invece dal gestionale, perché l'accredito aggregato di SumUp/Stripe non conosce la categoria del singolo pagamento del socio. Deciso da Lele: lui inserisce a mano solo le uscite in contanti.
+- **Regole di categorizzazione** (0113): il testo di un movimento bancario insegna la categoria per i successivi. Da 135 voci in un cassetto unico a **2**. Metà delle 34 regole non sono state decise ora — erano già scritte da Lele in fondo al bilancio 2025 come nota per sé (*Prozis/Euronics=attrezzatura, OBI/Brico=manutenzione, Action/Provera=cancelleria*): trasformate in regole che lavorano da sole.
+- **Caricato il consuntivo 2025 storico** dal Drive (`bilancio_consuntivo_2025.xlsx`): 12 mesi di entrate e uscite per categoria + saldo di apertura. Verificato che i totali coincidono al centesimo col file (60.912,98 entrate / 59.006,33 uscite).
+- **Bot Telegram @The_crew_gym_bot**. Notifiche in diretta a Lele su incasso in cassa, pagamento online e pre-iscrizione (con il corso di interesse, quando indicato). Aperto agli istruttori con tastiera a tasti sul modello del bot VVF: ognuno vede solo i propri corsi, Lele vede tutto. **Scelta di sicurezza**: il riconoscimento passa da un codice monouso di 15 minuti generato da Lele, non da nome o codice fiscale come proposto inizialmente — nessuno dei due è una prova d'identità e dal bot si vedono le scadenze dei certificati medici degli allievi, minori compresi. Il webhook gira con la service role e scavalca la RLS: il filtro per corso è scritto a mano in `src/lib/telegram/permessi.ts` ed è l'unica difesa esistente.
+- **Compensi: il mese sostituisce il periodo** (0116/0117). Prima si sceglievano a mano date di inizio e fine, e chi veniva pagato ogni due mesi rischiava periodi sovrapposti (pagati due volte) o buchi. Ora una riga per collaboratore per mese, `unique(collaboratore, anno, mese)`: pagare due volte lo stesso mese è impossibile a livello di database, non "improbabile se stai attento". Un mese pagato si congela come una ricevuta emessa; gli incassi arrivati in ritardo diventano un conguaglio scritto e motivato sul primo mese aperto, mai una correzione silenziosa del passato. Il vecchio percorso resta funzionante accanto al nuovo.
+- **Bollette agganciate** alla spesa già nata dalla banca (per importo ±0,01 € e data ±5 giorni), **mai creandone una seconda**: una spesa in più farebbe contare l'importo due volte nel consuntivo e ce se ne accorgerebbe solo a fine anno. Se nessun movimento corrisponde, il sistema lo dice — è un campanello: pagata da un altro conto o importo che non torna.
+- **Controllo da "direttore dei lavori"** richiesto da Lele: 7 difetti trovati, 6 chiusi. Fra questi, tre miei dello stesso giorno — il salvataggio che perdeva il filtro (135 spese da rifiltrare una a una), un form che in produzione mostrava "Qualcosa non ha funzionato" perdendo i dati compilati, e le regole che si creavano ma non si potevano né vedere né cancellare. **Resta aperto il punto 7**: nessuna paginazione su spese e pagamenti, oltre ~1000 righe i totali si troncherebbero senza avvisare (oggi 344 spese, ~20/mese in arrivo dalla banca).
+- **Kalèido, un numero che mentiva**: 12 tipologie di abbonamento valgono sui corsi di più istruttori, quindi filtrando per istruttore l'incasso viene contato intero per ognuno. È **corretto per il compenso** (Denaro e Rago prendono il 30% a testa dello stesso monte, confermato da Lele) ma i due totali non si sommano. Non toccato il calcolo: aggiunto un filtro "Gruppo sportivo" che dà il monte reale senza duplicazioni, e un avviso a schermo. Creata anche la regola di compenso mancante per Giulia Rago (30%, da verificare).
+- **Valentina Gobbato** è in P.IVA e non è registrata come collaboratrice; da settembre non collabora più. Le sue uscite restano in "Compensi collaboratori" come nel 2025: creare ora una categoria per i professionisti spezzerebbe il confronto con l'anno precedente su una persona che sta uscendo.
+- Aperto: 2 pagamenti Poste Italiane (23,25 €) da identificare, auto-collegamento al bot (oggi Lele è collegato solo via database — se cambia telefono resta fuori), collaudo del bot con un istruttore vero.

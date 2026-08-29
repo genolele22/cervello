@@ -130,3 +130,23 @@ gruppo vanno messi in chiaro i precedenti che contano (il commit da imitare,
 la regola già costata un incidente, il lavoro già fatto da non rifare):
 è quello che evita che l'agente riscopra tutto da capo o riapra un bug noto.
 Scoperto su: vvf-gestionale, giro di 8 note del 26-27/08/2026.
+
+### In serverless una notifica "sparata e dimenticata" non parte mai
+Una promessa lasciata correre senza await viene uccisa quando la funzione
+risponde: la notifica parte a volte sì e a volte no, senza nessun errore da
+nessuna parte. La soluzione è `after()` (Next 15+), ma c'è un secondo
+tranello: dentro `after()` la risposta è già partita, quindi un client
+costruito sui cookie della richiesta può non valere più — la query fallisce in
+silenzio e il dato non compare mai nel messaggio.
+Regola: `after()` per spedire, ma leggere i dati PRIMA, fuori.
+Scoperto su: the-crew, notifiche Telegram (29/08/2026).
+
+### Prima di costruire un sistema che procuri un dato, verifica che manchi
+Una richiesta nasceva dal fatto che l'estratto conto "non diceva il fornitore"
+per i pagamenti col POS. Il fornitore c'era: mancava solo perché una query di
+ispezione tagliava la descrizione a 95 caratteri e il nome cadeva al 100°.
+Stava per partire la costruzione di un intero abbinamento bollette-movimenti
+per risolvere un problema che non esisteva.
+Regola: quando un dato "manca", guardare il dato grezzo per intero prima di
+progettare qualunque cosa che lo sostituisca.
+Scoperto su: the-crew, categorizzazione spese da estratto conto (29/08/2026).
