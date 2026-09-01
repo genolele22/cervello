@@ -277,3 +277,11 @@ Already on 'master'
 
 È l'**undicesima notte di fila** con lo stesso esito da inizio agosto. Ho aggiornato `reports/2026-08-28.md` e `~/cervello/progetti/gioco-mobile.md`. Il consiglio di sospendere il cron notturno è già stato dato il 16, 19, 24 e 27/08 senza essere applicato — lo ripeto: serve un tuo input (playtest del pacchetto del 02/08, asset grafici, o una decisione di design) per sbloccare, non altro codice notturno.
 [Fri Aug 28 02:40:13 AM CEST 2026] fine sessione notturna (exit 0)
+Already on 'master'
+[Tue Sep  1 02:37:01 AM CEST 2026] inizio sessione notturna (branch master)
+MEMORY.md index già puntava a questo file, non serve aggiornarlo oltre.
+
+**Esito sessione notturna 01/09**: nessun task eseguibile. L'epica "CHIAREZZA DEGLI ESITI" (e tutto ciò che sta sopra nel backlog) risultano già chiuse e deployate dal 02/08 — verificato che nulla è cambiato in `BACKLOG.md`/`src/`/`web/` da 30 giorni. Le 14 checkbox aperte restano tutte `[LELE]`, bilanciamento congelato, o asset/infra mancanti. 254/254 test verdi, typecheck pulito, nessun deploy fatto (niente da spingere). Commit di solo report creato su master, nessun push.
+
+Dodicesima notte consecutiva a vuoto dal 02/08 — vale la pena che tu decida se sospendere il cron finché non c'è un input reale (playtest umano del pacchetto "Il round si racconta", nuovi asset grafici, o una decisione di design).
+[Tue Sep  1 02:39:17 AM CEST 2026] fine sessione notturna (exit 0)
