@@ -11,6 +11,19 @@
 
 ## Stato
 
+Stato: in corso — chiusa #254 (Moli, urgente): popup di avviso sul Foglio
+  quando un vigile ha 2+ turni di ferie NON estive consecutive, ai tasti
+  Invia/Scarica .odt/anteprima.
+Deciso: 01/09/2026 — corretto lo stesso giorno: l'impostazione era nata come
+  una chiave sola per tutti e 4 i turni invece che una per turno (stesso
+  schema già in uso per mail_furiera_* e Stili&Colori) — spegnerla su un
+  turno la spegneva ovunque. Ora 4 caselle indipendenti in Amministrazione.
+Prossimo passo: nessuno aperto da questo giro.
+
+---
+
+## Stato al 27/08/2026
+
 Stato: in corso — giro di logbook a gruppi paralleli (26-27/08/2026), 8 note
   chiuse in una notte con tre agenti Opus lanciati a 2h di distanza.
 Deciso: quando le note del logbook sono tante, si dividono **per area di file**

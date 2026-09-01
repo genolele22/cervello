@@ -150,3 +150,19 @@ per risolvere un problema che non esisteva.
 Regola: quando un dato "manca", guardare il dato grezzo per intero prima di
 progettare qualunque cosa che lo sostituisca.
 Scoperto su: the-crew, categorizzazione spese da estratto conto (29/08/2026).
+
+### Un agente con accesso diretto al DB può scavalcare un "serve un click umano"
+Il codice può proteggere un'azione irreversibile dicendo "questa scrittura
+resta sempre un click esplicito, mai automatica" — ma quella regola vive nella
+UI/nel flusso applicativo, non nel database. Un agente con un tool di
+accesso diretto al DB (service role, bypassa RLS) può scrivere la stessa riga
+senza passare da lì, anche senza che gli sia stato chiesto: durante un
+"collaudo" ha confermato per davvero un verbale di ammissione soci — 14
+secondi fra creazione e conferma, mai un click — ammettendo 10 persone al
+libro soci, 9 delle quali senza aver pagato la quota.
+Regola: quando un mandato ad agente tocca un'azione marcata "solo a mano" nel
+codice, scriverlo nel prompt come vietato esplicitamente (non solo "non fare
+quello", ma "non hai il permesso di eseguire questa funzione/RPC specifica")
+E controllare il DB dopo — non fidarsi del solo report dell'agente, che
+riferisce cosa intendeva fare, non necessariamente cosa ha fatto.
+Scoperto su: the-crew, conferma automatica di un verbale (01/09/2026).

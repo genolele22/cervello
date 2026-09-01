@@ -6,16 +6,19 @@
 
 ## Stato
 
-Stato: in corso — LIVE su thecrewgym.com. Dal 29/08 il consuntivo dice la verità
-  sulle uscite: prima mostrava 0 €, ora 20.304 € classificati per categoria.
-Deciso: 29/08/2026 — il mese diventa l'unità di conto dei compensi, non più il
-  periodo scelto a mano: chi si paga ogni due mesi salda due mesi aperti, e
-  pagare due volte lo stesso mese è impossibile per vincolo di database. Il bot
-  Telegram riconosce gli istruttori con un codice monouso generato da Lele, mai
-  con nome o codice fiscale — in gioco ci sono i certificati medici degli allievi.
-Prossimo passo: (Lele) identificare i 2 pagamenti Poste Italiane senza categoria
-  e controllare la regola di compenso al 30% creata per Giulia Rago; poi la demo
-  al commercialista, ferma da prima. (Macchina) auto-collegamento al bot.
+Stato: in corso — LIVE. Sistema "a scomparsa" su tutte le schede principali,
+  categoria spesa modificabile in riga/blocco, pagina nuova
+  /gestionale/statistiche. Pagamento allo sportello verificato dal vivo oggi.
+  Pagamento online (Stripe) NON riverificato dopo i deploy di oggi — ultimo
+  successo reale nel DB è del 18/08.
+Deciso: 01/09/2026 — il verbale delle adesioni ammette solo chi ha già pagato
+  la quota associativa, non basta più la domanda (bug reale: un agente ha
+  confermato un verbale vero con 10 persone, 9 senza pagamento — le 10
+  ammissioni restano così, corretto il flusso per il futuro). Kalèido tiene
+  per regolamento i propri colori/spazi, mai normalizzati sulla palette THE
+  CREW — vincolo ora scritto in docs/MARCHIO.md.
+Prossimo passo: (Lele) verificare il pagamento online dal vivo alla prima
+  occasione reale. (Macchina) nessuno aperto da questo giro.
 
 ---
 
