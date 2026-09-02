@@ -1,0 +1,1050 @@
+<title>Registro dei difetti — Crew</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap">
+
+<style>
+  :root {
+    --carta:      #eceef1;
+    --superficie: #ffffff;
+    --superficie-2:#f5f6f8;
+    --inchiostro: #14181f;
+    --inchiostro-2:#4d5663;
+    --inchiostro-3:#7b8695;
+    --filo:       #d6dae0;
+    --filo-forte: #b9c0c9;
+    --timbro:     #2b4b7c;
+
+    --critico:    #a8201a;
+    --critico-fondo:#f7e6e4;
+    --alto:       #8a5300;
+    --alto-fondo: #f9eddb;
+    --medio:      #3f6068;
+    --medio-fondo:#e6eef0;
+    --basso:      #6b7280;
+    --basso-fondo:#eceef1;
+
+    --misura: 66ch;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --carta:      #101318;
+      --superficie: #191d24;
+      --superficie-2:#1f242c;
+      --inchiostro: #e3e7ec;
+      --inchiostro-2:#a4adba;
+      --inchiostro-3:#77818f;
+      --filo:       #2b323b;
+      --filo-forte: #3d4650;
+      --timbro:     #8fb0dd;
+
+      --critico:    #f08a80;
+      --critico-fondo:#3a1c19;
+      --alto:       #e0ab5c;
+      --alto-fondo: #362a15;
+      --medio:      #8fb6bd;
+      --medio-fondo:#1b2b2e;
+      --basso:      #98a1ae;
+      --basso-fondo:#22272e;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --carta:      #101318;
+    --superficie: #191d24;
+    --superficie-2:#1f242c;
+    --inchiostro: #e3e7ec;
+    --inchiostro-2:#a4adba;
+    --inchiostro-3:#77818f;
+    --filo:       #2b323b;
+    --filo-forte: #3d4650;
+    --timbro:     #8fb0dd;
+
+    --critico:    #f08a80;
+    --critico-fondo:#3a1c19;
+    --alto:       #e0ab5c;
+    --alto-fondo: #362a15;
+    --medio:      #8fb6bd;
+    --medio-fondo:#1b2b2e;
+    --basso:      #98a1ae;
+    --basso-fondo:#22272e;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--carta);
+    color: var(--inchiostro);
+    font-family: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .foglio {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 24px 96px;
+  }
+
+  /* ---------- testata ---------- */
+
+  .testata {
+    padding: 56px 0 28px;
+    border-bottom: 2px solid var(--inchiostro);
+  }
+
+  .occhiello {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--inchiostro-3);
+    margin: 0 0 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+  }
+
+  h1 {
+    font-family: "IBM Plex Sans Condensed", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.1rem, 6vw, 3.4rem);
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+
+  .sommario {
+    max-width: var(--misura);
+    font-size: 1.06rem;
+    color: var(--inchiostro-2);
+    margin: 0;
+  }
+
+  .sommario strong { color: var(--inchiostro); font-weight: 600; }
+
+  /* ---------- conteggi ---------- */
+
+  .conteggi {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1px;
+    background: var(--filo);
+    border: 1px solid var(--filo);
+    margin: 32px 0 0;
+  }
+
+  .conteggio {
+    background: var(--superficie);
+    padding: 16px 18px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .conteggio .n {
+    font-family: "IBM Plex Sans Condensed", sans-serif;
+    font-weight: 700;
+    font-size: 2.2rem;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .conteggio .et {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--inchiostro-3);
+  }
+
+  .conteggio.c-critico .n { color: var(--critico); }
+  .conteggio.c-alto    .n { color: var(--alto); }
+  .conteggio.c-medio   .n { color: var(--medio); }
+  .conteggio.c-basso   .n { color: var(--basso); }
+
+  /* ---------- verdetto ---------- */
+
+  .verdetto {
+    margin: 40px 0 0;
+    border: 1px solid var(--filo-forte);
+    border-left: 4px solid var(--timbro);
+    background: var(--superficie);
+    padding: 24px 26px;
+  }
+
+  .verdetto h2 {
+    font-family: "IBM Plex Sans Condensed", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .verdetto p { margin: 0 0 12px; max-width: var(--misura); }
+  .verdetto p:last-child { margin-bottom: 0; }
+
+  /* ---------- sezioni ---------- */
+
+  h2.sezione {
+    font-family: "IBM Plex Sans Condensed", sans-serif;
+    font-size: 1.7rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 64px 0 6px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--inchiostro);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  h2.sezione .quanti {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--inchiostro-3);
+  }
+
+  .cappello {
+    max-width: var(--misura);
+    color: var(--inchiostro-2);
+    font-size: 0.97rem;
+    margin: 14px 0 26px;
+  }
+
+  /* ---------- voce del registro ---------- */
+
+  .voce {
+    background: var(--superficie);
+    border: 1px solid var(--filo);
+    border-left: 3px solid var(--filo-forte);
+    padding: 20px 22px 18px;
+    margin-bottom: 14px;
+  }
+
+  .voce.critico { border-left-color: var(--critico); }
+  .voce.alto    { border-left-color: var(--alto); }
+  .voce.medio   { border-left-color: var(--medio); }
+  .voce.basso   { border-left-color: var(--basso); }
+
+  .voce-testa {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .sigla {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--inchiostro-3);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .area {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--inchiostro-2);
+    background: var(--superficie-2);
+    border: 1px solid var(--filo);
+    padding: 2px 7px;
+    border-radius: 2px;
+  }
+
+  .stato {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 2px;
+  }
+
+  .stato.verificato { color: var(--timbro); border: 1px solid currentColor; }
+  .stato.sospetto   { color: var(--inchiostro-3); border: 1px dashed currentColor; }
+
+  .voce h3 {
+    font-family: "IBM Plex Sans Condensed", sans-serif;
+    font-size: 1.22rem;
+    font-weight: 600;
+    line-height: 1.22;
+    margin: 0 0 10px;
+    width: 100%;
+    text-wrap: balance;
+  }
+
+  .voce p { margin: 0 0 10px; max-width: var(--misura); }
+  .voce p:last-child { margin-bottom: 0; }
+
+  .voce .scenario {
+    background: var(--superficie-2);
+    border-top: 1px solid var(--filo);
+    border-bottom: 1px solid var(--filo);
+    padding: 12px 14px;
+    margin: 12px 0;
+    font-style: italic;
+    color: var(--inchiostro-2);
+  }
+
+  .voce .scenario::before {
+    content: "Scenario";
+    display: block;
+    font-family: "IBM Plex Mono", monospace;
+    font-style: normal;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--inchiostro-3);
+    margin-bottom: 4px;
+  }
+
+  code {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.855em;
+    background: var(--superficie-2);
+    border: 1px solid var(--filo);
+    border-radius: 2px;
+    padding: 1px 4px;
+    color: var(--inchiostro);
+    word-break: break-word;
+  }
+
+  .voce .scenario code { background: var(--superficie); }
+
+  /* ---------- elenco compatto ---------- */
+
+  .compatte {
+    border: 1px solid var(--filo);
+    background: var(--superficie);
+  }
+
+  .riga {
+    display: grid;
+    grid-template-columns: 74px 1fr;
+    gap: 0 16px;
+    padding: 13px 18px;
+    border-bottom: 1px solid var(--filo);
+    align-items: start;
+  }
+
+  .riga:last-child { border-bottom: none; }
+
+  .riga .sigla { padding-top: 3px; }
+
+  .riga .testo { margin: 0; max-width: var(--misura); font-size: 0.96rem; }
+
+  .riga .testo b {
+    font-family: "IBM Plex Sans Condensed", sans-serif;
+    font-weight: 600;
+    font-size: 1.03em;
+  }
+
+  /* ---------- chiusura ---------- */
+
+  .coda {
+    margin-top: 64px;
+    border-top: 2px solid var(--inchiostro);
+    padding-top: 24px;
+    color: var(--inchiostro-2);
+    font-size: 0.94rem;
+  }
+
+  .coda h2 {
+    font-family: "IBM Plex Sans Condensed", sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--inchiostro);
+    margin: 0 0 12px;
+  }
+
+  .coda ol { max-width: var(--misura); padding-left: 1.2em; }
+  .coda li { margin-bottom: 8px; }
+  .coda p { max-width: var(--misura); }
+
+  .nota-metodo {
+    margin-top: 40px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11.5px;
+    line-height: 1.7;
+    color: var(--inchiostro-3);
+    border-top: 1px solid var(--filo);
+    padding-top: 16px;
+    max-width: var(--misura);
+  }
+
+  a { color: var(--timbro); }
+  a:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--timbro);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 560px) {
+    .riga { grid-template-columns: 1fr; gap: 4px; }
+    .foglio { padding: 0 16px 64px; }
+  }
+</style>
+
+<div class="foglio">
+
+  <header class="testata">
+    <p class="occhiello">
+      <span>Revisione critica</span>
+      <span>Gestionale Crew · thecrewgym.com</span>
+      <span>2 settembre 2026</span>
+    </p>
+    <h1>Registro dei difetti</h1>
+    <p class="sommario">
+      Passata completa sul gestionale in produzione — sito pubblico, area socio, area collaboratore,
+      area superadmin, invii automatici e migrazioni. <strong>44.000 righe di TypeScript, 120 migrazioni,
+      41 moduli di server action.</strong> Sotto ci sono 68 rilievi, ordinati per quanto fanno male.
+      Nessun file è stato modificato.
+    </p>
+
+    <div class="conteggi">
+      <div class="conteggio c-critico"><span class="n">11</span><span class="et">Critici</span></div>
+      <div class="conteggio c-alto"><span class="n">21</span><span class="et">Alti</span></div>
+      <div class="conteggio c-medio"><span class="n">24</span><span class="et">Medi</span></div>
+      <div class="conteggio c-basso"><span class="n">12</span><span class="et">Bassi</span></div>
+    </div>
+  </header>
+
+  <section class="verdetto">
+    <h2>Il quadro in tre frasi</h2>
+    <p>
+      <strong>Il perimetro tiene, il contenuto no.</strong> La RLS è fatta bene — ogni tabella la ha attiva,
+      ogni funzione <code>security definer</code> verifica chi chiama, il webhook Stripe verifica la firma,
+      nessun segreto è finito nel repo. Chi entra non entra dove non deve.
+    </p>
+    <p>
+      <strong>Quello che manca è il controllo sul merito.</strong> Il codice verifica con cura <em>chi</em> paga
+      e <em>quale</em> rata, e poi accetta dal form <em>quanto</em> paga senza confrontarlo con il dovuto. È lo stesso
+      schema in tre punti diversi: si difende l'identità, non il valore.
+    </p>
+    <p>
+      <strong>Il libro soci ha tre porte e solo una la tiene chiusa bene.</strong> Verbale, import CSV e webhook
+      Stripe scrivono il registro; solo il verbale lo lascia coerente. Chi paga la quota in contanti risulta
+      moroso, chi è stato importato non compare nell'elenco soci. Prima dell'uso vero è questa la cosa da chiudere:
+      il resto sono numeri sbagliati, questi sono soci che non esistono.
+    </p>
+  </section>
+
+  <h2 class="sezione">Critici <span class="quanti">11 voci · da chiudere prima dell'uso vero</span></h2>
+  <p class="cappello">
+    Perdita di denaro, registro sociale incoerente, o difese che si credono attive e non lo sono.
+  </p>
+
+  <div class="voce critico">
+    <div class="voce-testa">
+      <span class="sigla">C1</span><span class="area">Pagamenti</span>
+      <span class="stato verificato">verificato a mano</span>
+      <h3>Quanto si paga lo decide il form, e nessuno lo controlla</h3>
+    </div>
+    <p>
+      <code>src/lib/pagamenti/azioni-stripe.ts:28,36-37</code> prende <code>importo</code> da un campo nascosto e
+      verifica soltanto che sia maggiore di zero. <code>carta.ts:208</code> lo passa tale e quale a Stripe come
+      <code>unit_amount</code>. Il webhook (<code>route.ts:287-299</code>) marca la rata <code>pagata</code> senza mai
+      guardare quanto è entrato. L'azione controlla con attenzione che chi paga abbia titolo sulla persona e che la
+      rata sia davvero sua — righe 48-71, con tanto di commento sul campo nascosto manomesso — e si è dimenticata
+      l'unica cosa che vale soldi.
+    </p>
+    <p class="scenario">
+      Il socio apre <code>/socio/pagamenti</code>, ha una rata da 130 €, rigioca l'azione con <code>importo=1</code>.
+      Paga 1 €, la rata risulta pagata, i tentativi falliti si azzerano, nessun addebito futuro. Stessa cosa sulla
+      quota associativa: 1 € e il libro soci scrive un rinnovo valido per l'anno.
+    </p>
+  </div>
+
+  <div class="voce critico">
+    <div class="voce-testa">
+      <span class="sigla">C2</span><span class="area">Compensi</span>
+      <span class="stato verificato">verificato a mano</span>
+      <h3>Lo stesso conguaglio si ripropone ogni mese, per sempre</h3>
+    </div>
+    <p>
+      <code>src/lib/collaboratori/mesi.ts:174-224</code> confronta la base ricalcolata oggi con
+      <code>importo_incassato_base</code> congelato sul mese già pagato. Ma la RPC che salda
+      (<code>0117_salda_mesi_compenso.sql:95-107</code>) scrive solo stato, liquidazione, data e conguaglio:
+      <strong>non riallinea mai la base</strong>. E niente esclude i mesi che un conguaglio l'hanno già ricevuto.
+    </p>
+    <p class="scenario">
+      Agosto pagato a settembre su base 1.000. Arriva un incasso arretrato di agosto: a ottobre il sistema propone
+      «+80», lo applichi. A novembre ricalcola agosto, trova ancora 1.200 contro 1.000 congelati, ripropone «+80».
+      E così ogni mese. Sono soldi veri versati più volte per lo stesso incasso.
+    </p>
+  </div>
+
+  <div class="voce critico">
+    <div class="voce-testa">
+      <span class="sigla">C3</span><span class="area">Compensi</span>
+      <span class="stato verificato">confermato nel codice</span>
+      <h3>Due strade indipendenti sullo stesso denaro</h3>
+    </div>
+    <p>
+      <code>calcolaLiquidazione</code> (<code>collaboratori/azioni.ts:328-385</code>, periodo libero) e
+      <code>saldaMesi</code> (<code>mesi.ts:246</code>) scrivono entrambe in <code>liquidazione</code> e non si
+      conoscono. Chi liquida «1/8–31/8» a mano e poi salda il mese di agosto paga due volte, senza un solo avviso.
+      <code>registra_liquidazione</code> non ha alcun vincolo di non sovrapposizione: premere «Calcola» due volte
+      crea due liquidazioni identiche.
+    </p>
+  </div>
+
+  <div class="voce critico">
+    <div class="voce-testa">
+      <span class="sigla">C4</span><span class="area">Libro soci</span>
+      <span class="stato verificato">verificato a mano</span>
+      <h3>La quota pagata in contanti non entra mai nel libro soci</h3>
+    </div>
+    <p>
+      <code>registraRinnovoQuotaCore</code> — l'unica funzione che scrive l'evento <code>rinnovo_quota</code> — ha
+      <strong>un solo chiamante in tutto il progetto</strong>: il webhook Stripe (<code>route.ts:309</code>).
+      <code>registraIncasso</code>, cioè la strada di quasi metà degli incassi veri, riconosce la quota solo per
+      forzarne il prezzo e poi non scrive nulla nel registro.
+    </p>
+    <p class="scenario">
+      Il socio versa la quota in contanti allo sportello: ricevuta numerata, soldi nel consuntivo, e
+      <code>data_ultimo_versamento</code> resta vuota. Il sistema lo etichetta «Quota mai versata», dopo il 31/12
+      «Quota scaduta», dopo il 28/02 <strong>compare fra i candidati alla decadenza</strong> — e può essere
+      dichiarato decaduto pur avendo pagato.
+    </p>
+  </div>
+
+  <div class="voce critico">
+    <div class="voce-testa">
+      <span class="sigla">C5</span><span class="area">Libro soci</span>
+      <span class="stato verificato">confermato nel codice</span>
+      <h3>Chi non è ancora deliberato è invisibile ovunque, soci storici compresi</h3>
+    </div>
+    <p>
+      <code>0065:46</code> — la vista <code>v_libro_soci_stato_attuale</code> fa un <strong>INNER join</strong> su
+      <code>libro_soci_numero</code>, e il numero lo assegna solo la conferma del verbale. Chi ha la domanda
+      presentata ma non deliberata, e <strong>tutti i soci importati da CSV</strong>, non compaiono in
+      <code>/gestionale/soci</code>, nel libro soci, nell'export per il commercialista né fra le decadenze.
+      Il chip «Tutti (N)» mostra un numero che non è il numero dei soci.
+    </p>
+    <p>
+      Peggio: quei soci storici non possono nemmeno entrare in un verbale, perché la bozza settimanale richiede un
+      incasso quota registrato a sistema e loro l'hanno pagata fuori. Restano bloccati fuori dal registro per sempre,
+      senza che nessuna schermata lo dica.
+    </p>
+  </div>
+
+  <div class="voce critico">
+    <div class="voce-testa">
+      <span class="sigla">C6</span><span class="area">Verbali</span>
+      <span class="stato verificato">confermato nel codice</span>
+      <h3>La conferma del verbale non è transazionale e non si può riprendere</h3>
+    </div>
+    <p>
+      <code>src/lib/verbali/azioni.ts:404-540</code>. Il commento a riga 429 promette che la conferma «si può
+      ripetere», ma riga 416 la rifiuta: «Questo verbale è già confermato». Il verbale viene marcato confermato
+      <em>prima</em> del ciclo sulle persone.
+    </p>
+    <p class="scenario">
+      Il ciclo si ferma alla terza persona su otto (rete, RLS, un vincolo): le prime due hanno numero, evento e stato
+      socio, le altre sei no, e dall'interfaccia non c'è modo di riprendere. Il libro soci resta divergente e il
+      messaggio dice solo «va sistemato a mano».
+    </p>
+  </div>
+
+  <div class="voce critico">
+    <div class="voce-testa">
+      <span class="sigla">C7</span><span class="area">Invii</span>
+      <span class="stato verificato">confermato nel codice</span>
+      <h3>Il tipo di email che ha causato la valanga è l'unico ancora senza deduplica</h3>
+    </div>
+    <p>
+      <code>src/lib/soci/azioni.ts:54-59</code> — l'invito ad attivare l'accesso viene accodato <strong>senza
+      <code>riferimento_tabella</code> né <code>riferimento_id</code></strong>. L'indice unico anti-doppione
+      (<code>0024:20-22</code>) vale solo <code>where riferimento_id is not null</code>: su queste righe non si
+      applica. È esattamente la mail moltiplicata 577 volte ad agosto, ed è l'unica rimasta scoperta dall'unica
+      rete di sicurezza a livello di database.
+    </p>
+    <p class="scenario">
+      La conferma di un verbale cicla sulle adesioni e accoda un invito per ognuna. Una seconda conferma, un doppio
+      clic o un retry accodano una riga nuova ogni volta — e ogni riga genera anche un nuovo token, invalidando il
+      precedente. Oggi il danno si ferma a 3 copie per il tetto di 0111: non per il motore.
+    </p>
+  </div>
+
+  <div class="voce critico">
+    <div class="voce-testa">
+      <span class="sigla">C8</span><span class="area">Invii</span>
+      <span class="stato verificato">confermato nel codice</span>
+      <h3>Il tetto anti-valanga non è fail-closed: un <code>?? 0</code> lo annulla</h3>
+    </div>
+    <p>
+      <code>src/lib/email/trasporto.ts:97-125</code>. Il controllo intercetta solo il caso «errore»; poi legge
+      <code>(versoDestinatario.count ?? 0)</code> e <code>(totale.count ?? 0)</code>. Se la risposta torna 200 ma
+      senza conteggio — <code>count</code> nullo senza errore — il tetto vede <strong>zero invii</strong> e spedisce.
+      Il gemello Telegram fa la verifica giusta (<code>telegram-diretta.ts:82</code>:
+      <code>if (erroreConteggio || count === null)</code>); la posta no. La difesa costruita apposta dopo l'incidente
+      ha, nel caso peggiore, un default che la spegne.
+    </p>
+  </div>
+
+  <div class="voce critico">
+    <div class="voce-testa">
+      <span class="sigla">C9</span><span class="area">Invii</span>
+      <span class="stato sospetto">meccanismo certo, soglia da verificare</span>
+      <h3>La generazione notturna può spegnersi in silenzio e dichiarare successo</h3>
+    </div>
+    <p>
+      <code>src/lib/notifiche/azioni.ts:26-59</code>. La lettura delle notifiche esistenti per la deduplica non ha
+      <code>.limit()</code>: superato il tetto righe di PostgREST (1000 di default) l'insieme delle chiavi già viste
+      è <strong>parziale</strong> → passano candidate già accodate → l'insert è un unico batch atomico → una sola
+      violazione fa fallire tutto il batch → il codice la ingoia (<code>error.code !== "23505"</code>) e ritorna
+      «generate N». Da quella notte in poi il motore non genera più nulla e la pagina continua a dire che ha
+      funzionato. Stessa classe di guasto di agosto: invisibile.
+    </p>
+  </div>
+
+  <div class="voce critico">
+    <div class="voce-testa">
+      <span class="sigla">C10</span><span class="area">Infrastruttura</span>
+      <span class="stato verificato">confermato nel codice</span>
+      <h3>I cron non sono nel repo: sono righe di database che puntano a thecrewgym.com</h3>
+    </div>
+    <p>
+      <code>vercel.json</code> non contiene nessun cron. Tutta la programmazione vive in Postgres
+      (<code>pg_cron</code> + <code>pg_net</code>, migrazioni 0068/0069/0071-0072/0098/0119) con l'URL di produzione
+      scritto dentro, e nessuna migrazione fa <code>cron.unschedule</code> prima di <code>cron.schedule</code>.
+    </p>
+    <p class="scenario">
+      Un restore del backup, un branch Supabase o una copia del progetto <strong>ri-arma gli stessi job contro la
+      produzione</strong>: due sorgenti che chiamano <code>/api/cron/notifiche</code> ogni 5 minuti, cioè il
+      moltiplicatore esatto dell'incidente di agosto. E nel piano «un cliente = un progetto Supabase», ogni nuova
+      palestra nasce coi cron puntati sulla tua.
+    </p>
+  </div>
+
+  <div class="voce critico">
+    <div class="voce-testa">
+      <span class="sigla">C11</span><span class="area">Accessi</span>
+      <span class="stato verificato">confermato nel codice</span>
+      <h3>Il link d'invito non scade mai</h3>
+    </div>
+    <p>
+      <code>0067_invito_accesso.sql</code>: la tabella non ha nessuna colonna di scadenza e
+      <code>attiva_accesso()</code> valida soltanto <code>stato = 'in_attesa'</code>. Un invito resta valido per
+      sempre finché la persona non lo usa, e non è revocabile. Chiunque entri in possesso di una di quelle mail
+      — un inoltro, una casella condivisa, e soprattutto <strong>le ~3.000 copie spedite il 26 agosto</strong> —
+      sceglie la password e diventa quell'utente: anagrafica, ricevute, certificati medici.
+    </p>
+  </div>
+
+  <h2 class="sezione">Alti <span class="quanti">21 voci · denaro sbagliato, dati sbagliati, porte socchiuse</span></h2>
+  <p class="cappello">
+    Non fermano il sistema, ma producono numeri falsi, doppioni o accessi che non dovrebbero esserci.
+  </p>
+
+  <div class="voce alto">
+    <div class="voce-testa">
+      <span class="sigla">A1</span><span class="area">Anagrafica</span>
+      <span class="stato verificato">verificato a mano</span>
+      <h3>Un socio può promuoversi socio da solo</h3>
+    </div>
+    <p>
+      <code>0004_persona_utente.sql:196-199</code> — la policy dà al socio <code>update</code> pieno sulla propria
+      riga di <code>persona</code>, e su quella tabella <strong>non c'è né un grant per colonna né un trigger di
+      blocco</strong> (l'unico <code>before update</code> è quello che aggiorna il timestamp: verificato). Ogni altra
+      tabella con auto-servizio ce l'ha — <code>collaboratore</code>, <code>corso</code>,
+      <code>impegno_extra_collaboratore</code>, <code>utente</code>.
+    </p>
+    <p class="scenario">
+      Un socio autenticato chiama direttamente l'API con la chiave pubblica e il proprio token:
+      <code>PATCH /rest/v1/persona?id=eq.&lt;proprio&gt;</code> con <code>{"stato":"socio","tesserato_csen":true,
+      "qualifica_socio":"consigliere"}</code>. Ottiene la qualifica di socio senza delibera e senza numero di libro
+      soci, e scavalca i controlli applicativi che leggono proprio quel campo. Può anche riscriversi codice fiscale
+      e data di nascita.
+    </p>
+  </div>
+
+  <div class="voce alto">
+    <div class="voce-testa">
+      <span class="sigla">A2</span><span class="area">Acquisti</span>
+      <span class="stato verificato">confermato nel codice</span>
+      <h3>Doppio acquisto dello stesso corso: nessuna guardia lato server</h3>
+    </div>
+    <p>
+      <code>src/lib/corsi/acquisto.ts:78-104</code> non interroga mai <code>iscrizione</code>: il filtro «già attivo»
+      esiste solo nella pagina. Due schede aperte, o il tasto indietro dopo il checkout e un secondo clic, producono
+      due sessioni Stripe → due incassi, due ricevute numerate, due iscrizioni. Sul percorso rateale è peggio: due
+      contratti con due scadenzari, e all'approvazione partono <strong>due addebiti automatici mensili</strong>.
+    </p>
+  </div>
+
+  <div class="voce alto">
+    <div class="voce-testa">
+      <span class="sigla">A3</span><span class="area">Pagamenti</span>
+      <span class="stato verificato">confermato nel codice</span>
+      <h3>Il webhook Stripe duplica iscrizioni e contratti quando ritenta</h3>
+    </div>
+    <p>
+      In <code>gestisciAcquistoRateizzato</code> (<code>route.ts:433-488</code>) l'idempotenza si basa sull'esistenza
+      dell'incasso, che però viene creato <em>dopo</em> iscrizione, contratto e rate. Se l'insert delle rate fallisce
+      → 500 → Stripe ritenta → l'incasso non c'è ancora → <strong>seconda iscrizione e secondo contratto</strong>, e
+      il primo resta orfano. Specularmente nel percorso a pagamento unico (righe 244-249): se fallisce l'insert della
+      ricevuta si risponde 500, ma al retry si esce subito perché l'incasso c'è — e <strong>quella ricevuta non verrà
+      mai emessa</strong>, senza che nessuno se ne accorga.
+    </p>
+  </div>
+
+  <div class="voce alto">
+    <div class="voce-testa">
+      <span class="sigla">A4</span><span class="area">Conformità</span>
+      <span class="stato verificato">confermato nel codice</span>
+      <h3>Minorenne per autodichiarazione, con la data di nascita lì accanto</h3>
+    </div>
+    <p>
+      <code>src/lib/sito/azioni.ts:114-115</code>: il tipo di domanda dipende dal radio «Sei maggiorenne?», mentre
+      <code>data_nascita</code> è obbligatoria e <strong>non viene mai confrontata con la data odierna</strong>.
+      Un quattordicenne che spunta «Sì» passa senza dati del tutore e senza consenso — cioè proprio il vincolo che la
+      migrazione 0096 doveva chiudere. Il controllo va fatto sull'età, non sulla spunta.
+    </p>
+  </div>
+
+  <div class="voce alto">
+    <div class="voce-testa">
+      <span class="sigla">A5</span><span class="area">Conformità</span>
+      <span class="stato verificato">confermato nel codice</span>
+      <h3>Il libro soci è ancora sbloccato, in produzione</h3>
+    </div>
+    <p>
+      <code>0044_libro_soci_sbloccato_in_betatest.sql:25</code> imposta <code>libro_soci_modificabile = 'si'</code>,
+      che disattiva il trigger append-only: <code>update</code> e <code>delete</code> su
+      <code>libro_soci_evento</code> passano. <strong>Nessuna migrazione successiva lo riporta a
+      <code>'no'</code></strong> — verificato su tutti e 120 i file. La migrazione stessa lo scrive in maiuscolo:
+      va richiuso prima del primo socio vero. Il gestionale è in produzione da agosto.
+    </p>
+  </div>
+
+  <div class="voce alto">
+    <div class="voce-testa">
+      <span class="sigla">A6</span><span class="area">Contabilità</span>
+      <span class="stato verificato">confermato nel codice</span>
+      <h3>Un incasso in contanti sbagliato non è stornabile da nessuna schermata</h3>
+    </div>
+    <p>
+      <code>azioni-stripe.ts:348-370</code>: <code>rimborsaIncassoStripe</code> rifiuta esplicitamente qualunque
+      incasso non Stripe, e non esiste nessun'altra azione che scriva <code>rimborsato_il</code>. Importo errato o
+      persona sbagliata in contanti: resta nei totali per sempre, oppure si va di SQL a mano sui soldi — che è
+      esattamente ciò che è già costato una sessione di lavoro il 24 agosto.
+    </p>
+  </div>
+
+  <div class="voce alto">
+    <div class="voce-testa">
+      <span class="sigla">A7</span><span class="area">Contabilità</span>
+      <span class="stato verificato">confermato nel codice</span>
+      <h3>Il caricamento dell'estratto conto crea spese doppie</h3>
+    </div>
+    <p>
+      <code>src/lib/estratto-conto/azioni.ts:257-286</code>: ogni addebito diventa una riga <code>spesa</code>, e
+      l'unica difesa è «mese già presente», a livello di mese intero. Se il mese è nuovo, diventano spesa
+      <strong>tutti</strong> i suoi addebiti, comprese le uscite già registrate a mano per gli stessi movimenti.
+      Consuntivo e statistiche contano due volte, e le due righe non si distinguono a occhio: stessa data, stesso
+      importo, descrizione diversa. <code>bollette.ts</code> il problema l'ha capito e si vieta di scrivere spese;
+      il percorso principale no.
+    </p>
+  </div>
+
+  <div class="voce alto">
+    <div class="voce-testa">
+      <span class="sigla">A8</span><span class="area">Statistiche</span>
+      <span class="stato verificato">confermato nel codice</span>
+      <h3>Statistiche e Consuntivo danno due «totale entrate» diversi per lo stesso anno</h3>
+    </div>
+    <p>
+      <code>statistiche/dati.ts:198-243</code> legge solo <code>incasso</code>; <code>consuntivo/dati.ts:713-758</code>
+      somma <code>incasso</code> <strong>+ <code>entrata_extra</code></strong>. Un contributo o uno sponsor da 3.000 €
+      è nel consuntivo e sparisce dal grafico, dal totale entrate e dal saldo delle Statistiche. Due pagine, stesso
+      periodo, due risposte, nessun avviso.
+    </p>
+  </div>
+
+  <div class="voce alto">
+    <div class="voce-testa">
+      <span class="sigla">A9</span><span class="area">Statistiche</span>
+      <span class="stato verificato">confermato per costruzione</span>
+      <h3>La curva «soci nel tempo» può scendere sotto zero</h3>
+    </div>
+    <p>
+      Il cumulativo fa +1 per ogni ammissione e −1 per ogni cessazione. I soci importati non hanno mai un evento di
+      ammissione (vedi C5), ma le decadenze per loro si scrivono: il totale e la linea scendono sotto zero. Il grafico
+      non si rompe — disegna sotto la baseline e basta. Mente in silenzio.
+    </p>
+  </div>
+
+  <div class="voce alto">
+    <div class="voce-testa">
+      <span class="sigla">A10</span><span class="area">Libro soci</span>
+      <span class="stato verificato">confermato nel codice</span>
+      <h3>Doppio clic sulle decadenze = doppia decadenza in un registro non correggibile</h3>
+    </div>
+    <p>
+      <code>src/lib/soci/azioni.ts:1133-1161</code> inserisce le righe senza verificare che la persona sia socia,
+      che non sia già cessata, né che una decadenza esista già. Un secondo invio scrive un secondo evento identico in
+      una tabella append-only: si può solo rettificare, non cancellare. E non tocca mai <code>persona.stato</code>:
+      dopo la decadenza l'anagrafica continua a dire «socio», mentre la conferma del verbale invece lo scrive. Le due
+      scritture non sono simmetriche.
+    </p>
+  </div>
+
+  <div class="voce alto">
+    <div class="voce-testa">
+      <span class="sigla">A11</span><span class="area">Invii</span>
+      <span class="stato verificato">confermato nel codice</span>
+      <h3>Tetto per destinatario contro tetto tentativi: notifiche legittime perse per sempre</h3>
+    </div>
+    <p>
+      3 email in 24 ore allo stesso indirizzo (<code>trasporto.ts:59</code>) contro <code>tentativi &lt; 5</code>
+      (<code>cron/notifiche/route.ts:34</code>). Un socio con rata in scadenza, rata scaduta, certificato e quota
+      riceve 4 email la stessa notte: la quarta viene respinta dal tetto, il cron riprova ogni 5 minuti, i tentativi
+      arrivano a 5 in <strong>25 minuti</strong> — quando mancano ancora 23 ore alla liberazione della finestra.
+      Da lì la riga è morta: i tentativi non si azzerano in nessun punto del codice. Rifiuto per tetto e casella
+      inesistente vengono trattati identici, ma uno si risolve aspettando e l'altro no.
+    </p>
+  </div>
+
+  <div class="voce alto">
+    <div class="voce-testa">
+      <span class="sigla">A12</span><span class="area">Invii</span>
+      <span class="stato verificato">confermato nel codice</span>
+      <h3>Nessun <code>maxDuration</code>: la funzione può essere uccisa fra l'invio e la registrazione</h3>
+    </div>
+    <p>
+      <code>/api/cron/notifiche</code> cicla fino a 50 notifiche in serie, e ogni email fa un invio SMTP <em>più</em>
+      una connessione IMAP completamente nuova (connect, list, append, logout). Realisticamente 150-300 secondi, e
+      nessuna route dichiara <code>maxDuration</code>. Se la funzione viene troncata dopo l'invio e prima dello stato
+      «inviata», la riga resta in coda e il giro dopo riparte: è l'incidente di agosto in scala ridotta, contenuto
+      solo dalla difesa esterna.
+    </p>
+  </div>
+
+  <div class="voce alto">
+    <div class="voce-testa">
+      <span class="sigla">A13</span><span class="area">Sito pubblico</span>
+      <span class="stato verificato">confermato nel codice</span>
+      <h3>Un anonimo può spegnere per 24 ore tutti i tuoi avvisi Telegram</h3>
+    </div>
+    <p>
+      Il modulo pubblico di pre-iscrizione non ha captcha, rate limit né deduplica su email o codice fiscale, e ogni
+      invio spara un avviso Telegram. Il tetto Telegram è <strong>globale</strong>: 100 invii in 24 ore su tutti i
+      contesti insieme. Cento pre-iscrizioni finte in cinque minuti e per un giorno spariscono in silenzio gli avvisi
+      di incasso, verbale, accesso attivato e certificati scaduti — resta solo un <code>console.error</code>.
+    </p>
+  </div>
+
+  <div class="voce alto">
+    <div class="voce-testa">
+      <span class="sigla">A14</span><span class="area">Accessi</span>
+      <span class="stato verificato">confermato nel codice</span>
+      <h3>Redirect aperto dopo un login riuscito</h3>
+    </div>
+    <p>
+      <code>src/app/login/page.tsx:32,46,66</code>: il parametro <code>prossimo</code> arriva dalla querystring e
+      finisce in <code>window.location.href</code> senza verificare che sia un percorso interno.
+      <code>thecrewgym.com/login?prossimo=https://sito-finto/…</code> porta il socio, dopo un login vero sul dominio
+      vero, su una pagina esterna. Va accettato solo un path che inizia con <code>/</code>.
+    </p>
+  </div>
+
+  <div class="voce alto">
+    <div class="voce-testa">
+      <span class="sigla">A15</span><span class="area">Acquisti</span>
+      <span class="stato verificato">confermato nel codice</span>
+      <h3>La quota associativa si può ripagare all'infinito</h3>
+    </div>
+    <p>
+      <code>src/app/socio/pagamenti/page.tsx:180-184</code>: il tasto «Paga» per la quota compare per chiunque non sia
+      cessato, senza controllare se la quota dell'anno è già stata versata, e a database non c'è nessun vincolo unico
+      su persona+anno+tipo. Chi paga in palestra e poi apre l'app vede lo stesso tasto identico e paga due volte —
+      e la riga di troppo non si cancella, si può solo stornare.
+    </p>
+  </div>
+
+  <div class="voce alto">
+    <div class="voce-testa">
+      <span class="sigla">A16</span><span class="area">Compensi</span>
+      <span class="stato verificato">confermato nel codice</span>
+      <h3>Saldando mesi non contigui si pagano i rimborsi del mese saltato</h3>
+    </div>
+    <p>
+      <code>mesi.ts:314-322</code>: i rimborsi si agganciano per intervallo, dal primo giorno del mese più vecchio
+      all'ultimo del più recente. Saldi gennaio e marzo, e i rimborsi di febbraio entrano nella liquidazione.
+      Collaterale: <code>importo_rimborsi</code> già congelato mese per mese non viene mai sommato — i due numeri
+      divergono e nessuno se ne accorge.
+    </p>
+  </div>
+
+  <div class="voce alto">
+    <div class="voce-testa">
+      <span class="sigla">A17</span><span class="area">Area istruttore</span>
+      <span class="stato verificato">confermato nel codice</span>
+      <h3>«In corso ora» sbagliato di un'ora o due, tutti i giorni</h3>
+    </div>
+    <p>
+      <code>src/app/istruttore/oggi/page.tsx:63</code> usa l'ora locale del server, e nessun fuso è impostato
+      (verificato: nessuna occorrenza in <code>next.config</code>, <code>vercel.json</code>, <code>package.json</code>)
+      — su Vercel è UTC. In luglio, alle 21:00 italiane l'istruttore vede «in corso» il corso delle 19:00, già finito,
+      e non vede il proprio.
+    </p>
+  </div>
+
+  <div class="voce alto">
+    <div class="voce-testa">
+      <span class="sigla">A18</span><span class="area">Compensi</span>
+      <span class="stato verificato">confermato nel codice</span>
+      <h3>Il progressivo annuo attribuisce al 2026 anche ciò che è del 2027, e conta le bozze</h3>
+    </div>
+    <p>
+      <code>src/lib/collaboratori/progressivo.ts:38-39</code> filtra sull'inizio del periodo: una liquidazione che
+      salda dicembre 2026 + gennaio 2027 finisce <strong>tutta</strong> nel 2026. E non filtra lo stato: una
+      liquidazione ancora in bozza gonfia il numero. È il numero con cui l'istruttore controlla le soglie
+      5.000 / 15.000 €.
+    </p>
+  </div>
+
+  <div class="voce alto">
+    <div class="voce-testa">
+      <span class="sigla">A19</span><span class="area">Area istruttore</span>
+      <span class="stato verificato">confermato nel codice</span>
+      <h3>Un corso con due fasce nello stesso giorno perde metà appello</h3>
+    </div>
+    <p>
+      <code>istruttore/corsi/[id]/appello/page.tsx:65-72</code> prende la lezione con <code>.limit(1)</code>, ma lo
+      schema prevede due orari nello stesso giorno (<code>unique (corso_id, data, ora_inizio)</code>). La seconda
+      lezione non è raggiungibile da nessuna schermata, quindi non ha presenze, quindi non viene contata nella
+      detrazione: <strong>compenso sbagliato</strong>.
+    </p>
+  </div>
+
+  <div class="voce alto">
+    <div class="voce-testa">
+      <span class="sigla">A20</span><span class="area">Verbali</span>
+      <span class="stato verificato">confermato nel codice</span>
+      <h3>Un verbale confermato si può ridatare, e il libro soci resta alla data vecchia</h3>
+    </div>
+    <p>
+      <code>verbali/azioni.ts:559-597</code> permette di riscrivere tipo, data e contenuto anche dopo la conferma —
+      ma la conferma ha già copiato la data in <code>libro_soci_evento</code> e la dicitura «Verbale del CD del …»
+      in due tabelle append-only e nel titolo del documento. Il verbale dice 15/09, il registro dice 8/09, e il
+      registro non si corregge.
+    </p>
+  </div>
+
+  <div class="voce alto">
+    <div class="voce-testa">
+      <span class="sigla">A21</span><span class="area">Accessi</span>
+      <span class="stato verificato">confermato nel codice</span>
+      <h3>Un istruttore può scrivere ai propri allievi dalla casella ufficiale dell'ASD</h3>
+    </div>
+    <p>
+      <code>src/lib/soci/mail-libera.ts:22</code> non ha nessun controllo di ruolo. Le server action non sono legate
+      alla pagina in cui vivono: il loro identificativo sta nei file JS statici, che il proxy esclude apposta dal
+      controllo, quindi si recupera senza essere superadmin e si invoca da <code>/istruttore</code>. La RLS limita i
+      destinatari, ma per un istruttore quell'insieme non è vuoto — vede nome ed email di tutti gli iscritti ai suoi
+      corsi. Risultato: email di testo libero, dal mittente ufficiale, con copia negli Inviati.
+    </p>
+  </div>
+
+  <h2 class="sezione">Medi <span class="quanti">24 voci · numeri che mentono, conferme false, attriti</span></h2>
+  <p class="cappello">
+    Danno contenuto ma reale: quasi tutti producono una schermata che dice una cosa mentre il database ne dice
+    un'altra.
+  </p>
+
+  <div class="compatte">
+    <div class="riga"><span class="sigla">M1</span><p class="testo"><b>«Anagrafica aggiornata» anche quando non ha salvato niente.</b> <code>soci/azioni.ts:863-885</code>: l'update non ha <code>.select()</code> e non guarda le righe toccate. Un update bloccato dalla RLS non è un errore — torna zero righe e nessun errore. Il form mostra il verde, gli input restano compilati, il salvataggio non c'è stato. Stessa forma in <code>corsi/scelta-corsi.ts:54-65</code>, <code>impegni-extra.ts:71-99</code>, <code>promemoria/azioni.ts:83-144</code>. Il modo giusto il progetto ce l'ha già: <code>azioni-stripe.ts:405-409</code>.</p></div>
+    <div class="riga"><span class="sigla">M2</span><p class="testo"><b>Tessera esaurita: la presenza passa lo stesso.</b> Il trigger 0104 scala solo se restano ingressi; a zero non scala e la presenza si inserisce senza iscrizione collegata. La riga dice «esauriti» ma il tocco funziona: ingresso consumato e mai registrato. Al ripristino, l'iscrizione torna «attiva» anche se nel frattempo è scaduta per data.</p></div>
+    <div class="riga"><span class="sigla">M3</span><p class="testo"><b>Le lezioni annullate contano nella detrazione del compenso.</b> <code>calcolo-compenso.ts:47-72</code> non filtra <code>annullata_il</code>, e l'annullamento non cancella le presenze già registrate.</p></div>
+    <div class="riga"><span class="sigla">M4</span><p class="testo"><b>Nell'appello compaiono iscritti scaduti o annullati</b>, senza alcun segno: <code>appello/page.tsx:89-97</code> non filtra lo stato dell'iscrizione.</p></div>
+    <div class="riga"><span class="sigla">M5</span><p class="testo"><b>Il collaboratore può abbassare il compenso dopo che la quota palestra è decisa.</b> Il trigger 0109 protegge solo i campi della quota: con quota al 30%, portare il compenso da 100 a 40 riduce la quota da 30 a 12, senza traccia. Può anche eliminare la riga.</p></div>
+    <div class="riga"><span class="sigla">M6</span><p class="testo"><b>Salvataggio carta senza verifica di titolarità.</b> <code>azioni-stripe.ts:97-105</code> prende <code>personaId</code> dal client e avvia subito la sessione Stripe; l'azione gemella accanto il controllo ce l'ha. Il webhook scrive poi con service role, che scavalca la RLS: nessuna rete sotto.</p></div>
+    <div class="riga"><span class="sigla">M7</span><p class="testo"><b>Certificato medico autodichiarato, senza vincoli.</b> <code>certificati/azioni.ts:18-45</code>: nessun controllo di coerenza fra rilascio e scadenza, nessun flag di verifica della segreteria, nessun limite di tipo o peso lato server. Scadenza 2099 e risulta «Valido» ovunque.</p></div>
+    <div class="riga"><span class="sigla">M8</span><p class="testo"><b>Upload senza controllo del tipo su un bucket pubblico.</b> Estensione presa dal nome file del client e <code>contentType</code> dal client, su <code>sito-pubblico</code> (l'unico bucket pubblico): un istruttore può depositare un file arbitrario servito col MIME che sceglie lui. Il giustificativo di rimborso non ha nemmeno il tetto di 3 MB.</p></div>
+    <div class="riga"><span class="sigla">M9</span><p class="testo"><b>Nessuna paginazione, e PostgREST tronca in silenzio.</b> Nessun <code>.range()</code> in tutta l'area gestionale: libro soci intero, certificati e iscrizioni interi, tutti gli incassi del periodo letti due volte. Al superamento del tetto righe i conteggi dei chip e i totali diventano semplicemente più bassi del vero, senza errore.</p></div>
+    <div class="riga"><span class="sigla">M10</span><p class="testo"><b>«Invita tutti» salta proprio le persone per cui è stato scritto.</b> <code>accessi/azioni.ts:154-166</code> filtra <code>stato = 'socio'</code>, ma l'import da CSV lascia lo stato a «richiedente» — cioè i ~130 soci storici mai invitati.</p></div>
+    <div class="riga"><span class="sigla">M11</span><p class="testo"><b>Utente disattivato o con ruolo sbagliato: rimbalzo muto sulla home.</b> <code>supabase/proxy.ts:64-84</code> non dice niente. Credenziali giuste, autenticazione riuscita, e la persona conclude che il sistema è rotto. Anche <code>/auth/callback</code> rimanda a <code>/login?errore=…</code>, ma la pagina di login non legge mai quel parametro.</p></div>
+    <div class="riga"><span class="sigla">M12</span><p class="testo"><b>Cambio email dal profilo che non tocca il login.</b> Si riscrive <code>persona.email</code> ma non l'email dell'account: da quel momento le notifiche vanno a un indirizzo e l'accesso funziona solo con l'altro. Nessun avviso.</p></div>
+    <div class="riga"><span class="sigla">M13</span><p class="testo"><b>Il profilo del socio non viene mai rivalidato</b> dopo il salvataggio (<code>azioni.ts:884</code> rivalida solo la scheda del gestionale): la pagina resta sulla versione in cache.</p></div>
+    <div class="riga"><span class="sigla">M14</span><p class="testo"><b>Buchi e disordine nella numerazione del libro soci.</b> L'upsert «ignora i duplicati» diventa <code>on conflict do nothing</code>, e Postgres valuta la sequenza <em>prima</em> di rilevare il conflitto: ogni tentativo su chi ha già un numero ne brucia uno. Il ciclo poi non ordina le persone: i progressivi escono in ordine arbitrario, non per data di domanda.</p></div>
+    <div class="riga"><span class="sigla">M15</span><p class="testo"><b>Un verbale protocollato si cancella dall'archivio come una foto.</b> <code>documenti/azioni.ts:59-77</code> non guarda categoria né verbale collegato. In più cancella il file dallo storage prima della riga: se la riga non parte, resta un documento che punta al nulla.</p></div>
+    <div class="riga"><span class="sigla">M16</span><p class="testo"><b>Aprire il consuntivo può costare ~105 query per restituire zero.</b> <code>consuntivo/dati.ts:623-654</code>: senza saldo iniziale manuale ricorre sull'anno precedente fino a 15 livelli, 7 query ciascuno. Con <code>?anno=abc</code> gira tutti i livelli con date non valide e restituisce una pagina di zeri.</p></div>
+    <div class="riga"><span class="sigla">M17</span><p class="testo"><b>Il tetto email si aggira con una maiuscola.</b> Il destinatario è <code>text</code> e il conteggio usa un confronto sensibile al maiuscolo, mentre l'email della persona è <code>citext</code>: <code>Mario@Gmail.com</code> e <code>mario@gmail.com</code> sono la stessa casella per il database e due contatori distinti per il tetto.</p></div>
+    <div class="riga"><span class="sigla">M18</span><p class="testo"><b>Il tetto email è una gara leggi-poi-scrivi.</b> Due esecuzioni concorrenti leggono entrambe «2» e spediscono entrambe: 5 copie invece di 3. Non è una valanga, ma il numero «3» non è garantito.</p></div>
+    <div class="riga"><span class="sigla">M19</span><p class="testo"><b>Webhook Telegram senza deduplica.</b> Nessuna registrazione dell'identificativo dell'aggiornamento: una riconsegna di Telegram riesegue e ririsponde lo stesso comando. Il suo tetto anti-abuso è dichiaratamente fail-open e usa <code>&gt;</code> invece di <code>&gt;=</code> (31 comandi/ora, non 30).</p></div>
+    <div class="riga"><span class="sigla">M20</span><p class="testo"><b>Migrazioni non rieseguibili.</b> <code>0111:25</code> e <code>0114:23</code> creano tabelle senza <code>if not exists</code>; nessun <code>cron.unschedule</code> difensivo prima di <code>cron.schedule</code>. Su un progetto già migrato — cioè su ogni nuovo cliente — vanno in errore.</p></div>
+    <div class="riga"><span class="sigla">M21</span><p class="testo"><b>Dati personali verso Telegram, contro la regola scritta nel repo stesso.</b> La 0119 manda al gestore «cognome nome (email)», mentre <code>avvisi-istruttore.ts:130</code> documenta la regola opposta. È un'incoerenza da decidere, non un refuso.</p></div>
+    <div class="riga"><span class="sigla">M22</span><p class="testo"><b>«Regola attuale» può essere una regola futura.</b> <code>istruttore/compenso/page.tsx:83</code> filtra solo la fine validità, non l'inizio: una regola che parte il mese prossimo viene mostrata come quella in vigore.</p></div>
+    <div class="riga"><span class="sigla">M23</span><p class="testo"><b>Il promemoria di fine mese slitta.</b> <code>promemoria/azioni.ts:23-40</code>: aggiungere un mese al 31 gennaio dà il 3 marzo.</p></div>
+    <div class="riga"><span class="sigla">M24</span><p class="testo"><b>«Oggi» in UTC fra mezzanotte e le due.</b> Appello, compenso, scadenze e lezioni attese calcolano il giorno in UTC: l'appello aperto all'una di notte propone ieri, e il limite del campo data <em>impedisce</em> di scegliere oggi.</p></div>
+  </div>
+
+  <h2 class="sezione">Bassi <span class="quanti">12 voci · da tenere a mente</span></h2>
+
+  <div class="compatte">
+    <div class="riga"><span class="sigla">B1</span><p class="testo">Segreti dei cron confrontati con <code>!==</code>, non a tempo costante, e senza limite di tentativi. Poco pratico da attaccare via HTTP, ma <code>/api/cron/backup-db</code> spedisce via email l'intero database.</p></div>
+    <div class="riga"><span class="sigla">B2</span><p class="testo"><code>/api/interno/accesso-attivato</code> accetta un testo arbitrario e lo inoltra verbatim sul tuo Telegram: chi ha quel segreto ha un canale diretto verso di te.</p></div>
+    <div class="riga"><span class="sigla">B3</span><p class="testo">Anteprima delle rate arrotondata dal formattatore mentre l'addebito vero tronca: su certi importi la schermata annuncia un centesimo più di quello che viene addebitato.</p></div>
+    <div class="riga"><span class="sigla">B4</span><p class="testo">Il collaboratore pagato a ore ha base zero: nessun conguaglio gli è mai proponibile, i suoi mesi automatici valgono 0 € e vengono comunque proposti «da pagare». Saldandoli si congela zero, senza avviso.</p></div>
+    <div class="riga"><span class="sigla">B5</span><p class="testo">Il riordino dei collaboratori fa due update non atomici: se il secondo fallisce restano due collaboratori con lo stesso ordine.</p></div>
+    <div class="riga"><span class="sigla">B6</span><p class="testo">Se l'inserimento fallisce dopo l'upload (foto, giustificativi, certificati) il file resta orfano nel bucket. Ricorre in almeno quattro punti.</p></div>
+    <div class="riga"><span class="sigla">B7</span><p class="testo"><code>assicuraMesiPassati</code> ricalcola un mese alla volta, 5-6 query ciascuno: su un collaboratore di vecchia data «Aggiorna mesi» sono decine di round trip in sequenza.</p></div>
+    <div class="riga"><span class="sigla">B8</span><p class="testo">Cancellare un orario del corso stacca le lezioni passate dall'orario (<code>on delete set null</code>), appello già fatto compreso. Il <code>confirm()</code> non lo dice.</p></div>
+    <div class="riga"><span class="sigla">B9</span><p class="testo">Rimuovere un punto dal verbale è l'unica azione distruttiva dell'area senza conferma. Solo in bozza, quindi danno contenuto.</p></div>
+    <div class="riga"><span class="sigla">B10</span><p class="testo">Soglia dell'import storico cablata nel codice (<code>anno &lt; 2025</code>): si disallinea appena si importa un altro anno. E la costante del gruppo «Altro» è duplicata a mano fra due file, col rischio già annotato nel commento.</p></div>
+    <div class="riga"><span class="sigla">B11</span><p class="testo">L'Instagram dell'istruttore finisce direttamente in <code>href</code> senza verificare lo schema; <code>/attiva-accesso</code> passa l'email al componente client mentre il commento sopra afferma il contrario.</p></div>
+    <div class="riga"><span class="sigla">B12</span><p class="testo">Un errore del <em>mittente</em> (limite Gmail) consuma comunque un tentativo pur non essendo colpa del destinatario — punto già annotato ad agosto e ancora aperto.</p></div>
+  </div>
+
+  <h2 class="sezione">Quello che invece regge <span class="quanti">detto per onestà</span></h2>
+  <div class="compatte">
+    <div class="riga"><span class="sigla">✓</span><p class="testo"><b>La RLS.</b> Tutte le tabelle create hanno row level security attiva — nessuna scoperta, verificato per differenza. Le uniche policy permissive sono su dati intenzionalmente pubblici. Ogni funzione <code>security definer</code> concessa agli utenti autenticati verifica <code>e_superadmin()</code> al proprio interno, e quelle aperte agli anonimi verificano il token dell'invito.</p></div>
+    <div class="riga"><span class="sigla">✓</span><p class="testo"><b>Il webhook Stripe verifica davvero la firma</b>, ed è fail-closed se manca il segreto. Quello Telegram confronta l'header col valore in configurazione, anch'esso fail-closed.</p></div>
+    <div class="riga"><span class="sigla">✓</span><p class="testo"><b>Nessun segreto nel repo</b> (<code>.env*</code> ignorato, solo <code>.env.example</code> tracciato). I bucket sanitari e giudiziari sono privati, con policy per cartella-proprietario, e i documenti giudiziari passano da una funzione che registra l'accesso.</p></div>
+    <div class="riga"><span class="sigla">✓</span><p class="testo"><b>Nessuna IDOR nelle aree socio e istruttore.</b> Gli unici id presi dall'URL sono coperti dalle policy; il corso non proprio dà «non trovato».</p></div>
+    <div class="riga"><span class="sigla">✓</span><p class="testo"><b>La prenotazione della riga prima dell'invio è solida</b> (aggiornamento ottimistico sul numero di tentativi): due cron sovrapposti non spediscono la stessa riga, e nessuna riga resta bloccata per sempre. Il correttivo di agosto, su questo punto, ha fatto il suo lavoro.</p></div>
+    <div class="riga"><span class="sigla">✓</span><p class="testo"><b>Tutte e tre le strade SMTP passano dal tetto</b> — notifiche, mail libera, backup. Nessuna email esce da Supabase Auth. La copertura c'è; il problema è il comportamento al limite (C8).</p></div>
+    <div class="riga"><span class="sigla">✓</span><p class="testo"><b>Typecheck e build di produzione passano puliti.</b> Un solo errore di lint (<code>components/categoria-spesa-select.tsx:54</code>, <code>setState</code> dentro un effect) e 17 avvisi di variabili inutilizzate.</p></div>
+  </div>
+
+  <div class="coda">
+    <h2>Se dovessi mettere le mani solo su cinque cose</h2>
+    <ol>
+      <li><strong>C1 — l'importo dal form.</strong> Tre righe: confrontare quello che arriva col dovuto, lato server, prima di aprire la sessione Stripe. È l'unico rilievo che regala denaro a chi apre gli strumenti da sviluppatore.</li>
+      <li><strong>C4 + C5 — le porte del libro soci.</strong> Far scrivere l'evento di rinnovo anche all'incasso manuale, e togliere l'<em>inner</em> join dalla vista. Senza questi due, il registro sociale non è un registro.</li>
+      <li><strong>C8 — il <code>?? 0</code> nel tetto email.</strong> Una riga, ed è la difesa costruita apposta dopo la valanga di agosto.</li>
+      <li><strong>C2 — il conguaglio infinito.</strong> Riallineare la base nel <code>update</code> della RPC che salda. Finché resta, ogni liquidazione ripropone arretrati già pagati.</li>
+      <li><strong>A5 — richiudere il libro soci</strong> (<code>libro_soci_modificabile</code> a <code>'no'</code>): è già in cima ai task da giorni, e con C4/C5 aperti richiuderlo adesso congelerebbe un registro incoerente. Prima quelli, poi questo.</li>
+    </ol>
+    <p>
+      Fuori classifica, ma da decidere prima di vendere il gestionale a qualcun altro: <strong>C10</strong>, i cron
+      che vivono dentro il database con l'URL della tua produzione scritto in chiaro. Nel modello «un cliente, un
+      progetto Supabase» quella riga viaggia con la copia.
+    </p>
+  </div>
+
+  <p class="nota-metodo">
+    Metodo — cinque revisioni parallele per area (sicurezza e ruoli · sito pubblico e area socio · area
+    collaboratore · area superadmin · invii, cron e migrazioni), ciascuna con lettura diretta dei file, più
+    typecheck, lint e build di produzione. I rilievi marcati «verificato a mano» sono stati riletti e riconfermati
+    uno per uno alla fonte: C1, C2, C4, A1. Nessun file è stato modificato, nessuna query è stata eseguita sul
+    database di produzione. Le voci marcate «sospetto» dipendono da un valore di configurazione che va guardato in
+    dashboard, non nel codice.
+  </p>
+
+</div>
