@@ -115,3 +115,26 @@ dal tetto. Typecheck e build di produzione puliti; 1 errore di lint
 
 Fuori classifica, prima di vendere il gestionale: **C10**, i cron dentro il database con l'URL della tua
 produzione scritto in chiaro.
+
+---
+
+## Correzioni fatte (02/09/2026, stessa sessione)
+
+Branch `fix-critici-20260902` su `genolele22/the-crew-gym`, due commit, pushato.
+Worktree: `~/progetti/the-crew/.claude/worktrees/fix-critici`.
+
+**Chiusi 10 critici su 11** (C1, C1-bis, C2, C3, C4, C5, C6, C7, C8, C9, C11) più A15 e A20.
+Resta **C10** (i cron dentro il database con l'URL di produzione in chiaro): non è una
+correzione, è una decisione su dove devono vivere.
+
+**DUE COSE DA FARE A MANO PRIMA CHE SERVA:**
+1. Le migrazioni **0121** e **0122 non sono state applicate** al database. Vanno eseguite.
+2. La 0121 rende inutilizzabili gli inviti in attesa più vecchi di 14 giorni — quelli
+   dell'incidente di agosto compresi. È voluto (erano la falla aperta), ma chi deve ancora
+   attivare l'accesso va reinvitato dal gestionale.
+
+Verifiche: typecheck e build di produzione passano, lint invariato rispetto alla baseline
+(resta 1 errore preesistente in `components/categoria-spesa-select.tsx:54`).
+Nessuna migrazione eseguita, nessuna query sul DB di produzione.
+
+Restano aperti i 21 alti e i 24 medi elencati sopra, salvo A15 e A20 già chiusi.
