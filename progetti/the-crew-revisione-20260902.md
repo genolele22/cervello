@@ -138,3 +138,26 @@ Verifiche: typecheck e build di produzione passano, lint invariato rispetto alla
 Nessuna migrazione eseguita, nessuna query sul DB di produzione.
 
 Restano aperti i 21 alti e i 24 medi elencati sopra, salvo A15 e A20 già chiusi.
+
+## Secondo giro (stessa sessione): tutti gli alti
+
+Altri tre commit sul branch `fix-critici-20260902`.
+
+**Chiusi:** A1 (socio che si promuoveva socio da solo — trigger su `persona`, migr. 0123),
+A2, A3, A4 (minorenne per età, non per spunta), A6 (storno incassi non-Stripe, nuovo tasto
+sulla ricevuta), A7 (spese doppie da estratto conto), A8 (entrate extra mancanti nelle
+Statistiche), A9 (curva soci sotto zero), A10 (doppia decadenza + anagrafica non allineata),
+A11 (tentativi bruciati dal tetto), A12 (maxDuration sul cron), A13 (quota Telegram per il
+modulo pubblico + deduplica pre-iscrizioni), A14 (redirect aperto), A15, A16, A17+M24 (fuso
+Europe/Rome, nuovo `src/lib/orario-italia.ts`), A18 (attribuzione all'anno), A19 (due fasce
+nello stesso giorno), A20, A21 (mail libera solo superadmin).
+
+**Deliberatamente NON fatti, con motivo:**
+- **A5** — richiudere `libro_soci_modificabile`: va fatto DOPO aver applicato 0121 e ripulito
+  il registro, altrimenti si congela un registro incoerente. Decisione di Lele.
+- **A18, metà** — escludere le liquidazioni in bozza dal progressivo: `stato` nasce 'bozza' e
+  nessun punto del codice lo fa avanzare, quindi il filtro azzererebbe il numero per tutti.
+  Prima va deciso quando una liquidazione diventa 'confermata'.
+- **C10** — i cron dentro il database: è una decisione su dove devono vivere, non una patch.
+
+**MIGRAZIONI DA APPLICARE A MANO: 0121, 0122, 0123.** Nessuna è stata eseguita.
