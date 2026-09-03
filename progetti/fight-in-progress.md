@@ -27,14 +27,27 @@ Deciso: 03/09/2026 — il "muro rosso" si risolve col silenzio, non nascondendo:
   l'Ensō, grandi, bio al click, e in homepage NESSUNA anteprima di istruttori
   (mostrarne 4 metteva 4 persone davanti alle altre senza motivo). Nessun
   conteggio di istruttori sul sito: non sono ancora tutti e cambiano.
+Verificato a fine giornata (03/09, gestionale ormai in uso vero): audit
+  contabile completo — nessun incasso o ricevuta con data futura, nessuna
+  ricevuta orfana, importi incasso/ricevuta sempre uguali, numerazione delle
+  12 ricevute emesse dal sistema perfettamente consecutiva (i 22 buchi del
+  2026 stanno tutti nelle 394 importate dal vecchio gestionale: da chiarire
+  con il vecchio sistema se erano annullate o se l'import ne ha perse 22).
+  Corretti: contatore 2025 fermo a 3 mentre l'anno arriva a 1024 (una
+  ricevuta retrodatata sarebbe stata respinta), 60 € di dati finti ancora
+  vivi nei conti (stress test "ZZSTRESS Regolare" + socio di prova), stornati.
+  Codice: 272 file, 0 errori di lint, 0 `any`, 0 @ts-ignore, 0 TODO; corretto
+  un render a cascata nella select categoria spesa e rimosso un componente
+  morto. ATTENZIONE PER IL FUTURO: il contatore ricevute non torna indietro
+  quando si cancella — vedi memoria reference_crew_numerazione_ricevute.
 Prossimo passo: (Lele) 4 voci dei soci per la homepage — le frasi devono
   essere loro, è l'ultima casella scoperta rispetto ai concorrenti; decidere
   se pubblicare Mirko Bolla e dare 2 righe di presentazione a D'Onofrio;
-  guardare /gestionale/tipologie su telefono (è cresciuta apposta, da
-  confermare o revocare); mandare il prospetto mensile per il consuntivo.
+  mandare il prospetto mensile per il consuntivo; verificare con il vecchio
+  gestionale i 22 numeri di ricevuta mancanti del 2026.
   (Macchina) consuntivo mensile nella forma del suo foglio; proposta per i
-  verbali e per colore/logo dei gruppi (le 2 note che chiedono una proposta,
-  non codice).
+  verbali (29 su 29 sono adesioni settimanali, gli altri 6 tipi mai usati) e
+  per colore/logo dei gruppi.
 
 
 ---
