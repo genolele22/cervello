@@ -6,19 +6,36 @@
 
 ## Stato
 
-Stato: in corso — LIVE. Sistema "a scomparsa" su tutte le schede principali,
-  categoria spesa modificabile in riga/blocco, pagina nuova
-  /gestionale/statistiche. Pagamento allo sportello verificato dal vivo oggi.
-  Pagamento online (Stripe) NON riverificato dopo i deploy di oggi — ultimo
-  successo reale nel DB è del 18/08.
-Deciso: 01/09/2026 — il verbale delle adesioni ammette solo chi ha già pagato
-  la quota associativa, non basta più la domanda (bug reale: un agente ha
-  confermato un verbale vero con 10 persone, 9 senza pagamento — le 10
-  ammissioni restano così, corretto il flusso per il futuro). Kalèido tiene
-  per regolamento i propri colori/spazi, mai normalizzati sulla palette THE
-  CREW — vincolo ora scritto in docs/MARCHIO.md.
-Prossimo passo: (Lele) verificare il pagamento online dal vivo alla prima
-  occasione reale. (Macchina) nessuno aperto da questo giro.
+Stato: in corso — LIVE. Giornata lunga sul sito pubblico e sul gestionale.
+  VETRINA: ricognizione su 10 siti di palestre/ASD (7 italiane, 3 USA) — in
+  Italia sbagliano tutti le stesse tre cose (zero testimonianze, istruttori
+  invisibili, prova mai dichiarata), e due di quelle noi le avevamo già senza
+  dirle. Ora "Vieni a provare" è prima voce di menu e primo tasto, ci sono i
+  tre passi per cominciare, le tre rassicurazioni per chi non ha mai fatto
+  sport da combattimento, gli orari dentro ogni scheda corso, i filtri per
+  famiglia ed età con barra appiccicata, Staff a ritratti grandi con bio al
+  click. Tutte le 29 frasi della home sono modificabili da
+  /gestionale/testi-sito (erano 6). Il sito si aggiorna da solo quando entra
+  un istruttore (mancava la rivalidazione della cache: era un difetto, non
+  una funzione mancante). NIENTE CIFRE sul sito: una ASD non pubblicizza
+  tariffe, e niente numero di lezioni di prova.
+  GESTIONALE: logbook di 17+2 note lavorato a 4 gruppi paralleli, 16 chiuse.
+Deciso: 03/09/2026 — il "muro rosso" si risolve col silenzio, non nascondendo:
+  chi è fuori tempo da oltre 5 mesi (28/02 + 5) diventa "silente", esce dagli
+  avvisi ma resta in elenco, nei filtri e fra i candidati a decadenza. Effetto
+  reale: da 151 segnalazioni a 26 su 206 soci. Le foto staff sempre dentro
+  l'Ensō, grandi, bio al click, e in homepage NESSUNA anteprima di istruttori
+  (mostrarne 4 metteva 4 persone davanti alle altre senza motivo). Nessun
+  conteggio di istruttori sul sito: non sono ancora tutti e cambiano.
+Prossimo passo: (Lele) 4 voci dei soci per la homepage — le frasi devono
+  essere loro, è l'ultima casella scoperta rispetto ai concorrenti; decidere
+  se pubblicare Mirko Bolla e dare 2 righe di presentazione a D'Onofrio;
+  guardare /gestionale/tipologie su telefono (è cresciuta apposta, da
+  confermare o revocare); mandare il prospetto mensile per il consuntivo.
+  (Macchina) consuntivo mensile nella forma del suo foglio; proposta per i
+  verbali e per colore/logo dei gruppi (le 2 note che chiedono una proposta,
+  non codice).
+
 
 ---
 
