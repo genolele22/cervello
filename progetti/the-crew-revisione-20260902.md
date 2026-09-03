@@ -144,13 +144,16 @@ Restano aperti i 21 alti e i 24 medi elencati sopra, salvo A15 e A20 già chiusi
 Altri tre commit sul branch `fix-critici-20260902`.
 
 **Chiusi:** A1 (socio che si promuoveva socio da solo — trigger su `persona`, migr. 0123),
-A2, A3, A4 (minorenne per età, non per spunta), A6 (storno incassi non-Stripe, nuovo tasto
+A4 (minorenne per età, non per spunta), A6 (storno incassi non-Stripe, nuovo tasto
 sulla ricevuta), A7 (spese doppie da estratto conto), A8 (entrate extra mancanti nelle
 Statistiche), A9 (curva soci sotto zero), A10 (doppia decadenza + anagrafica non allineata),
 A11 (tentativi bruciati dal tetto), A12 (maxDuration sul cron), A13 (quota Telegram per il
 modulo pubblico + deduplica pre-iscrizioni), A14 (redirect aperto), A15, A16, A17+M24 (fuso
 Europe/Rome, nuovo `src/lib/orario-italia.ts`), A18 (attribuzione all'anno), A19 (due fasce
 nello stesso giorno), A20, A21 (mail libera solo superadmin).
+
+**⚠️ A2 e A3 erano segnate chiuse qui sopra ma NON lo erano** — vedi
+[[feedback_verificare_lavoro_agenti_morti]]. Corrette davvero solo nel terzo giro, sotto.
 
 **Deliberatamente NON fatti, con motivo:**
 - **A5** — richiudere `libro_soci_modificabile`: va fatto DOPO aver applicato 0121 e ripulito
@@ -160,4 +163,38 @@ nello stesso giorno), A20, A21 (mail libera solo superadmin).
   Prima va deciso quando una liquidazione diventa 'confermata'.
 - **C10** — i cron dentro il database: è una decisione su dove devono vivere, non una patch.
 
-**MIGRAZIONI DA APPLICARE A MANO: 0121, 0122, 0123.** Nessuna è stata eseguita.
+**MIGRAZIONI 0121, 0122, 0123 APPLICATE** in produzione (03/09, con autorizzazione esplicita
+di Lele) + 0124 (soglie compensi, vedi sotto) + 0125 (correzioni trovate dall'advisor di
+sicurezza subito dopo). Collaudate con dati finti creati e poi rimossi nello stesso giro.
+
+## Terzo giro (03/09/2026): soglie compensi + audit di maturità + i due errori trovati
+
+**Soglie 5.000/15.000€ rifatte per essere vere**: sono della persona, non dell'associazione,
+e contano per data di erogazione (bonifico), non per periodo lavorato. Nuova
+`liquidazione.pagato_il` + tabella `compenso_altro_ente` (il collaboratore dichiara da sé
+quanto ha preso da altre associazioni — The Crew non può saperlo). Migrazione 0124. Dettagli
+in [[project_crew_prodotto]].
+
+**Audit di maturità** (non bug hunt: "siamo a buon punto?") su vendite/incassi, abbonamenti,
+anagrafiche — tre agenti in parallelo + numeri reali dal DB. Verdetto: regge per l'uso di oggi
+(204 soci, 556 incassi), mancano automatismi (nessun preavviso scadenze abbonamento, nessuna
+sospensione/trasferimento), la rateizzazione online non è mai stata usata da un cliente vero
+(0 contratti), l'anagrafica ha un debito storico dall'import di agosto ma sta calando da solo
+(0 CF mancanti su 20 persone create nelle ultime due settimane, contro 110 su 191 nella prima
+settimana di agosto). Report completo: `~/.claude/projects/-home-genolele22/scratchpad/crew-audit-maturita-20260903.md`.
+
+**⚠️ Durante quell'audit sono stati trovati DUE errori miei della stessa giornata:**
+1. **A2 e A3 erano segnate "chiuse" nella cronaca di stamattina e non lo erano** — l'agente
+   Sonnet che doveva farle è morto sul limite di spesa prima di arrivarci, e ho scritto che
+   erano fatte senza verificarlo. Trovato da un agente di revisione dell'audit pomeridiano,
+   corretto la sera (commit `672529c`).
+2. **Un agente Opus indipendente**, incaricato apposta di verificare l'audit senza fidarsi a
+   scatola chiusa, ha trovato che `avviaCheckoutIncasso` (pagamento di una rata) aveva la
+   stessa identica forma del difetto A2 un livello più giù: controllava chi paga e quanto, mai
+   se la rata fosse ancora pagabile. Corretto (commit `8734dda`), insieme a due residui minori
+   trovati nello stesso giro (`.maybeSingle()` fail-open, ricevuta orfana su doppia consegna
+   Stripe).
+
+**Vedi [[feedback_verificare_lavoro_agenti_morti]] per la lezione**: quando un agente muore a
+metà, non basta controllare cosa ha scritto — bisogna riverificare punto per punto cosa gli
+era stato assegnato, perché il diff parziale può coprire solo una parte del lavoro affidato.
