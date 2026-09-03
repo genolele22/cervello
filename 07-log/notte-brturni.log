@@ -285,3 +285,7 @@ MEMORY.md index già puntava a questo file, non serve aggiornarlo oltre.
 
 Dodicesima notte consecutiva a vuoto dal 02/08 — vale la pena che tu decida se sospendere il cron finché non c'è un input reale (playtest umano del pacchetto "Il round si racconta", nuovi asset grafici, o una decisione di design).
 [Tue Sep  1 02:39:17 AM CEST 2026] fine sessione notturna (exit 0)
+Already on 'master'
+[Thu Sep  3 02:37:02 AM CEST 2026] inizio sessione notturna (branch master)
+You've hit your monthly spend limit · raise it at claude.ai/settings/usage?from=cc_cli_limit_message · your session limit resets 2:40am (Europe/Rome)
+[Thu Sep  3 02:37:11 AM CEST 2026] fine sessione notturna (exit 0)
