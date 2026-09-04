@@ -6,7 +6,22 @@
 
 ## Stato
 
-Stato: in corso — LIVE. Giornata lunga sul sito pubblico e sul gestionale.
+Stato: in corso — LIVE. Logbook chiuso (7 note) e controllo incrociato su tutti i
+  dati. Tre bug veri, corretti e bonificati: l'incasso di un abbonamento non
+  creava l'iscrizione (24 persone avevano pagato e risultavano scadute), 41 soci
+  su 82 con l'invito di accesso scaduto e nessuna strada per rientrare, sei quote
+  di agosto mai finite nel libro soci (Rago risultava decaduta pur avendo pagato).
+Deciso: 04/09/2026 — le scadenze prima di agosto non si ricostruiscono, salvo
+  quelle ancora in corso: da agosto i conti devono tornare, prima è storia
+  importata. Il tutore sceglie da sé se gestire la pagina del figlio.
+Prossimo passo: (Lele) Massa Mastroeni e Lione Sara da regolarizzare nel libro
+  soci; Gallo e Sejdic senza certificato (Sejdic anche senza assicurazione).
+
+---
+
+## Stato al 03/09/2026
+
+Giornata lunga sul sito pubblico e sul gestionale.
   VETRINA: ricognizione su 10 siti di palestre/ASD (7 italiane, 3 USA) — in
   Italia sbagliano tutti le stesse tre cose (zero testimonianze, istruttori
   invisibili, prova mai dichiarata), e due di quelle noi le avevamo già senza
@@ -117,6 +132,24 @@ Dettagli tecnici e cronologia sessioni: memoria auto-gestita del secondo cervell
 **Ogni salvataggio adesso lo dice, con un avviso grande.** Richiesta di Lele pensando a Claudio: prima la conferma era una riga in fondo al modulo e su pagine lunghe finiva sotto il bordo dello schermo — si premeva Salva e non si vedeva niente. Ora compare in alto, si legge, e si chiude con "Ho capito". Vale su 33 pagine più i 12 moduli che dopo il salvataggio cambiano pagina.
 
 Semplificate anche le etichette dello stato socio ("In tolleranza" → "Quota scaduta — ancora in tempo"). Gli altri termini tecnici Lele li tiene com'erano: li usa lui.
+
+**04/09/2026 — logbook (7 note) e poi un controllo incrociato su tutti i dati.** Il giro è partito da una segnalazione che sembrava minima ("Reale e Zeffiri non risultano negli iscritti": in realtà corretto, non avevano pagato la quota) e ha scoperchiato tre difetti veri, tutti nel punto dove i soldi entrano e lo stato non si muove.
+
+**Un abbonamento pagato non estendeva niente.** Registrando un incasso, il modulo scriveva "l'abbonamento ripartirà dal…" ma era solo un testo: l'iscrizione la creava soltanto "Iscrivi e incassa" dalla scheda socio. Chi passava dalla via più rapida — quasi metà degli incassi veri — pagava e restava scaduto a sistema. **24 persone**, fra cui Carbone (€115 il 01/08, risultava scaduto da giugno). Ora l'incasso crea o estende davvero l'iscrizione, con **data di inizio modificabile** (serviva a Lele proprio per chi è rimasto fermo un periodo) e la nuova scadenza confermata a video e su Telegram. "Iscrivi e incassa" non scrive più nulla di suo: porta tipologia e data al modulo di incasso, che è l'unico posto che scrive — niente più doppia scrittura fra i due percorsi.
+
+**41 soci su 82 erano murati fuori dall'accesso.** La scadenza di 14 giorni sugli inviti (introdotta il 02/09) era stata applicata anche a quelli già spediti, e da lì il sistema si era chiuso da solo: il codice riusava l'invito scaduto (rimandando un link morto), l'indice anti-doppione bloccava anche la mail, e la pagina Accessi mostra solo i "mai invitati" — chi un invito l'aveva ricevuto non compariva più da nessuna parte. Nessuna strada, né automatica né manuale. Ora un invito scaduto viene annullato e rifatto, e in Accessi c'è la sezione **"Invito scaduto"** con il pulsante *Rimanda*, **uno alla volta**: 41 mail insieme sono esattamente la valanga che il tetto di invio esiste per fermare, e sono persone che quel link l'avevano già ignorato una volta.
+
+**Sei quote di agosto non erano mai finite nel libro soci** (residuo del difetto corretto il 02/09): Aliati, Bolla, D'Onofrio, La Rocca Giulia, Rago, Errico. Rago risultava **decaduta pur avendo pagato il 28/08**. Ricostruiti i sei versamenti dagli incassi già registrati.
+
+**Regola nuova, di Lele:** le scadenze anteriori ad agosto non si ricostruiscono, *a meno che non siano ancora in corso*. Da agosto in poi è il gestionale nuovo e i conti devono tornare; prima è storia importata e si lascia com'è. Applicata subito: delle 18 iscrizioni ricostruite il giorno prima ne sono rimaste 7 (quelle in corso o di agosto), le altre 11 tolte.
+
+**Il tutore ora sceglie.** Il meccanismo per cui un genitore vede e gestisce le pagine dei figli esisteva già, ma scattava da solo appena il superadmin scriveva il collegamento. Ora c'è un interruttore per figlio in "Il mio profilo", spento di default: acceso, il figlio ricompare ovunque (abbonamenti, certificati, pagamenti, ricevute); spento, sparisce. Chi rappresenta chi resta scritto solo dal superadmin. Al momento della modifica nessuno dei 5 genitori collegati aveva ancora attivato l'accesso, quindi nessun impatto su chi stava già usando il sistema.
+
+**Altro dal giro:** la tendina del menu si apriva verso sinistra e usciva dallo schermo (ora sempre verso destra); le domande "in attesa di delibera" hanno il link alla scheda, che mancava solo lì (senza, non c'era modo di registrare un pagamento a chi non ha ancora l'accesso); la pagina Verbali mette in cima le bozze **con i nomi già in vista** e retrocede i due moduli manuali, ormai una rete di sicurezza dato il cron settimanale; un job notturno chiude le iscrizioni scadute, che nessuno chiudeva.
+
+**Cosa è risultato pulito nel controllo incrociato:** ricevute (numerazione, importi, collegamento con gli incassi), rate e contratti, spese, entrate extra, estratto conto e saldi, categorie del consuntivo, notifiche ed email, sale e orari, presenze, codici fiscali doppi, omonimie. I dati di collaudo ancora in anagrafica ("Socio Prova", "ZZSTRESS Regolare") hanno gli incassi già stornati: contabilmente non sporcano, restano da togliere alla pulizia di settembre.
+
+**Rimasto aperto, di Lele:** Massa Mastroeni — il libro soci dice che è socia dal 09/09/2025 (numero 252, quota 2025 versata), l'anagrafica dice "richiedente" e la domanda è ferma su "presentata": residuo di un vecchio import, caso unico, e il trigger di protezione impedisce giustamente di forzarlo via SQL (serve il verbale di ricognizione, o l'ingresso in bozza quando versa la quota 2026). Lione Sara risulta socia senza nulla nel libro soci. Gallo e Sejdic si allenano senza certificato medico, Sejdic anche senza assicurazione. La Rocca Giovanni è decaduto dal 28/02/2026. Preiscrizioni ferme: Gaietta Giulia (19/08) e Paravati Roberto. Genovesi Claudio e Valentini Massimo sono collaboratori attivi senza regola di compenso, quindi il loro compenso non si calcola.
 
 ---
 

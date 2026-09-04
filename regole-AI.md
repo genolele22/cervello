@@ -166,3 +166,31 @@ quello", ma "non hai il permesso di eseguire questa funzione/RPC specifica")
 E controllare il DB dopo — non fidarsi del solo report dell'agente, che
 riferisce cosa intendeva fare, non necessariamente cosa ha fatto.
 Scoperto su: the-crew, conferma automatica di un verbale (01/09/2026).
+
+### Aggiungere una scadenza a qualcosa che è già in circolazione lascia gente chiusa fuori
+Introdurre una scadenza su token/inviti/link già emessi (e applicarla anche a
+quelli vecchi, per coerenza) sembra una stretta di sicurezza innocua. Ma va
+verificato chi *riusa* quegli oggetti: se il codice cerca "quello ancora in
+attesa" senza guardare la data, continua a rispedire un oggetto morto — e se
+c'è anche una protezione anti-doppione sulla notifica, la seconda mail non
+parte nemmeno, quindi la persona non riceve più niente e non ha alcun modo di
+segnalarlo. La stretta di sicurezza diventa una porta murata.
+Regola: insieme alla scadenza si scrive sempre, nello stesso lavoro, (1) il
+percorso di rigenerazione e (2) il punto dell'interfaccia da cui si lancia —
+altrimenti la "riapertura" esiste solo nei commenti. E dopo, si conta quanti
+oggetti la nuova scadenza ha invalidato di colpo.
+Scoperto su: the-crew, inviti ad attivare l'accesso (04/09/2026) — 41 soci su
+82 murati fuori per due giorni, scoperti solo con un controllo incrociato.
+
+### Un testo che annuncia una conseguenza non è la conseguenza
+Un'interfaccia che dice "l'abbonamento ripartirà dal 3 ottobre" mentre si
+registra un pagamento sembra la prova che il sistema stia facendo quella cosa.
+Può essere solo una frase: il calcolo per scriverla esiste, la scrittura no. È
+peggio di un messaggio mancante, perché rassicura l'operatore e nessuno va a
+controllare — il difetto resta invisibile finché non lo si cerca dal lato dei
+dati ("quanti pagamenti non hanno prodotto l'effetto che annunciavano?").
+Regola: ogni frase dell'interfaccia che promette un effetto va verificata sul
+dato, non sul codice che la compone. E in revisione, trattare i testi
+predittivi come codice da collaudare, non come copy.
+Scoperto su: the-crew, incassi di abbonamento (04/09/2026) — 24 persone
+avevano pagato e risultavano scadute, con la frase giusta a schermo.
