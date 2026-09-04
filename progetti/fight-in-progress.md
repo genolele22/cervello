@@ -6,16 +6,21 @@
 
 ## Stato
 
-Stato: in corso — LIVE. Logbook chiuso (7 note) e controllo incrociato su tutti i
-  dati. Tre bug veri, corretti e bonificati: l'incasso di un abbonamento non
-  creava l'iscrizione (24 persone avevano pagato e risultavano scadute), 41 soci
-  su 82 con l'invito di accesso scaduto e nessuna strada per rientrare, sei quote
-  di agosto mai finite nel libro soci (Rago risultava decaduta pur avendo pagato).
-Deciso: 04/09/2026 — le scadenze prima di agosto non si ricostruiscono, salvo
-  quelle ancora in corso: da agosto i conti devono tornare, prima è storia
-  importata. Il tutore sceglie da sé se gestire la pagina del figlio.
-Prossimo passo: (Lele) Massa Mastroeni e Lione Sara da regolarizzare nel libro
-  soci; Gallo e Sejdic senza certificato (Sejdic anche senza assicurazione).
+Stato: in corso — LIVE. Giornata su tre fronti: logbook (7 note), controllo
+  incrociato su tutti i dati, e i compensi collaboratori. Tre bug veri corretti
+  e bonificati (abbonamenti pagati che non estendevano niente — 24 persone; 41
+  soci con l'invito di accesso scaduto e nessuna strada per rientrare; sei quote
+  di agosto mai finite nel libro soci). Poi il contatore live dei compensi: in
+  "Da fare" quanto devi dare ora e quanto sta maturando, chiusura automatica il
+  1° con avviso Telegram la vigilia a te E a ogni istruttore, "rimanda al mese
+  prossimo" per riga.
+Deciso: 04/09/2026 — prima di agosto non si ricostruisce, salvo ciò che è ancora
+  in corso. Il tutore sceglie se gestire la pagina del figlio. Nessuna regola di
+  compenso impostata = volontario, ma va dichiarato con un flag, non dedotto.
+  Chi insegna segna "lezione fatta" con un tocco, senza dipendere dall'appello.
+Prossimo passo: (Lele) collegare gli istruttori al bot — oggi solo Aurora riceve
+  i messaggi; Massa Mastroeni e Lione Sara da regolarizzare nel libro soci; Gallo
+  e Sejdic senza certificato (Sejdic anche senza assicurazione).
 
 ---
 
@@ -148,6 +153,20 @@ Semplificate anche le etichette dello stato socio ("In tolleranza" → "Quota sc
 **Altro dal giro:** la tendina del menu si apriva verso sinistra e usciva dallo schermo (ora sempre verso destra); le domande "in attesa di delibera" hanno il link alla scheda, che mancava solo lì (senza, non c'era modo di registrare un pagamento a chi non ha ancora l'accesso); la pagina Verbali mette in cima le bozze **con i nomi già in vista** e retrocede i due moduli manuali, ormai una rete di sicurezza dato il cron settimanale; un job notturno chiude le iscrizioni scadute, che nessuno chiudeva.
 
 **Cosa è risultato pulito nel controllo incrociato:** ricevute (numerazione, importi, collegamento con gli incassi), rate e contratti, spese, entrate extra, estratto conto e saldi, categorie del consuntivo, notifiche ed email, sale e orari, presenze, codici fiscali doppi, omonimie. I dati di collaudo ancora in anagrafica ("Socio Prova", "ZZSTRESS Regolare") hanno gli incassi già stornati: contabilmente non sporcano, restano da togliere alla pulizia di settembre.
+
+**04/09/2026, sera — i compensi collaboratori: dal calcolo al contatore.** Richiesta: «ho bisogno di avere sott'occhio sempre quanto devo dare, anche in modo parziale a metà mese; un contatore live da bloccare a fine mese, ogni mese, con la possibilità di segnare se pagato o da accomunare al mese successivo».
+
+**Il grosso c'era già e non si usava.** Il modello a mese (29/08) copriva calcolo, congelamento al pagamento e conguagli, ma la tabella era vuota: serviva premere un tasto perché si popolasse, e nessuno l'aveva premuto. E soprattutto **escludeva il mese in corso per scelta** ("non si paga un mese non finito"), che è esattamente quello che Lele voleva vedere.
+
+**Il contatore si muove quando incassi, non quando apri la pagina.** Il compenso matura sull'incassato, quindi quello è l'unico istante in cui la cifra cambia davvero: si aggiorna lì, dentro la registrazione dell'incasso. Le pagine leggono una riga già pronta — niente nove collaboratori ricalcolati a ogni apertura della home — e il numero è vero al secondo, non "aggiornato a stanotte". In "Da fare" le due cifre restano separate e non sommate: quanto devi ora (mesi finiti) e quanto sta maturando (il mese in corso, che domani è diverso).
+
+**Chiusura automatica il 1°, avviso la vigilia.** Un job solo che gira ogni notte e decide da sé: l'ultimo del mese manda le cifre provvisorie ("si chiude domani, sei ancora in tempo"), il 1° ricalcola, blocca e manda le definitive. Ricalcola *prima* di chiudere, altrimenti un mese senza incassi non avrebbe mai avuto una riga e resterebbe aperto e invisibile per sempre. Nuovo stato "chiuso" fra aperto e pagato: la cifra è ferma, i soldi non sono ancora usciti — ed è quella la cifra che si deve.
+
+**Il vincolo che avrebbe fatto fallire tutto, trovato al collaudo.** Il CHECK della tabella pretendeva liquidazione e data di pagamento per qualunque stato diverso da "aperto": scritto quando gli stati erano due, dove "non aperto" voleva dire "pagato". Con "chiuso" in mezzo la chiusura lo violava, e il job sarebbe fallito **in silenzio ogni primo del mese, di notte**. Riscritto esplicito per i tre stati; ora impedisce anche che un mese chiuso si porti dietro una liquidazione.
+
+**Poi tre aggiunte, subito dopo:** ogni istruttore collegato al bot riceve il *suo* messaggio (solo la sua cifra, mai l'elenco degli altri) — spedito anche quando è zero, perché è proprio il caso in cui deve reagire; «se nessun compenso impostato vuol dire che non lo prendono» è diventato un flag dichiarato sulla scheda (Claudio e Massimo già marcati), così smette di comparire come anomalia a ogni chiusura e resta distinguibile da "regola non ancora messa"; e **"lezione fatta" con un tocco**, senza appello nominativo. Quest'ultima chiudeva un errore che pendeva sempre dalla stessa parte: chi non faceva l'appello risultava con zero lezioni svolte, cioè detrazione più bassa e compenso più alto del dovuto.
+
+**Da sapere:** al bot Telegram è collegata solo Aurora Denaro fra i collaboratori attivi — gli altri i messaggi non li ricevono finché non generi il loro codice dalla scheda. Ad agosto nessuno ha maturato nulla (palestra ferma): settembre è il primo mese che si chiuderà davvero, il 1° ottobre. Il comando Telegram per chiedere il totale da fuori è stato valutato e scartato: poco utile.
 
 **Rimasto aperto, di Lele:** Massa Mastroeni — il libro soci dice che è socia dal 09/09/2025 (numero 252, quota 2025 versata), l'anagrafica dice "richiedente" e la domanda è ferma su "presentata": residuo di un vecchio import, caso unico, e il trigger di protezione impedisce giustamente di forzarlo via SQL (serve il verbale di ricognizione, o l'ingresso in bozza quando versa la quota 2026). Lione Sara risulta socia senza nulla nel libro soci. Gallo e Sejdic si allenano senza certificato medico, Sejdic anche senza assicurazione. La Rocca Giovanni è decaduto dal 28/02/2026. Preiscrizioni ferme: Gaietta Giulia (19/08) e Paravati Roberto. Genovesi Claudio e Valentini Massimo sono collaboratori attivi senza regola di compenso, quindi il loro compenso non si calcola.
 

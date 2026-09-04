@@ -194,3 +194,19 @@ dato, non sul codice che la compone. E in revisione, trattare i testi
 predittivi come codice da collaudare, non come copy.
 Scoperto su: the-crew, incassi di abbonamento (04/09/2026) — 24 persone
 avevano pagato e risultavano scadute, con la frase giusta a schermo.
+
+### Un vincolo scritto per due stati si rompe quando ne aggiungi un terzo
+Un CHECK del tipo «o lo stato è "aperto", oppure devono esserci liquidazione e
+data di pagamento» è corretto finché gli stati sono due, perché "non aperto"
+significa implicitamente "chiuso e pagato". Il giorno che se ne aggiunge uno in
+mezzo — finito ma non ancora pagato — quel vincolo rifiuta proprio la
+transizione nuova, e lo fa nel punto peggiore: dentro un job notturno, dove
+l'eccezione non la vede nessuno e il lavoro semplicemente non risulta fatto.
+Regola: aggiungendo un valore a un enum di stato, rileggere SUBITO tutti i
+CHECK e i trigger che nominano quella colonna — sono scritti sull'insieme di
+stati di allora, non sul nuovo. E riscriverli enumerando ogni stato in modo
+esplicito invece di dire "tutti quelli che non sono X": costa tre righe in più
+e non si rompe al prossimo stato.
+Scoperto su: the-crew, chiusura mensile dei compensi (04/09/2026) — trovato al
+collaudo con rollback, prima del deploy; sarebbe fallito ogni primo del mese in
+silenzio.
