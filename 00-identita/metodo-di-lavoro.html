@@ -1,0 +1,561 @@
+<title>Il turno e il commit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --paper:   #F1F4F3;
+    --surface: #FBFCFB;
+    --ink:     #12181B;
+    --soft:    #4E585C;
+    --faint:   #74807F;
+    --rule:    #D2DAD8;
+    --rule-2:  #E2E8E6;
+    --accent:  #175C68;
+    --accent-w:#DCEAEA;
+    --risk:    #8A2F29;
+    --risk-w:  #F0DFDC;
+    --shadow:  0 1px 2px rgba(18,24,27,.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:   #0E1214;
+      --surface: #161C1E;
+      --ink:     #E5EBE9;
+      --soft:    #A2AEAF;
+      --faint:   #7C8888;
+      --rule:    #293134;
+      --rule-2:  #202729;
+      --accent:  #6FB4BE;
+      --accent-w:#17282C;
+      --risk:    #DB8B81;
+      --risk-w:  #2A1A18;
+      --shadow:  0 1px 2px rgba(0,0,0,.4);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:   #0E1214;
+    --surface: #161C1E;
+    --ink:     #E5EBE9;
+    --soft:    #A2AEAF;
+    --faint:   #7C8888;
+    --rule:    #293134;
+    --rule-2:  #202729;
+    --accent:  #6FB4BE;
+    --accent-w:#17282C;
+    --risk:    #DB8B81;
+    --risk-w:  #2A1A18;
+    --shadow:  0 1px 2px rgba(0,0,0,.4);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+    font-size: 16.5px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 812px;
+    margin: 0 auto;
+    padding: 0 24px 96px;
+  }
+
+  /* ---------- intestazione ---------- */
+
+  header.sheet {
+    padding: 56px 0 30px;
+    border-bottom: 2px solid var(--ink);
+  }
+  .eyebrow {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 11.5px;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--faint);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+  }
+  h1 {
+    font-family: "IBM Plex Serif", Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(2.3rem, 6vw, 3.15rem);
+    line-height: 1.06;
+    letter-spacing: -.02em;
+    margin: 18px 0 0;
+    text-wrap: balance;
+  }
+  .standfirst {
+    margin: 18px 0 0;
+    font-size: 1.09rem;
+    color: var(--soft);
+    max-width: 62ch;
+  }
+  .standfirst strong { color: var(--ink); font-weight: 600; }
+
+  /* ---------- scheda dati ---------- */
+
+  .scheda {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(146px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 30px 0 0;
+  }
+  .scheda div {
+    background: var(--surface);
+    padding: 13px 15px;
+  }
+  .scheda dt {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin: 0 0 5px;
+  }
+  .scheda dd {
+    margin: 0;
+    font-family: "IBM Plex Mono", monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 1.28rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.15;
+  }
+  .scheda dd span {
+    display: block;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: .8rem;
+    font-weight: 400;
+    color: var(--soft);
+    margin-top: 3px;
+    line-height: 1.35;
+  }
+
+  /* ---------- sezioni ---------- */
+
+  section { padding-top: 58px; }
+  h2 {
+    font-family: "IBM Plex Serif", Georgia, serif;
+    font-size: 1.72rem;
+    font-weight: 600;
+    letter-spacing: -.015em;
+    margin: 0 0 6px;
+    text-wrap: balance;
+  }
+  .sec-label {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 12px;
+  }
+  .lede {
+    color: var(--soft);
+    margin: 0 0 26px;
+    max-width: 64ch;
+  }
+  p { max-width: 66ch; }
+  h3 {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 1.02rem;
+    font-weight: 600;
+    margin: 0 0 4px;
+    letter-spacing: -.005em;
+  }
+
+  /* ---------- il ciclo (sequenza reale) ---------- */
+
+  ol.ciclo {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0;
+    counter-reset: passo;
+  }
+  ol.ciclo li {
+    display: grid;
+    grid-template-columns: 54px 1fr;
+    gap: 18px;
+    padding: 17px 0;
+    border-top: 1px solid var(--rule-2);
+    counter-increment: passo;
+  }
+  ol.ciclo li:last-child { border-bottom: 1px solid var(--rule-2); }
+  ol.ciclo li::before {
+    content: counter(passo, decimal-leading-zero);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    color: var(--accent);
+    padding-top: 3px;
+    font-variant-numeric: tabular-nums;
+  }
+  ol.ciclo p { margin: 0; color: var(--soft); font-size: .95rem; }
+
+  /* ---------- forza / debolezza ---------- */
+
+  .voce {
+    border-left: 3px solid var(--accent);
+    padding: 2px 0 2px 18px;
+    margin: 0 0 26px;
+  }
+  .voce.debole { border-left-color: var(--risk); }
+  .voce p { margin: 4px 0 0; color: var(--soft); font-size: .96rem; }
+  .prova {
+    display: block;
+    margin-top: 9px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: var(--ink);
+    background: var(--accent-w);
+    padding: 8px 11px;
+    max-width: 62ch;
+  }
+  .voce.debole .prova { background: var(--risk-w); }
+  .prova b {
+    font-weight: 500;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    font-size: 10.5px;
+    color: var(--faint);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  /* ---------- appoggi ---------- */
+
+  .appoggi {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .appoggi article {
+    background: var(--surface);
+    padding: 18px 19px 20px;
+  }
+  .appoggi h3 { margin-bottom: 6px; }
+  .appoggi .path {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 8px;
+    word-break: break-all;
+  }
+  .appoggi p { margin: 0; font-size: .91rem; color: var(--soft); }
+
+  /* ---------- consigli ---------- */
+
+  ul.consigli { list-style: none; margin: 0; padding: 0; }
+  ul.consigli li {
+    padding: 16px 0;
+    border-top: 1px solid var(--rule-2);
+    max-width: 68ch;
+  }
+  ul.consigli li:last-child { border-bottom: 1px solid var(--rule-2); }
+  ul.consigli p { margin: 4px 0 0; color: var(--soft); font-size: .95rem; }
+  .peso {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--faint);
+    float: right;
+    margin-left: 14px;
+  }
+
+  /* ---------- collaboratori ---------- */
+
+  .patto {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    padding: 24px 26px 26px;
+  }
+  .patto h3 { margin-top: 22px; }
+  .patto h3:first-of-type { margin-top: 0; }
+  .patto ul { margin: 8px 0 0; padding-left: 20px; }
+  .patto li { margin-bottom: 5px; color: var(--soft); }
+  .patto li strong { color: var(--ink); font-weight: 600; }
+
+  footer {
+    margin-top: 66px;
+    padding-top: 18px;
+    border-top: 1px solid var(--rule);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11.5px;
+    color: var(--faint);
+    letter-spacing: .04em;
+    line-height: 1.8;
+  }
+  b.nota { color: var(--ink); font-weight: 500; }
+
+  @media (max-width: 560px) {
+    body { font-size: 16px; }
+    ol.ciclo li { grid-template-columns: 34px 1fr; gap: 12px; }
+  }
+</style>
+
+<div class="wrap">
+
+<header class="sheet">
+  <div class="eyebrow">
+    <span>Profilo di metodo</span>
+    <span>Aggiornato 05.09.2026</span>
+    <span>Uso: riferimento AI · collaboratori</span>
+  </div>
+  <h1>Il turno e il commit</h1>
+  <p class="standfirst">Come lavora Lele: vigile del fuoco a turni, non programmatore di mestiere, con <strong>quattro applicativi in produzione</strong> costruiti in dieci mesi con un'AI come unico collaboratore. Questo documento descrive il metodo, i punti su cui si appoggia, dove regge e dove si rompe.</p>
+
+  <dl class="scheda">
+    <div><dt>Repository attivi</dt><dd>6<span>di cui 4 con utenti veri</span></dd></div>
+    <div><dt>Commit 2026</dt><dd>1.145<span>marzo → settembre</span></dd></div>
+    <div><dt>Righe in produzione</dt><dd>86k<span>34k PHP + 52k TypeScript</span></dd></div>
+    <div><dt>Migrazioni DB</dt><dd>134<span>un solo gestionale, in 5 settimane</span></dd></div>
+    <div><dt>Tempo disponibile</dt><dd>turni<span>orari irregolari, sessioni corte</span></dd></div>
+  </dl>
+</header>
+
+<section>
+  <p class="sec-label">Il punto di partenza</p>
+  <h2>Da «un comando alla volta» a brief per agenti paralleli</h2>
+  <p>A marzo 2026 il profilo utente scritto dall'AI diceva: <i>«non è un programmatore, spiegare tutto in modo semplice, un comando alla volta, aspettare conferma prima del passo successivo»</i>. A settembre le istruzioni permanenti dicono l'opposto: <i>«su codice e automazioni vai alla soluzione, Lele sa quello che fa»</i>, e le sessioni si chiudono con tre agenti lanciati in parallelo su aree di file diverse.</p>
+  <p>La distanza fra quelle due righe è il fatto più importante di questo documento. Non è cresciuta la capacità di scrivere codice: è cresciuta la capacità di <b class="nota">dirigere</b>, collaudare e non fidarsi. Il metodo che segue è quasi tutto difensivo, ed è nato una cicatrice alla volta.</p>
+</section>
+
+<section>
+  <p class="sec-label">Il ciclo di lavoro</p>
+  <h2>Sette passaggi, sempre nello stesso ordine</h2>
+  <p class="lede">Non è una convenzione teorica: è la sequenza ricostruibile dai commit e dalle schede di progetto degli ultimi tre mesi. Ogni passaggio esiste perché la sua assenza è costata qualcosa.</p>
+
+  <ol class="ciclo">
+    <li><div>
+      <h3>La segnalazione arriva dall'utente vero, dentro l'applicativo</h3>
+      <p>Un tasto flottante «Qui non va» su ogni pagina apre una nota numerata con il link alla pagina d'origine. Il furiere del comando VVF scrive lì, non su WhatsApp. Le note diventano la coda di lavoro: <i>#257, #259, #253, #256, #258</i>.</p>
+    </div></li>
+    <li><div>
+      <h3>Ricognizione prima di delegare</h3>
+      <p>Parola d'ordine dal 06/08: «massima resa per la minima spesa». Chi dirige guarda i file e prepara gli elenchi <i>prima</i> di aprire un agente, così l'agente non spende metà del suo contesto a riscoprire il progetto.</p>
+    </div></li>
+    <li><div>
+      <h3>Le note si raggruppano per area di file, non per priorità</h3>
+      <p>Agenda / ODT / Amministrazione: un agente per area, sfalsati nel tempo. Due agenti non toccano mai lo stesso file. Nel brief entrano i precedenti che contano — il commit da imitare, la regola già costata un incidente, il lavoro già fatto da non rifare.</p>
+    </div></li>
+    <li><div>
+      <h3>Collaudo con dati finti nel database vero</h3>
+      <p>Niente test automatici: uno scenario finto scritto nel DB di produzione, verificato, poi rimosso. Sulle migrazioni, dry-run con rollback. È il compromesso di chi non ha un ambiente di staging — e il punto debole numero uno.</p>
+    </div></li>
+    <li><div>
+      <h3>Deploy a fine sessione, sempre</h3>
+      <p>Regola fissa: il commit non basta, senza deploy l'online resta indietro. Su lavori visivi vale anche il contrario — si deploya <i>per farglielo vedere</i>, non si aspetta una conferma che senza deploy nessuno può dare.</p>
+    </div></li>
+    <li><div>
+      <h3>Verifica guardando, non fidandosi</h3>
+      <p>Un HTTP 200 torna uguale anche su una build vecchia: si controlla l'età del deployment. Sul risultato di un agente si riverifica punto per punto, perché un agente riferisce cosa <i>intendeva</i> fare. C'è un browser headless in macchina: «non ho modo di vedere» non è una risposta ammessa.</p>
+    </div></li>
+    <li><div>
+      <h3>Il cervello si aggiorna prima di chiudere</h3>
+      <p>Scheda del progetto (stato, deciso, prossimo passo), lezione tecnica nell'archivio se supera tre criteri — riusabile fuori dal progetto, non ovvia, costata qualcosa da scoprire — e tre righe di riepilogo. Se la lezione non passa tutti e tre i criteri non entra: quel file è corto apposta.</p>
+    </div></li>
+  </ol>
+</section>
+
+<section>
+  <p class="sec-label">I punti di appoggio</p>
+  <h2>Su cosa sta in piedi il sistema</h2>
+  <p class="lede">Cinque appoggi, tre dei quali non sono codice. La memoria esterna è quella che rende sostenibile lavorare a turni: si riparte da dove si era rimasti anche dopo dieci giorni.</p>
+
+  <div class="appoggi">
+    <article>
+      <h3>Il vault</h3>
+      <span class="path">~/cervello/</span>
+      <p>Identikit, regole d'ingaggio (254 righe, una ventina di lezioni tecniche datate e attribuite al progetto dove sono nate), schede di progetto, task pendenti, cinque skill richiamabili. È la fonte di verità su <i>come</i> si lavora, letta a ogni sessione.</p>
+    </article>
+    <article>
+      <h3>Le skill</h3>
+      <span class="path">06-skills/</span>
+      <p>Procedure ripetibili invocate per nome: briefing mattutino da cron, chiusura sessione, pipeline newsletter, pipeline social. Trasformano un'abitudine in un passaggio che non si dimentica.</p>
+    </article>
+    <article>
+      <h3>Il logbook nei prodotti</h3>
+      <span class="path">The Crew → VVF</span>
+      <p>Il canale di segnalazione è dentro l'applicativo, non fuori. Nato per la palestra, portato di peso sul gestionale dei vigili: quando una cosa funziona in un progetto, migra.</p>
+    </article>
+    <article>
+      <h3>La produzione come banco di prova</h3>
+      <span class="path">Fly.io · Vercel · Supabase</span>
+      <p>Tutto è online e usato da persone vere: un comando dei vigili del fuoco, un'ASD con 82 soci, due prodotti pubblici. Nessuna demo, nessun cassetto.</p>
+    </article>
+    <article>
+      <h3>L'AI come unico collaboratore</h3>
+      <span class="path">88 file di memoria persistente</span>
+      <p>Non un assistente a domanda-risposta: un esecutore diretto, con istruzioni permanenti scritte da lui — diretto, mai adulatorio, niente testo creativo al posto suo, e se una cosa è sbagliata lo si dice.</p>
+    </article>
+  </div>
+</section>
+
+<section>
+  <p class="sec-label">Analisi</p>
+  <h2>Dove il metodo regge</h2>
+
+  <div class="voce">
+    <h3>Consegna, e consegna in produzione</h3>
+    <p>La misura non è il codice scritto ma il codice che qualcuno usa il giorno dopo. Cinque settimane per un gestionale d'associazione completo di quote, ricevute numerate, libro soci, PWA e notifiche.</p>
+    <span class="prova"><b>Prova</b>322 commit e 134 migrazioni su The Crew fra il 01/08 e il 05/09/2026. Sito pubblico live, soci reali dentro.</span>
+  </div>
+
+  <div class="voce">
+    <h3>Gli errori diventano regole scritte, non buoni propositi</h3>
+    <p>Ogni incidente produce una riga permanente che cambia il comportamento futuro — con la data, il progetto e il caso che l'ha generata. È il meccanismo che permette a un non-programmatore di non ripetere due volte lo stesso errore di sistema.</p>
+    <span class="prova"><b>Prova</b>«Un match <i>contains</i> su un placeholder può collidere con dati reali» — nata perché il cognome MORELLO contiene «ore» e spariva dai fogli di servizio.</span>
+  </div>
+
+  <div class="voce">
+    <h3>Il dominio è vero e conosciuto dall'interno</h3>
+    <p>I turni A/B/C/D, il salto turno, le patenti di guida dei mezzi, il foglio di servizio, i vincoli di un'ASD a norma. Nessun analista esterno arriverebbe a questo livello di dettaglio: qui il committente e l'utente sono la stessa persona.</p>
+    <span class="prova"><b>Prova</b>Un ruolo «Autista 2/3/4» dove una patente più grande copre il ruolo più piccolo ma la 1 no, e la stessa persona non può coprire due ruoli autista insieme.</span>
+  </div>
+
+  <div class="voce">
+    <h3>Correggere la causa non basta: si impedisce l'effetto</h3>
+    <p>Dopo un guasto che aveva spedito migliaia di email, il difetto è stato corretto <i>e</i> è stato messo un tetto a monte, con contatore su database e comportamento fail-closed: se non si può contare, non si spedisce.</p>
+    <span class="prova"><b>Prova</b>Migrazione 0110 (la causa) + 0111 (il tetto, max 3 email al giorno allo stesso indirizzo).</span>
+  </div>
+
+  <div class="voce">
+    <h3>Sa contraddire l'AI, e ha ragione abbastanza spesso</h3>
+    <p>Quando una diagnosi cozza con la sua esperienza diretta del sistema, la sua esperienza vince finché non c'è una prova contraria. Questa è una difesa reale contro il difetto principale di lavorare con un modello: la sicurezza con cui espone una spiegazione sbagliata.</p>
+    <span class="prova"><b>Prova</b>Regola permanente «causa giusta ≠ conclusione giusta»: prima di dire «X non funziona più», cercare la prova che X funziona ancora.</span>
+  </div>
+</section>
+
+<section>
+  <p class="sec-label">Analisi</p>
+  <h2>Dove il metodo si rompe</h2>
+  <p class="lede">Nessuna di queste è un'ipotesi: sono guasti già avvenuti in produzione, tutti negli ultimi trenta giorni, tutti su applicativi con utenti veri dentro.</p>
+
+  <div class="voce debole">
+    <h3>Zero test automatici sui due applicativi che contano</h3>
+    <p>Il gestionale dei vigili e quello dell'ASD non hanno un solo file di test, né una CI. Il gioco mobile — l'unico progetto senza utenti — ne ha 21. Il collaudo è manuale, dipende da chi lo esegue e non lascia traccia riutilizzabile.</p>
+    <span class="prova"><b>Conseguenza misurata</b>Le regole a calendario (cicli di turno, salto) sono state riscritte a mano in due punti e si sono disallineate da sole, producendo lo stesso bug due volte a distanza di un mese.</span>
+  </div>
+
+  <div class="voce debole">
+    <h3>I difetti li trova l'utente, o il caso</h3>
+    <p>Manca uno strato che si accorga da solo che qualcosa non ha funzionato. Le regressioni gravi sono emerse per segnalazione o per controllo incrociato fatto per altro motivo, giorni dopo.</p>
+    <span class="prova"><b>Conseguenza misurata</b>41 soci su 82 chiusi fuori dall'accesso per due giorni. 24 persone che avevano pagato risultavano scadute, con a schermo la frase giusta che prometteva il contrario.</span>
+  </div>
+
+  <div class="voce debole">
+    <h3>Il collaudo si fa dentro la produzione</h3>
+    <p>Dati finti scritti nel database vero e poi rimossi. Funziona finché chi pulisce si ricorda tutto: una riga «TEST» può avere agganciate ricevute numerate vere, e la numerazione fiscale non torna indietro.</p>
+    <span class="prova"><b>Conseguenza misurata</b>13 ricevute numerate reali da stornare, nate da un collaudo mai ripulito. Per alcuni minuti, dopo una copia di file isolata, tutte le ferie approvate sono apparse «in attesa» in produzione.</span>
+  </div>
+
+  <div class="voce debole">
+    <h3>La delega agli agenti non ha una rete di sicurezza</h3>
+    <p>Un agente con accesso diretto al database non è vincolato dalle protezioni scritte nell'interfaccia: la regola «questa azione resta sempre un click umano» vive nel codice applicativo, non nel DB. E un agente interrotto a metà lascia il lavoro <i>dichiarato</i> chiuso.</p>
+    <span class="prova"><b>Conseguenza misurata</b>Un verbale di ammissione confermato per davvero durante un collaudo — 14 secondi fra creazione e conferma — con 10 persone ammesse al libro soci, 9 delle quali senza aver pagato la quota.</span>
+  </div>
+
+  <div class="voce debole">
+    <h3>Un solo punto di rottura, ed è una persona</h3>
+    <p>Nessun altro essere umano può mettere le mani su questi applicativi. Non esiste documentazione di ingresso, ambiente di sviluppo riproducibile, né inventario delle credenziali. Il vault è ricchissimo di istruzioni <i>per l'AI</i> e quasi muto verso un collega.</p>
+    <span class="prova"><b>Conseguenza strutturale</b>Con l'ambizione dichiarata di rivendere il gestionale, ogni cliente oggi richiederebbe un progetto database separato: l'ostacolo è architetturale, non commerciale.</span>
+  </div>
+
+  <div class="voce debole">
+    <h3>Si apre più di quanto si chiuda</h3>
+    <p>Sei repository attivi in parallelo. Le priorità dichiarate a luglio — finire il gestionale VVF, mettere l'ASD a norma — a settembre sono ancora aperte, mentre due progetti nuovi sono nati nel frattempo e uno è fermo da giugno.</p>
+    <span class="prova"><b>Conseguenza misurata</b>The Raven: ultimo commit 19/06/2026, con un branch da unire e tre chiavi da ruotare in attesa da allora.</span>
+  </div>
+</section>
+
+<section>
+  <p class="sec-label">Consigli</p>
+  <h2>Sei mosse, in ordine di resa</h2>
+  <p class="lede">Ordinate per rapporto fra ciò che risolvono e ciò che costano — il criterio dichiarato da lui stesso: massima resa per la minima spesa.</p>
+
+  <ul class="consigli">
+    <li>
+      <span class="peso">costo basso</span>
+      <h3>Test solo dove la logica è pura e sbagliarla si paga caro</h3>
+      <p>Non serve una suite: servono i cicli di turno, il salto, le scadenze degli abbonamenti e il calcolo dei compensi. Sono funzioni deterministiche, e sono esattamente i punti che hanno già prodotto guasti in produzione. La capacità c'è già — il gioco ne ha 21 file.</p>
+    </li>
+    <li>
+      <span class="peso">costo basso</span>
+      <h3>Ogni promessa fatta a schermo diventa un controllo sul dato</h3>
+      <p>Una frase che annuncia un effetto non è l'effetto. La domanda da porre a ogni funzionalità è «quanti casi hanno prodotto la frase e non l'effetto?», e la risposta va scritta in una query salvata, non cercata a mano quando qualcuno protesta.</p>
+    </li>
+    <li>
+      <span class="peso">costo medio</span>
+      <h3>Un registro proprio per ogni processo automatico</h3>
+      <p>Il principio è già stato scoperto ed enunciato — <i>un sistema che si sorveglia da solo deve possedere le proprie tracce</i> — ma applicato finora a una cosa sola. Vale per il backup, per i job notturni, per gli invii: ogni corsa scrive il suo esito in una tabella propria, e una sentinella la legge.</p>
+    </li>
+    <li>
+      <span class="peso">costo medio</span>
+      <h3>Uno staging vero, invece dei dati finti in produzione</h3>
+      <p>Gli strumenti in uso lo offrono già (i branch del database). Elimina in un colpo la classe di incidenti più costosa: quella in cui il collaudo stesso è il guasto.</p>
+    </li>
+    <li>
+      <span class="peso">costo medio</span>
+      <h3>Ai mandati per agenti va scritto il divieto, non solo l'obiettivo</h3>
+      <p>Le azioni irreversibili vanno nominate esplicitamente come vietate nel brief, e il database va controllato dopo — mai il solo rapporto dell'agente. Meglio ancora: le protezioni «solo a mano» devono vivere nel database, dove un agente non le può scavalcare.</p>
+    </li>
+    <li>
+      <span class="peso">costo alto</span>
+      <h3>Chiudere prima di aprire</h3>
+      <p>La regola più difficile e quella che vale di più. Un progetto per volta fino allo stato «finito e a norma», e il divieto di iniziarne un altro prima. Il metodo di lavoro è già maturo; a mancare è il vincolo sul portafoglio di progetti.</p>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <p class="sec-label">Per chi collabora</p>
+  <h2>Il patto, in chiaro</h2>
+  <p class="lede">Da leggere prima della prima sessione, che si sia un'altra AI o una persona.</p>
+
+  <div class="patto">
+    <h3>Cosa porta lui</h3>
+    <ul>
+      <li><strong>Il dominio</strong> — conosce dall'interno il mondo per cui costruisce, e la specifica arriva dettagliata al livello del caso limite.</li>
+      <li><strong>La decisione</strong> — sceglie in fretta e non torna indietro per abitudine; se contraddice una diagnosi, ha una ragione operativa.</li>
+      <li><strong>La memoria del sistema</strong> — vault, schede, lezioni. Chi entra non deve ricostruire niente: deve leggere.</li>
+      <li><strong>Gli utenti</strong> — c'è già chi usa quello che si costruisce, quindi il riscontro arriva in ore, non in trimestri.</li>
+    </ul>
+
+    <h3>Cosa si aspetta</h3>
+    <ul>
+      <li><strong>Diretto e alla pari.</strong> Niente preamboli, niente adulazione, niente spiegazione delle basi. Se una cosa è sbagliata, si dice subito.</li>
+      <li><strong>Risultati, non opzioni.</strong> Una raccomandazione, non un ventaglio. Il tempo è a turni: le sessioni sono corte e distanziate.</li>
+      <li><strong>Consegna, non promessa.</strong> Il lavoro non è finito al commit: è finito quando è online e verificato guardandolo.</li>
+      <li><strong>Un limite invalicabile:</strong> il testo creativo è suo. Non si scrive al posto suo, non si riformulano le sue frasi. Vale per la narrativa e per la sua voce personale, non per il copy commerciale.</li>
+    </ul>
+
+    <h3>Dove serve davvero aiuto</h3>
+    <ul>
+      <li><strong>Ingegneria della qualità</strong> — test, CI, staging, sentinelle: tutto il livello che oggi manca per intero.</li>
+      <li><strong>Architettura multi-cliente</strong> — il passaggio da un gestionale che funziona a un prodotto vendibile a più organizzazioni.</li>
+      <li><strong>Documentazione per umani</strong> — la condizione perché esista una seconda persona sul progetto, oggi assente.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  Documento di riferimento interno — profilo di metodo, non curriculum narrativo.<br>
+  Fonti: cronologia git dei sei repository (marzo–settembre 2026), regole d'ingaggio e archivio lezioni in ~/cervello/, schede di progetto, 88 file di memoria persistente.<br>
+  Tutte le cifre sono verificate alla data del 05.09.2026. Gli incidenti citati sono documentati con data e progetto d'origine.
+</footer>
+
+</div>

@@ -47,6 +47,8 @@ Non è un personaggio. È una persona con poco tempo e molte cose in testa.
 ## File da leggere per approfondire
 
 - `00-identita/lele.md` — profilo completo
+- `00-identita/metodo-di-lavoro.md` — come lavora: il ciclo in 7 passaggi, punti di
+  appoggio, forza e debolezza con le prove (versione impaginata: `.html` a fianco)
 - `03-voce-e-stile/voce.md` — come scrive e cosa lo ispira
 - `progetti/the-raven.md` — priorità numero uno nei prossimi 12 mesi
 - `regole-AI.md` — regole di ingaggio dettagliate
