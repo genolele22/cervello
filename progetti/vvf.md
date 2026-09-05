@@ -11,6 +11,29 @@
 
 ## Stato
 
+Stato: in corso — 05/09/2026: chiusa #257 (composizione squadra: "Autista 2"
+  diventa "Autista 2/3/4", una patente più grande copre il ruolo più piccolo,
+  la 1 no; l'Autista 3/4 resta a 3-4 e i due ruoli non li copre la stessa
+  persona. Capo partenza Cr **o** Cs era già corretto in codice, solo etichette).
+  Fatti i punti 1 e 2 di #259 (integrazione a #255): l'avviso "ha già ricevuto
+  conferma per questo turno di ferie" non dipende più dalla mail già inviata
+  (via il controllo su `bot_outbox`) e scatta anche col vicino `pending`; lo
+  stesso popup ora esce anche togliendo una ferie da richiesta **dal Foglio**
+  (`rimuovi_assenza`), dove il furiere non può sapere la storia del vigile.
+  `feriaVicinoGiaConfermato()` è ora in `includes/ferie_vicino_confermato.php`,
+  condivisa tra Agenda e Foglio.
+Deciso: 05/09/2026 — il punto 3 di #259 ("negare dal Foglio deve avere lo stesso
+  effetto del visto spezza ferie in Agenda") **non** è stato implementato: due
+  letture possibili (solo l'effetto automatico del blocco spezzato, oppure
+  `spezza_dopo=1` sul turno precedente). Lele chiede chiarimento a Moli.
+Prossimo passo: risposta di Moli sul punto 3 di #259; #259 resta aperta nel
+  logbook. Aperte anche #253 (Stili & Colori), #256 (celle vuote ODT), #258
+  (*** STR *** nelle Variazioni).
+
+---
+
+## Stato al 01/09/2026
+
 Stato: in corso — chiusa #254 (Moli, urgente): popup di avviso sul Foglio
   quando un vigile ha 2+ turni di ferie NON estive consecutive, ai tasti
   Invia/Scarica .odt/anteprima.
