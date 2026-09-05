@@ -237,12 +237,11 @@
   .appoggi {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1px;
-    background: var(--rule);
-    border: 1px solid var(--rule);
+    gap: 14px;
   }
   .appoggi article {
     background: var(--surface);
+    border: 1px solid var(--rule);
     padding: 18px 19px 20px;
   }
   .appoggi h3 { margin-bottom: 6px; }
@@ -415,6 +414,36 @@
     line-height: 1.8;
   }
   b.nota { color: var(--ink); font-weight: 500; }
+
+  /* ---------- stampa / PDF ---------- */
+
+  @page { size: A4; margin: 15mm 14mm 16mm; }
+
+  @media print {
+    :root {
+      --paper: #FFFFFF; --surface: #FBFCFB; --ink: #12181B; --soft: #3F4A4E;
+      --faint: #6B7676; --rule: #C6CFCD; --rule-2: #DDE4E2;
+      --accent: #14535E; --accent-w: #E7F1F1; --risk: #7C2A24; --risk-w: #F5E6E3;
+      --shadow: none;
+    }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body { background: #fff; font-size: 10.2pt; line-height: 1.5; }
+    .wrap { max-width: none; padding: 0; }
+    header.sheet { padding-top: 0; }
+    h1 { font-size: 30pt; }
+    section { padding-top: 26px; }
+    h2 { font-size: 15.5pt; break-after: avoid; }
+    h3 { break-after: avoid; }
+    .sec-label, .lede { break-after: avoid; }
+    p, li, dd { orphans: 3; widows: 3; }
+    .scheda-tec, .voce, .patto, .appoggi article,
+    ol.ciclo li, ul.consigli li, ul.gotcha li, .assenze, .trasversali {
+      break-inside: avoid;
+    }
+    .scheda, .appoggi { break-inside: avoid; }
+    footer { break-inside: avoid; }
+    a { color: inherit; text-decoration: none; }
+  }
 
   @media (max-width: 560px) {
     body { font-size: 16px; }
