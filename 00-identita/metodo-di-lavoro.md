@@ -31,6 +31,36 @@ vault `~/cervello/` · skill richiamabili · logbook dentro i prodotti ·
 produzione come banco di prova (Fly/Vercel/Supabase) · l'AI come unico
 collaboratore, con 88 file di memoria persistente.
 
+## Inventario tecnico (al 05/09/2026)
+
+| Progetto | Stack | Database | Hosting | Dimensione |
+|---|---|---|---|---|
+| vvf-gestionale | PHP 8.2 + Apache, no framework, FoglioRenderer→HTML+ODT | TiDB Cloud (MySQL-compat., porta 4000, PDO), 37 tabelle | Fly.io fra, 256MB, auto-stop, sessioni su DB | 241 commit, ~34k righe |
+| vvf-ferie-bot | Python 3, python-telegram-bot 20.8, odfpy/lxml, Fernet | stesso TiDB via PyMySQL | Fly.io fra, volume /data, sempre acceso | 71 commit |
+| the-crew | Next.js 16 + React 19 + TS + Tailwind 4, Server Actions | Supabase/Postgres: 66 tabelle, 161 policy RLS, 76 funzioni, 71 trigger, 134 migrazioni, pg_cron | Vercel fra1, PWA + web push | 322 commit, ~52k righe |
+| br-turni (Last Pact) | motore TS puro + Next 16/React 19, vitest 254 test | Supabase | Vercel | 206 commit |
+| the-raven | Next.js 14 + React 18, @xyflow/react, zod, Trigger.dev 4.4.6 | Supabase | Vercel | 305 commit, fermo dal 19/06 |
+| cervello-bot | Python + python-telegram-bot, cron 7:30 | — | Fly.io | infra |
+
+**Servizi**: Stripe (+webhook) · Nodemailer SMTP Gmail + imapflow (copia in Inviati) ·
+IMAP APPEND vigilfuoco.it · Telegram webhook · Resend · Cloudflare R2 · Google
+OAuth/Drive/Sheets · unpdf · modelli AI Llama 4 Scout / Llama 3.3 70B /
+gpt-oss-120b via Groq, OpenRouter, Mistral, Gemini.
+
+**Postazione**: Chromebook con Linux, nessun ambiente locale (si prova sul deploy).
+Claude Code da terminale con MCP: Supabase, Vercel, Canva, Gmail, Calendar, Drive,
+Chrome. Playwright/Chrome headless per gli screenshot. GitHub via SSH.
+
+**Vincoli noti**: TiDB non ha AUTO_INCREMENT usabile e rifiuta `--single-transaction`
+nel dump · il DB VVF si interroga solo da dentro Fly, con `machine exec` + base64
+(`fly ssh console` è rotto) · una macchina Fly che si spegne perde `/tmp` fra due
+comandi SSH · `net._http_response` di Supabase conserva ~6 ore · in serverless serve
+`after()` ma i dati vanno letti prima · la logica duplicata PHP↔JS va **generata**
+dalle costanti PHP.
+
+**Cosa non c'è**: nessuna CI, nessun ambiente di prova, nessun IaC, nessun
+monitoraggio esterno, nessun inventario dei segreti.
+
 ## Punti di forza
 
 Consegna in produzione · gli errori diventano regole scritte e datate ·

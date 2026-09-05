@@ -256,6 +256,121 @@
   }
   .appoggi p { margin: 0; font-size: .91rem; color: var(--soft); }
 
+  /* ---------- schede tecniche ---------- */
+
+  .stack { display: grid; gap: 22px; }
+
+  .scheda-tec {
+    border: 1px solid var(--rule);
+    background: var(--surface);
+  }
+  .scheda-tec > header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px 14px;
+    padding: 13px 18px;
+    border-bottom: 1px solid var(--rule);
+    background: var(--accent-w);
+  }
+  .scheda-tec.fermo > header { background: var(--rule-2); }
+  .scheda-tec h3 {
+    font-family: "IBM Plex Serif", Georgia, serif;
+    font-size: 1.16rem;
+    font-weight: 600;
+    margin: 0;
+  }
+  .scheda-tec .ruolo {
+    font-size: .87rem;
+    color: var(--soft);
+    flex: 1 1 200px;
+  }
+  .stato {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    padding: 3px 7px;
+    border: 1px solid currentColor;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+  .stato.off { color: var(--faint); }
+
+  dl.spec {
+    margin: 0;
+    padding: 4px 18px 16px;
+    display: grid;
+    grid-template-columns: 128px 1fr;
+    gap: 0;
+  }
+  dl.spec dt {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: var(--faint);
+    padding: 9px 12px 9px 0;
+    border-top: 1px solid var(--rule-2);
+  }
+  dl.spec dd {
+    margin: 0;
+    padding: 9px 0;
+    font-size: .93rem;
+    color: var(--soft);
+    border-top: 1px solid var(--rule-2);
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+  dl.spec dd b { color: var(--ink); font-weight: 600; }
+  dl.spec dd code {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: .86em;
+    color: var(--accent);
+  }
+  dl.spec dd.cifre {
+    font-family: "IBM Plex Mono", monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: .87rem;
+    color: var(--ink);
+  }
+
+  .trasversali {
+    border: 1px solid var(--rule);
+    background: var(--surface);
+    padding: 4px 18px 16px;
+    margin-top: 22px;
+  }
+  .trasversali > h3 {
+    font-family: "IBM Plex Serif", Georgia, serif;
+    font-size: 1.16rem;
+    margin: 16px 0 0;
+  }
+  .trasversali dl.spec { padding: 4px 0 0; }
+
+  ul.gotcha { list-style: none; margin: 0; padding: 0; }
+  ul.gotcha li {
+    padding: 13px 0;
+    border-top: 1px solid var(--rule-2);
+    max-width: 68ch;
+    font-size: .95rem;
+    color: var(--soft);
+  }
+  ul.gotcha li:last-child { border-bottom: 1px solid var(--rule-2); }
+  ul.gotcha b { color: var(--ink); font-weight: 600; }
+  ul.gotcha code {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: .86em;
+    color: var(--accent);
+  }
+
+  .assenze {
+    margin-top: 24px;
+    border-left: 3px solid var(--risk);
+    padding: 2px 0 2px 18px;
+  }
+  .assenze p { margin: 4px 0 0; color: var(--soft); font-size: .96rem; }
+
   /* ---------- consigli ---------- */
 
   ul.consigli { list-style: none; margin: 0; padding: 0; }
@@ -304,6 +419,9 @@
   @media (max-width: 560px) {
     body { font-size: 16px; }
     ol.ciclo li { grid-template-columns: 34px 1fr; gap: 12px; }
+    dl.spec { grid-template-columns: 1fr; }
+    dl.spec dt { padding-bottom: 0; border-top: 1px solid var(--rule-2); }
+    dl.spec dd { padding-top: 4px; border-top: 0; }
   }
 </style>
 
@@ -402,6 +520,129 @@
       <span class="path">88 file di memoria persistente</span>
       <p>Non un assistente a domanda-risposta: un esecutore diretto, con istruzioni permanenti scritte da lui — diretto, mai adulatorio, niente testo creativo al posto suo, e se una cosa è sbagliata lo si dice.</p>
     </article>
+  </div>
+</section>
+
+<section>
+  <p class="sec-label">Inventario tecnico</p>
+  <h2>Che cosa gira, e su cosa</h2>
+  <p class="lede">Sei sistemi, due famiglie tecnologiche distinte. Sotto ogni scheda ci sono le cifre verificate sul repository al 05/09/2026: non stime, conteggi.</p>
+
+  <div class="stack">
+
+    <article class="scheda-tec">
+      <header>
+        <h3>vvf-gestionale</h3>
+        <span class="ruolo">Fogli di servizio, agenda assenze, amministrazione turni</span>
+        <span class="stato">in produzione</span>
+      </header>
+      <dl class="spec">
+        <dt>Linguaggio</dt><dd><b>PHP 8.2</b> su Apache, in container. Nessun framework: pagine PHP e un motore proprio, <code>FoglioRenderer</code>, che dallo stesso modello genera anteprima HTML e file ODT.</dd>
+        <dt>Database</dt><dd><b>TiDB Cloud</b> (compatibile MySQL, gateway europeo, porta 4000), accesso via PDO. 37 tabelle: <code>vigili</code>, <code>assegnazioni</code>, <code>assenze</code>, <code>bot_requests</code>, <code>salto_servizio</code>, <code>fogli_servizio</code>…</dd>
+        <dt>Hosting</dt><dd><b>Fly.io</b>, regione Francoforte, 256 MB, macchina che si spegne da sola quando non serve. Sessioni PHP scritte sul database — altrimenti il riavvio della macchina fa uscire gli utenti a caso.</dd>
+        <dt>Formati</dt><dd>ODT (OpenDocument) riempito partendo dal modulo ufficiale vuoto, non ricostruito: le correzioni di geometria si fanno nel file <code>.odt</code>, mai con un ramo di codice dedicato.</dd>
+        <dt>Dimensione</dt><dd class="cifre">241 commit · ~34.000 righe PHP · dal 30/05/2026</dd>
+      </dl>
+    </article>
+
+    <article class="scheda-tec">
+      <header>
+        <h3>vvf-ferie-bot</h3>
+        <span class="ruolo">Canale Telegram: richieste, approvazioni, posta, backup</span>
+        <span class="stato">in produzione</span>
+      </header>
+      <dl class="spec">
+        <dt>Linguaggio</dt><dd><b>Python 3</b> con <code>python-telegram-bot 20.8</code> (job queue inclusa).</dd>
+        <dt>Database</dt><dd>Lo stesso TiDB del gestionale, via <code>PyMySQL</code>. Il bot scrive solo richieste e stati; il foglio lo compone il gestionale.</dd>
+        <dt>Servizi</dt><dd>SMTP e <b>IMAP APPEND</b> su <code>vigilfuoco.it</code> — la copia in «Inviati» va scritta a mano, l'SMTP da solo non archivia niente. Google Drive e Sheets via <code>gspread</code> e OAuth. Cifratura credenziali con Fernet.</dd>
+        <dt>Hosting</dt><dd>Fly.io Francoforte, 256 MB, volume persistente <code>/data</code>, macchina sempre accesa. Backup del database alle 04:00 → volume + cartella Drive + notifica Telegram.</dd>
+        <dt>Dimensione</dt><dd class="cifre">71 commit · dal 05/05/2026</dd>
+      </dl>
+    </article>
+
+    <article class="scheda-tec">
+      <header>
+        <h3>the-crew</h3>
+        <span class="ruolo">Gestionale ASD completo + sito pubblico — thecrewgym.com</span>
+        <span class="stato">in produzione</span>
+      </header>
+      <dl class="spec">
+        <dt>Linguaggio</dt><dd><b>Next.js 16</b> (App Router) con React 19, TypeScript, Tailwind 4. Logica quasi tutta in Server Action, non in API.</dd>
+        <dt>Database</dt><dd><b>Supabase / PostgreSQL</b>, ed è qui che sta il peso vero del progetto: 66 tabelle, <b>161 policy di sicurezza a livello di riga</b>, 76 funzioni e 71 trigger. Estensioni <code>pgcrypto</code> e <code>citext</code>. Le regole di dominio — numerazione ricevute, conteggio ingressi, quote — vivono nel database, non nell'interfaccia.</dd>
+        <dt>Processi automatici</dt><dd><code>pg_cron</code> dentro Postgres chiama sei rotte notturne: backup, generazione notifiche, chiusura mesi di compenso, bozza verbale, iscrizioni scadute, sentinella di controllo.</dd>
+        <dt>Servizi</dt><dd><b>Stripe</b> con webhook per gli incassi · <b>Nodemailer</b> su SMTP Gmail con <code>imapflow</code> per la copia in Inviati · webhook <b>Telegram</b> per il bot dei collaboratori · <code>unpdf</code> per leggere gli estratti conto.</dd>
+        <dt>Hosting</dt><dd><b>Vercel</b>, regione <code>fra1</code>. PWA installabile con notifiche push.</dd>
+        <dt>Dimensione</dt><dd class="cifre">322 commit · ~52.000 righe TS/TSX · 134 migrazioni SQL numerate · dal 01/08/2026</dd>
+      </dl>
+    </article>
+
+    <article class="scheda-tec">
+      <header>
+        <h3>br-turni · «Last Pact»</h3>
+        <span class="ruolo">Battle royale a turni asincrono — last-pact.vercel.app</span>
+        <span class="stato">in produzione</span>
+      </header>
+      <dl class="spec">
+        <dt>Architettura</dt><dd>Un <b>motore TypeScript puro</b> separato dall'interfaccia e copiato dentro il sito a ogni build: griglia esagonale, combattimento a intenti, bot, matchmaking, progressione. È l'unico progetto con una vera separazione fra regole e schermo.</dd>
+        <dt>Verifiche</dt><dd><b>254 test automatici</b> con <code>vitest</code>, su 21 file. Più uno script <code>npm run shot</code> che produce screenshot veri del gioco — è così che sono venuti fuori un terzo di schermo vuoto e un accavallamento mai risolto.</dd>
+        <dt>Sito</dt><dd>Next.js 16, React 19, Supabase per gli account, <code>web-push</code> per il turno dell'avversario. Grafica generata con Gemini e rilavorata.</dd>
+        <dt>Dimensione</dt><dd class="cifre">206 commit · dal 19/07/2026</dd>
+      </dl>
+    </article>
+
+    <article class="scheda-tec fermo">
+      <header>
+        <h3>the-raven</h3>
+        <span class="ruolo">Racconti AI a struttura ad albero — the-raven.it</span>
+        <span class="stato off">fermo dal 19/06</span>
+      </header>
+      <dl class="spec">
+        <dt>Linguaggio</dt><dd>Next.js 14 con React 18, Tailwind 3, <code>zod</code>, <code>framer-motion</code>, e <code>@xyflow/react</code> per disegnare e navigare l'albero della storia.</dd>
+        <dt>Modelli AI</dt><dd>Non un fornitore solo ma un parco intercambiabile: <b>Llama 4 Scout</b>, <b>Llama 3.3 70B</b>, <b>gpt-oss-120b</b>, raggiunti via Groq, OpenRouter, Mistral e Gemini. La scelta del modello è una decisione di prodotto — gratuito per i minorenni, più capace per gli adulti.</dd>
+        <dt>Lavori lunghi</dt><dd><b>Trigger.dev 4.4.6</b>: generare una storia dura minuti, quindi non può stare dentro una richiesta web.</dd>
+        <dt>Servizi</dt><dd>Supabase per dati e accessi · <b>Cloudflare R2</b> per i file · <b>Resend</b> per la posta · Google OAuth.</dd>
+        <dt>Dimensione</dt><dd class="cifre">305 commit · dal 12/03 al 19/06/2026</dd>
+      </dl>
+    </article>
+
+    <article class="scheda-tec">
+      <header>
+        <h3>cervello-bot</h3>
+        <span class="ruolo">Il vault che parla su Telegram — briefing e promemoria</span>
+        <span class="stato">infrastruttura</span>
+      </header>
+      <dl class="spec">
+        <dt>Come</dt><dd>Python e <code>python-telegram-bot</code> su Fly.io. Un cron alle 7:30 costruisce il piano della giornata dai task pendenti e lo manda; se la macchina era spenta, lo recupera al riavvio.</dd>
+      </dl>
+    </article>
+
+  </div>
+
+  <div class="trasversali">
+    <h3>Strumenti trasversali</h3>
+    <dl class="spec">
+      <dt>Postazione</dt><dd><b>Chromebook</b> con ambiente Linux — nessuna macchina di sviluppo tradizionale. Non esiste un ambiente locale: si prova direttamente sul deploy.</dd>
+      <dt>Esecutore</dt><dd><b>Claude Code</b> da terminale, con collegamenti diretti (MCP) a Supabase, Vercel, Canva, Gmail, Google Calendar e Drive, e al browser Chrome.</dd>
+      <dt>Verifica visiva</dt><dd>Chrome headless con Playwright installato in locale: gli screenshot di ciò che è online si fanno, non si chiedono.</dd>
+      <dt>Codice</dt><dd>GitHub via chiave SSH (l'accesso a token è stato revocato ad agosto dopo un'esposizione). Deploy: <code>fly deploy</code> per i due VVF, Vercel a ogni push per gli altri.</dd>
+      <dt>Grafica</dt><dd>Canva Pro, preso apposta perché venisse pilotato via API, non usato a mano.</dd>
+    </dl>
+  </div>
+
+  <h3 style="margin-top:38px">Vincoli reali della piattaforma</h3>
+  <p class="lede">Cose che il manuale non dice e che qui sono già costate tempo. Chi entra sul progetto le deve sapere prima, non scoprirle.</p>
+  <ul class="gotcha">
+    <li><b>TiDB non è MySQL fino in fondo.</b> Niente <code>AUTO_INCREMENT</code> come lo si intende di solito, e nel dump di backup <code>--single-transaction</code> non si può usare.</li>
+    <li><b>Il database dei vigili si interroga solo da dentro Fly</b>, e <code>fly ssh console</code> è rotto: si passa da <code>machine exec</code> con il comando codificato in base64.</li>
+    <li><b>Una macchina Fly che si spegne da sola perde <code>/tmp</code></b> fra un comando SSH e il successivo. Copia e uso vanno fatti in una sola invocazione, o l'errore «file non trovato» sembra un bug di codice.</li>
+    <li><b>Le tabelle di log di Supabase durano poco:</b> <code>net._http_response</code> conserva circa sei ore. Una diagnostica appoggiata lì sopra è cieca e non lo dice.</li>
+    <li><b>In serverless una notifica lanciata e dimenticata non parte.</b> Si usa <code>after()</code>, ma i dati vanno letti prima — dopo la risposta il collegamento al database può non valere più.</li>
+    <li><b>La stessa regola scritta in PHP e ricopiata a mano nel JavaScript si disallinea da sola.</b> La versione per il browser va generata dalle costanti del server: una sola fonte di verità.</li>
+  </ul>
+
+  <div class="assenze">
+    <h3>Quello che nello stack non c'è</h3>
+    <p>Nessuna integrazione continua, nessun ambiente di prova separato, nessuna infrastruttura descritta come codice, nessun controllo esterno che avvisi quando un servizio cade. I segreti vivono in file <code>.env</code> locali e nei pannelli dei fornitori, senza un inventario. Sono assenze coerenti fra loro: descrivono un sistema costruito per andare in produzione in fretta, non per essere mantenuto in due.</p>
   </div>
 </section>
 
