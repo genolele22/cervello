@@ -210,3 +210,20 @@ e non si rompe al prossimo stato.
 Scoperto su: the-crew, chiusura mensile dei compensi (04/09/2026) — trovato al
 collaudo con rollback, prima del deploy; sarebbe fallito ogni primo del mese in
 silenzio.
+
+### "Finisce in spam" non vuol dire "manca SPF": prima guarda da che indirizzo parte
+Davanti a un problema di email in spam il riflesso è prescrivere SPF/DKIM sul
+dominio dell'organizzazione. Ma se il mittente è un indirizzo Gmail (o di un
+altro provider) e l'invio passa dai server SMTP di quel provider autenticati,
+SPF, DKIM e DMARC di quel dominio sono **già validi e allineati**: non c'è
+niente da aggiungere, e i record sul dominio dell'ente sono irrilevanti finché
+il From non è su quel dominio. Prescriverli comunque manda l'utente a lavorare
+mezz'ora sul DNS per un problema che non esiste, e lascia intatto quello vero.
+Regola: prima di parlare di autenticazione, guarda il `From` che il codice
+scrive davvero e da quale server esce. Se combaciano, il problema dello spam è
+di **forma e reputazione** — firma con identità dell'ente, motivo per cui il
+destinatario riceve il messaggio, `List-Unsubscribe`, oggetto specifico invece
+che sempre uguale — non di record DNS. La prova sta in "Mostra originale" di
+Gmail, che scrive SPF/DKIM/DMARC riga per riga.
+Scoperto su: the-crew, posta dell'ASD (05/09/2026) — l'avevo scritto come
+diagnosi in un documento consegnato, verificato il giorno dopo che era falso.
