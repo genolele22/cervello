@@ -1,5 +1,7 @@
 # Gioco mobile — Last Pact (ex "br-turni", nome in codice iniziale)
 
+> **Rivedere entro:** 2026-12-05
+
 Avviato: 19/07/2026. Obiettivo dichiarato: **fruttare su app store** (revenue-first, non hobby).
 
 ## Stato

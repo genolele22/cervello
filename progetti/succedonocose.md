@@ -1,5 +1,7 @@
 # Progetto — #succedonocose
 
+> **Rivedere entro:** 2026-12-05
+
 **Piattaforma:** Substack
 **Genere:** autofiction ironica e tagliente
 **Stato:** attiva

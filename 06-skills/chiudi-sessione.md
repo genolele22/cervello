@@ -41,6 +41,23 @@ Nel file `~/cervello/progetti/<progetto>.md` toccato dalla sessione, aggiornare
 - Se il fatto nuovo contraddice qualcosa scritto più in basso nel file,
   **segnalarlo a Lele** invece di correggere in silenzio.
 
+### 2b. Data di revisione sulla scheda (dal 05/09/2026)
+Ogni scheda in `~/cervello/progetti/` porta in cima una riga
+`Rivedere entro: <data>` — di norma **tre mesi** dall'ultimo lavoro vero.
+Serve perché il vault cresce e non si ritira mai niente: senza una data, una
+scheda resta vera per inerzia anche quando il progetto è fermo da mesi.
+
+Scaduta la data, la scheda va **guardata**, non riscritta d'ufficio: tre esiti
+possibili, e uno va scelto.
+- **vivo** — si aggiorna e si sposta la data avanti
+- **fermo** — resta dov'è, ma con scritto cosa serve per riprenderlo
+- **archivio** — si sposta in `~/cervello/progetti/archivio/` e sparisce dal
+  giro quotidiano
+
+Il livello *vivo* è ciò che leggo a ogni sessione (`CLAUDE.md` e le schede dei
+progetti in corso); l'*archivio* si legge solo se serve. Finora mancava la
+regola che dice cosa retrocede: è questa.
+
 ### 3. Lezioni tecniche riusabili → regole-AI.md
 Se è emersa una lezione che varrà **anche su un altro progetto**, aggiungerla
 alla sezione `## Lezioni tecniche riusabili` di `~/cervello/regole-AI.md`.
@@ -51,7 +68,24 @@ Barra alta, tre criteri tutti obbligatori:
 Se non passa tutti e tre, non entra: `regole-AI.md` è corto apposta, se diventa
 un diario nessuno lo legge più e smette di funzionare.
 
-### 4. Chiudere con 3 righe
+### 4. Blocco prove (dal 05/09/2026)
+Prima delle tre righe, **le prove di ciò che si dichiara**. Non lavoro in più:
+è lo stesso lavoro scritto, e sposta la verifica da un atto di Lele a una
+lettura. Solo le voci pertinenti alla sessione:
+
+```
+PROVE
+DB        query lanciata → cosa ha risposto (righe, valori)
+DEPLOY    id del deployment + età ("Age"), non un HTTP 200
+SCHERMO   screenshot, dove c'è grafica o una pagina cambiata
+TEST      comando lanciato → esito
+NON FATTO cosa si è dichiarato e NON è stato verificato
+```
+
+L'ultima riga è obbligatoria quando esiste. Una cosa fatta e non verificata va
+detta come tale, mai lasciata insieme alle altre.
+
+### 5. Chiudere con 3 righe
 Esattamente tre, a Lele, in chiaro:
 1. Cosa è stato fatto
 2. Cosa resta aperto e di chi è la mossa

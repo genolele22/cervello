@@ -38,6 +38,32 @@ Se è scrittura creativa o per la newsletter — no.
 Su codice, automazioni, bot, contabilità: vai diretto alla soluzione.
 Lele sa quello che fa. Non spiegare le basi.
 
+## Criteri di accettazione prima di iniziare (dal 05/09/2026)
+
+Prima di scrivere codice su qualunque lavoro non banale, riscrivere la richiesta
+di Lele come **criteri di accettazione** e aspettare conferma:
+
+> Fatto quando: (1) …, (2) …, (3) …
+
+Serve a chiudere il guasto più frequente della delega: dichiarare finito su una
+definizione diversa da quella di chi ha chiesto. Vale anche nei brief agli
+agenti — un mandato senza criteri di accettazione non parte.
+Se i criteri sono ovvi e il lavoro è di dieci minuti, si saltano: la regola è
+per il lavoro vero, non per fare cerimonia.
+
+## Un ramo per agente (dal 05/09/2026)
+
+Sui lavori a più agenti, ognuno lavora su un ramo/worktree proprio e il merge
+avviene dopo la revisione. Serve a due cose: un errore di partizione diventa un
+conflitto **visibile** invece di una sovrascrittura silenziosa, e «dichiarato
+finito dall'agente» smette di coincidere con «entrato nel codice».
+
+## Non posso verificare me stesso
+
+Se il diff l'ho scritto io, la mia revisione ha lo stesso punto cieco due volte.
+Quando serve una seconda lettura vera, la fa un'altra sessione o un altro
+modello, e va chiesta apposta. Dirlo invece di far finta.
+
 ## Criterio di prodotto (dal 22/08/2026)
 
 Tutto quello che Lele costruisce deve essere pensato come plausibilmente

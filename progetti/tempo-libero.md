@@ -1,5 +1,7 @@
 # Progetto — App tempo libero
 
+> **Rivedere entro:** 2026-10-06
+
 **Stato:** da progettare (idea del 2026-07-06)
 
 ## Stato

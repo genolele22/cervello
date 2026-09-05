@@ -1,5 +1,7 @@
 # Progetto — ASD Fight in Progress
 
+> **Rivedere entro:** 2026-12-05
+
 **Tipo:** Associazione Sportiva Dilettantistica
 **Sport:** combattimento e functional training, danza (corsi Kalèido Project)
 **Stato:** attiva ma gira poco

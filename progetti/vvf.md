@@ -1,5 +1,7 @@
 # Progetto — vvf (bot + gestionale)
 
+> **Rivedere entro:** 2026-12-05
+
 **Cos'è:** bot Telegram + gestionale web per il Comando Provinciale VVF di Genova — richieste ferie/permesso/malattia/infortunio/missione, foglio di servizio, ODT, agenda, scambio turni.
 **Stato:** LIVE, in produzione, 4 turni (A/B/C/D) sullo stesso gestionale.
 **Priorità:** 2ª nella classifica del 22/08/2026 (dopo ASD/Crew) — sostanzialmente finito, si lima in seguito.

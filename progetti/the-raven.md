@@ -2,6 +2,7 @@
 aggiornato: 2026-08-06
 stato: in pausa — rientra in priorità appena il gestionale ASD (The Crew) è operativo
 priorità: condizionata (dopo vvf e gestionale ASD)
+rivedere_entro: 2026-09-19
 ---
 
 # Progetto — The Raven

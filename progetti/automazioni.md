@@ -1,5 +1,7 @@
 # Progetto — Automazioni e Bot
 
+> **Rivedere entro:** 2026-12-05
+
 ## Stato
 
 Stato: infrastruttura — ultima in classifica, non è un progetto con un fine
