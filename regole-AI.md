@@ -225,5 +225,30 @@ di **forma e reputazione** — firma con identità dell'ente, motivo per cui il
 destinatario riceve il messaggio, `List-Unsubscribe`, oggetto specifico invece
 che sempre uguale — non di record DNS. La prova sta in "Mostra originale" di
 Gmail, che scrive SPF/DKIM/DMARC riga per riga.
+Corollario, dalla prova sul campo dello stesso giorno: le regole della posta di
+massa e quelle della posta transazionale sono OPPOSTE. `List-Unsubscribe` è
+giusto su una comunicazione in blocco, ma su un avviso ("il tuo certificato
+scade fra 12 giorni") è uno dei segnali con cui Gmail lo classifica come
+commerciale e lo sposta in Promozioni — fuori dalla posta principale, cioè
+esattamente dove l'avviso non deve stare. Applicare le regole delle newsletter
+agli avvisi peggiora proprio ciò che si voleva migliorare.
 Scoperto su: the-crew, posta dell'ASD (05/09/2026) — l'avevo scritto come
-diagnosi in un documento consegnato, verificato il giorno dopo che era falso.
+diagnosi in un documento consegnato, verificato il giorno dopo che era falso;
+e il List-Unsubscribe l'ho messo, misurato e tolto nel giro di due ore.
+
+### Prima di costruire un controllo su una tabella di sistema, misura quanto conserva
+Le tabelle di log dei servizi gestiti vengono ripulite, e la finestra reale è
+spesso molto più corta di quella che si immagina: `net._http_response` di
+Supabase (dove finiscono le risposte delle chiamate fatte da pg_cron) conserva
+**circa sei ore**, non giorni. Un controllo settimanale costruito lì sopra non
+vede quasi niente — e un allarme del tipo "nessun backup nelle ultime 48 ore"
+diventa un falso positivo sistematico appena la ritenzione è più corta della
+finestra guardata. Il guaio è che il codice sembra giusto: gira, non dà errori,
+e semplicemente non trova mai nulla.
+Regola: prima di appoggiare una diagnostica a una tabella che non scrivi tu,
+misura la ritenzione vera (`select min(created), max(created), count(*)`). Se è
+più corta della finestra che ti serve, la risposta è un registro **tuo**, scritto
+dal processo stesso a fine corsa. Vale come principio generale: un sistema che
+si sorveglia da solo deve possedere le proprie tracce.
+Scoperto su: the-crew, sentinella settimanale (05/09/2026) — trovato misurando
+prima di fidarsi, la sentinella sarebbe stata cieca senza dirlo.

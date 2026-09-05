@@ -6,7 +6,27 @@
 
 ## Stato
 
-Stato: in corso — LIVE. Giornata su tre fronti: logbook (7 note), controllo
+Stato: in corso — LIVE. Registro dei rischi del gestionale (artifact "Punti di
+  rottura", 22 voci) e poi chiusi i buchi peggiori: i file dello Storage ora
+  entrano nel backup — non erano in nessuna copia, e su piano free Supabase non
+  fa backup gestiti — e una sentinella settimanale avvisa quando qualcosa
+  fallisce di notte in silenzio. Poi le commissioni SumUp e Stripe nel
+  consuntivo (erano ~235 € invisibili all'anno) col controllo incrociato sul
+  transato dichiarato, e la checklist mensile degli adempimenti con la spunta.
+Deciso: 05/09/2026 — le commissioni si recuperano da gennaio 2026 ("così l'anno
+  rimane giusto"), il 2025 no. La posta resta su Gmail: l'autenticazione era già
+  a posto, mancavano firma e intestazioni — ma List-Unsubscribe va solo sulle
+  comunicazioni di massa, sugli avvisi le manda in Promozioni.
+Prossimo passo: (Lele) recuperare 14 fatture SumUp/Stripe da gennaio; mettere
+  BACKUP_EMAIL_A su Vercel e verificare che Stripe sia in modalità reale;
+  collegare gli istruttori al bot. Restano aperti Massa Mastroeni e Lione Sara
+  nel libro soci, e i certificati di Gallo e Sejdic.
+
+---
+
+## Stato al 04/09/2026
+
+Giornata su tre fronti: logbook (7 note), controllo
   incrociato su tutti i dati, e i compensi collaboratori. Tre bug veri corretti
   e bonificati (abbonamenti pagati che non estendevano niente — 24 persone; 41
   soci con l'invito di accesso scaduto e nessuna strada per rientrare; sei quote
@@ -153,6 +173,22 @@ Semplificate anche le etichette dello stato socio ("In tolleranza" → "Quota sc
 **Altro dal giro:** la tendina del menu si apriva verso sinistra e usciva dallo schermo (ora sempre verso destra); le domande "in attesa di delibera" hanno il link alla scheda, che mancava solo lì (senza, non c'era modo di registrare un pagamento a chi non ha ancora l'accesso); la pagina Verbali mette in cima le bozze **con i nomi già in vista** e retrocede i due moduli manuali, ormai una rete di sicurezza dato il cron settimanale; un job notturno chiude le iscrizioni scadute, che nessuno chiudeva.
 
 **Cosa è risultato pulito nel controllo incrociato:** ricevute (numerazione, importi, collegamento con gli incassi), rate e contratti, spese, entrate extra, estratto conto e saldi, categorie del consuntivo, notifiche ed email, sale e orari, presenze, codici fiscali doppi, omonimie. I dati di collaudo ancora in anagrafica ("Socio Prova", "ZZSTRESS Regolare") hanno gli incassi già stornati: contabilmente non sporcano, restano da togliere alla pulizia di settembre.
+
+**05/09/2026 — cosa può rompersi, e chiudere i buchi peggiori.** Partito da una domanda di Lele: fai la lista di tutto quello che può andare storto, gestionale e sito. Ne è uscito un registro di 22 rischi (artifact "Punti di rottura", link in memoria), diviso non per area ma per **cosa succede se accade**: quello che non torna indietro, quello che succede in silenzio, quello che si vede subito. Poi Lele ha detto «fai tutto», e la giornata è andata lì.
+
+**La falla peggiore: i file non erano in nessun backup.** Il backup notturno salvava le 63 tabelle e lo faceva bene, ma i 30 file dello Storage — certificati medici, moduli di adesione firmati, foto — restavano in una copia sola: nel database c'era solo il riferimento a un file che, se perso, non torna. Aggravante scoperta lo stesso giorno: **l'organizzazione Supabase è su piano gratuito, dove i backup gestiti non esistono**. L'unica copia del database è quella che ci mandiamo da soli ogni notte. Ora il backup impacchetta anche i file (TAR scritto a mano, nessuna dipendenza nuova, provato creandolo e riaprendolo con `tar` di sistema), si rilegge prima di partire e confronta i conteggi, sa spedire a più indirizzi, e decide se scaricare PRIMA di riempire la memoria — altrimenti sarebbe morto per memoria esaurita proprio il giorno in cui c'è più roba da salvare.
+
+**La sentinella, e i due difetti che aveva.** Un controllo settimanale che tace quando va tutto bene e scrive su Telegram solo se trova lavori falliti o fermi, email o Telegram non consegnati, notifiche in coda da troppo, backup mancante. Due bug trovati verificando il lavoro dell'agente invece di fidarsi del report: (1) si appoggiava a `net._http_response`, che **conserva sei ore, non giorni** — misurato, la riga più vecchia ne aveva 5:59 — quindi una sentinella settimanale non avrebbe visto quasi niente; ora c'è un registro nostro (`esito_lavoro`) scritto dai job stessi. (2) La funzione usava `dettaglio` senza qualificarlo, stesso nome della propria colonna di ritorno: sarebbe morta **alla prima esecuzione**, che per una sentinella è il colmo. Trovato eseguendola davvero, non leggendola.
+
+**La posta: una diagnosi mia sbagliata, corretta.** Nel documento avevo scritto che le email finivano in spam perché partono da Gmail e non dal dominio — «posta che si spaccia per qualcun altro». **Falso**, verificato: il mittente è lo stesso account Gmail da cui si spedisce, l'invio passa dai server autenticati di Google, SPF/DKIM/DMARC sono già validi. Se avesse seguito il mio consiglio, Lele avrebbe passato mezz'ora sul DNS per un problema inesistente. Il problema vero era di forma: mancavano la firma con denominazione ed il motivo per cui ricevi il messaggio, e le intestazioni che dichiarano la natura del messaggio. Corretto e provato **sul campo**, mandando due email vere: la prima è arrivata — ma in **Promozioni**, e la colpa era del `List-Unsubscribe` che avevo appena aggiunto io a tutto, avvisi compresi. È uno dei segnali con cui Gmail riconosce la posta commerciale di massa, e da «il tuo certificato scade fra 12 giorni» non ci si disiscrive: ora sta solo sulle comunicazioni in blocco.
+
+**Le commissioni di SumUp e Stripe** (richiesta di Lele: «sono buchi che non si risolvono»). Scartata la riconciliazione pagamento per pagamento, che sembrava ovvia: solo 3 incassi su 197 marcati stripe hanno un riferimento verificabile, gli altri 194 sono storico importato. L'unità giusta è il costo mensile del canale, che è poi quello che dicono i documenti. Una riga per mese e canale genera la spesa che il consuntivo somma da solo. Tre scelte: vincolo che impedisce di caricare due volte lo stesso resoconto; la pagina dice **quali mesi mancano** guardando dove ci sono stati incassi su quel canale; e accanto a ogni riga la **percentuale sul transato**, che fa saltare all'occhio un errore di battitura. Poi Lele ha chiesto il campo **transato dichiarato**: il documento dice quanto il canale ha elaborato, il sistema confronta con gli incassi registrati e dice *cosa significa* se non torna — mancano incassi mai registrati, oppure ce ne sono di troppo. Sulla fattura di agosto il controllo torna al centesimo: SumUp dichiara 115,00 €, il gestionale ha un solo incasso bancomat da 115,00 €.
+
+**La checklist mensile.** Richiesta: «un sistema di spunta su tutte le azioni che devo fare mensilmente». Non ho costruito niente di nuovo — il meccanismo c'era già in Scadenze (promemoria ricorrenti dove "Segna fatto" rimanda al mese dopo). Mancavano le voci e il numero in cima. Caricate sei voci: F24, compensi a Sport e Salute, commissioni SumUp, commissioni Stripe, pagamento dei collaboratori, caricamento dell'estratto conto. Su F24 e Sport e Salute la nota dice esplicitamente che la data è operativa e va confermata col commercialista: non si spacciano per certe scadenze normative non verificate.
+
+**Il menu, rimesso in ordine.** Lele: «dove trovo queste pagine? Dai una controllata che siano in gruppi con criterio». Controllate tutte le pagine contro il menu: il criterio c'era e reggeva, ma "Scadenze" stava in *Impostazioni* — il gruppo dove si va una volta l'anno — proprio mentre io la riempivo di adempimenti mensili. Ora è "Adempimenti del mese" accanto a "Da fare". Le Commissioni hanno la voce diretta in Conti, e Conti è ordinato come si lavora: prima dove si inserisce, poi quello che si guarda. **Non toccato** "Libro soci" benché sembrasse fuori posto: un commento nel file diceva che il 03/09 era stato avvicinato a "Soci" apposta — una decisione, non una svista. Infine la pagina degli adempimenti apriva con l'interruttore delle notifiche e col modulo di inserimento, e l'elenco stava in fondo: ora apre con quanto resta da fare.
+
+**Altro dal giro:** paragrafo mancante nell'informativa privacy su cosa si cancella e cosa resta per obbligo di legge alla richiesta di cancellazione (da rileggere, tocca la norma); il nome dell'istruttore che riceve il compenso mostrato quando si registra un incasso; gli ex istruttori con l'accesso ancora attivo segnalati in Accessi; tre promemoria per le scadenze che vivono fuori dal gestionale (dominio, carte, token, account Google).
 
 **04/09/2026, sera — i compensi collaboratori: dal calcolo al contatore.** Richiesta: «ho bisogno di avere sott'occhio sempre quanto devo dare, anche in modo parziale a metà mese; un contatore live da bloccare a fine mese, ogni mese, con la possibilità di segnare se pagato o da accomunare al mese successivo».
 
