@@ -303,3 +303,9 @@ Sessione notturna chiusa: nessun task eseguibile — tredicesima notte di fila c
 
 Report in `reports/2026-09-04.md`, memoria aggiornata. Riprendo il consiglio già dato più volte nei report: vale la pena sospendere il cron notturno finché non arriva un input tuo (playtest reale del pacchetto del 02/08, nuovi asset grafici, o una decisione di design) — continua a girare a vuoto.
 [Fri Sep  4 02:39:09 AM CEST 2026] fine sessione notturna (exit 0)
+Already on 'master'
+[Sat Sep  5 02:37:01 AM CEST 2026] inizio sessione notturna (branch master)
+Indice già corretto, nessuna modifica necessaria.
+
+Sessione notturna conclusa senza deploy: l'epica indicata nell'incarico ("Chiarezza degli esiti") e quella realmente in cima al backlog ("Il round si racconta") sono entrambe già chiuse da tempo (29/07 e 02/08). Confermato che nulla è cambiato dal 02/08, 254/254 test verdi, 14 checkbox aperte tutte bloccate ([LELE]/bilanciamento congelato/asset mancanti/[F3]). Report in `reports/2026-09-05.md`, commit fatto, nessun push. Segnalata nel report una discrepanza: chi genera l'incarico notturno sembra usare uno stato del backlog non aggiornato di oltre un mese — vale la pena controllarlo.
+[Sat Sep  5 02:39:19 AM CEST 2026] fine sessione notturna (exit 0)
