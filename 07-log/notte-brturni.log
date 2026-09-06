@@ -309,3 +309,17 @@ Indice già corretto, nessuna modifica necessaria.
 
 Sessione notturna conclusa senza deploy: l'epica indicata nell'incarico ("Chiarezza degli esiti") e quella realmente in cima al backlog ("Il round si racconta") sono entrambe già chiuse da tempo (29/07 e 02/08). Confermato che nulla è cambiato dal 02/08, 254/254 test verdi, 14 checkbox aperte tutte bloccate ([LELE]/bilanciamento congelato/asset mancanti/[F3]). Report in `reports/2026-09-05.md`, commit fatto, nessun push. Segnalata nel report una discrepanza: chi genera l'incarico notturno sembra usare uno stato del backlog non aggiornato di oltre un mese — vale la pena controllarlo.
 [Sat Sep  5 02:39:19 AM CEST 2026] fine sessione notturna (exit 0)
+Already on 'master'
+[Sun Sep  6 02:37:01 AM CEST 2026] inizio sessione notturna (branch master)
+Sessione notturna conclusa, nessun task eseguibile — quindicesima notte di fila con lo stesso esito.
+
+**Riepilogo:**
+- "CHIAREZZA DEGLI ESITI" (indicata stanotte come priorità in cima) è chiusa e deployata dal 29/07, non è nemmeno l'epica in cima al file reale (quella è "Il round si racconta", chiusa il 02/08). `git log` conferma zero modifiche a `BACKLOG.md`/`src/`/`web/` dal 02/08.
+- Le 14 checkbox aperte restano tutte `[LELE]`, tuning di bilanciamento (congelato per istruzione), asset-gated, o infra F3 che richiede Supabase reale — nessuna eseguibile.
+- `npm run typecheck && npm test`: 254/254 verdi, root e web puliti.
+- Nessun deploy (nulla da chiudere stanotte).
+- Commit locale fatto (`e6d621a`), nessun push.
+- Report in `reports/2026-09-06.md`; non ho toccato `~/cervello/progetti/gioco-mobile.md` perché non c'è nulla di nuovo da registrare lì.
+
+**Da segnalarti direttamente:** il prompt automatico ha ripetuto *identico* l'errore di ieri (nominando "CHIAREZZA DEGLI ESITI" come epica aperta in cima), nonostante il report del 05/09 lo segnalasse esplicitamente — chi genera l'incarico notturno non recepisce i report. Vale la pena controllare quella fonte direttamente, non il backlog. E resta in piedi il consiglio, ormai ripetuto da settimane: sospendere il cron notturno finché non arriva uno dei tre sblocchi (playtest umano di "Il round si racconta", asset grafici, o nuova decisione di design) — continua a girare a vuoto.
+[Sun Sep  6 02:39:10 AM CEST 2026] fine sessione notturna (exit 0)
