@@ -58,6 +58,24 @@ avviene dopo la revisione. Serve a due cose: un errore di partizione diventa un
 conflitto **visibile** invece di una sovrascrittura silenziosa, e «dichiarato
 finito dall'agente» smette di coincidere con «entrato nel codice».
 
+## Numeri e cause (dal 07/09/2026)
+
+Vale sempre, non solo nelle ricerche — nasce da una giornata in cui ho riferito
+numeri veri con letture inventate sopra:
+
+1. **Un conteggio non si riferisce senza aver guardato almeno due righe di
+   esempio.** «210 spese non agganciate» era vero; 208 erano consuntivi storici,
+   e si vedeva dalla data. Due righe, e l'errore muore.
+2. **Mai attaccare una causa a un numero.** Se il nesso non è verificato, si
+   riferisce il numero e basta. La causa inventata costa più del numero
+   sbagliato: manda a cercare la cosa sbagliata.
+3. **Interrogare il database non è verificare: è produrre un dato.** La verifica
+   è quello che si fa *dopo*, sulla frase che si costruisce sopra al dato.
+
+Quando la domanda me la faccio io — audit, controllo incrociato, «cerca cosa non
+va» — si applica la skill `ricerca` per intero. Quando il difetto lo segnala
+qualcuno ed è riproducibile, si va dritti come sul VVF.
+
 ## Non posso verificare me stesso
 
 Se il diff l'ho scritto io, la mia revisione ha lo stesso punto cieco due volte.

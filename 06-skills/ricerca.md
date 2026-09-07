@@ -14,14 +14,41 @@ Impedire che una conclusione **plausibile** venga scambiata per una conclusione
 codice al ragionamento.
 
 ## Quando si applica
-Solo quando la risposta porta a una decisione con un costo reale: denaro,
-mesi di lavoro, obblighi di legge, un impegno preso con qualcuno.
-Casi tipici: ASD a norma (fisco, statuto, contratti), il gestionale come
-prodotto (prezzo, canale, concorrenza), scelte di fornitore o di piattaforma.
+Il discrimine **non** è "ricerca sì, codice no". È **chi ha fatto la domanda**.
 
-**Non si applica al codice.** Lì la verifica si fa guardando: si deploya, si
-apre la pagina, si interroga il DB. Una domanda che si può risolvere guardando
-non è una ricerca, e questa procedura sarebbe solo cerimonia.
+- **Difetto segnalato da qualcuno e riproducibile** → si va dritti. È il modo
+  di lavorare del VVF: Moli segnala, si riproduce, si aggiusta, si deploya. La
+  richiesta viene da fuori, è verificabile, riguarda un file. Qui la procedura
+  sarebbe solo cerimonia.
+- **La domanda me la faccio io** → si applica per intero. Audit, controlli
+  incrociati, "cerca cosa non va", diagnosi su dati, e ogni decisione che costa
+  denaro, mesi di lavoro od obblighi di legge.
+
+> Correzione del 07/09/2026. Qui c'era scritto «non si applica al codice: lì la
+> verifica si fa guardando, si interroga il DB». È la riga che ha lasciato
+> passare gli errori di quel giorno. **Interrogare il database non è
+> verificare: è produrre un dato.** Il difetto non stava mai nel numero, stava
+> nella frase costruita sopra al numero — e siccome "stavo lavorando sul
+> codice", questa skill risultava fuori perimetro proprio quando serviva.
+>
+> Un audit è una macchina che produce affermazioni: venti numeri in un'ora,
+> nessuno che li controlli tranne Lele. Ed è l'attività in cui gli errori si
+> sono concentrati tutti.
+
+## Due regole che valgono sempre, anche fuori da una ricerca
+
+**1. Un conteggio non si riferisce senza aver guardato almeno due righe di
+esempio.** Il 07/09/2026 ho riferito "210 spese non agganciate all'estratto
+conto": il numero era vero, ma 208 erano consuntivi storici importati, e si
+vedeva dalla data — 31/12 di ogni anno dal 2015 al 2022. Due righe guardate,
+errore morto. Vale anche per il verso opposto: prima di dire "nessuno", si
+guarda una riga che *dovrebbe* esserci.
+
+**2. Mai attaccare una causa a un numero.** Se il nesso non è verificato, il
+risultato è il numero e basta. "210 spese non agganciate" era difendibile;
+"ed è per questo che il consuntivo non quadra banca e cassa" era inventato — e
+la parte inventata è quella che fa perdere mezza giornata a cercare la cosa
+sbagliata.
 
 ## Cosa NON fa
 - Non sostituisce la decisione: la prepara. Decide Lele.
