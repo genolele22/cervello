@@ -61,6 +61,22 @@ Prossimo passo: decidere su quei due elenchi; poi la scelta vera —
 
 ---
 
+## Deciso: niente inviti in blocco (07/09/2026)
+
+Gli inviti ad attivare l'accesso **non si mandano a tappeto**. Chi non ha
+l'accesso e non torna in palestra non è un problema da risolvere: quando
+rientra compila la pre-iscrizione, il sistema lo riconosce come socio già
+esistente, e l'invito parte da solo alla conferma. Semplice e senza valanghe.
+
+Perché regge solo da oggi: prima il codice trovava l'invito vecchio «in
+attesa» e non ne generava uno nuovo (caso Rosa Di Gregorio, 04/09: accettata,
+nessuna mail). Ora l'invito scaduto viene annullato e rigenerato, e sulla
+scheda di ogni socio c'è il riquadro «Accesso al sito» con lo stato reale e il
+pulsante per mandarlo, che verifica nel registro se è partita davvero.
+
+I 41 inviti spediti in blocco il 16-17/08 sono stati cancellati: quelle
+persone risultano «mai invitate», che è la verità.
+
 ## Come si lavora qui
 
 - **Collaudo con dati finti nel DB reale**, poi rimossi. Attenzione: una riga
