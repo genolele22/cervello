@@ -39,6 +39,30 @@ multi-tenant significa riscrivere tutte e 161 le policy.
 
 ## Stato
 
+Stato: in produzione — 07/09/2026, giornata di **bonifica dati e sicurezza**.
+  Chiuse tre funzioni `security definer` che erano eseguibili da chiunque avesse
+  la chiave pubblica del sito, ed eliminate le due `registrati_collaboratore`
+  morte dal 28/08 (0137). Corretti: il filtro "Rata non pagata" che ignorava la
+  data di scadenza, il generatore dei verbali che riproponeva 113 persone già
+  socie, il contatore "da regolarizzare" (18 → 2), la campanella delle notifiche
+  che usciva dallo schermo. Unite le schede doppie dei due Lo Bianco e chiuso il
+  buco che le aveva create. Nuovo allarme "si allena con la quota scaduta".
+Deciso: la **quota associativa va per anno solare** (gen-dic), mai per stagione;
+  gli **abbonamenti scadono per durata della tipologia** dal giorno in cui si
+  fanno, solo Kalèido è stagionale; l'**assicurazione copre anche i non soci**,
+  quindi non è una motivazione per sollecitare la quota.
+Aperto (dal controllo incrociato di fine giornata, in ordine di gravità):
+  2 soci si allenano **senza certificato medico** (Sejdic, Gallo) · 4 incoerenze
+  di libro soci · residui di collaudo vivi (Socio Prova, Regolare ZZSTRESS) ·
+  210 spese non agganciate all'estratto conto, ed è il motivo per cui il
+  consuntivo non quadra banca e cassa · le 9 ammissioni senza quota del 01/09.
+Prossimo passo: i due certificati mancanti — riguardano persone che si allenano
+  adesso.
+
+---
+
+## Stato al 06/09/2026
+
 Stato: in produzione — 06/09/2026: giro sul **metodo**, non sulle funzioni.
   Aggiunta `nota_logbook.scoperto_da` (migrazione 0135): chiudendo una nota si
   dice come è emerso il difetto — utente, caso, collaudo, test, sentinella — e
@@ -53,6 +77,8 @@ Trovato e **non** risolto (dati di persone vere, decide Lele):
   - **41 inviti** creati il 16-17/08 risultano ancora `in_attesa` ma sono
     scaduti dal 30/08. Sono gli stessi dell'incidente del 04/09: la causa è
     corretta, le righe no. Da verificare se quelle persone riescono a entrare.
+    → **RISOLTO il 07/09**: cancellati su richiesta di Lele, quelle persone
+    tornano "mai invitate". Restano i 4 dello stesso giro che erano stati usati.
   - **9 ammissioni** al libro soci da agosto in poi senza quota incassata: sono
     quelle del verbale confermato dall'agente in 14 secondi il 01/09. Mai
     ripulite.

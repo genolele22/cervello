@@ -262,6 +262,41 @@ Scoperto su: the-crew, posta dell'ASD (05/09/2026) — l'avevo scritto come
 diagnosi in un documento consegnato, verificato il giorno dopo che era falso;
 e il List-Unsubscribe l'ho messo, misurato e tolto nel giro di due ore.
 
+### Revocare un permesso a un ruolo non toglie niente se è concesso a PUBLIC
+Togliere `EXECUTE` a `anon` su una funzione che ha il permesso concesso a
+**PUBLIC** non cambia nulla: anon continua a chiamarla, perché lo eredita da
+lì. La revoca "riesce" senza errori, quindi sembra fatta. Si vede solo
+guardando la ACL (`proacl` in `pg_proc`): `{=X/postgres,...}` — quel `=X`
+senza nome davanti è PUBLIC. Va revocato a `public` e poi ri-concesso solo ai
+ruoli che servono davvero.
+Regola generale: dopo ogni cambio di permessi, rileggere il permesso effettivo
+(`has_function_privilege`), mai fidarsi dell'esito del comando.
+Scoperto su: the-crew, chiusura delle funzioni esposte ad anon (07/09/2026) —
+avevo già dichiarato la cosa fatta quando non lo era.
+
+### Verificare un invio asincrono nell'istante in cui lo lanci dà falsi allarmi
+Se una funzione **accoda** un lavoro invece di eseguirlo (una mail messa in
+coda e spedita dal giro successivo), controllare subito dopo che il lavoro
+risulti fatto produce un errore anche quando va tutto bene. Un controllo del
+genere è peggio di nessun controllo: dice "non è partita" di una cosa che
+partirà fra due minuti, e chi legge agisce di conseguenza.
+Regola: verificare solo ciò che è già vero in quel momento — che il lavoro sia
+stato accodato — e lasciare la conferma dell'esito a chi legge il registro
+dopo. Prima di scrivere una verifica, guardare se la funzione spedisce o accoda.
+Scoperto su: the-crew, pulsante "manda l'invito" (07/09/2026) — segnalava un
+invio fallito alle 11:13 per una mail partita alle 11:15.
+
+### Un confronto di nomi che rispetta l'ordine delle parole non trova i duplicati
+Normalizzare maiuscole, accenti e spazi non basta: "Damian Gabriel" e "Gabriel
+Damian" sono la stessa persona con nome e secondo nome invertiti, e un
+confronto posizionale li vede come due. Le parole vanno **ordinate
+alfabeticamente** prima di confrontarle.
+Vale ovunque si cerchi "la stessa persona già in archivio", ed è indipendente
+dal codice fiscale, che non salva: può mancare su una delle due schede o
+essere scritto male (entrambi i casi capitati insieme).
+Scoperto su: the-crew, due bambini già soci dal 2025 ricomparsi come anagrafiche
+nuove dal modulo online (07/09/2026), con la storia dei pagamenti spezzata in due.
+
 ### Prima di costruire un controllo su una tabella di sistema, misura quanto conserva
 Le tabelle di log dei servizi gestiti vengono ripulite, e la finestra reale è
 spesso molto più corta di quella che si immagina: `net._http_response` di
