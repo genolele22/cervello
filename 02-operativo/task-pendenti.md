@@ -1,6 +1,6 @@
 # Task pendenti
 
-Aggiornato: 2026-08-26. Priorità reali (confermate 22/08/2026): ASD/Crew → vvf → Last Pact → The Raven → app tempo libero → #succedonocose → automazioni.
+Aggiornato: 2026-09-07. Priorità reali (confermate 22/08/2026): ASD/Crew → vvf → Last Pact → The Raven → app tempo libero → #succedonocose → automazioni.
 Motivo dell'ordine: vvf è sostanzialmente finito e limabile in seguito, Crew serve ora e ha ancora margine di crescita. Non è inerzia, è una scelta.
 Fuori classifica: rotazione chiavi The Raven (sezione 0).
 
@@ -60,7 +60,39 @@ Due rilievi grossi oltre alle mail, **non ancora affrontati**:
 - [ ] La **demo è vuota proprio nelle aree socio e collaboratore** (l'utente demo non è collegato a nessuna anagrafica): è l'ambiente con cui il commercialista dovrebbe vendere
 - [ ] Il conto della realtà: **12 accessi su 191 soci, 0 lezioni e 0 presenze da sempre** — metà del prodotto non è mai stata accesa nemmeno in casa. L'acquirente propone di far fare l'appello per una settimana vera agli 8 istruttori e guardare i numeri, prima di sviluppare altro
 
-## 2. Gestionale ASD Fight in Progress — "The Crew" (scheda: ~/cervello/progetti/fight-in-progress.md)
+## 2. Gestionale ASD Fight in Progress — "The Crew" (schede: ~/cervello/progetti/the-crew.md e fight-in-progress.md)
+
+### 🆕 07/09 — giornata di bonifica: dati, sicurezza, reversibilità. Tutto LIVE
+
+**Aperte, in ordine di quanto pesano (le prime due riguardano persone, non software):**
+- [ ] ⚠️ **Due soci si allenano senza certificato medico**: Sejdic Brayan e Gallo Guido, entrambi Open Gym trimestrale attivo, certificato mai caricato. Non è un difetto del gestionale — è una posizione da sistemare o due persone da fermare. Azione di Lele
+- [ ] **9 ammissioni al libro soci da agosto senza quota incassata**: sono quelle del verbale confermato da un agente in 14 secondi il 01/09. Decidere se incassare la quota o annullare le ammissioni. Azione di Lele
+- [ ] **Codice fiscale di Lo Bianco Mihail David malformato** (`LBNMLD15P276273S`, manca la G): quello giusto è `LBNMLD15P27G273S`. Va fatto dalla sua scheda, il database riserva la modifica al superadmin
+- [ ] **«Regolare ZZSTRESS» compare ancora nell'elenco soci**: fuori dal libro soci ma con `persona.stato = socio`, campo protetto e **senza nessun punto nell'interfaccia per correggerlo**. È una protezione senza porta legittima dietro: o si aggiunge un'azione da superadmin, o si decide di scavalcare il guardiano per una volta. Serve una scelta di Lele
+- [ ] **Lione Sara risulta socia senza ammissione nel libro soci** (è istruttrice, e lo statuto vuole che i collaboratori siano soci): manca la delibera o manca la registrazione
+- [ ] **Massa Mastroeni**: ha l'ammissione nel libro soci ma la scheda dice «richiedente». Il trigger nuovo ha chiuso la domanda, non lo stato della persona
+- [ ] **Ripristino del backup mai provato**: il backup gira ogni notte e riesce, ma non è mai stato rimesso dentro. Un backup mai ripristinato è un'ipotesi di backup. Lele dice di averlo già fatto: nel vault e nei documenti non c'è traccia — da chiarire, poi eventualmente provarlo sul progetto `the-crew-demo`
+- [ ] **Consuntivo mensile banca/cassa** (nota logbook `83602f66`): nessuna diagnosi. NON è colpa delle spese non agganciate all'estratto conto — quelle del 2026 sono 2 su 154 e sono corrette. Ripartire dal dato grezzo
+- [ ] **7 note di logbook** ancora aperte: RID bancario (`ba9dcb21`), genitore+figli con cambio account (`583d8a19`), posticipo inizio abbonamento (`10fa8b27`, in parte fatto oggi), lista di «Oggi» fuori schermo (`fd5384c9`), verbali «non mi convince» (`81a28c7e`), consuntivo banca/cassa (`83602f66`), colore e logo dei gruppi (`9ce84608`)
+- [ ] **Da tenere d'occhio**: il vincolo anti-doppio-incasso blocca due incassi identici (stessa persona, tipologia, data, importo) dal 01/08. Se capita di registrare tre mensilità uguali in una volta — nello storico è successo — la definizione va cambiata
+
+**Fatto oggi, tutto in produzione e verificato:**
+- [x] **Sicurezza**: tre funzioni `security definer` erano eseguibili da chiunque avesse la chiave pubblica del sito (`chiudi_iscrizioni_scadute`, `sentinella_diagnostica`, `backup_lista_tabelle`), chiuse (0137); eliminate le due `registrati_collaboratore`, morte dal 28/08 ma ancora invocabili — quella senza token bastava conoscere l'email di un invitato
+- [x] **Un pagamento si registra una volta sola** (0140): controllo nell'azione con il numero della ricevuta già emessa, più indice unico nel database. Gli stornati restano fuori, perché una correzione deve poter essere ri-registrata
+- [x] **Data di inizio abbonamento**: non parte più nel passato. Attivo → in coda; scaduto da ≤15 giorni → in coda (quei giorni li ha usati); scaduto da >15 giorni → **si chiede**, con le due date in chiaro. Sotto il campo ora si legge la scadenza calcolata. Corretta l'iscrizione di Nardin, a cui erano stati tolti 63 giorni su 90
+- [x] **Libro soci**: fuori i due nominativi di collaudo, e porta chiusa dietro (0138 — niente numeri ≥ 9000, niente indirizzi `.invalid` o `@thecrew.training`)
+- [x] **Tracciabilità** estesa a 7 tabelle scoperte, libro soci e verbali compresi (0139): una cancellazione ora conserva l'intera riga di prima
+- [x] **Un verbale confermato si può riportare a bozza**, ma solo finché non è entrato nel libro soci: dopo serve una rettifica
+- [x] **Anagrafica doppia**: il confronto dei nomi ignorava l'ordine delle parole («Damian Gabriel» ≠ «Gabriel Damian»). Corretto, più blocco lato server e casella «è un'altra persona» per gli omonimi veri. Unite le due schede dei Lo Bianco
+- [x] **Accesso al sito su ogni scheda socio**: stato reale, conferma d'invio letta dal registro, link copiabile per mandarlo per altra via. Cancellati i 41 inviti in blocco del 16-17/08, quelle persone tornano «mai invitate»
+- [x] **Cruscotto**: «da regolarizzare» solo per le quote già scadute (18 → 2), nuovo allarme «si allena con la quota scaduta», voci riordinate per gravità reale
+- [x] **Elenchi in ordine stabile**: ordinavano per data senza orario, quindi le righe dello stesso giorno uscivano in ordine variabile (la ricevuta 444 sotto la 439). Corretti 5 punti su 6
+
+**Deciso oggi, vale da qui in avanti:**
+- La **quota associativa** va per **anno solare** (gennaio-dicembre), mai per stagione sportiva
+- Gli **abbonamenti** scadono per **durata della tipologia** dal giorno in cui si fanno: solo Kalèido è stagionale
+- L'**assicurazione copre anche i non soci**: non è una motivazione per sollecitare la quota
+- **Niente inviti in blocco**: chi rientra compila la pre-iscrizione e l'invito parte da solo
 
 ### 🆕 20/08 sera — rateizzazione online + 2 bug ruolo istruttore + lavoro 27 chiuso + logbook Lotto A/C
 - [x] **Lavoro 27 chiuso**: variazione di un abbonamento a metà anno (Kalèido). Scelta l'opzione "chiudi e riapri" con formula prorata sui mesi rimasti (non sull'incassato — Kalèido è anno accademico, non solare). LIVE

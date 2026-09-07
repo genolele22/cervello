@@ -39,6 +39,32 @@ multi-tenant significa riscrivere tutte e 161 le policy.
 
 ## Stato
 
+Stato: in produzione — 07/09/2026, **bonifica di dati, sicurezza e reversibilità**
+  (giornata lunga, il dettaglio sta nei task pendenti). Chiuse verso l'esterno tre
+  funzioni raggiungibili con la sola chiave pubblica del sito e due funzioni morte
+  ancora invocabili. Reso impossibile registrare due volte lo stesso pagamento.
+  Corretta la data di inizio abbonamento, che a chi tornava dopo una pausa
+  rubava i giorni di assenza. Libro soci ripulito dai nominativi di collaudo e
+  blindato. Estesa la tracciabilità ai registri che prima non lasciavano traccia,
+  e aggiunta una via d'uscita dal verbale confermato per errore. Chiuso il buco
+  che sdoppiava le anagrafiche. Sistemati cruscotto, allarmi e ordine degli elenchi.
+Deciso: **quota associativa per anno solare** (gen-dic), mai per stagione;
+  **abbonamenti a durata di tipologia** dal giorno in cui si fanno, solo Kalèido
+  è stagionale; **l'assicurazione copre anche i non soci**, quindi non è un
+  argomento per sollecitare la quota; **niente inviti in blocco** — chi rientra
+  passa dalla pre-iscrizione e l'invito parte da solo; oltre **15 giorni** di
+  ritardo sul rinnovo la data d'inizio non si decide da soli, si chiede.
+Aperto: due soci si allenano **senza certificato medico** · 9 ammissioni senza
+  quota (verbale del 01/09) · quattro incoerenze anagrafiche di cui una senza
+  percorso legittimo per correggerla · **ripristino del backup mai provato** ·
+  consuntivo banca/cassa senza diagnosi · 7 note di logbook.
+Prossimo passo: **il sito pubblico**, che non convince Lele. Sul gestionale,
+  i due certificati mancanti: riguardano persone che si allenano adesso.
+
+---
+
+## Stato al 07/09/2026 (mattina)
+
 Stato: in produzione — 07/09/2026, giornata di **bonifica dati e sicurezza**.
   Chiuse tre funzioni `security definer` che erano eseguibili da chiunque avesse
   la chiave pubblica del sito, ed eliminate le due `registrati_collaboratore`

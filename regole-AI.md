@@ -280,6 +280,29 @@ Scoperto su: the-crew, posta dell'ASD (05/09/2026) — l'avevo scritto come
 diagnosi in un documento consegnato, verificato il giorno dopo che era falso;
 e il List-Unsubscribe l'ho messo, misurato e tolto nel giro di due ore.
 
+### Ordinare per una DATA senza orario non è ordinare
+Le righe dello stesso giorno restano pari merito, e su un pari merito il
+database le restituisce nell'ordine che gli conviene — che può cambiare da
+un'esecuzione all'altra. L'elenco sembra "quasi giusto", il che è peggio di
+sbagliato: nessuno lo segnala per settimane, e quando lo si nota si sospetta il
+dato invece della query (qui: una ricevuta con numero più alto compariva sotto
+una più bassa, e il dubbio è caduto sulla numerazione, che era corretta).
+Regola: ogni ordinamento su una data ha un secondo criterio con l'orario o con
+una sequenza (`creato_il`, un numero progressivo). E quando se ne trova uno
+senza, si cercano subito tutti gli altri: erano cinque su sei.
+Scoperto su: the-crew, elenco pagamenti (07/09/2026).
+
+### Un vincolo di unicità va provato contro i dati già in casa, prima di crearlo
+`create unique index` su una tabella viva o passa o fallisce, e se fallisce lo
+fa a metà migrazione. Prima di aggiungerlo si conta quanti gruppi duplicati
+esistono già: se ce ne sono, o si bonificano o il vincolo va limitato alla
+finestra in cui la regola è nata (`where data >= ...`). Riscrivere lo storico
+per far entrare una regola nuova è il verso sbagliato.
+E l'esistenza di doppioni passati è essa stessa un'informazione: qui erano
+mensilità pagate in una volta sola, cioè un caso legittimo che la definizione
+di "stesso pagamento" non copriva — la si sarebbe scoperta in produzione.
+Scoperto su: the-crew, vincolo anti-doppio-incasso (07/09/2026).
+
 ### Revocare un permesso a un ruolo non toglie niente se è concesso a PUBLIC
 Togliere `EXECUTE` a `anon` su una funzione che ha il permesso concesso a
 **PUBLIC** non cambia nulla: anon continua a chiamarla, perché lo eredita da
