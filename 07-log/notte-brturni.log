@@ -331,3 +331,13 @@ Commit fatto (`0e14de8`), nessun push, nessun deploy.
 
 Problema più urgente da segnalarti direttamente: è la **terza notte consecutiva** (05, 06, 07/09) in cui l'incarico automatico ti indica "CHIAREZZA DEGLI ESITI" come epica aperta in cima — è falso, è chiusa dal 29/07. Le segnalazioni scritte nei report delle notti precedenti non hanno corretto il generatore del prompt. Vale la pena controllare direttamente quella fonte (non serve un'altra sessione notturna per dirtelo di nuovo) e valutare se sospendere il cron finché non arriva uno dei tre input che sbloccano il backlog: playtest umano vero del pacchetto del 02/08, asset grafici, o una nuova decisione di design.
 [Mon Sep  7 02:39:18 AM CEST 2026] fine sessione notturna (exit 0)
+Already on 'master'
+[Tue Sep  8 02:37:01 AM CEST 2026] inizio sessione notturna (branch master)
+Fatto. Riepilogo:
+
+- **Verifica**: sia l'epica indicata nell'incarico ("Chiarezza degli esiti") sia quella realmente in cima al backlog ("Il round si racconta") sono già chiuse e deployate da tempo (29/07 e 02/08). Nessun task eseguibile stanotte — le 12 checkbox aperte restano tutte `[LELE]`, bilanciamento congelato, o bloccate da asset/infra F3.
+- **Tecnico**: `npm run typecheck && npm test` verdi (254/254), root e `web/`.
+- **Deploy**: non eseguito — nessuna epica chiusa stanotte, produzione invariata dal 02/08.
+- **Commit**: `5fea48e` (solo report, nessun codice toccato), niente push.
+- **Segnalazione**: è la quarta notte di fila (05, 06, 07, 08/09) in cui l'incarico automatico indica erroneamente un'epica chiusa da oltre un mese come "da fare in cima". Aggiornata la memoria persistente con questo pattern — il canale di segnalazione via report si è dimostrato inefficace, serve un intervento diretto tuo su chi genera il prompt notturno (o sospendere il cron finché non arriva un input reale: playtest umano, asset grafici, o nuova decisione di design).
+[Tue Sep  8 02:39:43 AM CEST 2026] fine sessione notturna (exit 0)
