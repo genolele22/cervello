@@ -39,6 +39,31 @@ multi-tenant significa riscrivere tutte e 161 le policy.
 
 ## Stato
 
+Stato: in produzione — 09-10/09/2026, **chiusi i 4 gruppi di logbook aperti** (filtri
+  anagrafica multiflag come in vvf, il duplicato Bertola unito e la domanda scartata
+  che ora toglie davvero dai "Richiedenti", colore/logo dei gruppi sportivi resi veri
+  con avviso di contrasto mai bloccante, switcher genitore-figli a pieno controllo,
+  tre bottoni verbali protetti dal doppio invio) **e due bug reali sul consuntivo**:
+  il saldo cassa/banca non si ereditava oltre un capodanno (la ricorsione scendeva
+  mese per mese invece di saltare all'anno, esauriva il tetto prima di trovare
+  l'apertura 2025) — e i versamenti di contanti allo sportello, mai sincronizzati (6
+  movimenti reali, 3.600€ da gennaio ad agosto, verificato zero entrate collegate):
+  ora il caricamento dell'estratto conto li riconosce da soli ("...per versamento da
+  cassa") e registra insieme entrata banca e uscita cassa. Nuovo registro movimenti
+  di cassa nel consuntivo, riga per riga come il vecchio foglio Excel.
+Deciso: gruppi sportivi con colore/logo **diretti** (Lele li sceglie, avviso di
+  leggibilità mai bloccante), non più tradotti a mano nel codice; genitore-figli con
+  **pieno controllo**, un profilo alla volta con switcher, non tutto mescolato.
+Aperto: **cassa calcolata negativa** ad agosto 2026 (-239,55€ a fine mese, visto per
+  la prima volta nel nuovo registro) — segnale vero da guardare, non ancora spiegato;
+  17 foto duplicate di Auricchio ancora da cancellare a mano in Supabase Storage.
+Prossimo passo: Lele guarda la cassa negativa di agosto nel registro movimenti e dice
+  se torna; verificare lo switcher genitore-figli quando Mirela Rotaru accede di nuovo.
+
+---
+
+## Stato al 07/09/2026 (sera)
+
 Stato: in produzione — 07/09/2026, **bonifica di dati, sicurezza e reversibilità**
   (giornata lunga, il dettaglio sta nei task pendenti). Chiuse verso l'esterno tre
   funzioni raggiungibili con la sola chiave pubblica del sito e due funzioni morte

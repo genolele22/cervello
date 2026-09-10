@@ -341,3 +341,7 @@ Fatto. Riepilogo:
 - **Commit**: `5fea48e` (solo report, nessun codice toccato), niente push.
 - **Segnalazione**: è la quarta notte di fila (05, 06, 07, 08/09) in cui l'incarico automatico indica erroneamente un'epica chiusa da oltre un mese come "da fare in cima". Aggiornata la memoria persistente con questo pattern — il canale di segnalazione via report si è dimostrato inefficace, serve un intervento diretto tuo su chi genera il prompt notturno (o sospendere il cron finché non arriva un input reale: playtest umano, asset grafici, o nuova decisione di design).
 [Tue Sep  8 02:39:43 AM CEST 2026] fine sessione notturna (exit 0)
+Already on 'master'
+[Thu Sep 10 02:37:02 AM CEST 2026] inizio sessione notturna (branch master)
+Sessione chiusa: nessun task eseguibile. Il backlog è fermo dal 02/08 (commit `45d6a76`), l'epica indicata stanotte ("Chiarezza degli esiti") è chiusa e deployata dal 29/07 — è la quinta volta di fila che l'incarico automatico la segnala per errore come priorità aperta. Verificate tutte le 12 checkbox aperte residue: tutte `[LELE]`, bilanciamento congelato, o gating su asset/infra non disponibili. Test verdi (254/254), typecheck root+web puliti, nessun deploy (niente da spingere). Committato solo `reports/2026-09-10.md` su master, aggiornata la memoria interna con l'occorrenza di stasera. Prossimo passo: serve un intervento umano — playtest reale, asset grafici, o correzione del generatore del prompt notturno che continua a leggere uno stato stale del backlog.
+[Thu Sep 10 02:40:05 AM CEST 2026] fine sessione notturna (exit 0)

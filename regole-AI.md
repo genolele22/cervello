@@ -354,3 +354,22 @@ dal processo stesso a fine corsa. Vale come principio generale: un sistema che
 si sorveglia da solo deve possedere le proprie tracce.
 Scoperto su: the-crew, sentinella settimanale (05/09/2026) — trovato misurando
 prima di fidarsi, la sentinella sarebbe stata cieca senza dirlo.
+
+### SWC (Next.js) non conserva lo spazio dopo un'espressione JSX se il testo seguente va a capo
+Un `<p>Testo {espressione} altro testo` — con lo spazio letterale prima di
+"altro" sulla stessa riga sorgente dell'espressione — perde quello spazio in
+produzione se il testo che segue prosegue su un'altra riga prima del
+prossimo tag/espressione. Non è un errore nel sorgente (Babel, con lo stesso
+identico JSX, lo renderebbe corretto): è una differenza di SWC, il
+compilatore di Next.js/Turbopack, nel trimming del testo JSX multi-riga. È
+invisibile a `tsc`/eslint puliti e si vede solo guardando il DOM
+renderizzato ("2026non sono" invece di "2026 non sono").
+Regola: quando un'espressione JSX è seguita da testo che va a capo prima del
+prossimo confine, forzare lo spazio con `{" "}` esplicito subito dopo
+l'espressione — non fidarsi dello spazio letterale nel sorgente. Verificabile
+ispezionando `element.innerHTML` nel browser: React segna i confini delle
+espressioni con commenti `<!-- -->`, e uno spazio vero fra due di questi
+commenti conferma il fix (la sua assenza conferma il bug).
+Scoperto su: the-crew, avviso cassa/banca nel consuntivo (09/09/2026) —
+individuato confrontando due righe adiacenti dello stesso paragrafo, una con
+`{" "}` esplicito (corretta) e una senza (rotta).
