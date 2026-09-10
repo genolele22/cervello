@@ -373,3 +373,23 @@ commenti conferma il fix (la sua assenza conferma il bug).
 Scoperto su: the-crew, avviso cassa/banca nel consuntivo (09/09/2026) —
 individuato confrontando due righe adiacenti dello stesso paragrafo, una con
 `{" "}` esplicito (corretta) e una senza (rotta).
+
+### "Dato mancante" può voler dire "ho guardato solo una tabella su tre"
+Un anno intero (2025) sembrava assente dal gestionale: la query su `incasso`
+tornava 775€ totali, palesemente non la cifra vera di una stagione di
+palestra. Ho detto a Lele "il 2025 non è nel gestionale, è un buco nei
+dati" — sbagliato: i ricavi veri (60.913€) erano lì, registrati come righe
+mensili aggregate in `entrata_extra` (import storico dal bilancio cartaceo),
+tabella che non avevo interrogato. Lele ha rimesso in discussione la
+conclusione con la sua conoscenza diretta del business ("come può darti
+775€ totali, sta guardando qualcosa di completamente sbagliato") prima che
+lo verificassi da solo.
+Regola: quando un'entrata/uscita di un modello ha PIÙ tabelle sorgente (qui:
+incasso + entrata_extra + spesa confluiscono tutte nel consuntivo), "manca
+il dato" si dichiara solo dopo aver controllato OGNI tabella sorgente, non
+la prima che viene in mente — un totale implausibile (troppo basso, troppo
+tondo) è il segnale di controllare più a fondo prima di riportarlo. Stessa
+famiglia di errore di "prima di costruire un sistema che procuri un dato,
+verifica che manchi" qui sopra, variante: non un dato troncato, un'intera
+tabella non interrogata.
+Scoperto su: the-crew, verifica commissioni carta 2025 (10/09/2026).

@@ -39,6 +39,47 @@ multi-tenant significa riscrivere tutte e 161 le policy.
 
 ## Stato
 
+Stato: in produzione — 10/09/2026, **cassa e banca ora si confrontano da sole con la
+  realtà**: eliminato il blocco "cassa e banca reali" da inserire a mano a fine
+  periodo (mai più conteggio fisico della cassa, mai più ridigitare un saldo di banca
+  già nel PDF) — la banca si confronta in automatico con
+  `estratto_conto_mensile.saldo_finale`, la cassa resta sempre calcolata. Scoperto
+  costruendo quel confronto: un bonifico di 1.000€ (Teresa Errico, erogazione
+  liberale) datato 31/08 nell'incasso ma arrivato in banca il 06/07 — 56 giorni di
+  scarto, quasi tutto lo scarto banca di agosto (-862,88€). Causa reale: il
+  consuntivo leggeva `data_incasso` (inserita a mano) invece della data vera del
+  movimento bancario. Corretto alla radice (0144): nuova colonna
+  `incasso.movimento_estratto_conto_id`, funzione `incassi_contabili()` che usa la
+  data del movimento abbinato quando c'è. L'abbinamento (in fase di caricamento
+  estratto conto) richiede importo + finestra di 120gg + cognome del socio nella
+  descrizione del bonifico, univoco — verificato sui dati reali che l'importo da
+  solo non basta (una famiglia che paga la stessa quota ogni mese genera decine di
+  candidati identici). Backfill fatto su Errico e Genovesi. Scarto agosto sceso da
+  -862,88€ a +137,12€.
+  Aggiunta anche "Commissioni carta teoriche" (incassi con carta meno bonifici
+  Stripe/SumUp ricevuti, lo stesso conto che Lele faceva a mano a fine anno) —
+  calcolata da sola ogni volta che si apre la pagina, MAI registrata come spesa
+  automatica (i payout raggruppano più giorni insieme, il numero mensile può uscire
+  storto o negativo — luglio e agosto 2026 escono entrambi "non affidabili" per
+  questo). Trovato uno scarto sospetto anche sul cumulato 2026 (lordo 11.940,01€
+  contro 12.165,33€ ricevuti, -225,32€): da controllare contro i pannelli veri di
+  Stripe/SumUp, potrebbero esserci vendite con carta mai registrate come incasso.
+Deciso: mai più conteggio fisico della cassa (Lele, 10/09: "troppo complesso ed
+  inutile"); il 2025 resta un buco di dettaglio — l'anno è nel gestionale (60.913€
+  in `entrata_extra`, non in `incasso`: importato come totali mensili per categoria
+  dal bilancio storico, senza dettaglio socio né modalità di pagamento) ma non
+  abbastanza fine per rifare il conto commissioni. Lele: "lascia così, vediamo i
+  problemi grossi che salteranno fuori chiudendo settembre a inizio ottobre".
+Aperto: lo scarto -225,32€ sul cumulato 2026 delle commissioni carta, causa non
+  ancora trovata; cassa calcolata negativa da agosto 2026 (ancora da spiegare, vedi
+  blocco sotto).
+Prossimo passo: a inizio ottobre, chiusura di settembre — è lì che Lele si aspetta
+  di vedere i problemi veri della cassa negativa e delle commissioni.
+
+---
+
+## Stato al 10/09/2026 (mattina)
+
 Stato: in produzione — 09-10/09/2026, **chiusi i 4 gruppi di logbook aperti** (filtri
   anagrafica multiflag come in vvf, il duplicato Bertola unito e la domanda scartata
   che ora toglie davvero dai "Richiedenti", colore/logo dei gruppi sportivi resi veri
