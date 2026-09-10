@@ -86,6 +86,13 @@ Deciso: mai più conteggio fisico della cassa (Lele, 10/09: "troppo complesso ed
   **Lavoro 28 LIVE**: contatti in ogni pagina (telefono +39 351 659 2057 e orari come chiavi
   `testo_sito_*`, modificabili senza deploy; tel:/wa.me cliccabili; la riga orari non compare
   finché la chiave è vuota) e palinsesto con intestazione compressa + giorno di oggi marcato.
+  **Lavoro 29 LIVE**: la home ha finalmente una fotografia di persone — Emanuele sul tappeto
+  col figlio, `public/foto/apertura-home.jpg`, **specchiata** perché il bambino cada sotto la
+  sfumatura scura (è un minore); via il logo nella scheda inclinata, l'Ensō passa **sopra**
+  l'immagine (dietro sparirebbe) a opacità 0.3. Su /staff la riga che dichiara perché le foto
+  sono scattate fuori (`testo_sito_staff_foto`, con ripiego già scritto: i medaglioni non si
+  toccano). Nuovo `BloccoInfoPrezzi` — «Per info e prezzi, chiamaci» + tasto numero + tasto
+  WhatsApp — in fondo alla home e sotto l'elenco dei corsi.
 Deciso sul sito: **prezzi mai pubblicati** (sono un'ASD, un listino li avvicina a
   un'immagine commerciale) — al loro posto «Per info e prezzi, chiamaci» + tasto telefono +
   WhatsApp, asciutto; **apertura** = Emanuele sulla fitball col figlio, **specchiata** così
@@ -100,8 +107,10 @@ Aperto: lo scarto -225,32€ sul cumulato 2026 delle commissioni carta, causa no
   tre mondi e Kalèido è la parte che porta più iscritti; **gli orari di apertura** non
   sono ancora stati dati (la chiave c'è, va riempita da /gestionale/testi-sito).
 Prossimo passo: a inizio ottobre, chiusura di settembre — è lì che Lele si aspetta
-  di vedere i problemi veri della cassa negativa e delle commissioni. Sul sito: mosse 1, 4
-  e 5 (apertura con la foto, riga sopra i medaglioni, blocco «per info e prezzi»).
+  di vedere i problemi veri della cassa negativa e delle commissioni. Sul sito le cinque
+  mosse sono tutte in produzione: restano gli **orari di apertura** da scrivere in
+  /gestionale/testi-sito e **un'ora di foto** a lezione da Giulia e da Aurora (danza e
+  olistico non hanno una sola immagine, e Kalèido è la parte che porta più iscritti).
 
 ---
 
