@@ -374,6 +374,24 @@ Scoperto su: the-crew, avviso cassa/banca nel consuntivo (09/09/2026) —
 individuato confrontando due righe adiacenti dello stesso paragrafo, una con
 `{" "}` esplicito (corretta) e una senza (rotta).
 
+### Un difetto estetico può essere un messaggio deliberato: chiedere prima di uniformare
+Le foto degli istruttori di The Crew sono otto, scattate in otto posti diversi e
+nessuna in palestra: montagna con la giacca a vento, glamour scura, ufficio,
+meditazione al lago. Le ho lette come incoerenza di "fattura" e ho proposto di
+uniformarle tutte in bianco e nero con un filtro. Lele: «rimangono quelle perché
+dimostrano che le nostre discipline possono uscire dalla palestra ed entrare nella
+vita di tutti i giorni». Il filtro avrebbe cancellato esattamente il contenuto.
+Stessa sessione, stesso errore due volte: avevo anche proposto una foto di iaido
+come immagine di apertura perché era la più bella del mazzo — ma lo iaido è un
+corso marginale, e la copertina avrebbe raccontato una palestra che non esiste.
+Regola: prima di uniformare, filtrare o mettere in evidenza un asset, chiedere
+**che peso ha e cosa vuole dire** — la qualità visiva di uno scatto e il suo valore
+per l'attività sono due grandezze diverse, e la seconda la conosce solo il
+proprietario. Vale anche al contrario: un rifacimento "migliorativo" di qualcosa che
+già funziona (i medaglioni Ensō, che erano centrati e che io ho scentrato) è puro
+danno.
+Scoperto su: the-crew, direzione visiva del sito pubblico (10/09/2026).
+
 ### "Dato mancante" può voler dire "ho guardato solo una tabella su tre"
 Un anno intero (2025) sembrava assente dal gestionale: la query su `incasso`
 tornava 775€ totali, palesemente non la cifra vera di una stagione di

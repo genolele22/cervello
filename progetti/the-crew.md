@@ -70,11 +70,38 @@ Deciso: mai più conteggio fisico della cassa (Lele, 10/09: "troppo complesso ed
   dal bilancio storico, senza dettaglio socio né modalità di pagamento) ma non
   abbastanza fine per rifare il conto commissioni. Lele: "lascia così, vediamo i
   problemi grossi che salteranno fuori chiudendo settembre a inizio ottobre".
+**Seconda metà del 10/09 — il sito pubblico: ricerca incrociata e prime due mosse LIVE.**
+  Nuovo obiettivo dato da Lele: sito "più minimal e di facile lettura, ma bello". Due
+  ricerche Consensus sue + una mia, incrociate: la prima sua era **fuori tema** (la parola
+  "sport" ha portato neuroscienza dello sportivo, 28 lavori su 40 sul cervello degli atleti,
+  non sul design); la seconda, rifatta senza "sport", è ottima. Quello che regge: la fiducia
+  si decide **entro 1 secondo** e non si rivede (Pengnate 2018); con chi non ti conosce
+  l'aspetto pesa più dell'usabilità, **e di più sulle donne** (Pengnate 2017 — il takeaway
+  di Consensus aveva il genere invertito, verificato alla fonte); i **volti** costruiscono
+  fiducia iniziale (Karimov 2011); **l'ordine** è l'unica variabile su cui tutti concordano,
+  la complessità no. Diagnosi sul sito vero: non è brutto, **è vuoto** — zero fotografie in
+  home, zero prezzi, indirizzo sepolto in /chi-siamo, telefono e orari da nessuna parte,
+  palinsesto sotto la piega. Pagina di direzione con mockup veri (foto e colori suoi):
+  https://claude.ai/code/artifact/ebf3cda8-29a3-4894-a100-52a454592e2a
+  **Lavoro 28 LIVE**: contatti in ogni pagina (telefono +39 351 659 2057 e orari come chiavi
+  `testo_sito_*`, modificabili senza deploy; tel:/wa.me cliccabili; la riga orari non compare
+  finché la chiave è vuota) e palinsesto con intestazione compressa + giorno di oggi marcato.
+Deciso sul sito: **prezzi mai pubblicati** (sono un'ASD, un listino li avvicina a
+  un'immagine commerciale) — al loro posto «Per info e prezzi, chiamaci» + tasto telefono +
+  WhatsApp, asciutto; **apertura** = Emanuele sulla fitball col figlio, **specchiata** così
+  il bambino resta sotto le scritte (è un minore); **Ensō come mantra** in apertura e su ogni
+  sezione, ma **i medaglioni degli istruttori non si toccano** (già centrati, un mio
+  rifacimento li aveva scentrati); **iaido mai come immagine rappresentativa**, è un corso
+  marginale — il peso commerciale della disciplina viene prima della bellezza dello scatto.
 Aperto: lo scarto -225,32€ sul cumulato 2026 delle commissioni carta, causa non
   ancora trovata; cassa calcolata negativa da agosto 2026 (ancora da spiegare, vedi
-  blocco sotto).
+  blocco sotto); **mancano le foto di danza, olistico e corsi bambini** — delle 16
+  d'archivio di Lele sono tutte combattimento/grappling/functional, ma la home promette
+  tre mondi e Kalèido è la parte che porta più iscritti; **gli orari di apertura** non
+  sono ancora stati dati (la chiave c'è, va riempita da /gestionale/testi-sito).
 Prossimo passo: a inizio ottobre, chiusura di settembre — è lì che Lele si aspetta
-  di vedere i problemi veri della cassa negativa e delle commissioni.
+  di vedere i problemi veri della cassa negativa e delle commissioni. Sul sito: mosse 1, 4
+  e 5 (apertura con la foto, riga sopra i medaglioni, blocco «per info e prezzi»).
 
 ---
 
