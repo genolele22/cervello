@@ -374,6 +374,25 @@ Scoperto su: the-crew, avviso cassa/banca nel consuntivo (09/09/2026) —
 individuato confrontando due righe adiacenti dello stesso paragrafo, una con
 `{" "}` esplicito (corretta) e una senza (rotta).
 
+### Quattro correzioni di fila nella stessa direzione: togliere, non aggiungere
+Sessione del 10/09/2026 sul sito di The Crew. Quattro proposte mie bocciate una
+dopo l'altra da Lele, e tutte per lo stesso motivo di fondo:
+1. foto di iaido in copertina → è un corso marginale, racconta una palestra che
+   non esiste;
+2. filtro bianco e nero per uniformare i ritratti → cancellava il messaggio che
+   quelle foto portano;
+3. rifacimento del medaglione Ensō → funzionava già, l'ho scentrato;
+4. una riga di testo sopra i ritratti per spiegare perché le foto sono scattate
+   fuori → "meglio niente e lasciare a l utente capire".
+Ogni volta avevo **aggiunto** qualcosa per sistemare un materiale che stava già
+in piedi. La correzione giusta era sempre togliere.
+Regola: davanti a un materiale del committente che sembra imperfetto, la prima
+ipotesi da verificare non è "come lo miglioro" ma "perché è così, e cosa succede
+se non lo tocco". E in particolare: **se serve una frase per spiegare
+un'immagine, l'immagine non è il problema — la frase lo è.** Un asset che ha
+bisogno di didascalia o si sostituisce o si lascia parlare, non si commenta.
+Scoperto su: the-crew, direzione visiva del sito pubblico (10/09/2026).
+
 ### Un difetto estetico può essere un messaggio deliberato: chiedere prima di uniformare
 Le foto degli istruttori di The Crew sono otto, scattate in otto posti diversi e
 nessuna in palestra: montagna con la giacca a vento, glamour scura, ufficio,

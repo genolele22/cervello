@@ -93,6 +93,15 @@ Deciso: mai più conteggio fisico della cassa (Lele, 10/09: "troppo complesso ed
   sono scattate fuori (`testo_sito_staff_foto`, con ripiego già scritto: i medaglioni non si
   toccano). Nuovo `BloccoInfoPrezzi` — «Per info e prezzi, chiamaci» + tasto numero + tasto
   WhatsApp — in fondo alla home e sotto l'elenco dei corsi.
+  **Poi tre correzioni di Lele guardando dal telefono**, tutte nella stessa direzione:
+  (1) la foto dietro il testo sul telefono "si vede poco e niente" — un 16:9 schiacciato in
+  verticale resta un grigio indistinto, e non si aggiusta con `object-position`: ora sotto
+  `lg` c'è `apertura-home-mobile.jpg`, scatto **verticale 4:5** tagliato stretto su di lui
+  (il bambino esce da solo dall'inquadratura, niente velo necessario) messo **sotto** il
+  testo e in chiaro; (2) via del tutto la riga sopra i ritratti — "meglio niente e lasciare
+  a l utente capire" — e via anche la chiave `testo_sito_staff_foto`, pagina staff tornata
+  identica; (3) chiuso il vuoto scuro fra testo e foto (padding reso asimmetrico e solo
+  sotto `lg`). **Formato di riferimento per le foto nuove: verticale.**
 Deciso sul sito: **prezzi mai pubblicati** (sono un'ASD, un listino li avvicina a
   un'immagine commerciale) — al loro posto «Per info e prezzi, chiamaci» + tasto telefono +
   WhatsApp, asciutto; **apertura** = Emanuele sulla fitball col figlio, **specchiata** così
