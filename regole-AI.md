@@ -107,6 +107,34 @@ Alimentata dalla skill `chiudi-sessione`. Barra alta: entra solo ciò che è
 qualcosa da scoprire. Se non passa tutti e tre i criteri, non entra — questo
 file è corto apposta.
 
+### Un bot che non risponde può non aver mai ricevuto la richiesta
+Su Telegram il webhook si registra una volta con `setWebhook`, e quella
+chiamata decide **quali tipi di update** vengono recapitati (`allowed_updates`).
+Registrato con `["message"]`, i `callback_query` — il tocco su un bottone
+inline — non arrivano mai: il bottone si illumina sul telefono (è feedback del
+client, non del server), e poi non succede niente. Nessun errore, nessun log,
+niente da debuggare nel codice, perché la richiesta non parte proprio.
+Prima di cercare il bug nel proprio codice, chiedere all'API cosa sta
+recapitando: `getWebhookInfo`. E quella configurazione **non sta nel repo**:
+va scritta nel codice del webhook, o il prossimo che aggiunge un tipo di
+update nuovo ci ricasca.
+Scoperto su: the-crew, bottoni inline del bot (12/09/2026) — il codice era
+giusto dal primo minuto.
+
+### Rigenerare i tipi da un database può rompere il codice che li usava
+`supabase gen types` (o l'equivalente via MCP) riscrive **tutto** il file,
+non solo la tabella nuova: basta che l'introspezione veda un default o una
+nullabilità in modo diverso da quando il file fu generato, e decine di
+`insert`/`update` che compilavano smettono di compilare — in punti del
+codice che non c'entrano niente con la modifica in corso. Su un file già
+ritoccato a mano si perdono anche le correzioni precedenti.
+Per aggiungere una tabella, **aggiungerla a mano** al file dei tipi e lasciare
+stare il resto. Se si rigenera davvero, tenere il vecchio file e confrontare
+i due prima di sostituire.
+Scoperto su: the-crew (12/09/2026) — 28 errori di tipo comparsi su `ricevuta`,
+`corso`, `spesa` dopo aver rigenerato per una sola tabella nuova; typecheck
+pulito prima, pulito dopo il rollback.
+
 ### Un match "contains" su un placeholder può collidere con dati reali
 Se il codice riconosce un placeholder/testo-campione cercando una sottostringa
 generica (es. `stripos($t, 'ore')` per beccare ", ore 8.00"), rischia di

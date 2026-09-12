@@ -1,6 +1,6 @@
 # Progetto — The Crew (gestionale ASD)
 
-> **Rivedere entro:** 2026-12-06
+> **Rivedere entro:** 2026-12-12
 
 **Cos'è:** gestionale completo per l'ASD Fight in Progress — libro soci a norma,
 quote e iscrizioni, ricevute numerate, corsi e presenze, compensi collaboratori,
@@ -38,6 +38,43 @@ multi-tenant significa riscrivere tutte e 161 le policy.
 ---
 
 ## Stato
+
+Stato: in produzione — 12/09/2026. **Home accorciata e bot completato.** Sul sito: da
+  **10 fermate a 6** su telefono (foto di apertura ridotta e ritagliata sul viso, paragrafo
+  "cosa facciamo" che ripeteva le card ridotto a una riga, "Chi ti allena" e "Chi siamo"
+  fusi in una sezione sola, stacchi da 20/28 a 12/20). Nata la **quarta anima —
+  Allenamento**: sala pesi e functional erano infilati in coda al riquadro
+  "Combattimento", chi cerca solo la palestra non si riconosceva lì. I quattro riquadri
+  ora **portano a /corsi già filtrato** (`?area=`), a due colonne già da telefono.
+  Sul bot: `/compenso` da superadmin (prima diceva "non risulti un collaboratore"),
+  `/scadenze` interattivo con un bottone per persona scaduta, `/incassi` per mese con
+  totale da inizio anno, link diretti in ogni avviso, e un bottone per istruttore che
+  apre la sua scheda. Nel gestionale, da ogni mese di compenso si va ai pagamenti
+  filtrati su quell'istruttore.
+Deciso: **le FAQ della home parlano a tutti, non a un settore** — "Devo combattere?"
+  non diceva niente a chi arriva per lo yoga, sostituita con "Posso provare più di un
+  corso?"; la risposta dice **due** discipline, mai "tutte" (equivarrebbe a un mese di
+  lezioni gratis ovunque). **Il compenso di un istruttore guarda tutti i corsi che fa**,
+  non solo le tipologie in base compenso (Lele, 12/09). Il titolo di un riquadro non è il
+  nome del gruppo e non deve diventarlo: "Kalèido" da fuori non dice niente, "Danza" sì.
+Trovato e corretto sui compensi: **"Difesa personale & Bastone da passeggio" era
+  agganciato a 8 tipologie Kalèido**. Nessuno l'aveva deciso: un abbonamento danza dava
+  accesso a un corso Combat e, peggio, faceva entrare quell'incasso nella base compenso
+  del suo responsabile. Senza effetti sui soldi solo perché Claudio Genovesi è volontario
+  senza compenso. Scollegato. Verificato dopo: Denaro e Rago restano a 12 tipologie
+  Kalèido a testa, ognuna al 30% di tutto il gruppo — che è il patto vero.
+Aperto: la **sezione Corsi è ora il blocco più lungo della home** (19 nomi su 5 gruppi) e
+  in parte ridondante ora che le quattro porte funzionano — ridurla è la prossima leva, ma
+  vale per Google, **decisione di Lele**. Verbali ("non mi convince") e RID→fattura
+  restano parcheggiati da lui. Restano da dare **orari di apertura** e **foto di danza e
+  olistico**.
+Prossimo passo: Lele prova `/incassi` e `/compenso` dal bot ora che i bottoni arrivano
+  davvero (vedi lezione sul webhook in regole-AI.md). Poi si decide se accorciare la
+  sezione Corsi in home.
+
+---
+
+## Stato al 10/09/2026 (sera)
 
 Stato: in produzione — 10/09/2026, **cassa e banca ora si confrontano da sole con la
   realtà**: eliminato il blocco "cassa e banca reali" da inserire a mano a fine
