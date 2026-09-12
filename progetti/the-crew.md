@@ -68,6 +68,17 @@ Aperto: la **sezione Corsi è ora il blocco più lungo della home** (19 nomi su 
   vale per Google, **decisione di Lele**. Verbali ("non mi convince") e RID→fattura
   restano parcheggiati da lui. Restano da dare **orari di apertura** e **foto di danza e
   olistico**.
+Aggiunto in coda al 12/09 — **incasso senza documento** (0147/0148): si può registrare un
+  pagamento senza emettere la ricevuta, spunta chiusa in fondo al modulo, motivo
+  facoltativo. **A cosa serve davvero** (Lele: "non è una cosa da fare ma di necessità
+  virtù"): tenere in piedi le **scadenze del socio** quando l'incasso non viene
+  fatturato, es. contanti usati per una spesa d'emergenza. Quindi: il socio risulta
+  pagato e l'abbonamento avanza, **il consuntivo NON lo conta** (conta solo gli ingressi
+  documentati — mia prima versione sbagliata, corretta lo stesso giorno), la **base
+  compenso dell'istruttore SÌ** (confermato da Lele: la lezione l'ha fatta). Resta fuori
+  dal filtro anche il confronto commissioni carta, perché dal POS quei soldi passano
+  comunque. Non è invisibile: riga a database, badge "Senza documento" nell'elenco
+  pagamenti. Solo in registrazione — una ricevuta emessa ha già consumato il suo numero.
 Prossimo passo: Lele prova `/incassi` e `/compenso` dal bot ora che i bottoni arrivano
   davvero (vedi lezione sul webhook in regole-AI.md). Poi si decide se accorciare la
   sezione Corsi in home.
