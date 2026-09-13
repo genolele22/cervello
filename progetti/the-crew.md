@@ -39,6 +39,53 @@ multi-tenant significa riscrivere tutte e 161 le policy.
 
 ## Stato
 
+Stato: in produzione — 13/09/2026. **Nasce il Radar Bandi, e prima di tutto il pezzo
+  che serviva davvero: sapere quanto siamo pronti.** Lele porta una specifica in 30 punti
+  (origine ChatGPT) per un sistema che trovi, verifichi e classifichi i bandi da solo.
+  Leggendo per intero un avviso vero — **Circolo 65** di Sport e Salute, € 23.800, scadenza
+  18/09 — è saltato fuori che quasi nessun requisito a pena di esclusione riguarda il
+  progetto: RASD valido per l'anno in corso, DURC, SPID del legale rappresentante, e
+  **almeno due partner che non siano ASD/SSD**. Riguardano l'ente, sono gli stessi quasi
+  ovunque, e sono le sole cose che non si procurano nei cinque giorni prima di scadere.
+  Circolo 65 **lasciato andare** (Lele: non c'è tempo).
+  LIVE oggi: **Prontezza** (`/gestionale/prontezza`, 0149/0150) — profilo dell'ente,
+  20 requisiti ricorrenti con link al documento sul Drive e semaforo calcolato dal
+  database, rubrica partner. **Bandi** (`/gestionale/bandi`, 0151) — archivio a quattro
+  colonne, scheda, e il semaforo che legge la prontezza invece di ricalcolarsela. Il
+  vincolo del punto 18 è un CHECK, non un controllo di pagina: un bando non può diventare
+  "candidabile" se la fonte non è verificata (provato a forzarlo, respinto).
+  LIVE anche il logbook del giorno: **entrate già impegnate** dalle rateizzazioni, riquadro
+  sul cruscotto e tasto su Telegram — **Telegram verificato dal vivo da Lele**, il riquadro
+  no.
+Deciso: **i dati parziali vanno bene così** (Lele: il passaggio da un gestionale all'altro
+  non è finito, a gennaio forse i dati veri). Quindi il profilo dichiara la propria
+  copertura invece di fingere numeri: 150 soci su 206 non hanno data di nascita, 136 non
+  hanno il comune. E **il radar deve trovare i bandi da solo** — un sistema in cui è Lele a
+  trovarli non è un radar: correzione sua, giusta, il collector non può restare per ultimo.
+  Tre canali indipendenti da costruire: adattatori su fonti ufficiali (Bandi Piemonte ha un
+  RSS per sezione, verificato, ma è una finestra di 10 elementi e da sola perde roba),
+  ricerche programmate filtrate per dominio ufficiale, e **la casella di posta iscritta alle
+  newsletter** — quest'ultima è già tecnicamente in casa (IMAP c'è già) ed è il canale che
+  nessuno scraper replica.
+Trovato: i documenti dell'ente **ci sono tutti sul Drive**, ma sparsi su due account e
+  quattro cartelle, in più copie — quattro statuti diversi più otto scansioni sciolte. È il
+  motivo per cui il registro punta ai file invece di copiarli, e perché la spunta
+  "verificato" la mette una persona: il sistema sa dove sta un file, non se è il vigente.
+  Oggi: 14 requisiti mancanti, 6 da controllare, **nessuno pronto**, e **zero partner non
+  sportivi disponibili** — che da solo rende irraggiungibili i bandi di sport sociale.
+Metodo: due agenti Sonnet in parallelo (uno su una copia isolata del repo). Riletto il loro
+  codice invece di fidarmi dei rapporti, e trovati due difetti nelle rate: il dettaglio di un
+  mese non tornava col totale, e "oggi" era in UTC mentre le funzioni girano su Vercel — fra
+  mezzanotte e le due italiane sbagliava giorno. Il progetto aveva già `dataOggiRoma()`.
+Aperto: **nessun agente può verificare con gli occhi una pagina di `/gestionale`** — è dietro
+  login, gli unici superadmin sono caselle vere di Lele, e toccare credenziali di persone
+  reali è vietato dal 06/08. Proposto un account di collaudo creato col flusso normale,
+  **Lele: lasciare così**. Restano fuori anche i **5 inviti di accesso scaduti** (creati
+  24-29/08, scaduti 7-12/09: cinque persone col link morto in mano) — segnalati, non toccati
+  per sua scelta. Verbali e RID→fattura restano parcheggiati da lui.
+
+## Stato al 12/09/2026
+
 Stato: in produzione — 12/09/2026. **Home accorciata e bot completato.** Sul sito: da
   **10 fermate a 6** su telefono (foto di apertura ridotta e ritagliata sul viso, paragrafo
   "cosa facciamo" che ripeteva le card ridotto a una riga, "Chi ti allena" e "Chi siamo"
