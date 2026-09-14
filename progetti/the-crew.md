@@ -39,6 +39,75 @@ multi-tenant significa riscrivere tutte e 161 le policy.
 
 ## Stato
 
+Stato: in produzione — 14/09/2026 (sera). **Giornata su tre fronti: il bot che non collegava,
+  l'export per il commercialista, e la valutazione sulle lezioni online.**
+  **Bot.** D'Onofrio non riusciva a collegarsi: due codici bruciati, sei tentativi. Non era
+  distrazione sua — lo screenshot ha mostrato `/start CREW 5BU3G2`, con lo **spazio al posto
+  del trattino**: sulla tastiera del telefono il trattino sta sotto il tasto dei simboli e chi
+  ricopia a mano mette uno spazio. Il bot prendeva la seconda parola, trovava "CREW" e
+  rispondeva che non esisteva. Corretto in due modi: ora **perdona** (il codice viene ripulito
+  di tutto ciò che non è lettera o cifra e ricomposto — sette forme diverse provate una per
+  una) e soprattutto **elimina il problema**: la pagina non dà più un codice da ricopiare, dà
+  un **link t.me** che apre il bot col codice già dentro. Codice valido un'ora invece di
+  quindici minuti, e il registro ora distingue "ha premuto Avvia" da "ha provato con un
+  codice" — prima scriveva `/start` in entrambi i casi, ed è il motivo per cui la diagnosi è
+  rimasta a metà fino allo screenshot.
+  **Export.** Nuovo bottone "Fascicolo dell'anno" nella pagina Consuntivo: un solo `.xlsx` con
+  sei schede — consuntivo, incassi, ricevute, spese, compensi, libro soci. È la risposta alla
+  domanda «e se tu sparisci?» che un commercialista fa sempre, e insieme una cosa utile ogni
+  anno. Importi come numeri (le somme si fanno nel foglio), stornati e senza-documento come
+  colonne e non come righe tolte, base di calcolo accanto al compenso.
+Deciso: sull'export si parte dal **fascicolo** e non dal dump completo — il "cartone del
+  trasloco" (tutte le tabelle + documenti) e la **copia automatica mensile** restano in
+  programma e ora sono mezza giornata ciascuno, perché riusano la stessa macchina.
+Aperto: **il fascicolo non l'ha ancora generato nessuno** — compila e la rotta risponde, ma
+  serve una sessione superadmin per produrre il file davvero. Da premere e controllare.
+  E la ricerca sulle lezioni online si chiude in TEST, non in GO: vedi la scheda qui sotto.
+
+## Ricerca 14/09/2026 — Lezioni online: tesseramento e prezzo
+
+DOMANDA — Chi segue le lezioni online deve essere tesserato sotto l'ASD, e come si fanno pagare.
+
+RISPOSTA — Sì, devono essere tesserati: è l'unico modo perché l'incasso resti fuori dal
+commerciale. Ma il tesseramento NON porta con sé la copertura assicurativa per chi si
+allena da casa, e il rischio vero è lì, non nel fisco.
+
+CONFIDENZA — Alta sul fiscale, media sull'assicurativo (fonte broker, non testo di polizza CSEN).
+
+3 FATTI
+1. Art. 148 c.3 TUIR: non commerciali i corrispettivi specifici da soci **e tesserati** per
+   attività in diretta attuazione degli scopi istituzionali; Circ. 18/E/2018 §7.1 include i
+   tesserati dell'ente affiliante (quindi basta il tesseramento CSEN, non serve socio pieno).
+2. Chi non è né socio né tesserato paga un corrispettivo commerciale: IVA e reddito d'impresa.
+3. Dal 1/1/2025 (D.Lgs. 180/2024, dir. UE 2022/542) i servizi B2C in streaming scontano l'IVA
+   nel paese di chi guarda. Riguarda solo chi esce dal 148.
+   Più il fatto scomodo: l'assicurazione obbligatoria copre attività e allenamenti
+   **sorvegliati in impianti affiliati** — un salotto di casa non lo è.
+
+TESI CONTRARIA — «L'attività sportiva presuppone presenza e sorveglianza, quindi a distanza
+è servizio formativo, commerciale anche verso i tesserati.» Non ho trovato norma né prassi
+che lo dica, ma nemmeno il contrario: sulla lezione sportiva a distanza non risulta una presa
+di posizione specifica dell'Agenzia. Zona grigia reale.
+Regge invece nettamente la distinzione **diretta vs registrata**: la diretta interattiva
+somiglia all'attività istituzionale; una libreria di video venduta a chiunque è prodotto
+digitale, commerciale, con l'IVA nel paese del cliente. Se si fa, si fa in diretta.
+
+DECISIONE — **TEST.** Manca un dato decisivo che non si ricava da fuori.
+
+PROSSIMA MOSSA — Lele: una mail a CSEN Vercelli — «la polizza copre un tesserato che segue
+una lezione in diretta da casa? Se no, esiste un'estensione?». La risposta scritta vale più
+di tutta la ricerca.
+
+COSA LA RIBALTA — Se CSEN conferma la copertura da remoto, il rischio principale sparisce e
+si può spingere. Se dice di no e non esiste estensione, l'online va fatto solo con liberatoria
+e valutazione seria, o non va fatto.
+
+MODELLO DI PREZZO (giudizio, non fatto) — tipologia "online" a sé a prezzo più basso,
+difendibile perché non occupa sala né utenze; e online compreso per chi già paga in presenza,
+che costa zero e trattiene chi per due mesi non può venire.
+
+## Stato al 14/09/2026 (notte)
+
 Stato: in produzione — 14/09/2026 (notte). **La demo diventa mostrabile, e il gestionale
   diventa un prodotto con tre porte da far vedere.** Il commercialista è il canale, e a
   esso si aggiunge ora l'ente di promozione sportiva. La demo era **morta**: progetto
