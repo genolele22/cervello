@@ -39,6 +39,37 @@ multi-tenant significa riscrivere tutte e 161 le policy.
 
 ## Stato
 
+Stato: in produzione — 14/09/2026 (notte). **La demo diventa mostrabile, e il gestionale
+  diventa un prodotto con tre porte da far vedere.** Il commercialista è il canale, e a
+  esso si aggiunge ora l'ente di promozione sportiva. La demo era **morta**: progetto
+  Supabase in pausa da fine agosto, pagine che rispondevano 200 ma vuote — il modo
+  peggiore di accorgersene sarebbe stato aprirla davanti a qualcuno. Riattivata, e un job
+  `ping-demo` in produzione la tiene sveglia ogni tre giorni chiamando il **database**,
+  non il sito (un 200 dal sito è esattamente ciò che rispondeva mentre il database
+  dormiva). Schema portato da 0086 a 0151, popolata con un'associazione finta credibile:
+  94 soci, 7 corsi generici con orari su sei giorni, 279 iscrizioni, 290 incassi, 276
+  ricevute senza buchi, tre collaboratori con regole di compenso diverse, consuntivo ed
+  estratto conto — più i pasticci voluti (quota scaduta, certificato mancante, rata in
+  ritardo, socio cessato). Marchio neutro: via logo, Ensò, palette e **le foto di Lele
+  col figlio**, che stavano nel codice e non nel database.
+Deciso: **niente sito pubblico nella demo** (Lele: lo presenta a voce, si paga a parte).
+  **Una proposta di prezzo sola, non tre**, e la ripartizione del canone come modello:
+  il commercialista non anticipa niente. **Non costruire il multi-cliente adesso** — 50
+  tabelle e 125 regole di accesso prima di avere un cliente pagante è il modo classico
+  di bruciare tre mesi; i primi si attivano a mano, detto come scelta di fase.
+Trovato, e conta più della demo: **la migrazione 0129 si rompe su qualunque database
+  nuovo** (aggiunge un valore a un enum e lo usa nella stessa transazione) — cioè il
+  giorno in cui si attiva la prima associazione cliente. Va spezzata in due. E **la
+  "sola lettura" della demo non è quella promessa dal dossier**: protegge chi passa
+  dall'app, non chi ha le chiavi di servizio. La frase «non aggirabile nemmeno
+  bypassando l'interfaccia» va corretta prima di dirla a un commercialista.
+Aperto: i tre accessi alla demo **non sono mai stati provati dal vivo** (l'ambiente non
+  può fare il login) — vanno provati prima dello studio, non davanti a lui. E manca
+  ancora l'**export dei dati in un click**, che è la risposta alla domanda "e se tu
+  sparisci?" e la trasforma da obiezione in argomento di vendita.
+
+## Stato al 13/09/2026
+
 Stato: in produzione — 13/09/2026. **Nasce il Radar Bandi, e prima di tutto il pezzo
   che serviva davvero: sapere quanto siamo pronti.** Lele porta una specifica in 30 punti
   (origine ChatGPT) per un sistema che trovi, verifichi e classifichi i bandi da solo.
