@@ -345,3 +345,13 @@ Already on 'master'
 [Thu Sep 10 02:37:02 AM CEST 2026] inizio sessione notturna (branch master)
 Sessione chiusa: nessun task eseguibile. Il backlog è fermo dal 02/08 (commit `45d6a76`), l'epica indicata stanotte ("Chiarezza degli esiti") è chiusa e deployata dal 29/07 — è la quinta volta di fila che l'incarico automatico la segnala per errore come priorità aperta. Verificate tutte le 12 checkbox aperte residue: tutte `[LELE]`, bilanciamento congelato, o gating su asset/infra non disponibili. Test verdi (254/254), typecheck root+web puliti, nessun deploy (niente da spingere). Committato solo `reports/2026-09-10.md` su master, aggiornata la memoria interna con l'occorrenza di stasera. Prossimo passo: serve un intervento umano — playtest reale, asset grafici, o correzione del generatore del prompt notturno che continua a leggere uno stato stale del backlog.
 [Thu Sep 10 02:40:05 AM CEST 2026] fine sessione notturna (exit 0)
+Already on 'master'
+[Mon Sep 14 02:37:01 AM CEST 2026] inizio sessione notturna (branch master)
+Sessione notturna conclusa — niente da fare, come da memoria (`backlog_stalled_since_0802.md`, ora al 19° no-op consecutivo dal 02/08).
+
+**Verificato**: l'epica indicata ("Chiarezza degli esiti", C1-C4) è chiusa dal 29/07; anche la vera epica in cima al backlog ("Il round si racconta") è chiusa dal 02/08. Nessuna modifica a `BACKLOG.md`/`src/`/`web/` da 43 giorni. Le 12 checkbox aperte restanti sono tutte `[LELE]`, bilanciamento congelato, asset-gated o infra `[F3]` — nessuna eseguibile.
+
+**Tecnico**: 254/254 test verdi, typecheck root+web puliti. Nessun deploy (nessuna epica chiusa stanotte). Commit di solo report (`fb7ab79`), nessun push.
+
+Sesta segnalazione di fila (05, 06, 07, 08, 10, 14/09) che il prompt notturno cita un'epica chiusa da oltre un mese — il canale report non ha corretto il generatore. Vale la pena dirtelo direttamente: **il cron notturno gira a vuoto da 6 settimane**, serve o un playtest tuo del pacchetto del 02/08, nuovi asset grafici, o sospendere il cron finché non c'è input.
+[Mon Sep 14 02:39:17 AM CEST 2026] fine sessione notturna (exit 0)
