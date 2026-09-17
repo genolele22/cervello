@@ -493,7 +493,11 @@ persone risultano «mai invitate», che è la verità.
 ## File collegati nel vault
 
 - `fight-in-progress.md` — l'associazione (soldi, collaboratori, struttura)
-- `the-crew-brief-prodotto-b2b.md` — l'ipotesi prodotto, rimandata
+- `the-crew-processo-prodotto.md` — **il percorso completo da gestionale privato ad azienda
+  che lo fornisce a tante ASD**: decisioni prese e perché, ordine dei lavori, parte legale,
+  parte commerciale, cosa resta fuori. Da leggere prima di riaprire qualunque discussione
+  sul prodotto (17/09/2026)
+- `the-crew-brief-prodotto-b2b.md` — l'ipotesi prodotto di agosto, superata dal file sopra
 - `the-crew-brief-pubblicita-asd.md` — la campagna per la palestra
 - `the-crew-social-calendario.md` — contenuti social THE CREW
 - `the-crew-migrazioni/` — note sulle migrazioni
