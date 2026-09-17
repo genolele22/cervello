@@ -126,6 +126,7 @@ Tre sale fisiche hanno ciascuna un colore fisso (Sala corsi blu, Tatami viola, S
 
 **Corsi, palinsesto, certificati**
 - Tipologie di ingresso configurabili da pannello (non hardcoded), anche multi-corso.
+- **Finestra di vendita** per ogni abbonamento: due date facoltative (in vendita dal / fino al). Fuori da quelle date sparisce dalle tendine del gestionale e dal negozio online e torna da solo quando è il momento — nessun lavoro notturno da fidarsi, lo stato si calcola a ogni lettura. Chiude solo la vendita: gli abbonamenti già venduti restano validi e scadono normalmente. Nato il 17/09/2026 da un caso reale (abbonamenti da mezzo mese in vendita solo fino a fine settembre); si impostano anche in blocco da una schermata sola.
 - Certificato medico caricabile dal socio via telefono; l'istruttore vede solo "in regola sì/no" e la scadenza, **mai il file né il tipo di certificato** (dato sanitario, accesso ristretto per costruzione).
 - Vista "oggi in palestra": chi è atteso, chi non è in regola, appello presenze.
 - Sito pubblico e palinsesto generati dagli stessi dati (nessun doppio inserimento).
