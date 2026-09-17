@@ -318,6 +318,35 @@ Prossimo passo: a inizio ottobre, chiusura di settembre — è lì che Lele si a
 
 ---
 
+## Stato al 17/09/2026 — la finestra di vendita degli abbonamenti
+
+Kalèido aveva inserito i "mezzi mesi" (abbonamenti da 15 giorni). Servivano
+comprabili fino a fine settembre e poi via, con gli altri Kalèido a partire da
+ottobre — senza che nessuno debba ricordarsi di spegnerli la sera giusta.
+
+Ora ogni abbonamento ha due date facoltative, **in vendita dal** e **fino al**.
+Fuori da quelle date sparisce dalle tendine del gestionale e dal negozio online,
+e torna da solo quando è il momento. Non è un lavoro notturno che spegne
+qualcosa a mezzanotte: lo stato si calcola confrontando le date con oggi ogni
+volta che si legge, quindi non può restare indietro se un cron non parte.
+
+**La finestra chiude la vendita, non gli abbonamenti già venduti**: chi ha
+comprato un mezzo mese il 28 settembre lo tiene, e scade quando deve. E se la
+pagina "Registra un incasso" arriva già puntata su un abbonamento fuori
+finestra (link di una rata, scelta rapida dalla scheda socio), quello resta
+incassabile: incassare una cosa venduta ieri non è venderne una nuova.
+
+Dove si toccano: la scheda del singolo abbonamento, oppure
+**Abbonamenti → «Quando si vendono»** (`/gestionale/tipologie/finestre`), che
+le mostra tutte insieme e permette di spuntarne dodici e mettere le stesse due
+date in un colpo solo.
+
+Impostati in produzione: i 4 "mezzo mese settembre" chiudono il 30/09/2026, gli
+8 Kalèido mensili e annuali aprono il 01/10/2026. Nessun altro abbonamento
+toccato.
+
+---
+
 ## Stato al 10/09/2026 (mattina)
 
 Stato: in produzione — 09-10/09/2026, **chiusi i 4 gruppi di logbook aperti** (filtri
