@@ -201,25 +201,37 @@ verifica con i numeri.
 
 ---
 
-## La fase di prova cambia l'ordine, e va saputo
+## Le associazioni in prova entrano dopo il lavoro, non prima
 
-Il piano tecnico prevedeva che il primo cliente entrasse **dopo** la separazione dei dati. Con due
-o tre associazioni in prova che entrano adesso, non è più così: entreranno come **istanze
-separate**, una ciascuna, come funziona oggi l'ambiente dimostrativo.
+Deciso il 17/09/2026, correggendo l'ipotesi della mattina. Le associazioni in prova non hanno
+fretta di entrare, quindi **non serve aprire istanze separate** da fondere in seguito: si fa prima
+la separazione dei dati, e loro entrano direttamente nel sistema definitivo come associazione
+numero tre, quattro e cinque.
 
-Funziona, e l'isolamento è persino più forte — sono database fisicamente distinti. Ma significa
-due o tre database in più da fondere quando arriva il lavoro sulla separazione dei dati.
+Sparisce così l'unico compromesso che il piano aveva. E si guadagna una cosa che vale di più: il
+loro ingresso diventa **la verifica vera** del lavoro di separazione — associazioni reali, dati
+reali, persone che non siamo noi.
 
-È un prezzo accettabile, perché porta avanti di mesi i riscontri veri su utenti che non sono noi,
-ed è proprio quello che serve. Ma è una scelta, non un incidente: va tenuto il conto di quante
-istanze separate si aprono, perché ognuna è lavoro in più dopo. **Oltre le tre, non si va** senza
-aver fatto prima la separazione.
+**Ma quella verifica non può essere la prima.** Se l'isolamento cede mentre dentro ci sono i soci
+di due associazioni vere, non è un difetto da correggere: è una violazione di dati personali da
+notificare, ed è la fine del canale di vendita. L'ordine delle prove è quindi:
 
-La fusione, va detto, è meno spaventosa del solito: le chiavi sono quasi tutte universali, quindi
-i dati si uniscono senza rimappature. Le uniche cinque tabelle che assumono l'esistenza di una
-sola associazione sono note e contate.
+1. **La prova automatica**, su tutte e settantaquattro le tabelle: tentare di leggere, scrivere e
+   cancellare i dati di un'altra associazione, e fallire sempre. Tutta verde prima di proseguire.
+2. **Un'associazione finta come numero due**, con dati inventati, usata davvero per qualche
+   giorno — incassi, ricevute, scadenze, un verbale confermato. È il metodo di collaudo già in uso
+   qui (dati finti nel database reale, poi rimossi), applicato al livello superiore.
+3. **Le associazioni vere**, che provano l'unica cosa che nessun collaudo artificiale può provare:
+   che il sistema regge in mano a chi non l'ha scritto.
 
----
+Se l'isolamento cede al punto 2 costa un pomeriggio. Al punto 3 costa il progetto.
+
+**Quello che invece comincia subito, senza aspettare il codice.** La raccolta dei loro dati — con
+quale ente sono affiliati, l'elenco dei soci in qualunque forma, a che numero sono con le ricevute
+dell'anno, i corsi, le quote, il logo — è la parte più lenta dell'attivazione e non dipende da una
+riga di programma. Si manda l'invito adesso, si comincia a raccogliere, e il materiale è pronto
+quando lo è il sistema. Nell'invito va detto chiaramente **quando** si parte, altrimenti
+l'interesse si raffredda nell'attesa.
 
 ## Regole operative che valgono sempre
 
