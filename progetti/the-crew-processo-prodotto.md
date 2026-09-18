@@ -166,6 +166,24 @@ continuità coprono quasi tutto.
 e a segnalare i problemi. È la fase in corso al 17/09/2026: il documento di invito è pronto ed è
 stato messo in PDF per essere girato.
 
+**Chi carica cosa — corretto da Lele il 18/09/2026**, e la sua versione è migliore della mia.
+Io avevo descritto un trasloco fatto da noi: *«importare il libro soci, mappare le tipologie,
+riconciliare l'estratto conto, sono giorni di lavoro»*. Non è così.
+
+- **Noi carichiamo l'elenco dei soci** — si fa una volta sola, è noioso e parte da un file
+  qualunque — e **impostiamo la numerazione delle ricevute** al numero a cui sono arrivati:
+  è l'unico dato che non può essere sbagliato.
+- **Loro caricano abbonamenti, corsi, quote, contabilità e foglio della banca.** Gliene facciamo
+  una dimostrazione, poi lo fanno.
+
+Il motivo non è risparmiare fatica, è che **se caricano loro imparano il gestionale**. Se
+glielo riempiamo noi resta una scatola che non sanno aprire, e alla prima quota nuova chiamano.
+È la stessa cosa che tiene basso il carico di assistenza, che è il vincolo numero uno del modello.
+
+Conseguenza sul prezzo: l'attivazione **non è giorni di lavoro**, ed è un servizio molto più
+leggero di quanto scritto sopra. Il costo di attivazione resta separato — serve anche a filtrare
+chi non è convinto — ma va ricalibrato su quello che si fa davvero.
+
 Il patto è scritto: ricevono il gestionale completo, i dati caricati a mano, la copia di
 sicurezza notturna, le funzioni nuove senza aggiungere nulla, e i dati scaricabili in qualunque
 momento. In cambio si chiede di usarlo sul serio, di segnalare anche le sciocchezze, e soprattutto
