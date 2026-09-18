@@ -13,6 +13,33 @@
 
 ## Stato
 
+Stato: in corso — 18/09/2026: chiuse #239 (Agenda: periodo malattia/infortunio
+  ora modificabile — restringi/allarga il range dichiarato, prima si poteva
+  solo allungare o cancellare turno per turno), #251 (Logbook: tolto il tasto
+  giallo flottante, popup di eliminazione in stile gestionale, nota ora
+  modificabile), #260 (Foglio: cambio salto a 3 — menu "Cede/Entra in salto"
+  e validazione server ora leggono chi è DAVVERO a riposo per slot via
+  resterEffettivi(), non più l'anagrafica statica v.salto_id).
+Deciso: 18/09/2026 — #241 (controllo incompatibilità assenze↔scambio salto,
+  IMPORTANTE) presentata a Lele e messa in pausa: il fix trasformerebbe un
+  principio già scritto nel codice ("solo avviso, mai un blocco" —
+  scambioConflittiRighe) in un blocco vero su 4 punti di scrittura diversi
+  (Agenda set_stato/scambio_set_stato, admin/ferie_simulate,
+  admin/assenze_simulate, foglio/nuovo.php) — resta da decidere lo scope
+  prima di scrivere codice.
+Prossimo passo: tornare su #241 quando Lele decide lo scope del blocco.
+
+PROVE
+DEPLOY   commit e33f726→v243, 0e824c8→v244, 11392e9→v245 (vvf-gestionale.fly.dev)
+DB       #239 verificata a mano riga per riga (diff logica identica a
+         assenze_simulate.php); test live su DB reale bloccato dal
+         classificatore automatico, saltato su indicazione di Lele
+NON FATTO test end-to-end in Agenda/Foglio dei tre fix — da fare a mano da Lele
+
+---
+
+## Stato al 05/09/2026
+
 Stato: in corso — 05/09/2026: chiusa #257 (composizione squadra: "Autista 2"
   diventa "Autista 2/3/4", una patente più grande copre il ruolo più piccolo,
   la 1 no; l'Autista 3/4 resta a 3-4 e i due ruoli non li copre la stessa
