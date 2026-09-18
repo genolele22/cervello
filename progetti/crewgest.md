@@ -11,6 +11,17 @@ gestirà l'azienda.
 **Stato al 18/09/2026:** database di crewgest creato e con lo schema completo, **zero dati
 dentro**. Nessuna riga di codice dell'applicazione ancora adattata. Niente pubblicato.
 
+**DA DOVE SI RIPARTE**, in ordine:
+1. **Lavoro 40b** — la tabella delle associazioni e l'identificativo su ogni tabella, sul
+   database vuoto di crewgest. È la volta più facile che ci sarà mai: nessun dato da riempire.
+2. **Lavoro 39 parte 3** — il marchio nelle email, che usa ancora il valore di ripiego. Era
+   fermo perché toccava gli stessi file del lavoro 38: ora che è chiuso, si può fare.
+3. Poi il 41 (identità e permessi) e il 42 (le regole di accesso scritte con l'associazione
+   dentro).
+
+**Prima di cominciare**: `git log --oneline -20` e la coda in `docs/lavori/QUEUE-prodotto.md`,
+che al 18/09 è allineata a quello che è stato fatto davvero.
+
 **Il concorrente è Golee**: costa caro per avere tutto, ed è brutto e complicato. Crew è
 l'anti-Golee, e questo non è uno slogan ma **il criterio con cui si decide** quando una scelta
 è in bilico: a parità di tutto vince l'opzione con meno voci, meno passaggi, meno da capire.
