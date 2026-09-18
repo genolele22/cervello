@@ -91,6 +91,18 @@ Esattamente tre, a Lele, in chiaro:
 2. Cosa resta aperto e di chi è la mossa
 3. Da dove si riparte la prossima volta
 
+### 6. Chiedere della modalità ADHD (dal 18/09/2026)
+Dopo le tre righe, **una domanda sola**: tenere acceso `adhd mode` o spegnerlo?
+
+Serve perché è una regola che cambia *come* rispondo in tutti i progetti, e l'unico
+modo di sapere se funziona è chiederlo a Lele quando ha appena visto una sessione
+intera. Non è una formalità: il rischio noto è che le regole lo rendano più asciutto
+ma gli facciano perdere le cose trovate per strada — e quelle, il 18/09, valevano più
+della brevità.
+
+Interruttore: `~/.claude/.i-have-adhd-always` (c'è = sempre acceso).
+«stop adhd mode» lo sospende per una sessione sola.
+
 ## Regola di stop
 Prima di ogni scrittura, mostrare a Lele il blocco esatto. File per file.
 Nessuna sovrascrittura al buio.
