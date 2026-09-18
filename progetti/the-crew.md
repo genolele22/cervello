@@ -8,7 +8,15 @@ spese e contabilità, verbali del direttivo, notifiche, più il sito pubblico
 della palestra. Quattro ruoli con aree separate: superadmin, istruttore, socio,
 pubblico.
 **Stato:** LIVE su **thecrewgym.com**, con soci veri dentro dal 24/08/2026.
-**Priorità:** 1ª nella classifica del 22/08/2026 (gestionale ASD a norma).
+**Priorità (18/09/2026):** massima, **in parallelo con crewgest** — diventeranno lo
+stesso sistema, quindi non sono due progetti che si contendono il tempo ma due metà dello
+stesso. *(Sostituisce «1ª nella classifica del 22/08/2026».)*
+
+**18/09/2026:** pubblicati 60 commit di preparazione al prodotto. Da stanotte il backup
+distingue completo/parziale invece di perdere la nottata per una tabella; la posta è pronta
+per un servizio transazionale ma parte ancora da Gmail; la sentinella sa filtrare ma gira
+ancora settimanale finché non si lanciano le due righe SQL in fondo alla migrazione 0154.
+Lo stato del prodotto vive in `crewgest.md`.
 
 **Stack:** Next.js 16 + React 19 + TypeScript + Tailwind 4 su Vercel (regione
 `fra1`), database Supabase/PostgreSQL. Stripe per gli incassi, Nodemailer su

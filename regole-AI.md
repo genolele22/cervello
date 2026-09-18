@@ -58,6 +58,16 @@ avviene dopo la revisione. Serve a due cose: un errore di partizione diventa un
 conflitto **visibile** invece di una sovrascrittura silenziosa, e «dichiarato
 finito dall'agente» smette di coincidere con «entrato nel codice».
 
+**Due aggiunte dal 17-18/09/2026, costate mezza sessione.**
+Il worktree di un agente può nascere da un `master` più vecchio di quello vero:
+tre agenti su cinque ci sono incappati, e due hanno segnalato come «discrepanze»
+cose che su master erano a posto. Ogni mandato dice di fare `git merge master`
+**prima** di cominciare.
+E l'agente committa **a gruppi, man mano**, mai tenendo il lavoro in testa per
+scrivere il rapporto alla fine: uno fermato da un limite di spesa ha perso tutto
+il censimento che aveva in mente. Ripreso con quella regola ha fatto dieci
+commit e non ha perso niente.
+
 ## Numeri e cause (dal 07/09/2026)
 
 Vale sempre, non solo nelle ricerche — nasce da una giornata in cui ho riferito
@@ -342,6 +352,19 @@ Regola generale: dopo ogni cambio di permessi, rileggere il permesso effettivo
 (`has_function_privilege`), mai fidarsi dell'esito del comando.
 Scoperto su: the-crew, chiusura delle funzioni esposte ad anon (07/09/2026) —
 avevo già dichiarato la cosa fatta quando non lo era.
+
+**E vale anche al contrario (18/09/2026).** Revocare a PUBLIC non toglie niente
+se il permesso è concesso **direttamente** ad `anon`/`authenticated`: Supabase
+lo fa di default su ogni funzione nuova, ed è un permesso separato che il
+`revoke ... from public` non tocca. Sono due metà della stessa trappola, e
+chiuderne una lascia l'altra aperta.
+Si è visto solo costruendo un secondo progetto dalle stesse migrazioni: la
+produzione era chiusa, il progetto nuovo no. **Due database creati dagli stessi
+file possono venire diversi**, e la differenza è tutto ciò che qualcuno ha fatto
+a mano senza scriverlo in una migrazione.
+Regola: quando una migrazione chiude dei permessi, chiudere a PUBLIC **e** ai
+ruoli nominati, e rileggere con `has_function_privilege` su un progetto vuoto —
+non su quello dove hai già lavorato a mano.
 
 ### Verificare un invio asincrono nell'istante in cui lo lanci dà falsi allarmi
 Se una funzione **accoda** un lavoro invece di eseguirlo (una mail messa in

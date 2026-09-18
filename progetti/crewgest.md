@@ -8,19 +8,20 @@ Un solo programma, un database condiviso, ogni associazione vede solo i propri d
 Non è "il gestionale di Lele dato ad altri": è un prodotto a sé, che un domani si dà a chi
 gestirà l'azienda.
 
-**Stato al 18/09/2026:** database di crewgest creato e con lo schema completo, **zero dati
-dentro**. Nessuna riga di codice dell'applicazione ancora adattata. Niente pubblicato.
+**Stato al 18/09/2026:** database di crewgest creato, schema completo e verificato identico
+alla produzione, **zero dati dentro**. Nessuna riga di codice dell'applicazione ancora adattata
+al multi-associazione.
+**Il lavoro di preparazione è pubblicato**: 60 commit online il 18/09, deploy verificato Ready,
+sei pagine controllate sul sito vero.
 
 **DA DOVE SI RIPARTE**, in ordine:
-1. **Lavoro 40b** — la tabella delle associazioni e l'identificativo su ogni tabella, sul
-   database vuoto di crewgest. È la volta più facile che ci sarà mai: nessun dato da riempire.
-2. **Lavoro 39 parte 3** — il marchio nelle email, che usa ancora il valore di ripiego. Era
-   fermo perché toccava gli stessi file del lavoro 38: ora che è chiuso, si può fare.
-3. Poi il 41 (identità e permessi) e il 42 (le regole di accesso scritte con l'associazione
-   dentro).
+1. **Lavoro 40b** — la tabella delle associazioni e l'identificativo ovunque, sul database
+   vuoto: la volta più facile che ci sarà mai.
+2. **Lavoro 39 parte 3** — il marchio nelle email (era fermo dietro il 38, ora no).
+3. Poi il 41 (identità e permessi) e il 42 (le regole di accesso).
 
-**Prima di cominciare**: `git log --oneline -20` e la coda in `docs/lavori/QUEUE-prodotto.md`,
-che al 18/09 è allineata a quello che è stato fatto davvero.
+**Priorità (18/09/2026):** massima, **in parallelo con The Crew** — diventeranno lo stesso
+sistema, quindi non sono due progetti in competizione ma due metà dello stesso.
 
 **Il concorrente è Golee**: costa caro per avere tutto, ed è brutto e complicato. Crew è
 l'anti-Golee, e questo non è uno slogan ma **il criterio con cui si decide** quando una scelta
