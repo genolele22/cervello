@@ -1,0 +1,219 @@
+# Progetto — crewgest (il gestionale ASD venduto ad altre associazioni)
+
+> **Rivedere entro:** 2026-10-18
+> **Aggiornato:** 18/09/2026
+
+**Cos'è:** il gestionale di The Crew trasformato in prodotto per molte associazioni sportive.
+Un solo programma, un database condiviso, ogni associazione vede solo i propri dati.
+Non è "il gestionale di Lele dato ad altri": è un prodotto a sé, che un domani si dà a chi
+gestirà l'azienda.
+
+**Stato al 18/09/2026:** database di crewgest creato e con lo schema completo, **zero dati
+dentro**. Nessuna riga di codice dell'applicazione ancora adattata. Niente pubblicato.
+
+**Il concorrente è Golee**: costa caro per avere tutto, ed è brutto e complicato. Crew è
+l'anti-Golee, e questo non è uno slogan ma **il criterio con cui si decide** quando una scelta
+è in bilico: a parità di tutto vince l'opzione con meno voci, meno passaggi, meno da capire.
+Chi aggiunge un'opzione deve spiegare perché non si poteva evitare.
+
+---
+
+## PRIMA DI TOCCARE QUALUNQUE COSA — dove sta la verità
+
+Questo file è l'indice, non il contenuto. **Non ricostruire niente a memoria**: ogni cosa ha
+un posto solo dove è vera, e sono questi.
+
+| Cosa | Dove |
+|---|---|
+| **La coda dei lavori**, con cosa è fatto e cosa no | `docs/lavori/QUEUE-prodotto.md` nel repo |
+| **Il piano con i numeri veri** | `docs/MULTICLIENTE.md` |
+| **Il percorso completo, decisioni e perché** | `~/cervello/progetti/the-crew-processo-prodotto.md` |
+| **Il diario di ogni sessione** | `STATO.md` nel repo (in cima le più recenti) |
+| **Le 18 chiamate privilegiate, una per una** | `docs/CENSIMENTO_SERVICE_ROLE.md` |
+| **Com'è nato lo schema di crewgest** | `docs/SCHEMA_CREWGEST.md` |
+| **Come si popola un ambiente dimostrativo** | `docs/lavori/QUEUE-demo.md` |
+| **Cosa si racconta ai betatester** | https://claude.ai/artifact/TwZBMREgi3a68ZT7GkPsSD |
+| **Chi entra da dove, i tre casi e i tre ruoli** | https://claude.ai/artifact/QRZRfYVR93VZxe9CBbEDDX |
+| **Il report tecnico per il confronto esterno** | https://claude.ai/artifact/LJEbfNviLd1WAry8zkrBor |
+
+## I codici e gli indirizzi
+
+```
+crewgest (nuovo, vuoto)      aznlqhlivcvktxgvqlfl    Francoforte, Postgres 17.6
+The Crew (produzione, viva)  ppxgnvwgryutrleefgjw    Francoforte, Postgres 17.6
+```
+
+Repo: `/home/genolele22/progetti/the-crew`, ramo `master`, remote SSH `genolele22/the-crew-gym`.
+**Per ora il repo è uno solo per tutti e due** — vedi il punto fermo sul codice unico.
+
+Vercel: progetto `the-crew` → thecrewgym.com. Il progetto `the-crew-demo` **è stato cancellato
+il 18/09** insieme al suo database; al suo posto ci sarà un'associazione fittizia dentro crewgest.
+
+Dominio del prodotto: **`crewgest.it`, ancora da comprare** (era libero il 18/09). Solo dominio,
+DNS e una casella di posta: niente hosting, niente SSL, niente pacchetti — quelle cose ci sono già.
+
+---
+
+## I PUNTI FERMI — decisi, non si ridiscutono
+
+Ognuno è costato una discussione. Si riaprono solo con un fatto nuovo, mai con un'opinione.
+
+**1. Un codice solo, due installazioni. Mai due programmi.**
+Crewgest e thecrewgym.com sono lo stesso identico programma con database diversi. Il giorno che
+diventano due codici che si assomigliano, ogni funzione si costruisce due volte e dopo sei mesi
+sono due prodotti a metà.
+
+**2. Le associazioni entrano da un indirizzo solo** (`crewgest.it`). **Ma i soci e gli istruttori
+restano sul dominio della loro associazione** e non vedono mai la parola crewgest. Il presidente
+impara volentieri un indirizzo nuovo, il socio di settant'anni no.
+
+**3. Si registrano da sole, ma Lele approva.** L'associazione nasce spenta e viene accesa a mano.
+
+**4. Un accesso solo per persona**, anche se sta in due associazioni: sceglie dopo il login.
+È la decisione più costosa da cambiare dopo — cambiarla significa rifare gli accessi di tutti.
+
+**5. I pagamenti online sono nella prima versione.** Ma Stripe Connect pretende che la
+piattaforma sia una **persona giuridica**: Lele non può esserlo da dipendente pubblico, quindi
+dev'essere la società del commercialista. **È un prerequisito legale di una funzione, non una
+pratica da sbrigare.** Finché non è risolto, quel lavoro è fermo — solo quello.
+
+**6. La guida guida, non blocca.** Percorso guidato pagina per pagina, a scomparsa, per prendere
+le ASD gestite da chi non è pratico. Ma nessuno sbarramento all'ingresso: se un'associazione è in
+regola o no è affare suo. Unica eccezione da segnalare con un avviso (mai un blocco): il numero
+da cui ripartono le ricevute, perché senza quello il sistema stampa documenti sbagliati.
+
+**7. Chi smette di pagare si contatta, caso per caso.** Niente blocco automatico alla scadenza:
+un interruttore che decide Lele. *«Siamo un'azienda solidale.»* E i dati non si cancellano mai.
+
+**8. Chi carica cosa.** Lele carica **l'elenco soci** (una volta sola, da un file qualunque) e
+imposta **il contatore ricevute** (l'unico dato che non può essere sbagliato). L'associazione
+carica abbonamenti, corsi, quote, contabilità e foglio della banca, dopo una dimostrazione.
+Non per risparmiare fatica: **se caricano loro, imparano il gestionale.** Se glielo riempiamo
+noi resta una scatola che non sanno aprire, e chiamano alla prima quota nuova — che è
+esattamente il carico di assistenza che il modello non può permettersi.
+
+**9. La migrazione dei soci funziona già** e non va reinventata: il presidente dice ai soci dove
+andare e cosa compilare, il sistema fa il match sul **codice fiscale**, e prima di scrivere
+controlla che coincida con quello della persona a cui lo si collega. Nessun link di massa da
+mandare in giro: il sessantacinquenne non deve cliccare niente che non sappia cliccare.
+
+**10. Il gestionale funziona anche se nessun socio ha un account.** Gli accessi tolgono lavoro
+al presidente, non sono un requisito. In The Crew sono 65 su 239, e gli altri 174 sono gestiti
+benissimo. È la frase che toglie l'ansia più grossa a un presidente.
+
+**11. La demo è un'associazione fittizia dentro crewgest**, non un ambiente separato. Così la
+demo è **la stessa cosa che compra il cliente**. Nel frattempo si mostra il gestionale vero di
+The Crew: *«è la pubblicità migliore»*.
+
+**12. Il pannello aziendale sta nello stesso programma**, in un'area riservata
+(`admin.crewgest.it`), pensata per essere data a chi gestirà l'azienda.
+
+**13. The Crew entra dentro crewgest più avanti.** Conseguenza da tenere presente: finché non
+entra, **il gestionale di Lele non riceve funzioni nuove** — correzioni sì, novità no, perché
+nascono sulla forma multi-associazione. Più corta è quella finestra, meno costa.
+
+---
+
+## LE REGOLE DI LAVORO — perché non si perda un minuto
+
+Ognuna nasce da una cosa che è costata davvero, la notte del 17-18/09.
+
+**Ogni agente fa `git merge master` prima di cominciare.** Il worktree può nascere da un master
+più vecchio: è successo a tre agenti su cinque, e due hanno segnalato come "discrepanze" cose
+che su master erano a posto.
+
+**Si committa a gruppi, mai tenendo il lavoro in testa.** Un agente fermato da un limite di
+spesa ha perso mezza sessione di censimento. Ripreso con l'ordine di scrivere man mano, ha fatto
+dieci commit e non ha perso niente. *Un rapporto finale perfetto che non arriva mai vale zero.*
+
+**I numeri di migrazione si assegnano prima di lanciare.** Due agenti che scelgono lo stesso
+numero fanno un disastro silenzioso. **Ultima usata: `0159`.**
+
+**`package.json` a un agente solo per volta**, e va detto esplicitamente.
+
+**Due agenti in parallelo solo se toccano file diversi.** Il 35 e il 36 hanno convissuto bene; il
+33 e il 35 si sono scontrati sulle email e i conflitti sono stati sciolti a mano.
+
+**Il coordinatore verifica sul database vivo, non dal rapporto dell'agente.** È così che sono
+saltati fuori quattro backup notturni persi che nessuno stava cercando, e il buco di sicurezza
+sulle funzioni interne.
+
+**Niente service role key in locale** (è vuota ed è bloccata dal sandbox): si passa dal tool MCP
+Supabase. **Collaudo con dati finti, poi rimossi**, e si verifica che non restino residui.
+
+**Niente push e niente deploy senza Lele.** Attenzione: **sul progetto il push su `master` fa
+partire il deploy da solo.** Non sono due gesti, è uno.
+
+---
+
+## IL REGISTRO — cosa è stato fatto davvero
+
+### 17-18 settembre 2026
+
+| | Lavoro | Commit |
+|---|---|---|
+| 33 | Sentinella quotidiana sulla coda email, trasporto posta pronto per un servizio vero | `ec6b612` |
+| 34 | Impalcatura delle prove e guardia anti-produzione | `089f157` |
+| 35 | Via "The Crew" dal codice: ente, registro, privacy, marchio diventano dati | `6871136` |
+| 36 | Il backup non perde più la notte per una tabella (tre esiti, ritentativi) | `c2b507c` |
+| 37 | Censimento delle chiamate privilegiate + il recinto + il controllo in CI | `88a6485` |
+| 38 | Le chiamate per conto di un'associazione passano dal modulo unico | mergiato |
+| 39 | Pulizie: via `imapflow`, guardia sulle nove colonne della vista pubblica | `f5cfa95` |
+| 40a | Lo schema completo portato su crewgest, verificato identico alla produzione | `d7546c7` |
+
+**Due correzioni nate dal confronto fra i due database**, e sono il vero guadagno di aver
+costruito crewgest da zero:
+
+- **`0158`** — le funzioni interne erano chiamabili da un anonimo su un progetto nuovo.
+  `assegna_numero_ricevuta` gira con privilegi elevati, non ha controlli dentro, ed era
+  raggiungibile con la chiave pubblica che sta nel JavaScript di ogni pagina: bruciare numeri di
+  ricevuta significa fare buchi in una numerazione che per legge non deve averne. La produzione
+  era chiusa solo perché qualcuno l'aveva fatto **a mano**, e non era mai diventato un file.
+- **`0159`** — tolta la modalità di sola lettura della vecchia demo: 48 trigger che scattavano a
+  ogni scrittura per leggere una colonna che nessuno avrebbe valorizzato. Era della forma
+  sbagliata: a crewgest serve sospendere **una singola associazione**, non l'intero database.
+
+**Verificato di persona sul database vivo**, non dai rapporti: schema identico (103 trigger per
+parte), zero residui di collaudo, il recinto che rompe davvero la build se qualcuno aggiunge una
+chiamata fuori posto.
+
+**Non pubblicato:** 59 commit locali. Il sito gira ancora sulla versione del 17/09 mattina.
+
+---
+
+## COSA ASPETTA LELE
+
+1. **Comprare `crewgest.it`** — senza, non c'è l'indirizzo unico.
+2. **Chiedere al commercialista chi è la persona giuridica della piattaforma** per i pagamenti.
+   È l'unico lavoro fermo del piano.
+3. **Confermare la sede legale** che compare sull'informativa privacy: *via Guglielmo Marconi 28,
+   Asigliano Vercellese*. È un documento legale con l'indirizzo dell'associazione sopra.
+4. **Decidere se pubblicare** i 59 commit fermi.
+5. **Il progetto Supabase di prova non esiste ancora**: due prove restano sospese finché non c'è.
+
+## I RISCHI NOTI
+
+**Il travaso di The Crew dentro crewgest** (lavoro 53) ha una condizione dura: **gli account
+devono traslocare senza che nessuno debba rifare la password.** Sono 65 persone, molte non
+pratiche. Va provato su un'associazione finta prima, non scoperto il giorno stesso. E dipende dal
+lavoro 48: senza il riconoscimento del dominio, quel giorno thecrewgym.com resta senza niente da
+mostrare.
+
+**L'appello non è mai stato usato**: 1 lezione e 0 presenze da sempre. Se un cliente lo usa, lo
+collauda lui su persone vere.
+
+**La promessa del canale corre più veloce del prodotto.** Il commercialista sta già dicendo che
+il gestionale automatizza la burocrazia del presidente, mentre i verbali d'assemblea hanno zero
+righe. Prima che un cliente pagante senta quella frase, al canale va data una versione che regge
+oggi.
+
+---
+
+## COME SI TIENE AGGIORNATO QUESTO FILE
+
+A fine di ogni sessione che tocca crewgest: si aggiorna **lo Stato** in cima, si aggiunge la riga
+al **Registro** con il commit, e si sposta quello che è stato risolto da *Cosa aspetta Lele*.
+
+Se una decisione cambia, si **riscrive il punto fermo** e si scrive la data — non si aggiunge una
+nota sotto che lo contraddice. Due versioni della stessa decisione nello stesso file è il modo
+più veloce di perdere una giornata.

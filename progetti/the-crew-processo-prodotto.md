@@ -297,6 +297,10 @@ controllo sugli invii fermi e il mittente di posta vero.
 
 ## Dove sta il resto
 
+- **Lo stato vivo del prodotto sta in `crewgest.md`**, in questa cartella: punti fermi, regole,
+  registro aggiornato e cosa aspetta Lele. Questo file racconta il *percorso* e il *perché*;
+  quello racconta *dove siamo adesso*. Se i due si contraddicono, vince `crewgest.md`.
+
 - **Piano tecnico dettagliato, con i numeri**: `docs/MULTICLIENTE.md` nel repo `the-crew`
 - **Report tecnico** (scritto per farsi criticare da fuori): https://claude.ai/artifact/LJEbfNviLd1WAry8zkrBor
 - **Riepilogo semplice interno** (come funziona, il lavoro, chi prende cosa): https://claude.ai/artifact/7e9Daw6QyKGgTV1e1678it

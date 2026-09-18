@@ -493,6 +493,9 @@ persone risultano «mai invitate», che è la verità.
 ## File collegati nel vault
 
 - `fight-in-progress.md` — l'associazione (soldi, collaboratori, struttura)
+- **`crewgest.md` — la scheda del prodotto venduto ad altre ASD.** Punti fermi, regole di
+  lavoro, registro di cosa è stato fatto, cosa aspetta Lele. **È l'indice: si legge per primo
+  quando si lavora su crewgest**, e dice dove sta la verità di ogni cosa.
 - `the-crew-processo-prodotto.md` — **il percorso completo da gestionale privato ad azienda
   che lo fornisce a tante ASD**: decisioni prese e perché, ordine dei lavori, parte legale,
   parte commerciale, cosa resta fuori. Da leggere prima di riaprire qualunque discussione
