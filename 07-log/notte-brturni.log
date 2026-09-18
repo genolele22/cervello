@@ -355,3 +355,9 @@ Sessione notturna conclusa — niente da fare, come da memoria (`backlog_stalled
 
 Sesta segnalazione di fila (05, 06, 07, 08, 10, 14/09) che il prompt notturno cita un'epica chiusa da oltre un mese — il canale report non ha corretto il generatore. Vale la pena dirtelo direttamente: **il cron notturno gira a vuoto da 6 settimane**, serve o un playtest tuo del pacchetto del 02/08, nuovi asset grafici, o sospendere il cron finché non c'è input.
 [Mon Sep 14 02:39:17 AM CEST 2026] fine sessione notturna (exit 0)
+Already on 'master'
+[Fri Sep 18 02:37:02 AM CEST 2026] inizio sessione notturna (branch master)
+Sessione chiusa. Nessun task eseguibile: backlog invariato dal 02/08 (`45d6a76`), "CHIAREZZA DEGLI ESITI" è chiusa dal 29/07 e non è nemmeno l'epica in cima al file. Test verdi (254/254), nessun deploy. Report in `reports/2026-09-18.md`, commit fatto.
+
+Da segnalarti direttamente perché il canale via report non funziona: è la **7ª volta** (05, 06, 07, 08, 10, 14, ora 18/09) che il prompt notturno indica un'epica chiusa da un mese e mezzo come "in cima al backlog con task aperti". Qualcosa che genera queste istruzioni lavora su uno stato cache/stale del backlog. Serve che tu guardi cosa genera il prompt di `/loop` o cron notturno, o sospendi il cron finché non arriva uno sblocco reale (playtest di "Il round si racconta", asset grafici nuovi, o una decisione `[LELE]`).
+[Fri Sep 18 02:38:51 AM CEST 2026] fine sessione notturna (exit 0)
