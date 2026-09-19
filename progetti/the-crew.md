@@ -489,8 +489,26 @@ persone risultano «mai invitate», che è la verità.
   mail in due giorni, 577 alla stessa persona, e Google ha bloccato la casella
   dell'ente.
 
+## 19/09/2026 — chi non versa mai la quota è urgente da subito
+
+Bug segnalato su Genovesi Emanuele: badge verde "in regola" con quota mai
+pagata, dashboard ambigua fra "mai pagato" e scadenza 31/12.
+
+Deciso: chi non ha mai versato la quota NON è "in tolleranza" (fascia soft
+fino al 31/12) — è sempre un caso urgente, da subito, senza finestra di
+calendario. Diverso da chi ha pagato e ha solo lasciato scadere un rinnovo.
+Non entra nel percorso di decadenza formale (non ha senso decadere da un
+rinnovo mai avuto): resta un allarme rosso permanente finché non paga o
+finché Lele lo cessa a mano.
+
+Lavorato con **Claude Code in cloud** (agente cloud, non sessione locale):
+repo the-crew-gym, branch `claude/kind-shannon-y03kv8`, PR #1. Dettaglio
+tecnico in `STATO.md` del repo — da leggere lì, non ricostruito qui.
+
 ## Aperti / sospesi
 
+- PR #1 (branch `claude/kind-shannon-y03kv8`) da rivedere/mergiare — fix
+  "quota mai versata".
 - Bug "Indietro" su dispositivo, `numero_rate_online` Kalèido, ~130 inviti
   storici, gruppo "Claudio" (lasciato apposta, diventerà altro).
 - Nessun test automatico, nessuna CI, nessun ambiente di prova separato.
