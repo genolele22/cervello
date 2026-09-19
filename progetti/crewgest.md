@@ -109,11 +109,22 @@ il lavoro 41 presuppone possibile). Non toccato `ente_requisito.codice`
 (referenziato per codice da `bando_requisito` — probabile catalogo condiviso,
 domanda di disegno aperta e segnalata, non decisa di testa mia).
 
+**20/09/2026, secondo giro della stessa notte — le ~48 policy di autoaccesso
+collaudate dal vivo**, non più solo per ragionamento. Coperti tutti gli schemi
+diversi trovati fra le 143 policy: `persona_id` diretto (promemoria),
+`collaboratore_id = collaboratore_corrente_id()` (compenso_regola, mese_compenso —
+copre per estensione anche liquidazione/documento_collaboratore/documento_rimborso_
+spese/scadenza_legge_collaboratore, stessa espressione), sottoquery istruttore su
+`responsabile_persona_id` (lezione, presenza, iscrizione_corso — copre anche
+`persona_istruttore_vede_propri_allievi`), `persone_gestite()` fra persone diverse
+(tutela: un socio-tutore vede il proprio minore, non quello dell'altra
+associazione). Zero fughe su tutti. Nessuna migrazione, solo verifica.
+
 **DA DOVE SI RIPARTE**, in ordine:
-1. **43, generatore sistematico** — le stesse verifiche di stanotte ma per tutte le
-   74 tabelle × 4 operazioni, non solo un campione di 16. Include le ~48 policy di
-   autoaccesso non ancora collaudate con dati veri, e una revisione dei vincoli
-   `unique` sulle tabelle fuori dal campione (potrebbero essercene altri).
+1. **43, generatore sistematico** — resta solo la parte meccanica: le stesse
+   verifiche ma tabella per tabella su tutte le 74 (il merito è già confermato per
+   ogni schema), più una revisione dei vincoli `unique` sulle tabelle fuori dal
+   campione (potrebbero essercene altri come i 10 già trovati).
 2. **42b, seconda parte** — le ~36 altre funzioni security definer, le 18 chiamate
    service role ancora su `ENTE_UNICO_SEGNAPOSTO`.
 3. **Lavoro 48** (dominio per associazione) sblocca le 13 policy pubbliche rimaste,
