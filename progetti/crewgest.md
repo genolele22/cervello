@@ -222,10 +222,19 @@ DNS e una casella di posta: niente hosting, niente SSL, niente pacchetti — que
 
 Ognuno è costato una discussione. Si riaprono solo con un fatto nuovo, mai con un'opinione.
 
+**0. Regola ferrea (20/09/2026): niente push/deploy che porti crewgest su produzione,
+fino a fine 2026, e comunque solo con un via libera esplicito.** The Crew è già in funzione
+con soci veri, soldi veri, ricevute fiscali vere: un push che rompesse anche solo il login
+in produzione non è un bug da sistemare, è un'associazione che non riesce più a lavorare.
+Tutto il lavoro di schema/RLS/funzioni/app fatto su crewgest resta **committato solo in
+locale su master**. Prima di qualunque push, verificare che il codice sia compatibile con
+lo schema DI PRODUZIONE (query diretta su `ppxgnvwgryutrleefgjw`), non presumerlo.
+
 **1. Un codice solo, due installazioni. Mai due programmi.**
 Crewgest e thecrewgym.com sono lo stesso identico programma con database diversi. Il giorno che
 diventano due codici che si assomigliano, ogni funzione si costruisce due volte e dopo sei mesi
-sono due prodotti a metà.
+sono due prodotti a metà. **Ma "un codice solo" non vuol dire "sempre sincronizzati": fino a
+fine 2026 (regola 0) il codice avanza solo in locale, mai pushato.**
 
 **2. Le associazioni entrano da un indirizzo solo** (`crewgest.it`). **Ma i soci e gli istruttori
 restano sul dominio della loro associazione** e non vedono mai la parola crewgest. Il presidente
