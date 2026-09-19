@@ -58,13 +58,26 @@ l'`ente_id` già presente su ogni tabella dal 40b; le funzioni a zero argomenti
 (`e_superadmin()` ecc.) restano come "ponte" per non rompere le 143 policy non ancora
 riscritte, usando `accesso_ente.predefinito`.
 
+**19/09/2026 notte — 42a chiuso, verificato io stesso sul database vivo (non solo dal
+rapporto dell'agente).** 10 funzioni + 4 trigger riscritti (migrazione `0168`): nuove
+`ha_ruolo_su(ente_id, ruoli...)`/`e_gestore_piattaforma()`/`persona_corrente(ente_id)`
+per il 42b; le funzioni-ponte a zero argomenti (`e_superadmin`/`e_istruttore`/
+`e_socio`/`persona_corrente`) restano con la stessa firma ma ora leggono
+`accesso_ente.predefinito` — crewgest resta utilizzabile esattamente come oggi
+(un'associazione sola) finché il 42b non riscrive le 143 policy una per una.
+`ruolo_corrente()` cancellata (verificato prima: nessuna policy la chiamava
+direttamente). Falla di sicurezza chiusa in `reimposta_password_utente` (prima
+qualunque superadmin poteva resettare la password di QUALUNQUE utente, senza
+controllo di appartenenza all'associazione). Rifatte io stesso 2 delle 4 prove sul
+database vivo, stesso esito dell'agente.
+
 **DA DOVE SI RIPARTE**, in ordine:
-1. **42a** — verificare l'esito quando torna l'agente.
-2. **42b** — le 143 policy RLS vere e proprie riscritte con `ha_ruolo_su(ente_id,
+1. **42b** — le 143 policy RLS vere e proprie riscritte con `ha_ruolo_su(ente_id,
    ...)`, le altre ~36 funzioni security definer, le 18 chiamate a service role
    migrate al modulo unico ora che `ente_id`/`accesso_ente` esistono davvero (oggi
-   passano ancora `ENTE_UNICO_SEGNAPOSTO`).
-3. **Lavoro 43** — le prove di isolamento (il cancello: per ogni tabella, leggere/
+   passano ancora `ENTE_UNICO_SEGNAPOSTO`). Troppo grande per una sessione sola:
+   andrà spezzato ancora, probabilmente per gruppi di tabelle.
+2. **Lavoro 43** — le prove di isolamento (il cancello: per ogni tabella, leggere/
    scrivere/cancellare i dati di un'altra associazione deve fallire sempre).
 
 **Priorità (18/09/2026):** massima, **in parallelo con The Crew** — diventeranno lo stesso
