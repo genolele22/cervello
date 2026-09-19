@@ -130,10 +130,30 @@ serio: `leggi_documento_giudiziario()` (unico cancello per dati giudiziari, art.
 corretto e collaudato. Resta solo: le 18 chiamate service role in `src/` (tocca
 l'app, deliberatamente fuori da stanotte).
 
+**20/09/2026, quarto giro — visto funzionare dal vivo, non solo in teoria.**
+Adattati i 4 file da cui dipende ogni pagina riservata (`utente-corrente.ts`,
+`proxy.ts`, `login/page.tsx`, i tipi in `database.ts` aggiunti a mano). Creata
+per davvero un'associazione finta "ASD Demo Palestra" (presidente/istruttore/
+socio, login veri — password `Crewgest2026!`, un corso, un'iscrizione). Server
+locale puntato su crewgest **senza toccare `.env.local`** (variabili passate
+solo al comando `npm run dev`, resta puntato alla produzione). **Verificato nel
+browser**: login → cruscotto gestionale coi dati veri → elenco soci → scheda
+socio → sito pubblico con il corso visibile. Tutto funziona, zero errori.
+
+**Trovato un buco vero preparando la prova, corretto subito**: `ente` e
+`accesso_ente` (tabelle nuove del 41) erano rimaste con **RLS disattivata** —
+`anon` aveva accesso pieno in lettura/scrittura, mai notato perché nessuna
+delle 143 policy del 42b le riguardava. Migrazione `0181`, collaudato che un
+anonimo veda zero righe.
+
+Resta per il resto dell'app: ~9 file che leggono ancora `utente.ruolo`/
+`persona_id` direttamente (accessi, verbali, notifiche, Telegram, compensi
+altri enti), le 18 chiamate service role, le 21 letture di `configurazione`
+da controllare una per una.
+
 **DA DOVE SI RIPARTE**, in ordine:
-1. **Adattare `src/`** — l'app Next.js non è mai stata toccata da 40b→42b, gira
-   ancora contro lo schema vecchio (`utente.persona_id`/`ruolo`, che non
-   esistono più). Stima scritta il 20/09 in `~/cervello/progetti/crewgest.md`.
+1. **Il resto di `src/`** — i ~9 file rimasti, uno alla volta, stesso schema
+   della correzione di stanotte (leggere da `accesso_ente`, non da `utente`).
 2. **43, generatore sistematico** — le stesse verifiche fatte a campione ma per
    tutte le 74 tabelle, e le 18 chiamate service role.
 3. **Lavoro 48** (dominio per associazione) sblocca le 13 policy pubbliche
