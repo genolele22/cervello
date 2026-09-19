@@ -90,14 +90,34 @@ riga dell'altra, verificato con una query reale come quell'utente.
   associazione), ma non collaudate una per una come le 81.
 - Le altre ~36 funzioni `security definer`, le 18 chiamate service role.
 
+**19-20/09/2026, oltre mezzanotte — lavoro 43 (collaudo a campione) fatto.** Non il
+generatore sistematico per le 74 tabelle (resta da fare), ma un collaudo reale: due
+associazioni finte con persone/corsi/incassi/ricevute/spese/documenti/verbali/
+contratti, 16 tabelle, interrogate come amministratore e come socio **con la
+policy vera**, non la funzione isolata. 9 tabelle isolate correttamente anche in
+scrittura (un UPDATE cross-associazione tocca 0 righe); un socio vede solo le
+proprie 1/1/1 righe, non le 2 che esisterebbero contando l'altra associazione.
+`sala`/`tipologia_ingresso`/`corso` **perdono davvero** — conferma dal vivo delle
+13 policy pubbliche già note dal 42b (bloccate dal lavoro 48, non un rischio
+nuovo).
+
+**Trovati per strada e corretti, non di sicurezza ma di integrità dei dati**: 10
+vincoli `unique` rimasti globali dopo il lavoro 40b invece che per associazione —
+il più serio, `persona.codice_fiscale` globale, avrebbe reso impossibile per la
+stessa persona reale essere socia di due associazioni diverse (proprio il caso che
+il lavoro 41 presuppone possibile). Non toccato `ente_requisito.codice`
+(referenziato per codice da `bando_requisito` — probabile catalogo condiviso,
+domanda di disegno aperta e segnalata, non decisa di testa mia).
+
 **DA DOVE SI RIPARTE**, in ordine:
-1. **42b, seconda parte** — le ~48 policy di autoaccesso da collaudare (non
-   riscrivere, solo verificare), le ~36 altre funzioni, le 18 chiamate service
-   role.
-2. **Lavoro 43** — le prove di isolamento (il cancello: per ogni tabella, leggere/
-   scrivere/cancellare i dati di un'altra associazione deve fallire sempre) — è il
-   modo sistematico di chiudere il dubbio lasciato aperto sulle 48 policy.
-3. **Lavoro 48** (dominio per associazione) sblocca le 13 policy pubbliche rimaste.
+1. **43, generatore sistematico** — le stesse verifiche di stanotte ma per tutte le
+   74 tabelle × 4 operazioni, non solo un campione di 16. Include le ~48 policy di
+   autoaccesso non ancora collaudate con dati veri, e una revisione dei vincoli
+   `unique` sulle tabelle fuori dal campione (potrebbero essercene altri).
+2. **42b, seconda parte** — le ~36 altre funzioni security definer, le 18 chiamate
+   service role ancora su `ENTE_UNICO_SEGNAPOSTO`.
+3. **Lavoro 48** (dominio per associazione) sblocca le 13 policy pubbliche rimaste,
+   e la domanda aperta su `ente_requisito`.
 
 **Priorità (18/09/2026):** massima, **in parallelo con The Crew** — diventeranno lo stesso
 sistema, quindi non sono due progetti in competizione ma due metà dello stesso.
