@@ -45,12 +45,27 @@ dell'agente. **Trovato per strada, non corretto**: il trigger di registrazione s
 `auth.users` scrive ancora su `utente.ruolo`, colonna che non esiste più — qualunque
 vera registrazione su crewgest fallirebbe oggi. Tocca al lavoro 42 (stessa area).
 
+**19/09/2026 notte — il 42 si è rivelato troppo grande per una sessione sola** (143
+policy RLS + ~46 funzioni security definer + 18 chiamate service role): spezzato
+prima, non a metà, come da regola del progetto. Primo pezzo in corso: **42a — le
+fondamenta**, le 10 funzioni + 3 trigger che il 41 ha lasciato rotti
+(`e_superadmin`/`e_istruttore`/`e_socio`/`persona_corrente`/`ruolo_corrente`,
+`attiva_accesso`, `crea_accesso`, `reimposta_password_utente`,
+`email_di_ogni_accesso`, più i trigger di registrazione/autoescalation/sincronizza-
+ruolo-da-collaboratore). Decisione di disegno presa lì: niente "associazione attiva
+di sessione" — ogni policy controlla riga per riga contro `accesso_ente` usando
+l'`ente_id` già presente su ogni tabella dal 40b; le funzioni a zero argomenti
+(`e_superadmin()` ecc.) restano come "ponte" per non rompere le 143 policy non ancora
+riscritte, usando `accesso_ente.predefinito`.
+
 **DA DOVE SI RIPARTE**, in ordine:
-1. **Lavoro 42** — le regole di accesso scritte con l'associazione dentro (142 policy
-   RLS + le funzioni security definer, comprese le 5 che leggevano `utente.ruolo` e il
-   trigger di registrazione trovato rotto dal 41), più le 18 chiamate a service role
-   migrate al modulo unico ora che `ente_id` esiste davvero (oggi passano ancora
-   `ENTE_UNICO_SEGNAPOSTO`).
+1. **42a** — verificare l'esito quando torna l'agente.
+2. **42b** — le 143 policy RLS vere e proprie riscritte con `ha_ruolo_su(ente_id,
+   ...)`, le altre ~36 funzioni security definer, le 18 chiamate a service role
+   migrate al modulo unico ora che `ente_id`/`accesso_ente` esistono davvero (oggi
+   passano ancora `ENTE_UNICO_SEGNAPOSTO`).
+3. **Lavoro 43** — le prove di isolamento (il cancello: per ogni tabella, leggere/
+   scrivere/cancellare i dati di un'altra associazione deve fallire sempre).
 
 **Priorità (18/09/2026):** massima, **in parallelo con The Crew** — diventeranno lo stesso
 sistema, quindi non sono due progetti in competizione ma due metà dello stesso.
