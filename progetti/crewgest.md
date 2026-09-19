@@ -120,15 +120,24 @@ spese/scadenza_legge_collaboratore, stessa espressione), sottoquery istruttore s
 (tutela: un socio-tutore vede il proprio minore, non quello dell'altra
 associazione). Zero fughe su tutti. Nessuna migrazione, solo verifica.
 
+**20/09/2026, terzo giro della stessa notte — 42b chiuso quasi per intero.** Riviste
+tutte le ~48 funzioni `security definer` rimaste, **9 bug reali trovati e
+corretti** (non teorici — molte avrebbero fallito subito con un errore SQL al
+primo utilizzo con due associazioni: numerazione ricevute, config letta per
+chiave ambigua, contratti rateali/liquidazioni scritti senza `ente_id`). Il più
+serio: `leggi_documento_giudiziario()` (unico cancello per dati giudiziari, art.
+10 GDPR) lasciava un amministratore leggere documenti di un'altra associazione —
+corretto e collaudato. Resta solo: le 18 chiamate service role in `src/` (tocca
+l'app, deliberatamente fuori da stanotte).
+
 **DA DOVE SI RIPARTE**, in ordine:
-1. **43, generatore sistematico** — resta solo la parte meccanica: le stesse
-   verifiche ma tabella per tabella su tutte le 74 (il merito è già confermato per
-   ogni schema), più una revisione dei vincoli `unique` sulle tabelle fuori dal
-   campione (potrebbero essercene altri come i 10 già trovati).
-2. **42b, seconda parte** — le ~36 altre funzioni security definer, le 18 chiamate
-   service role ancora su `ENTE_UNICO_SEGNAPOSTO`.
-3. **Lavoro 48** (dominio per associazione) sblocca le 13 policy pubbliche rimaste,
-   e la domanda aperta su `ente_requisito`.
+1. **Adattare `src/`** — l'app Next.js non è mai stata toccata da 40b→42b, gira
+   ancora contro lo schema vecchio (`utente.persona_id`/`ruolo`, che non
+   esistono più). Stima scritta il 20/09 in `~/cervello/progetti/crewgest.md`.
+2. **43, generatore sistematico** — le stesse verifiche fatte a campione ma per
+   tutte le 74 tabelle, e le 18 chiamate service role.
+3. **Lavoro 48** (dominio per associazione) sblocca le 13 policy pubbliche
+   rimaste, e la domanda aperta su `ente_requisito`.
 
 **Priorità (18/09/2026):** massima, **in parallelo con The Crew** — diventeranno lo stesso
 sistema, quindi non sono due progetti in competizione ma due metà dello stesso.
