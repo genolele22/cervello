@@ -505,10 +505,23 @@ Lavorato con **Claude Code in cloud** (agente cloud, non sessione locale):
 repo the-crew-gym, branch `claude/kind-shannon-y03kv8`, PR #1. Dettaglio
 tecnico in `STATO.md` del repo — da leggere lì, non ricostruito qui.
 
+**19/09/2026 (seguito) — niente scadenza finta per chi non ha mai versato.**
+Lele: "quando risulta quota mai versata, rimane una data di scadenza
+segnata ugualmente, lì non ci deve essere data". Bug confermato: `stato.ts`
+calcola comunque una scadenza (31/12 dell'anno della domanda) "solo per
+mostrare una data quando serve" — ma tre schermate la stampavano senza
+distinguere il caso. Sistemato in locale (non più via cloud) e pushato
+sulla stessa branch `claude/kind-shannon-y03kv8`: "La mia posizione" del
+socio ("Quota associativa mai versata", niente data), scheda socio
+gestionale (campo "Scadenza quota" → "Mai versata", avviso "si allena con
+la quota scaduta dal…" → "Non ha mai versato la quota associativa"),
+elenco soci gestionale (colonna scadenza → "Mai versata"). Build+lint
+verificati in worktree temporaneo prima del push.
+
 ## Aperti / sospesi
 
 - PR #1 (branch `claude/kind-shannon-y03kv8`) da rivedere/mergiare — fix
-  "quota mai versata".
+  "quota mai versata" + fix niente-data-per-mai-versata.
 - Bug "Indietro" su dispositivo, `numero_rate_online` Kalèido, ~130 inviti
   storici, gruppo "Claudio" (lasciato apposta, diventerà altro).
 - Nessun test automatico, nessuna CI, nessun ambiente di prova separato.
