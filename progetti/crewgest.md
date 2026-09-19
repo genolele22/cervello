@@ -32,12 +32,25 @@ Il backup notturno resta apposta cross-tenant: non usa il marchio di un'associaz
 usa una nuova costante `NOME_PIATTAFORMA` ("crewgest"). Codice in `src/`, non tocca
 il database — commit `a954023`/`d895194` su master, locale, non pushato.
 
+**19/09/2026 tardi — lavoro 41 chiuso.** `utente` torna identità pura (via
+`ente_id`/`persona_id`/`ruolo`, dentro `gestore_piattaforma` per chi opera crewgest
+come prodotto). Nuova tabella `accesso_ente`: login × persona × ente × ruolo, i cinque
+preset (presidente, amministratore, segreteria, istruttore, socio), con un trigger che
+tiene `ente_id` sempre coerente con quello della persona (verificato io stesso: un
+`ente_id` sbagliato passato a mano viene corretto, non solo rifiutato). `tutela` con lo
+stesso tipo di trigger: un tutore e il minore che rappresenta non possono stare in due
+associazioni diverse (verificato: l'inserimento fallisce con l'errore giusto).
+Verificate io stesso entrambe le prove sul database vivo, non solo dal rapporto
+dell'agente. **Trovato per strada, non corretto**: il trigger di registrazione su
+`auth.users` scrive ancora su `utente.ruolo`, colonna che non esiste più — qualunque
+vera registrazione su crewgest fallirebbe oggi. Tocca al lavoro 42 (stessa area).
+
 **DA DOVE SI RIPARTE**, in ordine:
-1. **Lavoro 41** — identità e permessi (un accesso, più associazioni, i cinque preset
-   di ruolo). Non si cambia più dopo, va fatto con calma.
-2. **Lavoro 42** — le regole di accesso scritte con l'associazione dentro (RLS + le
-   43 funzioni security definer), più le 18 chiamate a service role migrate al modulo
-   unico ora che `ente_id` esiste davvero (oggi passano ancora `ENTE_UNICO_SEGNAPOSTO`).
+1. **Lavoro 42** — le regole di accesso scritte con l'associazione dentro (142 policy
+   RLS + le funzioni security definer, comprese le 5 che leggevano `utente.ruolo` e il
+   trigger di registrazione trovato rotto dal 41), più le 18 chiamate a service role
+   migrate al modulo unico ora che `ente_id` esiste davvero (oggi passano ancora
+   `ENTE_UNICO_SEGNAPOSTO`).
 
 **Priorità (18/09/2026):** massima, **in parallelo con The Crew** — diventeranno lo stesso
 sistema, quindi non sono due progetti in competizione ma due metà dello stesso.
