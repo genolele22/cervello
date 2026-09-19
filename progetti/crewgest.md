@@ -71,14 +71,33 @@ qualunque superadmin poteva resettare la password di QUALUNQUE utente, senza
 controllo di appartenenza all'associazione). Rifatte io stesso 2 delle 4 prove sul
 database vivo, stesso esito dell'agente.
 
+**19-20/09/2026 notte — 42b, prima parte, chiusa (fatta direttamente da me, non da
+un agente: era abbastanza meccanica da scriverla e verificarla di persona).** 81
+delle 143 policy avevano `qual = e_superadmin()` senza nessun controllo sulla riga:
+un amministratore di UNA associazione vedeva/scriveva TUTTE le righe di TUTTE le
+associazioni. Verificato con una query che fossero davvero tutte identiche (zero
+eccezioni), riscritte in blocco con un DO SQL invece che a mano una per una — meno
+rischio di trascrizione su 81 policy. Collaudato sulla policy vera (non sulla
+funzione isolata): due associazioni finte, un amministratore dell'una non vede una
+riga dell'altra, verificato con una query reale come quell'utente.
+
+**Cosa resta, elenco preciso** (in `STATO.md` del repo il dettaglio completo):
+- **13 policy pubbliche** (sito, letto da `anon`) senza nessun filtro per
+  associazione — bloccate dal lavoro 48 (un anonimo non sa ancora "su quale sito
+  associativo sono"), non un rischio nuovo di stanotte.
+- **~48 policy di autoaccesso** (`persona_id = persona_corrente()` e simili) —
+  riviste e giudicate già corrette (una persona appartiene già a una sola
+  associazione), ma non collaudate una per una come le 81.
+- Le altre ~36 funzioni `security definer`, le 18 chiamate service role.
+
 **DA DOVE SI RIPARTE**, in ordine:
-1. **42b** — le 143 policy RLS vere e proprie riscritte con `ha_ruolo_su(ente_id,
-   ...)`, le altre ~36 funzioni security definer, le 18 chiamate a service role
-   migrate al modulo unico ora che `ente_id`/`accesso_ente` esistono davvero (oggi
-   passano ancora `ENTE_UNICO_SEGNAPOSTO`). Troppo grande per una sessione sola:
-   andrà spezzato ancora, probabilmente per gruppi di tabelle.
+1. **42b, seconda parte** — le ~48 policy di autoaccesso da collaudare (non
+   riscrivere, solo verificare), le ~36 altre funzioni, le 18 chiamate service
+   role.
 2. **Lavoro 43** — le prove di isolamento (il cancello: per ogni tabella, leggere/
-   scrivere/cancellare i dati di un'altra associazione deve fallire sempre).
+   scrivere/cancellare i dati di un'altra associazione deve fallire sempre) — è il
+   modo sistematico di chiudere il dubbio lasciato aperto sulle 48 policy.
+3. **Lavoro 48** (dominio per associazione) sblocca le 13 policy pubbliche rimaste.
 
 **Priorità (18/09/2026):** massima, **in parallelo con The Crew** — diventeranno lo stesso
 sistema, quindi non sono due progetti in competizione ma due metà dello stesso.
