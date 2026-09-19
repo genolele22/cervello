@@ -25,9 +25,19 @@ vuoto (sale/categorie/tipologie di The Crew): si cancellano, non appartengono a 
 ente e la loro creazione per-ente diventa compito dell'onboarding (lavoro 45/52).
 Verifica sul database vivo ancora da fare al ritorno dell'agente.
 
-**DA DOVE SI RIPARTE dopo il 40b**, in ordine:
-1. **Lavoro 39 parte 3** — il marchio nelle email (era fermo dietro il 38, ora no).
-2. Poi il 41 (identità e permessi) e il 42 (le regole di accesso).
+**19/09/2026, dopo il 40b — lavoro 39 chiuso (parte 3, il marchio nelle email).**
+`email.ts`/`mail-libera.ts` leggono `marchio_esteso` dal database invece del ripiego
+fisso "THE CREW" (stesso schema già usato per la denominazione legale, lavoro 38).
+Il backup notturno resta apposta cross-tenant: non usa il marchio di un'associazione,
+usa una nuova costante `NOME_PIATTAFORMA` ("crewgest"). Codice in `src/`, non tocca
+il database — commit `a954023`/`d895194` su master, locale, non pushato.
+
+**DA DOVE SI RIPARTE**, in ordine:
+1. **Lavoro 41** — identità e permessi (un accesso, più associazioni, i cinque preset
+   di ruolo). Non si cambia più dopo, va fatto con calma.
+2. **Lavoro 42** — le regole di accesso scritte con l'associazione dentro (RLS + le
+   43 funzioni security definer), più le 18 chiamate a service role migrate al modulo
+   unico ora che `ente_id` esiste davvero (oggi passano ancora `ENTE_UNICO_SEGNAPOSTO`).
 
 **Priorità (18/09/2026):** massima, **in parallelo con The Crew** — diventeranno lo stesso
 sistema, quindi non sono due progetti in competizione ma due metà dello stesso.
