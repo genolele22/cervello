@@ -14,11 +14,20 @@ al multi-associazione.
 **Il lavoro di preparazione è pubblicato**: 60 commit online il 18/09, deploy verificato Ready,
 sei pagine controllate sul sito vero.
 
-**DA DOVE SI RIPARTE**, in ordine:
-1. **Lavoro 40b** — la tabella delle associazioni e l'identificativo ovunque, sul database
-   vuoto: la volta più facile che ci sarà mai.
-2. **Lavoro 39 parte 3** — il marchio nelle email (era fermo dietro il 38, ora no).
-3. Poi il 41 (identità e permessi) e il 42 (le regole di accesso).
+**19/09/2026 sera — lavoro 40b in corso.** Brief scritto in
+`docs/lavori/40b-tabella-associazioni.md` (committato su master, `197f696`), un agente
+lanciato su worktree dedicato (`worktree-lavoro-40b`) a costruire la tabella `ente` +
+`ente_id` su tutte le altre tabelle di crewgest, con le 5 eccezioni a chiave globale
+(`configurazione`, `ente_profilo`, `ricevuta_contatore`, `notifica_tipo_config`,
+`codice_collegamento_telegram` — quest'ultima resta con `codice` unico globale per
+motivi di sicurezza del token). Deciso lì anche cosa fare dei seed già presenti nel DB
+vuoto (sale/categorie/tipologie di The Crew): si cancellano, non appartengono a nessun
+ente e la loro creazione per-ente diventa compito dell'onboarding (lavoro 45/52).
+Verifica sul database vivo ancora da fare al ritorno dell'agente.
+
+**DA DOVE SI RIPARTE dopo il 40b**, in ordine:
+1. **Lavoro 39 parte 3** — il marchio nelle email (era fermo dietro il 38, ora no).
+2. Poi il 41 (identità e permessi) e il 42 (le regole di accesso).
 
 **Priorità (18/09/2026):** massima, **in parallelo con The Crew** — diventeranno lo stesso
 sistema, quindi non sono due progetti in competizione ma due metà dello stesso.
