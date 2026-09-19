@@ -151,6 +151,16 @@ Resta per il resto dell'app: ~9 file che leggono ancora `utente.ruolo`/
 altri enti), le 18 chiamate service role, le 21 letture di `configurazione`
 da controllare una per una.
 
+**20/09/2026, quinto giro — il gestionale neutro esisteva già.** Lele ha
+notato che la demo era identica a The Crew vera. Il tema neutro (lavoro 31,
+18/09) c'era già — logo a testo, palette grigia, banner "Ambiente demo" —
+solo mai riacceso dopo la cancellazione della vecchia demo. Bastato
+`configurazione.modalita_demo = true` sull'associazione finta: nessun
+codice, scattato da solo. Corretti in più 3 punti rimasti sul ripiego
+statico "THE CREW" (login, pagina d'errore, titolo scheda browser) che il
+tema demo da solo non copriva. Non toccato `manifest.ts` (icona PWA):
+richiede un'icona neutra vera, è lavoro 49.
+
 **DA DOVE SI RIPARTE**, in ordine:
 1. **Il resto di `src/`** — i ~9 file rimasti, uno alla volta, stesso schema
    della correzione di stanotte (leggere da `accesso_ente`, non da `utente`).
@@ -158,6 +168,9 @@ da controllare una per una.
    tutte le 74 tabelle, e le 18 chiamate service role.
 3. **Lavoro 48** (dominio per associazione) sblocca le 13 policy pubbliche
    rimaste, e la domanda aperta su `ente_requisito`.
+4. **Lavoro 49** (aspetto per associazione) — icona PWA neutra, upload logo,
+   scelta tema: quello che resta per rendere il pacchetto vendibile davvero,
+   oltre a quanto già c'era.
 
 **Priorità (18/09/2026):** massima, **in parallelo con The Crew** — diventeranno lo stesso
 sistema, quindi non sono due progetti in competizione ma due metà dello stesso.
