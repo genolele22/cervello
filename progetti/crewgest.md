@@ -222,19 +222,25 @@ DNS e una casella di posta: niente hosting, niente SSL, niente pacchetti — que
 
 Ognuno è costato una discussione. Si riaprono solo con un fatto nuovo, mai con un'opinione.
 
-**0. Regola ferrea (20/09/2026): niente push/deploy che porti crewgest su produzione,
-fino a fine 2026, e comunque solo con un via libera esplicito.** The Crew è già in funzione
-con soci veri, soldi veri, ricevute fiscali vere: un push che rompesse anche solo il login
-in produzione non è un bug da sistemare, è un'associazione che non riesce più a lavorare.
-Tutto il lavoro di schema/RLS/funzioni/app fatto su crewgest resta **committato solo in
-locale su master**. Prima di qualunque push, verificare che il codice sia compatibile con
-lo schema DI PRODUZIONE (query diretta su `ppxgnvwgryutrleefgjw`), non presumerlo.
+**0. Crewgest va in produzione (la sua, propria) appena è pronto — nessuna attesa per
+quello.** Corretto il 20/09/2026: la prima stesura di questo punto diceva il contrario
+per un mio errore, Lele l'ha corretto subito. **L'unica cosa che aspetta fine 2026** è il
+lavoro 53 (The Crew entra in crewgest, il travaso di thecrewgym.com) — perché The Crew è
+già in funzione con soci veri, soldi veri, ricevute fiscali vere, e un travaso prematuro
+lo romperebbe. **Il vincolo tecnico oggi**: `master` è un repo solo e il push su quel
+branch fa partire da solo il deploy di thecrewgym.com; il codice scritto per crewgest
+(dal lavoro 40b in poi) non è compatibile con lo schema ATTUALE di produzione
+(`accesso_ente` non esiste su `ppxgnvwgryutrleefgjw`, verificato). **Quindi**: non si
+pusha `master` as-is finché non esiste un secondo bersaglio di deploy per crewgest
+(branch a parte + secondo progetto Vercel puntato su `aznlqhlivcvktxgvqlfl` e sul proprio
+dominio) — è quello il prossimo passo tecnico da costruire, non un'attesa passiva.
 
 **1. Un codice solo, due installazioni. Mai due programmi.**
 Crewgest e thecrewgym.com sono lo stesso identico programma con database diversi. Il giorno che
 diventano due codici che si assomigliano, ogni funzione si costruisce due volte e dopo sei mesi
-sono due prodotti a metà. **Ma "un codice solo" non vuol dire "sempre sincronizzati": fino a
-fine 2026 (regola 0) il codice avanza solo in locale, mai pushato.**
+sono due prodotti a metà. **"Un codice solo" non vuol dire "un deploy solo" (vedi regola 0)**:
+finché crewgest e thecrewgym.com hanno schemi diversi, servono due bersagli di deploy separati
+(due branch, due progetti Vercel) sullo stesso repo — non due copie del codice.
 
 **2. Le associazioni entrano da un indirizzo solo** (`crewgest.it`). **Ma i soci e gli istruttori
 restano sul dominio della loro associazione** e non vedono mai la parola crewgest. Il presidente
